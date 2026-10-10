@@ -24,7 +24,45 @@
     "Memilih Material Baja":"Choosing Steel Materials","Perencanaan Material":"Material Planning","Kualitas dalam Setiap Tahap":"Quality at Every Stage",
     "Mari mulai percakapan.":"Let's start a conversation.","Siap berdiskusi?":"Ready to talk?","Butuh solusi untuk proyek Anda?":"Need a solution for your project?","Hubungi Kami":"Contact Us","Hubungi tim kami":"Contact our team","Kirim Email":"Send Email",
     "Solusi Baja":"Steel Solutions","Kekuatan untuk membangun masa depan":"Strength to build the future","Profil dan nilai perusahaan":"Company profile and values",
-    "INDUSTRI · KONSTRUKSI · INFRASTRUKTUR":"INDUSTRY · CONSTRUCTION · INFRASTRUCTURE","Built for strength. Designed for progress.":"Built for strength. Designed for progress."
+    "INDUSTRI · KONSTRUKSI · INFRASTRUKTUR":"INDUSTRY · CONSTRUCTION · INFRASTRUCTURE","Built for strength. Designed for progress.":"Built for strength. Designed for progress.",
+    "Solusi Kami":"Our Solutions","Layanan Baja Terintegrasi":"Integrated Steel Services","Dukungan material, pemrosesan, dan fabrikasi untuk kebutuhan proyek.":"Material, processing, and fabrication support for project needs.",
+    "Produk & layanan baja":"Steel Products & Services","Solusi baja untuk berbagai kebutuhan.":"Steel solutions for a wide range of needs.","Dari pemilihan material hingga pengerjaan, layanan kami dirancang untuk membantu proyek bekerja secara efisien dan sesuai kebutuhan.":"From material selection to fabrication, our services are designed to help projects run efficiently and meet their requirements.",
+    "Baja Struktural":"Structural Steel","Material baja untuk struktur bangunan, gudang, fasilitas manufaktur, dan proyek infrastruktur.":"Steel materials for building structures, warehouses, manufacturing facilities, and infrastructure projects.",
+    "Lembaran & Gulungan Baja":"Steel Sheets & Coils","Pilihan material lembaran dan coil untuk kebutuhan fabrikasi, manufaktur, dan pengolahan lanjutan.":"Sheet and coil materials for fabrication, manufacturing, and further processing.",
+    "Pemotongan & Fabrikasi":"Cutting & Fabrication","Layanan pemotongan dan fabrikasi sesuai spesifikasi proyek, dengan perhatian pada ukuran dan konsistensi hasil.":"Cutting and fabrication services tailored to project specifications, with attention to dimensions and consistent results.","Pelajari layanan ↗":"Explore services ↗",
+    "Portofolio":"Portfolio","Portofolio Solusi Baja untuk Berbagai Proyek":"Steel Solutions for a Range of Projects","Penerapan solusi baja untuk kebutuhan konstruksi dan industri.":"Steel solutions applied to construction and industrial needs.",
+    "Industri dan fasilitas baja":"Steel Industry and Facilities","Material andal untuk proyek besar.":"Reliable materials for major projects.","Dapatkan dukungan material baja untuk kebutuhan konstruksi, manufaktur, dan proyek industri dengan pendekatan yang berorientasi pada mutu.":"Get steel material support for construction, manufacturing, and industrial projects with a quality-focused approach.",
+    "Material berkualitas":"Quality Materials","Pemrosesan presisi":"Precision Processing","Dukungan proyek":"Project Support","Konsultasikan Kebutuhan Baja ↗":"Discuss Your Steel Needs ↗",
+    "Orang di Balik NSI":"The People Behind NSI","Tim yang Mengutamakan Kualitas":"A Team Focused on Quality","Kolaborasi, ketelitian, dan keselamatan menjadi bagian penting dari layanan kami.":"Collaboration, precision, and safety are essential parts of our service.",
+    "Manajemen":"Management","Mengarahkan strategi, tata kelola, dan standar layanan perusahaan.":"Guiding company strategy, governance, and service standards.",
+    "Operasional & Produksi":"Operations & Production","Menjaga ketelitian proses material, pemrosesan, dan fabrikasi.":"Maintaining precision in material handling, processing, and fabrication.",
+    "Layanan Pelanggan":"Customer Service","Mendampingi kebutuhan pelanggan dan koordinasi proyek.":"Supporting customer needs and project coordination.",
+    "Nama dan foto karyawan akan ditambahkan setelah data resmi tersedia.":"Employee names and photos will be added when official information is available.",
+    "Tanggung Jawab":"Responsibility","Industri yang Lebih Bertanggung Jawab":"A More Responsible Industry","Komitmen terhadap keselamatan, efisiensi sumber daya, dan dampak lingkungan.":"A commitment to safety, resource efficiency, and environmental impact.",
+    "Kualitas dan tanggung jawab":"Quality and Responsibility","Kekuatan material, tanggung jawab untuk masa depan.":"Material strength, responsibility for the future.",
+    "Kami percaya industri baja yang kuat perlu disertai pengelolaan sumber daya yang bertanggung jawab. Kami terus mengedepankan efisiensi proses, keselamatan kerja, pengurangan limbah, dan praktik operasional yang lebih baik.":"We believe a strong steel industry must be accompanied by responsible resource management. We continue to prioritize process efficiency, workplace safety, waste reduction, and better operating practices.",
+    "Efisiensi material dan proses":"Material and Process Efficiency","Perhatian terhadap keselamatan kerja":"A Focus on Workplace Safety","Peningkatan praktik operasional":"Improving Operational Practices","Pelajari pendekatan kami ↗":"Explore Our Approach ↗",
+    "Informasi":"Information","Berita & Wawasan":"News & Insights","Pembaruan dan wawasan industri seputar solusi baja.":"Updates and industry insights on steel solutions.",
+    "Wawasan dan kabar":"Insights and Updates","Berita & wawasan industri baja.":"Steel industry news and insights.","Ikuti informasi seputar material baja, teknologi pemrosesan, perkembangan industri, dan aktivitas perusahaan.":"Follow updates on steel materials, processing technology, industry developments, and company activities.",
+    "Semua berita ↗":"All News ↗","MENIT BACA":"MIN READ","Membangun ekosistem industri yang siap menghadapi masa depan":"Building an Industry Ecosystem Ready for the Future",
+    "Bagaimana infrastruktur, kolaborasi, dan inovasi membantu bisnis berkembang.":"How infrastructure, collaboration, and innovation help businesses grow.","Baca selengkapnya ↗":"Read More ↗",
+    "PERUSAHAAN · INFORMASI":"COMPANY · INFORMATION","Kolaborasi sebagai kunci pertumbuhan bisnis berkelanjutan":"Collaboration as a Key to Sustainable Business Growth","Memilih material yang tepat merupakan langkah penting untuk menghasilkan proyek yang kuat dan efisien.":"Choosing the right materials is an important step toward strong and efficient projects.",
+    "KEBERLANJUTAN · INSIGHT":"SUSTAINABILITY · INSIGHT","Praktik industri yang lebih bertanggung jawab":"More Responsible Industrial Practices","Mengenal pentingnya efisiensi proses, keselamatan kerja, dan pengelolaan material.":"Understanding the importance of process efficiency, workplace safety, and material management.",
+    "Catatan: artikel di atas adalah konten contoh, bukan pengumuman resmi perusahaan.":"Note: the articles above are sample content, not official company announcements.",
+    "Mari Bicarakan Kebutuhan Baja Anda":"Let's Discuss Your Steel Needs","Diskusikan kebutuhan material, pemrosesan, fabrikasi, atau kemitraan.":"Discuss your material, processing, fabrication, or partnership needs.",
+    "Mari terhubung":"Let's Connect","Sedang menyiapkan proyek berbasis baja?":"Planning a steel-related project?","Bicarakan kebutuhan material, fabrikasi, atau distribusi baja bersama tim kami.":"Discuss your steel material, fabrication, or distribution needs with our team.",
+    "Mulai Percakapan ↗":"Start a Conversation ↗","Kirim pesan":"Send a Message","Mari diskusikan kebutuhan Anda.":"Let's discuss your needs.","Isi formulir untuk menyiapkan email kepada tim NSI.":"Fill out the form to prepare an email to the NSI team.",
+    "Alamat email masih contoh dan perlu diganti dengan kontak resmi.":"The email address is a placeholder and must be replaced with an official contact.",
+    "Nama lengkap":"Full Name","Email":"Email","Pesan":"Message","Siapkan Pesan ↗":"Prepare Message ↗","Kontak NSI":"Contact NSI","Hubungi Nusantara Steel Industries.":"Contact Nusantara Steel Industries.",
+    "Alamat kantor":"Office Address","Alamat perusahaan akan ditambahkan setelah data resmi tersedia.":"The company address will be added when official information is available.",
+    "Telepon":"Phone","nomor resmi belum ditambahkan":"official number not yet added","Jam operasional":"Business Hours","Sesuaikan dengan jam operasional resmi":"Update to official business hours",
+    "Temukan kami":"Find Us","Tautan lokasi Google Maps dapat ditambahkan setelah alamat kantor dikonfirmasi.":"A Google Maps location link can be added once the office address is confirmed.",
+    "Buka Google Maps ↗":"Open Google Maps ↗","Senin–Jumat":"Monday–Friday","Company profile konsep.":"Company profile concept.",
+    "Pilih informasi yang ingin Anda ketahui.":"Choose the information you would like to learn about.","Material, pemrosesan, dan fabrikasi.":"Materials, processing, and fabrication.",
+    "Kekuatan baja untuk masa depan":"Steel strength for the future","Kenali perusahaan kami":"Get to know our company","Kapasitas untuk membangun.":"Capacity to build.",
+    "Solusi baja terintegrasi untuk konstruksi, manufaktur, dan infrastruktur Indonesia.":"Integrated steel solutions for construction, manufacturing, and infrastructure in Indonesia.",
+    "NUSANTARA STEEL INDUSTRIES":"NUSANTARA STEEL INDUSTRIES","Formulir konsultasi":"Consultation Form","Alamat perusahaan akan ditambahkan setelah data resmi tersedia.":"The company address will be added when official information is available.",
+    "TENTANG NSI":"ABOUT NSI","Lebih dari material.":"More than materials.","Mitra pembangunan Anda.":"Your building partner."
   };
   const reverse = new Map();
   Object.entries(translations).forEach(([id,en]) => { if (!reverse.has(en)) reverse.set(en,id); });
@@ -39,7 +77,7 @@
     let node;
     while ((node = walker.nextNode())) {
       const parent = node.parentElement;
-      if (!parent || parent.closest("script,style,noscript,textarea,input,select,option,button#langToggle,.lang-toggle")) continue;
+      if (!parent || parent.closest("script,style,noscript,textarea,input,select,option,button#langToggle,.lang-toggle,[data-id][data-en]")) continue;
       if (!originalText.has(node)) originalText.set(node, node.nodeValue || "");
       const base = originalText.get(node) || "";
       const trimmed = base.trim();
