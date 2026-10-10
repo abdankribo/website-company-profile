@@ -1,33 +1,41 @@
-# SIERA — Static Company Profile Concept
+# Nusantara Steel Industries (NSI) — Company Profile
 
-Website company profile statis dengan inspirasi tata letak korporat kawasan industri. Palet utama biru, ungu, dan putih.
+Website company profile statis untuk konsep perusahaan baja dan steel industry. Arah desain mempertahankan karakter website korporat seperti referensi SIER: navigasi utama yang jelas, hero banner lebar dengan slider, bagian profil, statistik, layanan, berita, kontak, dan footer. Identitas, isi, dan materi visual diarahkan ke industri baja; website ini bukan website resmi SIER.
 
-## Melihat website
-Buka `index.html` pada repository ini. Untuk pratinjau yang dapat dibagikan melalui browser, aktifkan **GitHub Pages**:
+## Pratinjau website
+Buka `index.html` pada repository ini. Untuk pratinjau melalui browser, aktifkan **GitHub Pages**:
 1. Buka **Settings** repository.
 2. Pilih **Pages**.
 3. Pada **Build and deployment**, pilih **Deploy from a branch**.
-4. Pilih branch `main` dan folder `/ (root)), lalu klik **Save**.
-5. Tunggu proses publikasi GitHub Pages dan buka URL yang ditampilkan pada bagian Pages.
+4. Pilih branch `main` dan folder `/ (root)`, lalu klik **Save**.
+5. Tunggu publikasi selesai dan buka URL yang ditampilkan pada bagian Pages.
 
 Ini hanya GitHub Pages; tidak mengaktifkan atau melakukan deployment ke Vercel.
 
-## Fitur dalam versi statis
-- Navigasi responsif dan menu mobile.
-- Hero banner dengan pergantian slide manual dan otomatis.
-- Bagian profil, statistik contoh, layanan, kawasan, keberlanjutan, berita, dan kontak.
-- Animasi saat elemen masuk ke viewport.
-- Form kontak yang menyiapkan pesan melalui aplikasi email (mailto), bukan menyimpan data ke server.
-- Tautan alamat/peta dan media sosial sebagai placeholder.
-- SEO metadata dasar dan dukungan reduced-motion.
+## Bagian website
+- Header korporat, navigasi responsif, dan menu mobile.
+- Hero slider untuk solusi baja, kualitas proses, dan dukungan berbagai industri.
+- Profil perusahaan dan nilai layanan.
+- Statistik perusahaan sebagai placeholder yang harus diganti dengan data resmi.
+- Produk dan layanan: baja struktural, lembaran/gulungan baja, pemotongan, dan fabrikasi.
+- Bagian kualitas, tanggung jawab operasional, berita, dan wawasan industri.
+- Kontak, formulir yang menyiapkan email melalui `mailto:`, tautan peta, serta tautan media sosial placeholder.
+- Animasi saat elemen masuk viewport, metadata SEO dasar, dan dukungan reduced-motion.
 
-## Penting sebelum dipublikasikan
-Repository ini berisi **konsep desain**, bukan website resmi PT SIER. Nama kerja “SIERA”, foto, statistik, berita, alamat, email, nomor telepon, serta tautan sosial pada template adalah placeholder/contoh dan harus diganti atau diverifikasi. Jangan menyajikan data contoh sebagai informasi resmi.
+## Identitas dan data yang perlu dilengkapi
+Nama konsep saat ini adalah **Nusantara Steel Industries (NSI)**. Pastikan nama ini memang sesuai dengan nama bisnis yang akan digunakan sebelum publikasi resmi.
 
-Foto hero menggunakan URL Unsplash sehingga perlu koneksi internet. Google Fonts juga dimuat dari Google Fonts.
+Informasi berikut masih berupa contoh atau placeholder dan wajib diganti/diverifikasi:
+- Logo resmi dan identitas visual perusahaan.
+- Alamat kantor, nomor telepon, email, jam operasional, serta tautan Google Maps.
+- Akun media sosial resmi.
+- Angka statistik perusahaan, daftar produk/grade/spesifikasi, kapasitas, sertifikasi, dan informasi layanan.
+- Artikel berita, foto fasilitas, dan informasi legal perusahaan.
+
+Jangan menyajikan data placeholder sebagai fakta resmi. Foto menggunakan URL Unsplash dan Google Fonts, sehingga memerlukan koneksi internet. Periksa lisensi dan kesesuaian aset sebelum penggunaan komersial.
 
 ## Batasan versi statis
-HTML/CSS/JavaScript berjalan tanpa backend. Dashboard admin, login, database, upload media, dan penyimpanan pesan permanen belum termasuk dalam versi ini. Fitur-fitur tersebut memerlukan backend dan database pada tahap lanjutan.
+HTML/CSS/JavaScript berjalan tanpa backend. Formulir hanya membuka aplikasi email pengguna dan tidak menyimpan pesan ke server. Dashboard admin, login, database, unggah media, dan manajemen berita belum termasuk; fitur tersebut memerlukan backend dan database pada tahap berikutnya.
 
-## Stack
-HTML5, CSS3, dan JavaScript murni. Tidak perlu proses build.
+## Teknologi
+HTML5, CSS3, dan JavaScript murni. Tidak memerlukan proses build.
