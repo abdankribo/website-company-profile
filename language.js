@@ -62,7 +62,7 @@
     const saved = localStorage.getItem("nsi-language") === "en" ? "en" : "id";
     apply(saved);
     const btn = document.getElementById("langToggle");
-    if (btn) btn.addEventListener("click", () => apply((document.documentElement.lang || "id") === "id" ? "en" : "id"));
+    if (btn) btn.onclick = () => apply((document.documentElement.lang || "id") === "id" ? "en" : "id");
     document.addEventListener("click", event => {
       const target = event.target.closest("[data-language]");
       if (target) apply(target.getAttribute("data-language") === "en" ? "en" : "id");
