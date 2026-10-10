@@ -72,6 +72,17 @@ const pairs: Array<[string, string]> = [
   ["Bergerak dengan", "Moving with"], ["tujuan yang jelas.", "a clear purpose."],
   ["Bergerak dengan", "Moving with"], ["tujuan yang jelas.", "a clear purpose."],
   ["Bergerak dengan", "Moving with"], ["tujuan yang jelas.", "a clear purpose."],
+  ["TENTANG NSI", "ABOUT NSI"],
+  ["Lebih dari material.", "More than materials."],
+  ["Mitra pembangunan Anda.", "Your building partner."],
+  ["Nusantara Steel Industries menyediakan material dan layanan baja untuk kebutuhan konstruksi, manufaktur, infrastruktur, serta berbagai proyek industri.", "Nusantara Steel Industries provides steel materials and services for construction, manufacturing, infrastructure, and a wide range of industrial projects."],
+  ["Dengan fokus pada mutu material, ketepatan proses, dan layanan yang responsif, kami berupaya menjadi mitra yang dapat diandalkan sejak pemilihan material hingga produk siap digunakan.", "With a focus on material quality, process precision, and responsive service, we strive to be a reliable partner from material selection through to the finished product."],
+  ["Pilihan material baja untuk beragam kebutuhan", "Steel material options for a wide range of needs"],
+  ["Pemrosesan dan fabrikasi dengan fokus pada presisi", "Processing and fabrication focused on precision"],
+  ["Dukungan teknis dan distribusi yang dapat diandalkan", "Reliable technical support and distribution"],
+  ["Kenali Perusahaan Kami ↗", "Get to Know Our Company ↗"],
+  ["Mitra solusi baja", "Steel solutions partner"],
+  ["Material · Presisi · Keandalan", "Materials · Precision · Reliability"],
   ["Bergerak dengan", "Moving with"], ["tujuan yang jelas.", "a clear purpose."]
 ];
 
