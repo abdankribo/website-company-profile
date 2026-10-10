@@ -62,7 +62,19 @@
     "Kekuatan baja untuk masa depan":"Steel strength for the future","Kenali perusahaan kami":"Get to know our company","Kapasitas untuk membangun.":"Capacity to build.",
     "Solusi baja terintegrasi untuk konstruksi, manufaktur, dan infrastruktur Indonesia.":"Integrated steel solutions for construction, manufacturing, and infrastructure in Indonesia.",
     "NUSANTARA STEEL INDUSTRIES":"NUSANTARA STEEL INDUSTRIES","Formulir konsultasi":"Consultation Form","Alamat perusahaan akan ditambahkan setelah data resmi tersedia.":"The company address will be added when official information is available.",
-    "TENTANG NSI":"ABOUT NSI","Lebih dari material.":"More than materials.","Mitra pembangunan Anda.":"Your building partner."
+    "TENTANG NSI":"ABOUT NSI","Lebih dari material.":"More than materials.","Mitra pembangunan Anda.":"Your building partner.",
+    "Portofolio":"Portfolio",
+    "Solusi Baja untuk Berbagai Proyek":"Steel Solutions for Various Projects",
+    "Industri dan fasilitas baja":"Steel Industry and Facilities",
+    "Material andal untuk proyek besar.":"Reliable materials for major projects.",
+    "Jelajahi":"Explore",
+    "Informasi":"Information",
+    "Kontak":"Contact",
+    "Keberlanjutan":"Sustainability",
+    "Formulir konsultasi":"Consultation form",
+    "Kontak NSI":"Contact NSI",
+    "Company profile konsep.":"Company profile concept.",
+    "NUSANTARA STEEL INDUSTRIES":"NUSANTARA STEEL INDUSTRIES"
   };
   const reverse = new Map();
   Object.entries(translations).forEach(([id,en]) => { if (!reverse.has(en)) reverse.set(en,id); });
