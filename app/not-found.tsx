@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound(){return <section className="pageHero"><div className="container"><div className="eyebrow light"><span/> 404</div><h1>Halaman tidak<br/><em>ditemukan.</em></h1><p>Halaman yang Anda cari tidak tersedia.</p><Link href="/" className="button primary">Kembali ke Beranda ↗</Link></div></section>}
