@@ -331,6 +331,40 @@
     "Jam operasional":"Business Hours"
   });
 
+  Object.assign(translations, {
+    "Konstruksi Hunian":"Residential Construction",
+    "Perbaikan & Renovasi":"Repair & Renovation",
+    "Konstruksi Baja":"Structural Steel Construction",
+    "Manajemen Proyek":"Project Management",
+    "Layanan Konstruksi Kami":"Our Construction Services",
+    "Layanan Konstruksi":"Construction Services",
+    "Mitra konstruksi tepercaya":"Trusted Construction Partner",
+    "Mitra konstruksi tepercaya Anda.":"Your Trusted Construction Partner.",
+    "Solusi konstruksi untuk berbagai kebutuhan.":"Construction solutions for diverse needs.",
+    "Konstruksi Berkualitas":"Quality Construction",
+    "Fabrikasi dan Pemasangan":"Fabrication and Installation",
+    "Solusi konstruksi":"Construction solutions",
+    "Membangun dengan kualitas,":"Building with quality,",
+    "menjaga kepercayaan.":"earning trust.",
+    "Perbaikan & Renovasi":"Repair & Renovation",
+    "Layanan Kami":"Our Services",
+    "Tim Kami":"Our Team",
+    "Kualitas · Integritas · Kepercayaan":"Quality · Integrity · Trust",
+    "Solusi Baja":"Steel Solutions",
+    "Mitra konstruksi untuk pembangunan hunian, renovasi, dan pekerjaan struktural.":"A construction partner for residential building, renovation, and structural works.",
+    "Lihat Layanan Konstruksi ↗":"Explore Construction Services ↗",
+    "Hubungi Kami ↗":"Contact Us ↗",
+    "Kirim pesan":"Send a Message",
+    "Semua proyek":"All projects",
+    "Pelabuhan & Baja":"Ports & Steel",
+    "Rumah Hunian":"Residential",
+    "Konstruksi Gudang":"Warehouse Construction",
+    "Moveable Bridge & Struktur Baja":"Moveable Bridge & Steel Structures",
+    "Rumah Hunian & Renovasi":"Residential Construction & Renovation",
+    "Pekerjaan konstruksi dengan perhatian pada mutu dan keselamatan.":"Construction work focused on quality and safety.",
+    "Kualitas dan tanggung jawab":"Quality and Responsibility",
+    "Solusi konstruksi sesuai kebutuhan":"Construction solutions tailored to your needs"
+  });
   const reverse = new Map();
   Object.entries(translations).forEach(([id,en]) => { if (!reverse.has(en)) reverse.set(en,id); });
   function translateValue(value, lang) {
