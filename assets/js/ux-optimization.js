@@ -33,6 +33,37 @@
     const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('decho-in');io.unobserve(entry.target);}}),{threshold:.08,rootMargin:'0px 0px -28px 0px'});
     revealItems.forEach(el=>io.observe(el));
   }
+  // Live search and category filters for the complete portfolio.
+  const projectSearch=$('#projectSearch');
+  if(projectSearch){
+    const grids=$('.project-grid');
+    const projectGrid=grids[grids.length-1];
+    const cards=projectGrid?$('.project-card',projectGrid):[];
+    const filters=$('[data-project-filter]');
+    const resultLabel=$('#projectResults');
+    let activeFilter='all';
+    function applyProjectFilters(){
+      const query=projectSearch.value.trim().toLocaleLowerCase('id');
+      let shown=0;
+      cards.forEach(card=>{
+        const heading=$('h3',card)?.textContent.toLocaleLowerCase('id')||'';
+        const text=card.textContent.toLocaleLowerCase('id');
+        const category=heading.includes('warehouse')||heading.includes('gudang')?'gudang':heading.includes('residential')||heading.includes('rumah')?'hunian':'pelabuhan';
+        const matchesCategory=activeFilter==='all'||category===activeFilter;
+        const matchesQuery=!query||text.includes(query);
+        card.hidden=!(matchesCategory&&matchesQuery);
+        if(!card.hidden)shown++;
+      });
+      if(resultLabel)resultLabel.textContent='Menampilkan '+shown+' dari '+cards.length+' proyek.';
+    }
+    projectSearch.addEventListener('input',applyProjectFilters);
+    filters.forEach(button=>button.addEventListener('click',()=>{
+      activeFilter=button.dataset.projectFilter||'all';
+      filters.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+      applyProjectFilters();
+    }));
+    applyProjectFilters();
+  }
   // Accessible lightbox for project and service photos.
   const photoLinks=$$('.gallery img, .project-card img, .project-gallery img');
   if(photoLinks.length){
