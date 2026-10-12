@@ -1,19 +1,11 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "decho",
-  "main": ".open-next/worker.js",
   "compatibility_date": "2026-10-12",
-  "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    "directory": ".open-next/assets",
+    "directory": "./dist",
     "binding": "ASSETS"
   },
-  "services": [
-    {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "decho"
-    }
-  ],
   "observability": {
     "enabled": true
   }
