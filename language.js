@@ -89,6 +89,78 @@
     "Company profile konsep.":"Company profile concept.",
     "PT. DERMAWAN CHARISMA OLAHKARYA":"PT. DERMAWAN CHARISMA OLAHKARYA"
   };
+
+  Object.assign(translations, {
+    "Informasi Proyek":"Project Information",
+    "Nama Proyek":"Project Name",
+    "Lokasi":"Location",
+    "Tahun":"Year",
+    "Lingkup Pekerjaan":"Scope of Work",
+    "Tahapan Pekerjaan":"Work Stages",
+    "Dokumentasi Visual":"Project Gallery",
+    "Foto Proyek":"Project Photos",
+    "Galeri dokumentasi yang ditampilkan untuk proyek ini.":"Project documentation gallery.",
+    "Diskusikan kebutuhan konstruksi Anda":"Discuss Your Construction Needs",
+    "Hubungi tim DECHO untuk konsultasi proyek berikutnya.":"Contact the DECHO team to discuss your next project.",
+    "Hubungi DECHO →":"Contact DECHO →",
+    "← Kembali ke Proyek Kami":"← Back to Our Projects",
+    "Catatan: tahapan di atas merupakan uraian ringkas berdasarkan lingkup yang tersedia pada company profile Canva, bukan laporan teknis atau klaim hasil pengujian.":"Note: the stages above are a brief summary based on the scope available in the company profile, not a technical report or test-result claim.",
+    "Fabrikasi struktur baja":"Steel structure fabrication",
+    "Persiapan untuk pemasangan":"Installation preparation",
+    "Instalasi struktur di lokasi proyek":"On-site structure installation",
+    "Fabrikasi dan pemasangan struktur baja.":"Steel structure fabrication and installation.",
+    "Struktur baja dan pemasangan atap.":"Steel structure and roofing installation.",
+    "Fabrikasi, instalasi, MEP, dan sistem hidrolik.":"Fabrication, installation, MEP, and hydraulic systems.",
+    "Fabrikasi baja, instalasi, MEP, dan sistem hidrolik.":"Steel fabrication, installation, MEP, and hydraulic systems.",
+    "Fabrikasi baja dan sistem hidrolik di workshop.":"Steel fabrication and hydraulic systems at the workshop.",
+    "Fabrikasi baja, instalasi, dan renovasi ruang kontrol.":"Steel fabrication, installation, and control room renovation.",
+    "Pengerjaan sistem hidrolik di workshop":"Hydraulic system work at the workshop",
+    "Pemeriksaan komponen sebelum pengiriman":"Component inspection before delivery",
+    "Persiapan dan fabrikasi komponen baja":"Preparation and fabrication of steel components",
+    "Pemasangan struktur baja":"Steel structure installation",
+    "Persiapan instalasi":"Installation preparation",
+    "Integrasi pekerjaan MEP dan hidrolik":"Integration of MEP and hydraulic works",
+    "Instalasi struktur di lapangan":"On-site structure installation",
+    "Renovasi ruang kontrol":"Control room renovation",
+    "Persiapan dan pengiriman komponen":"Component preparation and delivery",
+    "Pemasangan struktur di lokasi":"On-site structure installation",
+    "Pemasangan atap":"Roof installation",
+    "Moveable Bridge — Bawean":"Moveable Bridge — Bawean",
+    "Catwalk — Bawean":"Catwalk — Bawean",
+    "Control Room — Bawean":"Control Room — Bawean",
+    "Frontal Frame — Paciran":"Frontal Frame — Paciran",
+    "Frontal Frame — Probolinggo":"Frontal Frame — Probolinggo",
+    "Moveable Bridge — Jangkar":"Moveable Bridge — Jangkar",
+    "Warehouse Construction — Probolinggo":"Warehouse Construction — Probolinggo",
+    "Warehouse Construction — Paciran":"Warehouse Construction — Paciran",
+    "Residential House — Rungkut City":"Residential House — Rungkut City",
+    "Dokumentasi Visual":"Visual Documentation",
+    "Dokumentasi proyek yang ditampilkan untuk proyek ini.":"Project documentation displayed for this project.",
+    "Pelabuhan Bawean, Gresik":"Bawean Port, Gresik",
+    "Pelabuhan Paciran, Lamongan":"Paciran Port, Lamongan",
+    "Pelabuhan Probolinggo":"Probolinggo Port",
+    "Pelabuhan Jangkar, Situbondo":"Jangkar Port, Situbondo",
+    "Beranda":"Home",
+    "Lihat semua proyek":"View all projects",
+    "Cari proyek":"Search projects",
+    "Semua":"All",
+    "Pelabuhan":"Ports",
+    "Gudang":"Warehouses",
+    "Hunian":"Residential",
+    "Menampilkan":"Showing",
+    "dari":"of",
+    "Tidak ada proyek yang cocok.":"No matching projects found.",
+    "Pilih bahasa":"Choose language",
+    "Ganti ke Bahasa Indonesia":"Switch to Indonesian",
+    "Switch to English":"Switch to English",
+    "Lewati ke konten utama":"Skip to main content",
+    "Kembali ke atas":"Back to top",
+    "Tutup foto":"Close photo",
+    "Foto sebelumnya":"Previous photo",
+    "Foto berikutnya":"Next photo",
+    "Pratinjau foto proyek":"Project photo preview"
+  });
+
   const reverse = new Map();
   Object.entries(translations).forEach(([id,en]) => { if (!reverse.has(en)) reverse.set(en,id); });
   const originalText = new WeakMap();
@@ -122,13 +194,37 @@
     localStorage.setItem("decho-language",lang);
   }
   window.addEventListener("DOMContentLoaded", () => {
+    let btn = document.getElementById("langToggle");
+    if (!btn) {
+      const nav = document.querySelector(".nav, .navinner");
+      if (nav) {
+        btn = document.createElement("button");
+        btn.id = "langToggle";
+        btn.className = "lang-toggle";
+        btn.type = "button";
+        btn.textContent = "EN";
+        btn.setAttribute("aria-label", "Switch to English");
+        const back = nav.querySelector(".back");
+        nav.insertBefore(btn, back || null);
+      }
+    }
     const saved = localStorage.getItem("decho-language") === "en" ? "en" : "id";
     apply(saved);
-    const btn = document.getElementById("langToggle");
-    if (btn) btn.onclick = () => apply((document.documentElement.lang || "id") === "id" ? "en" : "id");
+    btn = document.getElementById("langToggle");
+    if (btn) {
+      btn.type = "button";
+      btn.onclick = () => {
+        const next = (document.documentElement.lang || "id") === "id" ? "en" : "id";
+        localStorage.setItem("decho-language", next);
+        location.reload();
+      };
+    }
     document.addEventListener("click", event => {
       const target = event.target.closest("[data-language]");
-      if (target) apply(target.getAttribute("data-language") === "en" ? "en" : "id");
+      if (target) {
+        localStorage.setItem("decho-language", target.getAttribute("data-language") === "en" ? "en" : "id");
+        location.reload();
+      }
     });
   });
 })();
