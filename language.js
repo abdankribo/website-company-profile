@@ -337,18 +337,18 @@
     if (lang === "en") {
       if (translations[value]) return translations[value];
       return value
-        .replace(/Dokumentasi (\\d+) · /g, "Documentation $1 · ")
-        .replace(/ — dokumentasi (\\d+)/gi, " — documentation $1")
-        .replace(/Tahun (\\d+)/g, "Year $1")
+        .replace(/Dokumentasi (\d+) · /g, "Documentation $1 · ")
+        .replace(/ — dokumentasi (\d+)/gi, " — documentation $1")
+        .replace(/Tahun (\d+)/g, "Year $1")
         .replace(/Foto Proyek/g, "Project Photos")
         .replace(/Galeri dokumentasi/g, "Project gallery")
         .replace(/Kembali ke Proyek Kami/g, "Back to Our Projects");
     }
     if (reverse.has(value)) return reverse.get(value);
     return value
-      .replace(/Documentation (\\d+) · /g, "Dokumentasi $1 · ")
-      .replace(/ — documentation (\\d+)/gi, " — dokumentasi $1")
-      .replace(/Year (\\d+)/g, "Tahun $1")
+      .replace(/Documentation (\d+) · /g, "Dokumentasi $1 · ")
+      .replace(/ — documentation (\d+)/gi, " — dokumentasi $1")
+      .replace(/Year (\d+)/g, "Tahun $1")
       .replace(/Project Photos/g, "Foto Proyek")
       .replace(/Project gallery/g, "Galeri dokumentasi")
       .replace(/Back to Our Projects/g, "Kembali ke Proyek Kami");
