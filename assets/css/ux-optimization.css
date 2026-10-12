@@ -143,3 +143,108 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .navinner .lang-toggle{margin-left:auto}
 .nav .lang-toggle{margin-left:auto}
 @media(max-width:760px){.lang-toggle{min-height:38px;padding:8px 12px}.navinner .lang-toggle{margin-left:0}}
+
+
+/* DECHO portfolio refresh — clearer hierarchy, stronger project proof points */
+.page-hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  padding:clamp(72px,10vw,124px) 0 clamp(66px,8vw,100px);
+  color:#fff;
+  background:radial-gradient(ellipse at 82% 18%,#7353df66 0,transparent 34%),linear-gradient(125deg,#0b103a 0%,#18235f 58%,#263b86 100%);
+}
+.page-hero:after{content:"";position:absolute;z-index:-1;right:-110px;bottom:-210px;width:430px;height:430px;border:1px solid #ffffff1f;border-radius:50%;box-shadow:0 0 0 45px #ffffff08,0 0 0 95px #ffffff06}
+.page-hero .container{position:relative;z-index:1;max-width:1180px}
+.page-hero .section-kicker{color:#c8c0ff}
+.page-hero h1{max-width:850px;margin:0 0 22px;font-size:clamp(2.5rem,5.5vw,4.7rem);letter-spacing:-.055em}
+.page-hero p{max-width:760px;color:#e0e6ff;font-size:clamp(1rem,1.4vw,1.12rem);line-height:1.8}
+#proyek-utama{background:linear-gradient(180deg,#f7f8ff 0%,#fff 100%)}
+#proyek-utama .section-head{margin-bottom:32px}
+.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.project-grid .project-card{
+  position:relative;display:flex;flex-direction:column;min-width:0;overflow:hidden;
+  padding:0 0 22px;background:#fff;border:1px solid #e4e8f5;border-radius:22px;
+  box-shadow:0 12px 34px #1117470b;transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+.project-grid .project-card:hover{transform:translateY(-6px);border-color:#c8ccfa;box-shadow:0 24px 54px #11174718}
+.project-grid .project-card>img.project-photo{display:block;width:100%;height:clamp(190px,20vw,255px);object-fit:cover;aspect-ratio:16/10;background:#e9edf7;border-radius:0;transition:transform .5s ease}
+.project-grid .project-card:hover>img.project-photo{transform:scale(1.025)}
+.project-grid .project-card .iconbox{position:absolute;top:174px;left:18px;z-index:1;display:grid;place-items:center;width:42px;height:42px;border:3px solid #fff;border-radius:14px;background:linear-gradient(135deg,#3158e8,#7353df);color:#fff;font:800 .86rem Manrope,sans-serif;box-shadow:0 6px 18px #11174724}
+.project-grid .project-card h3,.project-grid .project-card>p,.project-grid .project-card>.project-tag,.project-grid .project-card>a{margin-left:22px;margin-right:22px}
+.project-grid .project-card .project-tag{align-self:flex-start;margin-top:17px;margin-bottom:9px;background:#f0edff;color:#5442b5;letter-spacing:.09em}
+.project-grid .project-card h3{font-size:1.15rem;line-height:1.35;letter-spacing:-.025em;margin-top:0;margin-bottom:12px;color:#111747}
+.project-grid .project-card p{font-size:.91rem;line-height:1.72;margin-bottom:11px;color:#646c87}
+.project-grid .project-card p strong{color:#252c4b}
+.project-grid .project-card .btn.project-open{width:calc(100% - 44px);margin-top:auto;margin-bottom:0;justify-content:center;text-align:center;padding:12px 15px;border-radius:12px}
+.project-grid .project-card .text-link{font-size:.88rem;font-weight:800;color:#3158e8}
+.project-grid .project-card .text-link:hover{color:#7353df}
+.project-tools{padding:18px;background:#f7f8ff;border:1px solid #e5e8f6;border-radius:18px}
+.project-search{min-height:52px;border-color:#dce1f2;box-shadow:0 3px 12px #11174706}
+.project-search:focus{border-color:#7d83ef;box-shadow:0 0 0 4px #7353df17;outline:0}
+.project-filter{transition:background .2s,color .2s,border-color .2s,transform .2s}
+.project-filter:hover{transform:translateY(-1px)}
+.project-results{font-weight:700;color:#555e7c;margin:0 0 18px}
+.process-showcase{background:linear-gradient(135deg,#f5f2e9,#fbfaf7 60%,#f1f3ff)}
+.process-row{border-color:#e4e6f0;box-shadow:0 12px 32px #1117470a;transition:transform .2s,box-shadow .2s}
+.process-row:hover{transform:translateY(-2px);box-shadow:0 18px 40px #11174712}
+.process-number{color:#3158e8}
+.process-content h3{font-size:1.2rem}
+.process-steps span{line-height:1.35}
+
+/* Project detail pages: editorial hero, readable facts panel and consistent gallery */
+body:has(main .details) .hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  padding:clamp(74px,9vw,112px) 0;
+  background-position:center;background-size:cover;
+}
+body:has(main .details) .hero:before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(105deg,#080d30f5 0%,#111747e8 52%,#252d70a8 100%);
+}
+body:has(main .details) .hero .container{position:relative;z-index:1}
+body:has(main .details) .hero .kicker{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid #ffffff32;border-radius:999px;background:#ffffff0b;color:#d1cbff}
+body:has(main .details) .hero h1{max-width:900px;font-size:clamp(2.45rem,5.4vw,4.65rem);line-height:1.08;margin:20px 0}
+body:has(main .details) .hero p{max-width:760px;line-height:1.85}
+body:has(main .details) .pill{padding:9px 15px;border-color:#ffffff3b;background:#ffffff10;backdrop-filter:blur(8px)}
+body:has(main .details) .section{padding:clamp(52px,7vw,86px) 0}
+body:has(main .details) .grid{gap:clamp(28px,5vw,64px);align-items:start}
+body:has(main .details) .grid article .kicker{color:#6253d5;margin-bottom:12px}
+body:has(main .details) .grid article h2{margin-bottom:17px;color:#111747}
+body:has(main .details) .grid article p{line-height:1.85}
+body:has(main .details) .details{position:sticky;top:108px;background:linear-gradient(150deg,#f7f8ff,#fff);padding:28px;border-radius:22px;border:1px solid #e1e5f4;box-shadow:0 18px 42px #1117470b}
+body:has(main .details) .details h3{padding-bottom:16px;border-bottom:1px solid #e2e6f3;color:#111747}
+body:has(main .details) .details dt{color:#747b97;font-size:.72rem;font-weight:800}
+body:has(main .details) .details dd{line-height:1.6;color:#202747}
+body:has(main .details) .steps{padding-left:0;list-style:none;counter-reset:decho-step}
+body:has(main .details) .steps li{position:relative;padding:13px 14px 13px 48px;margin:9px 0;border:1px solid #e8eaf4;border-radius:12px;background:#fff;color:#555e7a}
+body:has(main .details) .steps li:before{counter-increment:decho-step;content:counter(decho-step,decimal-leading-zero);position:absolute;left:13px;top:13px;color:#6253d5;font-weight:800;font-size:.8rem}
+body:has(main .details) .gallery{gap:16px;margin-top:24px}
+body:has(main .details) .gallery figure{overflow:hidden;border:1px solid #e2e6f1;border-radius:17px;background:#fff;box-shadow:0 10px 28px #11174709}
+body:has(main .details) .gallery img{height:clamp(180px,22vw,270px);border-radius:0;transition:transform .35s ease}
+body:has(main .details) .gallery figure:hover img{transform:scale(1.035)}
+body:has(main .details) .gallery figcaption{padding:13px 14px 15px;line-height:1.5;font-weight:600}
+body:has(main .details) .callout{padding:clamp(26px,4vw,42px);background:radial-gradient(circle at 85% 15%,#7353df65,transparent 35%),linear-gradient(125deg,#101644,#202b70);box-shadow:0 22px 50px #11174720}
+body:has(main .details) .callout h2{color:#fff}
+body:has(main .details) .callout .kicker{color:#c8c0ff}
+body:has(main .details) .callout .btn{box-shadow:0 10px 25px #0002}
+@media(max-width:900px){
+ .project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .project-grid .project-card .iconbox{top:calc(clamp(190px,20vw,255px) - 20px)}
+ body:has(main .details) .details{position:static}
+}
+@media(max-width:600px){
+ .page-hero{padding:62px 0 58px}
+ .project-grid{grid-template-columns:1fr;gap:17px}
+ .project-grid .project-card>img.project-photo{height:230px}
+ .project-grid .project-card .iconbox{top:194px}
+ .project-grid .project-card h3{font-size:1.12rem}
+ .project-tools{padding:13px}
+ .process-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body:has(main .details) .hero{padding:62px 0}
+ body:has(main .details) .hero h1{font-size:clamp(2.1rem,10vw,3.3rem)}
+ body:has(main .details) .grid{grid-template-columns:1fr}
+ body:has(main .details) .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body:has(main .details) .gallery img{height:160px}
+ body:has(main .details) .gallery figcaption{font-size:.76rem;padding:10px}
+ body:has(main .details) .callout{border-radius:18px}
+}
+@media(max-width:400px){body:has(main .details) .gallery{grid-template-columns:1fr}body:has(main .details) .gallery img{height:230px}}
