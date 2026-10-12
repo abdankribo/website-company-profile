@@ -333,18 +333,38 @@
 
   const reverse = new Map();
   Object.entries(translations).forEach(([id,en]) => { if (!reverse.has(en)) reverse.set(en,id); });
+  function translateValue(value, lang) {
+    if (lang === "en") {
+      if (translations[value]) return translations[value];
+      return value
+        .replace(/Dokumentasi (\\d+) · /g, "Documentation $1 · ")
+        .replace(/ — dokumentasi (\\d+)/gi, " — documentation $1")
+        .replace(/Tahun (\\d+)/g, "Year $1")
+        .replace(/Foto Proyek/g, "Project Photos")
+        .replace(/Galeri dokumentasi/g, "Project gallery")
+        .replace(/Kembali ke Proyek Kami/g, "Back to Our Projects");
+    }
+    if (reverse.has(value)) return reverse.get(value);
+    return value
+      .replace(/Documentation (\\d+) · /g, "Dokumentasi $1 · ")
+      .replace(/ — documentation (\\d+)/gi, " — dokumentasi $1")
+      .replace(/Year (\\d+)/g, "Tahun $1")
+      .replace(/Project Photos/g, "Foto Proyek")
+      .replace(/Project gallery/g, "Galeri dokumentasi")
+      .replace(/Back to Our Projects/g, "Kembali ke Proyek Kami");
+  }
   const originalText = new WeakMap();
   function apply(lang) {
     document.documentElement.lang = lang;
     const title = document.querySelector("title");
     if (title) {
       const rawTitle = title.textContent.trim();
-      title.textContent = lang === "en" ? (translations[rawTitle] || rawTitle) : (reverse.get(rawTitle) || rawTitle);
+      title.textContent = translateValue(rawTitle, lang);
     }
     const description = document.querySelector('meta[name="description"]');
     if (description) {
       const rawDescription = description.getAttribute("content") || "";
-      const translatedDescription = lang === "en" ? (translations[rawDescription] || rawDescription) : (reverse.get(rawDescription) || rawDescription);
+      const translatedDescription = translateValue(rawDescription, lang);
       description.setAttribute("content", translatedDescription);
     }
     document.querySelectorAll("[data-id][data-en]").forEach(el => {
@@ -360,13 +380,13 @@
       const base = originalText.get(node) || "";
       const trimmed = base.trim();
       if (!trimmed) continue;
-      const value = lang === "en" ? (translations[trimmed] || trimmed) : (reverse.get(trimmed) || trimmed);
+      const value = translateValue(trimmed, lang);
       if (value !== trimmed) node.nodeValue = base.replace(trimmed, value);
     }
-    document.querySelectorAll("[title],[aria-label],[placeholder]").forEach(el => {
-      ["title","aria-label","placeholder"].forEach(attr => {
+    document.querySelectorAll("[title],[aria-label],[placeholder],[alt]").forEach(el => {
+      ["title","aria-label","placeholder","alt"].forEach(attr => {
         const val = el.getAttribute(attr); if (!val) return;
-        const next = lang === "en" ? (translations[val] || val) : (reverse.get(val) || val);
+        const next = translateValue(val, lang);
         if (next !== val) el.setAttribute(attr,next);
       });
     });
