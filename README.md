@@ -1,50 +1,47 @@
 # Nusantara Steel Industries (NSI) — Company Profile
 
-Website company profile Nusantara Steel Industries dengan **Next.js App Router, React, TypeScript, dan CSS responsif**. Desain menggunakan identitas korporat biru navy dengan aksen biru, video hero, navigasi lintas halaman, dan layout untuk desktop maupun mobile.
+Website company profile Nusantara Steel Industries dengan identitas visual korporat biru navy, aksen biru-ungu, video hero, navigasi lintas halaman, dan layout responsif desktop maupun mobile.
 
-## Halaman Next.js
-- `/` — Beranda, video hero, profil singkat, layanan, dan ajakan kontak.
-- `/tentang` — Profil, visi, misi, dan nilai perusahaan.
-- `/layanan` — Material baja, pemrosesan, fabrikasi, serta distribusi.
-- `/proyek` — Area kapabilitas proyek.
-- `/tim` — Tim dan pola kolaborasi.
-- `/keberlanjutan` — Keselamatan, efisiensi material, dan kemitraan bertanggung jawab.
-- `/berita` — Wawasan industri dan material.
-- `/kontak` — Informasi untuk memulai diskusi melalui email.
+## Sumber website
+
+File HTML statis di root repository adalah sumber tampilan utama:
+- `index.html` — Beranda.
+- `tentang.html` — Profil, visi, misi, dan nilai perusahaan.
+- `layanan.html` — Material baja, pemrosesan, fabrikasi, serta distribusi.
+- `proyek.html` — Area kapabilitas proyek.
+- `tim.html` — Tim dan pola kolaborasi.
+- `keberlanjutan.html` — Keselamatan, efisiensi material, dan kemitraan bertanggung jawab.
+- `berita.html` — Wawasan industri dan material.
+- `kontak.html` — Informasi untuk memulai diskusi melalui email.
+- `language.js` — Fitur bahasa yang digunakan oleh halaman HTML.
+
+## Menyamakan Cloudflare dengan GitHub Pages
+
+Cloudflare Worker `decho` sekarang dikonfigurasi untuk menerbitkan versi HTML statis yang sama dengan GitHub Pages, bukan halaman Next.js yang berbeda.
+
+Di Cloudflare Dashboard → Worker `decho` → Settings / Builds (Workers Builds), gunakan:
+
+- **Production branch:** `main`
+- **Build command:** `npm run build:static`
+- **Deploy command:** `npx wrangler deploy`
+- **Root directory:** `/` jika repository dipakai langsung dari root.
+
+Build statis menyalin seluruh file `.html` di root dan `language.js` ke folder `dist/`. Wrangler menerbitkan folder tersebut sebagai static assets. Konfigurasi deployment ada di `wrangler.jsonc`.
+
+Setelah perubahan konfigurasi disimpan, jalankan ulang deployment dari `main`. Halaman Cloudflare menggunakan jalur file HTML seperti `/tentang.html`, sama seperti GitHub Pages. Perubahan konten pada file HTML sumber akan ikut diterbitkan pada deployment berikutnya.
 
 ## Menjalankan aplikasi
-Gunakan Node.js 20.9 atau lebih baru:
 
-1. Jalankan `npm install`.
-2. Jalankan `npm run dev`.
-3. Buka `http://localhost:3000`.
+Untuk pratinjau website statis, gunakan Node.js dan jalankan:
 
-Build Next.js biasa: `npm run build`, lalu jalankan `npm start`.
+1. `npm install`
+2. `npm run build:static`
 
-## Deploy ke Cloudflare Workers (OpenNext)
+Folder `dist/` berisi file yang akan diterbitkan. File sumber HTML tetap berada di root repository.
 
-Project ini memakai adapter `@opennextjs/cloudflare`. **Jangan gunakan `npm run build` sebagai satu-satunya Build command Cloudflare**, karena perintah tersebut hanya menjalankan `next build` dan belum menghasilkan worker di folder `.open-next/`.
-
-Di Cloudflare Dashboard, buka Workers & Pages → Worker `decho` → Settings / Builds (Workers Builds), lalu atur:
-
-- **Build command:** `npx @opennextjs/cloudflare build`
-- **Deploy command:** `npx @opennextjs/cloudflare deploy`
-- **Production branch:** `main`
-- **Root directory:** kosongkan jika project berada di root repository.
-
-Jika konfigurasi Cloudflare menggunakan command yang sudah tersedia di `package.json`, alternatifnya:
-- Build command: `npm run cf:build`
-- Deploy command: `npx @opennextjs/cloudflare deploy`
-
-Build OpenNext akan menjalankan script `build` (`next build`) lalu mengonversi hasilnya agar dapat dijalankan di Cloudflare Workers. Deploy command OpenNext kemudian menerbitkan hasil tersebut. Konfigurasi Worker dan service binding berada di `wrangler.jsonc`; nama Worker dan `WORKER_SELF_REFERENCE` harus tetap cocok dengan `decho`.
-
-Untuk menjalankan workflow melalui CLI, gunakan `npm run deploy`. Untuk pratinjau Cloudflare Workers, gunakan `npm run preview`.
-
-## Deploy ke Vercel
-Hubungkan repository ini ke Vercel dan pilih framework **Next.js**. Build command default `next build` sesuai untuk Vercel; tidak diperlukan database untuk versi company profile ini.
+Aplikasi Next.js di folder `app/` tetap ada sebagai versi aplikasi alternatif, tetapi tidak digunakan oleh deployment Cloudflare statis yang disetel agar sama dengan GitHub Pages.
 
 ## Catatan
-- Halaman Next.js berada di folder `app/`.
-- File HTML statis lama masih dipertahankan sebagai referensi dan fallback GitHub Pages. Vercel akan menggunakan aplikasi Next.js setelah mendeteksi `package.json` dan folder `app/`.
-- Video dan foto hero memakai URL eksternal.
+
+- Halaman menggunakan beberapa gambar/video dan Google Fonts dari URL eksternal, sehingga aset eksternal tetap membutuhkan koneksi internet.
 - Email kontak pada halaman kontak saat ini adalah alamat contoh `info@nusantarasteel.example`; ganti dengan alamat resmi perusahaan sebelum dipublikasikan.
