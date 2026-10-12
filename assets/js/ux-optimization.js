@@ -41,6 +41,7 @@
       targets.forEach((el,i)=>{el.classList.add('decho-hero-enter');el.style.animationDelay=Math.min(i*.09,.36)+'s';});
       const heroImage=$('.hero img,.hero .hero-image,.page-hero img',hero);
       if(heroImage)heroImage.classList.add('decho-image-enter');
+      hero.classList.add('decho-gradient-motion');
     }
   }
   // Live search and category filters for the complete portfolio.
