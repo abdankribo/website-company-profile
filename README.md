@@ -19,10 +19,29 @@ Gunakan Node.js 20.9 atau lebih baru:
 2. Jalankan `npm run dev`.
 3. Buka `http://localhost:3000`.
 
-Build produksi: `npm run build`, lalu jalankan `npm start`.
+Build Next.js biasa: `npm run build`, lalu jalankan `npm start`.
+
+## Deploy ke Cloudflare Workers (OpenNext)
+
+Project ini memakai adapter `@opennextjs/cloudflare`. **Jangan gunakan `npm run build` sebagai satu-satunya Build command Cloudflare**, karena perintah tersebut hanya menjalankan `next build` dan belum menghasilkan worker di folder `.open-next/`.
+
+Di Cloudflare Dashboard, buka Workers & Pages → Worker `decho` → Settings / Builds (Workers Builds), lalu atur:
+
+- **Build command:** `npx @opennextjs/cloudflare build`
+- **Deploy command:** `npx @opennextjs/cloudflare deploy`
+- **Production branch:** `main`
+- **Root directory:** kosongkan jika project berada di root repository.
+
+Jika konfigurasi Cloudflare menggunakan command yang sudah tersedia di `package.json`, alternatifnya:
+- Build command: `npm run cf:build`
+- Deploy command: `npx @opennextjs/cloudflare deploy`
+
+Build OpenNext akan menjalankan script `build` (`next build`) lalu mengonversi hasilnya agar dapat dijalankan di Cloudflare Workers. Deploy command OpenNext kemudian menerbitkan hasil tersebut. Konfigurasi Worker dan service binding berada di `wrangler.jsonc`; nama Worker dan `WORKER_SELF_REFERENCE` harus tetap cocok dengan `decho`.
+
+Untuk menjalankan workflow melalui CLI, gunakan `npm run deploy`. Untuk pratinjau Cloudflare Workers, gunakan `npm run preview`.
 
 ## Deploy ke Vercel
-Hubungkan repository ini ke Vercel dan pilih framework **Next.js**. Build command default adalah `next build`; tidak diperlukan database untuk versi company profile ini. Deployment tidak dilakukan sebagai bagian dari perubahan kode ini.
+Hubungkan repository ini ke Vercel dan pilih framework **Next.js**. Build command default `next build` sesuai untuk Vercel; tidak diperlukan database untuk versi company profile ini.
 
 ## Catatan
 - Halaman Next.js berada di folder `app/`.
