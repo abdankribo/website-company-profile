@@ -33,6 +33,16 @@
     const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('decho-in');io.unobserve(entry.target);}}),{threshold:.08,rootMargin:'0px 0px -28px 0px'});
     revealItems.forEach(el=>io.observe(el));
   }
+  // Smooth, restrained entrance motion for headings and hero content.
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const hero=$('.hero,.page-hero');
+    if(hero){
+      const targets=$('.eyebrow,.section-kicker,h1,.hero p,.hero-actions,.page-hero p',hero);
+      targets.forEach((el,i)=>{el.classList.add('decho-hero-enter');el.style.animationDelay=Math.min(i*.09,.36)+'s';});
+      const heroImage=$('.hero img,.hero .hero-image,.page-hero img',hero);
+      if(heroImage)heroImage.classList.add('decho-image-enter');
+    }
+  }
   // Live search and category filters for the complete portfolio.
   const projectSearch=$('#projectSearch');
   if(projectSearch){
