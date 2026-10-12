@@ -82,3 +82,47 @@ img{transition:transform .8s var(--decho-ease),filter .5s ease}
 @keyframes dechoImageIn{from{opacity:.4;transform:scale(1.035)}to{opacity:1;transform:scale(1)}}
 @media(prefers-reduced-motion:reduce){.decho-reveal{opacity:1;transform:none;filter:none}.decho-hero-enter,.decho-image-enter{animation:none}img{transition:none}}
 @media(max-width:760px){.section{padding:72px 0}.container{width:min(100% - 36px,1180px)}.hero{min-height:590px}.hero-content{padding:76px 0 90px}.service-card,.news-card{padding:23px}}
+
+
+/* DECHO brand gradient motion — logo-inspired navy, blue and champagne accents */
+:root{
+  --decho-navy:#111747;
+  --decho-blue:#3158e8;
+  --decho-violet:#7353df;
+  --decho-champagne:#b99a5d;
+  --decho-gradient:linear-gradient(115deg,var(--decho-navy) 0%,#203b93 38%,var(--decho-blue) 68%,var(--decho-violet) 100%);
+  --decho-glow:rgba(49,88,232,.18);
+}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline-color:var(--decho-blue)}
+::selection{background:#dbe4ff;color:var(--decho-navy)}
+.skip-link{color:var(--decho-navy)}
+.navlinks a[aria-current=page]:after{background:linear-gradient(90deg,var(--decho-blue),var(--decho-violet))}
+.section-kicker,.section .section-kicker{color:var(--decho-blue)}
+.btn:hover,.navcta:hover{background:var(--decho-gradient);border-color:transparent;box-shadow:0 12px 28px var(--decho-glow)}
+#decho-progress{background:linear-gradient(90deg,var(--decho-blue),var(--decho-violet),var(--decho-champagne));background-size:220% 100%;animation:dechoGradientFlow 5s linear infinite}
+.project-filter[aria-pressed=true],.project-filter:hover{background:var(--decho-gradient);border-color:transparent}
+.project-search:focus{outline:3px solid #3158e833;border-color:var(--decho-blue)}
+.service-card:focus-within,.news-card:focus-within{border-color:#9eb4ff}
+.service-card:hover,.news-card:hover,.project-card:hover{border-color:#a9b9ef;box-shadow:0 20px 48px rgba(17,23,71,.11)}
+/* Soft, moving color light behind hero areas; content remains readable */
+.hero,.page-hero{position:relative;isolation:isolate}
+.hero::before,.page-hero::before{
+  content:"";position:absolute;z-index:-1;inset:-1px;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 12% 18%,rgba(49,88,232,.20),transparent 38%),
+    radial-gradient(ellipse at 88% 78%,rgba(115,83,223,.17),transparent 36%),
+    radial-gradient(ellipse at 60% 0%,rgba(185,154,93,.12),transparent 30%);
+  background-size:150% 150%;animation:dechoAuraDrift 18s ease-in-out infinite alternate;
+}
+.hero::after,.page-hero::after{
+  content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;opacity:.14;
+  background:linear-gradient(115deg,transparent 15%,rgba(255,255,255,.75) 48%,transparent 72%);
+  background-size:220% 100%;animation:dechoSheen 12s ease-in-out infinite;
+}
+.hero h1,.page-hero h1{text-wrap:balance}
+.hero .btn,.page-hero .btn{transition:transform .55s var(--decho-ease),box-shadow .45s,background .35s}
+.hero .btn:hover,.page-hero .btn:hover{transform:translateY(-3px)}
+@keyframes dechoGradientFlow{0%{background-position:0% 50%}100%{background-position:220% 50%}}
+@keyframes dechoAuraDrift{0%{background-position:0% 0%,100% 100%,50% 0%;transform:scale(1)}100%{background-position:100% 35%,0% 55%,65% 100%;transform:scale(1.035)}}
+@keyframes dechoSheen{0%,20%{background-position:150% 0}65%,100%{background-position:-150% 0}}
+@media(prefers-reduced-motion:reduce){#decho-progress,.hero::before,.page-hero::before,.hero::after,.page-hero::after{animation:none!important}.hero::before,.page-hero::before{transform:none}}
