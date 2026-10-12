@@ -158,7 +158,25 @@
     "Tutup foto":"Close photo",
     "Foto sebelumnya":"Previous photo",
     "Foto berikutnya":"Next photo",
-    "Pratinjau foto proyek":"Project photo preview"
+    "Pratinjau foto proyek":"Project photo preview",
+    "Beranda | PT. Dermawan Charisma Olahkarya (DECHO)":"Home | PT. Dermawan Charisma Olahkarya (DECHO)",
+    "Tentang Kami | PT. Dermawan Charisma Olahkarya (DECHO)":"About Us | PT. Dermawan Charisma Olahkarya (DECHO)",
+    "Layanan | PT. Dermawan Charisma Olahkarya (DECHO)":"Services | PT. Dermawan Charisma Olahkarya (DECHO)",
+    "Proyek Kami | PT. Dermawan Charisma Olahkarya (DECHO)":"Our Projects | PT. Dermawan Charisma Olahkarya (DECHO)",
+    "Tim Kami | PT. Dermawan Charisma Olahkarya (DECHO)":"Our Team | PT. Dermawan Charisma Olahkarya (DECHO)",
+    "Keberlanjutan | PT. Dermawan Charisma Olahkarya (DECHO)":"Sustainability | PT. Dermawan Charisma Olahkarya (DECHO)",
+    "Berita | PT. Dermawan Charisma Olahkarya (DECHO)":"News | PT. Dermawan Charisma Olahkarya (DECHO)",
+    "Kontak | PT. Dermawan Charisma Olahkarya (DECHO)":"Contact | PT. Dermawan Charisma Olahkarya (DECHO)",
+    "Moveable Bridge — Bawean | DECHO":"Moveable Bridge — Bawean | DECHO",
+    "Catwalk — Bawean | DECHO":"Catwalk — Bawean | DECHO",
+    "Control Room — Bawean | DECHO":"Control Room — Bawean | DECHO",
+    "Frontal Frame — Paciran | DECHO":"Frontal Frame — Paciran | DECHO",
+    "Moveable Bridge — Jangkar | DECHO":"Moveable Bridge — Jangkar | DECHO",
+    "Warehouse Construction — Probolinggo | DECHO":"Warehouse Construction — Probolinggo | DECHO",
+    "Frontal Frame — Probolinggo | DECHO":"Frontal Frame — Probolinggo | DECHO",
+    "Warehouse Construction — Paciran | DECHO":"Warehouse Construction — Paciran | DECHO",
+    "Residential House — Rungkut City | DECHO":"Residential House — Rungkut City | DECHO",
+    "Moveable Bridge — Bawean — portofolio proyek PT. Dermawan Charisma Olahkarya (DECHO).":"Moveable Bridge — Bawean — project portfolio of PT. Dermawan Charisma Olahkarya (DECHO)."
   });
 
   const reverse = new Map();
@@ -166,6 +184,17 @@
   const originalText = new WeakMap();
   function apply(lang) {
     document.documentElement.lang = lang;
+    const title = document.querySelector("title");
+    if (title) {
+      const rawTitle = title.textContent.trim();
+      title.textContent = lang === "en" ? (translations[rawTitle] || rawTitle) : (reverse.get(rawTitle) || rawTitle);
+    }
+    const description = document.querySelector('meta[name="description"]');
+    if (description) {
+      const rawDescription = description.getAttribute("content") || "";
+      const translatedDescription = lang === "en" ? (translations[rawDescription] || rawDescription) : (reverse.get(rawDescription) || rawDescription);
+      description.setAttribute("content", translatedDescription);
+    }
     document.querySelectorAll("[data-id][data-en]").forEach(el => {
       const value = el.getAttribute("data-" + lang);
       if (value !== null) el.textContent = value;
