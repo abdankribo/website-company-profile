@@ -56,25 +56,25 @@ html body main>section.section:nth-of-type(4) a {
   color: #000000 !important;
 }
 </style>
-<style id="decho-callout-contrast">
-/* High-contrast CTA on the dark navy callout background */
-html body main#main-content .callout {
-  background: #111747 !important;
-  color: #ffffff !important;
-}
-html body main#main-content .callout .kicker {
-  color: #c4b5fd !important;
-  -webkit-text-fill-color: #c4b5fd !important;
-}
-html body main#main-content .callout h2 {
+<style <style id="decho-callout-contrast">
+/* CTA contrast fix: keep text readable on the navy callout */
+html body main#main-content > section.section .container .callout,
+html body main#main-content > section.section .container .callout * {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
-html body main#main-content .callout p {
+html body main#main-content > section.section .container .callout {
+  background: #111747 !important;
+}
+html body main#main-content > section.section .container .callout .kicker {
+  color: #c4b5fd !important;
+  -webkit-text-fill-color: #c4b5fd !important;
+}
+html body main#main-content > section.section .container .callout p {
   color: #e0e7ff !important;
   -webkit-text-fill-color: #e0e7ff !important;
 }
-html body main#main-content .callout a.btn {
+html body main#main-content > section.section .container .callout a.btn {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
