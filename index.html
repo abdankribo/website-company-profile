@@ -375,6 +375,115 @@ main > section.section:not(.dark):not(.violet):not(.purple):not(.has-violet-bg):
 }
 </style>
 
+
+<style id="decho-strong-text-contrast">
+/* Strong, explicit contrast rules for every section and common content component */
+main > section.section,
+main > section.section p,
+main > section.section li,
+main > section.section small,
+main > section.section label,
+main > section.section .section-kicker,
+main > section.section .eyebrow,
+main > section.section .muted,
+main > section.section .text-muted{color:#242044!important;opacity:1!important}
+main > section.section h1,main > section.section h2,
+main > section.section h3,main > section.section h4,
+main > section.section h5,main > section.section h6{color:#17132f!important;opacity:1!important}
+main > section.section a:not(.btn):not(.button){color:#4330a8!important}
+main > section.section .service-card p,main > section.section .quick-card p,
+main > section.section .team-card p,main > section.section .news-card p,
+main > section.section .project-card p,main > section.section .card p,
+main > section.section .service-card li,main > section.section .quick-card li,
+main > section.section .team-card li,main > section.section .news-card li,
+main > section.section .project-card li{color:#34304f!important}
+main > section.section .service-card h3,main > section.section .quick-card h3,
+main > section.section .team-card h3,main > section.section .news-card h3,
+main > section.section .project-card h3,main > section.section .card h3{color:#17132f!important}
+/* Violet/dark sections always use white text, including nested elements */
+main > section.hero,main > section.page-hero,
+main > section.dark,main > section.contact-strip,
+main > section[style*="linear-gradient"],
+main > section[style*="background-color: #4f46e5"],
+main > section[style*="background-color: #8b5cf6"],
+main > section[style*="background: #4f46e5"],
+main > section[style*="background: #8b5cf6"]{
+  color:#fff!important;
+}
+main > section.hero h1,main > section.hero h2,main > section.hero h3,
+main > section.hero p,main > section.hero li,main > section.hero small,
+main > section.hero .eyebrow,main > section.hero .section-kicker,
+main > section.page-hero h1,main > section.page-hero h2,
+main > section.page-hero h3,main > section.page-hero p,
+main > section.page-hero li,main > section.page-hero small,
+main > section.page-hero .section-kicker,
+main > section.dark h1,main > section.dark h2,main > section.dark h3,
+main > section.dark h4,main > section.dark p,main > section.dark li,
+main > section.dark small,main > section.dark label,
+main > section.dark .section-kicker,
+main > section[style*="linear-gradient"] h1,
+main > section[style*="linear-gradient"] h2,
+main > section[style*="linear-gradient"] h3,
+main > section[style*="linear-gradient"] h4,
+main > section[style*="linear-gradient"] p,
+main > section[style*="linear-gradient"] li,
+main > section[style*="linear-gradient"] small,
+main > section[style*="linear-gradient"] label,
+main > section[style*="linear-gradient"] .section-kicker{
+  color:#fff!important;opacity:1!important;text-shadow:0 1px 2px rgba(20,10,55,.22);
+}
+/* Cards remain white even when placed on violet backgrounds */
+main > section.hero .service-card,main > section.hero .quick-card,
+main > section.hero .team-card,main > section.hero .news-card,
+main > section.hero .project-card,main > section.page-hero .card,
+main > section.dark .service-card,main > section.dark .quick-card,
+main > section.dark .team-card,main > section.dark .news-card,
+main > section.dark .project-card,main > section[style*="linear-gradient"] .card,
+main > section[style*="linear-gradient"] .service-card,
+main > section[style*="linear-gradient"] .quick-card,
+main > section[style*="linear-gradient"] .team-card,
+main > section[style*="linear-gradient"] .news-card,
+main > section[style*="linear-gradient"] .project-card{
+  background:#fff!important;color:#17132f!important;border-color:#d9d0f5!important;
+}
+main > section.hero .card h1,main > section.hero .card h2,
+main > section.hero .card h3,main > section.hero .card p,
+main > section.hero .service-card h3,main > section.hero .service-card p,
+main > section.hero .quick-card h3,main > section.hero .quick-card p,
+main > section.hero .team-card h3,main > section.hero .team-card p,
+main > section.hero .news-card h3,main > section.hero .news-card p,
+main > section.hero .project-card h3,main > section.hero .project-card p,
+main > section.dark .service-card h3,main > section.dark .service-card p,
+main > section.dark .quick-card h3,main > section.dark .quick-card p,
+main > section.dark .team-card h3,main > section.dark .team-card p,
+main > section.dark .news-card h3,main > section.dark .news-card p,
+main > section.dark .project-card h3,main > section.dark .project-card p,
+main > section[style*="linear-gradient"] .card h1,
+main > section[style*="linear-gradient"] .card h2,
+main > section[style*="linear-gradient"] .card h3,
+main > section[style*="linear-gradient"] .card p,
+main > section[style*="linear-gradient"] .service-card h3,
+main > section[style*="linear-gradient"] .service-card p,
+main > section[style*="linear-gradient"] .quick-card h3,
+main > section[style*="linear-gradient"] .quick-card p,
+main > section[style*="linear-gradient"] .team-card h3,
+main > section[style*="linear-gradient"] .team-card p,
+main > section[style*="linear-gradient"] .news-card h3,
+main > section[style*="linear-gradient"] .news-card p,
+main > section[style*="linear-gradient"] .project-card h3,
+main > section[style*="linear-gradient"] .project-card p{
+  color:#17132f!important;text-shadow:none!important;opacity:1!important;
+}
+/* Buttons and fields */
+main > section .btn-primary,main > section .button-primary{
+  color:#fff!important;background:#39208b!important;border-color:#39208b!important;
+}
+main > section input,main > section textarea,main > section select{
+  color:#17132f!important;background:#fff!important;border-color:#7166a3!important;
+}
+main > section input::placeholder,main > section textarea::placeholder{color:#5c5870!important;opacity:1!important}
+</style>
+
 </head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
 <section class="hero" id="beranda"><div class="container"><div class="hero-content"><div class="eyebrow">PT. Dermawan Charisma Olahkarya · DECHO</div><h1>Membangun dengan kualitas,<br><span>menjaga kepercayaan.</span></h1><p>Perusahaan jasa konstruksi yang berfokus pada pembangunan hunian, renovasi, dan pekerjaan struktural. Kami mengutamakan kualitas pengerjaan, integritas, profesionalisme, serta efisiensi biaya demi hasil terbaik bagi setiap klien.</p><div class="hero-actions"><a class="btn" href="layanan.html">Lihat Layanan Konstruksi ↗</a><a class="btn outline" href="kontak.html">Konsultasi Proyek</a></div></div></div><div class="container hero-bottom"><span class="slide-count">PT. DECHO · It’s About Us, It’s About Trust</span><span class="scroll-note">GULIR UNTUK MENJELAJAH ↓</span></div></section>
 <section class="section"><div class="container about-grid"><div><div class="section-kicker">Profil Perusahaan</div><h2>Tentang PT. Dermawan Charisma Olahkarya</h2><p>PT. Dermawan Charisma Olahkarya (DECHO) resmi didirikan pada tahun 2026, berlandaskan pengalaman praktis dalam pelaksanaan konstruksi yang telah dimulai sejak tahun 2022.</p><p>Berbekal pengalaman lapangan, pembelajaran berkelanjutan, dan kepercayaan yang terbangun melalui berbagai proyek, DECHO berkembang sebagai perusahaan konstruksi yang profesional, adaptif, dan berorientasi pada kualitas.</p><p>Pendirian resmi DECHO menandai langkah strategis untuk memperkuat fondasi perusahaan, memperluas peluang kemitraan, serta meningkatkan kapasitas dalam memenuhi kebutuhan proyek yang semakin beragam.</p><p><strong>Motto: “Ini Tentang Kami, Ini tentang Kepercayaan”.</strong></p><a class="text-link" href="tentang.html">Baca Profil Perusahaan ↗</a></div><div class="about-image" role="img" aria-label="Pekerjaan konstruksi"><div class="image-label">Kualitas · Integritas · Kepercayaan<span>Prinsip dalam setiap tahapan proyek</span></div></div></div></section>
