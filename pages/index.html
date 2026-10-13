@@ -2280,6 +2280,68 @@ html body .page-main section.section.about-background-section .about-background-
  html body .page-main section.section.about-background-section .about-background-art > .about-vector-art{transition:none!important}
 }
 
+
+/* DECHO ABOUT — clean two-column layout, no image card or divider */
+.page-main section.section.about-background-section{
+  display:block!important;position:relative!important;isolation:isolate!important;
+  overflow:visible!important;padding:clamp(64px,8vw,110px) 0!important;
+  background:linear-gradient(120deg,#f7f9ff 0%,#fff 58%,#f5f6ff 100%)!important;
+}
+.page-main section.section.about-background-section > .container.about-grid{
+  display:grid!important;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)!important;
+  align-items:center!important;gap:clamp(32px,5vw,76px)!important;
+  width:min(1240px,calc(100% - 64px))!important;max-width:1240px!important;
+  min-height:0!important;height:auto!important;margin:0 auto!important;padding:0!important;
+  overflow:visible!important;border:0!important;border-radius:0!important;
+  background:transparent!important;box-shadow:none!important;
+}
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  display:block!important;position:relative!important;inset:auto!important;grid-column:1!important;grid-row:1!important;
+  width:100%!important;height:clamp(400px,42vw,610px)!important;min-height:0!important;max-width:none!important;
+  margin:0!important;padding:0!important;float:none!important;z-index:0!important;opacity:1!important;
+  overflow:visible!important;pointer-events:none!important;
+  background-color:transparent!important;
+  background-image:url('../assets/images/foto-aboutus_01%20(2).jpg')!important;
+  background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;
+  box-shadow:none!important;border:0!important;border-radius:0!important;transform:none!important;
+  -webkit-mask-image:radial-gradient(ellipse at center, #000 48%, rgba(0,0,0,.92) 64%, transparent 100%)!important;
+  mask-image:radial-gradient(ellipse at center, #000 48%, rgba(0,0,0,.92) 64%, transparent 100%)!important;
+}
+.page-main section.section.about-background-section .about-vector-art,
+.page-main section.section.about-background-section .about-vector-scene{display:none!important}
+.page-main section.section.about-background-section > .container.about-grid > .about-copy{
+  display:block!important;position:relative!important;inset:auto!important;grid-column:2!important;grid-row:1!important;
+  box-sizing:border-box!important;width:100%!important;max-width:620px!important;min-width:0!important;
+  margin:0!important;padding:0!important;float:none!important;clear:none!important;
+  align-self:center!important;justify-self:stretch!important;transform:none!important;
+  opacity:1!important;visibility:visible!important;z-index:1!important;
+  background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+}
+.page-main section.section.about-background-section .about-copy .section-kicker{color:#5147d9!important}
+.page-main section.section.about-background-section .about-copy h2{
+  color:#111747!important;font-size:clamp(2.1rem,3.5vw,3.3rem)!important;
+  line-height:1.1!important;letter-spacing:-.04em!important;overflow-wrap:normal!important;
+}
+.page-main section.section.about-background-section .about-copy p{color:#405783!important;line-height:1.8!important;overflow-wrap:break-word!important}
+.page-main section.section.about-background-section .about-copy strong{color:#152653!important}
+.page-main section.section.about-background-section .about-copy .text-link{color:#5147d9!important}
+@media(max-width:760px){
+ .page-main section.section.about-background-section{padding:44px 0!important}
+ .page-main section.section.about-background-section > .container.about-grid{
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:20px!important;
+  width:calc(100% - 36px)!important;min-height:0!important;height:auto!important;
+ }
+ .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  grid-column:1!important;grid-row:1!important;width:100%!important;height:clamp(260px,76vw,420px)!important;
+  background-size:contain!important;-webkit-mask-image:radial-gradient(ellipse at center,#000 56%,transparent 100%)!important;
+  mask-image:radial-gradient(ellipse at center,#000 56%,transparent 100%)!important;
+ }
+ .page-main section.section.about-background-section > .container.about-grid > .about-copy{
+  grid-column:1!important;grid-row:2!important;width:100%!important;max-width:none!important;margin:0!important;padding:0 4px!important;
+ }
+ .page-main section.section.about-background-section .about-copy h2{font-size:clamp(1.9rem,7vw,2.5rem)!important}
+}
+
 </style>
 
 
