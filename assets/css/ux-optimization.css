@@ -1132,9 +1132,8 @@ html body main section.decho-showcase#proyek-utama{
   isolation:isolate!important;
   overflow:hidden!important;
   background:
-    radial-gradient(ellipse at 50% -18%,rgba(168,85,247,.25),transparent 48%),
-    radial-gradient(ellipse at 100% 80%,rgba(109,40,217,.20),transparent 42%),
-    linear-gradient(135deg,#16082f 0%,#1b0b3d 48%,#100725 100%)!important;
+    radial-gradient(ellipse at 75% -10%,rgba(74,55,190,.28),transparent 42%),
+    linear-gradient(135deg,#080f32 0%,#0b1642 54%,#11104b 100%)!important;
   color:#fff!important;
 }
 html body main section.decho-showcase#proyek-utama .showcase-heading h2,
@@ -1178,67 +1177,3 @@ html body main section.decho-showcase#proyek-utama .showcase-card:focus-within .
 }
 
 
-/* FINAL OVERRIDE: darken the entire projects page hero and showcase, not only the cards */
-html body main.page-main > section.page-hero{
-  position:relative!important;
-  isolation:isolate!important;
-  background:
-    radial-gradient(ellipse at 15% 0%,rgba(124,58,237,.24),transparent 48%),
-    radial-gradient(ellipse at 92% 80%,rgba(79,70,229,.22),transparent 42%),
-    linear-gradient(135deg,#120824 0%,#1a0b35 52%,#10071f 100%)!important;
-  color:#f7f2ff!important;
-}
-html body main.page-main > section.page-hero .section-kicker{
-  color:#c4a5ff!important;opacity:1!important;
-}
-html body main.page-main > section.page-hero h1{
-  color:#fff!important;text-shadow:none!important;
-}
-html body main.page-main > section.page-hero p{
-  color:#ded3f7!important;opacity:1!important;
-}
-html body main.page-main > section.decho-showcase#proyek-utama{
-  background:
-    radial-gradient(ellipse at 50% -18%,rgba(168,85,247,.18),transparent 48%),
-    radial-gradient(ellipse at 100% 80%,rgba(109,40,217,.16),transparent 42%),
-    linear-gradient(135deg,#16082b 0%,#1b0b36 48%,#10071f 100%)!important;
-  color:#fff!important;
-}
-
-
-/* Separate the project page hero from the showcase: hero stays dark navy-blue,
-   while the showcase remains deep purple. */
-html body main.page-main > section.page-hero{
-  background:
-    radial-gradient(ellipse at 12% 0%,rgba(49,88,232,.22),transparent 46%),
-    linear-gradient(135deg,#0b1638 0%,#101e4c 55%,#17245b 100%)!important;
-  color:#f7f8ff!important;
-}
-html body main.page-main > section.page-hero .section-kicker{
-  color:#aebfff!important;
-}
-html body main.page-main > section.page-hero h1{
-  color:#ffffff!important;
-}
-html body main.page-main > section.page-hero p{
-  color:#d6defc!important;
-}
-
-
-/* User preference: keep the project hero light, distinct from the deep-purple showcase */
-html body main.page-main > section.page-hero{
-  background:
-    radial-gradient(ellipse at 12% 0%,rgba(196,181,253,.36),transparent 46%),
-    radial-gradient(ellipse at 92% 85%,rgba(165,180,252,.25),transparent 42%),
-    linear-gradient(135deg,#f7f4ff 0%,#eee9ff 54%,#e7eaff 100%)!important;
-  color:#171536!important;
-}
-html body main.page-main > section.page-hero .section-kicker{
-  color:#6842c2!important;opacity:1!important;
-}
-html body main.page-main > section.page-hero h1{
-  color:#171536!important;text-shadow:none!important;
-}
-html body main.page-main > section.page-hero p{
-  color:#4b4768!important;opacity:1!important;
-}
