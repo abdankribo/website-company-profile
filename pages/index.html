@@ -928,80 +928,74 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
   }
 }
 
-/* DECHO ABOUT: isolated two-column layout with decorative background illustration */
-.page-main section.about-background-section{
-  position:relative!important;
-  isolation:isolate!important;
-  overflow:hidden!important;
-  padding:clamp(56px,7vw,96px) 0!important;
-  background:linear-gradient(110deg,#dceaff 0%,#f4f6ff 56%,#ece9ff 100%)!important;
+/* DECHO ABOUT FIX v2: prevent legacy .about-grid rules from squeezing the copy */
+.page-main section.section.about-background-section{
+  display:block!important;position:relative!important;isolation:isolate!important;
+  overflow:hidden!important;padding:clamp(54px,7vw,92px) 0!important;
+  background:linear-gradient(110deg,#dceaff 0%,#f3f5ff 56%,#ece9ff 100%)!important;
 }
-.page-main section.about-background-section > .container.about-grid{
-  position:relative!important;
-  display:grid!important;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
-  grid-template-areas:"visual copy"!important;
-  align-items:center!important;
-  gap:clamp(24px,4vw,64px)!important;
-  width:min(1200px,calc(100% - 48px))!important;
-  max-width:1200px!important;
-  min-height:520px!important;
-  margin:0 auto!important;
-  overflow:hidden!important;
+.page-main section.section.about-background-section > .container.about-grid{
+  display:block!important;position:relative!important;
+  width:min(1200px,calc(100% - 48px))!important;max-width:1200px!important;
+  min-height:560px!important;height:auto!important;margin:0 auto!important;
+  padding:0!important;overflow:hidden!important;box-sizing:border-box!important;
+  border-radius:28px!important;
 }
-.page-main section.about-background-section > .container.about-grid > .about-background-art{
-  grid-area:visual!important;
-  position:absolute!important;
-  left:-5%!important;top:0!important;
-  width:60%!important;height:100%!important;min-height:0!important;max-height:none!important;
-  margin:0!important;float:none!important;
-  z-index:0!important;opacity:.34!important;
-  pointer-events:none!important;overflow:hidden!important;
-  background:transparent!important;box-shadow:none!important;border:0!important;
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  display:block!important;position:absolute!important;inset:0 auto 0 0!important;
+  width:58%!important;height:100%!important;min-height:0!important;max-width:none!important;
+  margin:0!important;padding:0!important;float:none!important;
+  z-index:0!important;opacity:.42!important;overflow:hidden!important;
+  pointer-events:none!important;background:transparent!important;box-shadow:none!important;
+  border:0!important;transform:none!important;
 }
-.page-main section.about-background-section .about-vector-scene{
-  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;overflow:hidden!important;
+.page-main section.section.about-background-section .about-vector-scene{
+  display:block!important;position:absolute!important;inset:0!important;
+  width:100%!important;height:100%!important;overflow:hidden!important;
 }
-.page-main section.about-background-section .about-vector-art{
-  display:block!important;width:100%!important;height:100%!important;
+.page-main section.section.about-background-section .about-vector-art{
+  display:block!important;position:absolute!important;inset:0!important;
+  width:100%!important;height:100%!important;max-width:none!important;
   object-fit:contain!important;object-position:center!important;
   transform:translate3d(var(--about-x,0px),var(--about-y,0px),0)!important;
 }
-.page-main section.about-background-section .about-vector-art > rect:first-of-type{opacity:0!important}
-.page-main section.about-background-section > .container.about-grid > .about-copy{
-  grid-area:copy!important;
-  position:relative!important;z-index:2!important;
-  display:block!important;width:auto!important;max-width:620px!important;
-  min-width:0!important;margin:0 0 0 auto!important;padding:24px 0!important;
-  float:none!important;opacity:1!important;visibility:visible!important;transform:none!important;
-  background:transparent!important;
+.page-main section.section.about-background-section .about-vector-art > rect:first-of-type{opacity:0!important}
+.page-main section.section.about-background-section > .container.about-grid > .about-copy{
+  display:block!important;position:relative!important;inset:auto!important;
+  box-sizing:border-box!important;width:50%!important;max-width:620px!important;min-width:0!important;
+  margin:0 0 0 50%!important;padding:clamp(38px,5vw,68px) clamp(24px,4vw,56px) clamp(38px,5vw,68px) 12px!important;
+  float:none!important;clear:both!important;grid-area:auto!important;grid-column:auto!important;grid-row:auto!important;
+  align-self:auto!important;justify-self:auto!important;transform:none!important;
+  opacity:1!important;visibility:visible!important;z-index:2!important;
+  background:linear-gradient(90deg,rgba(243,245,255,.68),rgba(247,248,255,.94) 18%,rgba(247,248,255,.96))!important;
 }
-.page-main section.about-background-section .about-copy .section-kicker{color:#3158e8!important}
-.page-main section.about-background-section .about-copy h2{
-  color:#111747!important;font-size:clamp(2rem,3.4vw,3.15rem)!important;line-height:1.12!important;letter-spacing:-.035em!important;
+.page-main section.section.about-background-section .about-copy .section-kicker{color:#3158e8!important}
+.page-main section.section.about-background-section .about-copy h2{
+  color:#111747!important;font-size:clamp(2rem,3.4vw,3.15rem)!important;
+  line-height:1.12!important;letter-spacing:-.035em!important;overflow-wrap:normal!important;
 }
-.page-main section.about-background-section .about-copy p{color:#405783!important;line-height:1.8!important}
-.page-main section.about-background-section .about-copy strong{color:#152653!important}
-.page-main section.about-background-section .about-copy .text-link{color:#3158e8!important}
+.page-main section.section.about-background-section .about-copy p{
+  color:#405783!important;line-height:1.8!important;overflow-wrap:break-word!important;
+}
+.page-main section.section.about-background-section .about-copy strong{color:#152653!important}
+.page-main section.section.about-background-section .about-copy .text-link{color:#3158e8!important}
 @media(max-width:760px){
-  .page-main section.about-background-section{padding:42px 0!important}
-  .page-main section.about-background-section > .container.about-grid{
-    display:flex!important;flex-direction:column!important;align-items:stretch!important;
-    gap:0!important;width:calc(100% - 36px)!important;min-height:0!important;
-  }
-  .page-main section.about-background-section > .container.about-grid > .about-background-art{
-    left:0!important;top:0!important;width:100%!important;height:100%!important;
-    opacity:.13!important;
-  }
-  .page-main section.about-background-section > .container.about-grid > .about-copy{
-    width:100%!important;max-width:none!important;margin:0!important;padding:34px 24px!important;
-    background:linear-gradient(180deg,rgba(245,247,255,.78),rgba(248,249,255,.92))!important;
-  }
-  .page-main section.about-background-section .about-copy h2{font-size:clamp(1.85rem,7vw,2.4rem)!important}
+ .page-main section.section.about-background-section{padding:34px 0!important}
+ .page-main section.section.about-background-section > .container.about-grid{
+  width:calc(100% - 32px)!important;min-height:0!important;height:auto!important;border-radius:20px!important;
+ }
+ .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  inset:0!important;width:100%!important;height:100%!important;min-height:100%!important;opacity:.14!important;
+ }
+ .page-main section.section.about-background-section > .container.about-grid > .about-copy{
+  width:100%!important;max-width:none!important;margin:0!important;padding:34px 24px!important;
+  background:linear-gradient(180deg,rgba(245,247,255,.76),rgba(248,249,255,.94))!important;
+ }
+ .page-main section.section.about-background-section .about-copy h2{font-size:clamp(1.85rem,7vw,2.4rem)!important}
 }
 @media(prefers-reduced-motion:reduce){
-  .page-main section.about-background-section .about-vector-art,
-  .page-main section.about-background-section .about-vector-art *{animation:none!important;transition:none!important}
+ .page-main section.section.about-background-section .about-vector-art,
+ .page-main section.section.about-background-section .about-vector-art *{animation:none!important;transition:none!important}
 }
 </style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
 <section class="hero" id="beranda"><div class="decho-scene" aria-hidden="true">
