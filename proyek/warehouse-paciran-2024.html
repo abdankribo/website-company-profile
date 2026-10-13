@@ -27,6 +27,23 @@ html body main>section.section:nth-of-type(3) .kicker{color:#c4b5fd!important}
 html body main>section.section:nth-of-type(4) .callout{background:linear-gradient(135deg,var(--decho-blue-1),var(--decho-blue-2),var(--decho-blue-3))!important;color:#fff!important}
 html body main>section.section:nth-of-type(4) .callout p{color:#e2e8ff!important}
 
+
+/* High-specificity override: all text in white sections must be pure black */
+html body main#main-content > section.section:nth-of-type(2),
+html body main#main-content > section.section:nth-of-type(2) *,
+html body main#main-content > section.section:nth-of-type(4),
+html body main#main-content > section.section:nth-of-type(4) * {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+html body main#main-content > section.section:nth-of-type(2) *::before,
+html body main#main-content > section.section:nth-of-type(2) *::after,
+html body main#main-content > section.section:nth-of-type(4) *::before,
+html body main#main-content > section.section:nth-of-type(4) *::after {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
 /* Force every text element on white sections to black for maximum contrast */
 html body main>section.section:nth-of-type(2),
 html body main>section.section:nth-of-type(2) *,
