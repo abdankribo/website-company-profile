@@ -980,167 +980,104 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
 @media(prefers-reduced-motion:reduce){
  .page-main section.about-background-section .about-vector-art *{animation:none!important;transition:none!important}
 }
-/* DECHO about section: illustration background + readable copy */
-.about-grid{
+/* DECHO ABOUT: stable two-column layout; art is a background layer, copy is independent */
+.page-main section.about-background-section{
+  padding:76px 0!important;
+  overflow:visible!important;
+}
+.page-main section.about-background-section>.container.about-grid{
   position:relative!important;
   display:grid!important;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  grid-template-areas:"art copy"!important;
+  align-items:center!important;
   gap:0!important;
-  align-items:stretch!important;
-  min-height:620px;
-  overflow:hidden;
-  border-radius:28px;
-  isolation:isolate;
-  background:linear-gradient(105deg,#d9e8ff 0%,#eef2ff 42%,#f7f8ff 67%,#e9e8ff 100%);
-  box-shadow:0 22px 65px rgba(38,65,150,.10);
+  width:min(1180px,calc(100% - 44px))!important;
+  min-height:600px!important;
+  margin:0 auto!important;
+  padding:0!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  border-radius:28px!important;
+  background:linear-gradient(105deg,#d9e8ff 0%,#e8edff 44%,#f7f8ff 75%,#e9e8ff 100%)!important;
+  box-shadow:0 22px 65px rgba(38,65,150,.10)!important;
 }
-.about-grid>.about-image.about-interactive{
-  grid-column:1;
-  grid-row:1;
-  position:relative!important;
-  inset:auto!important;
-  width:100%!important;
+.page-main section.about-background-section>.container.about-grid>.about-background-art{
+  grid-area:art!important;
+  position:absolute!important;
+  inset:0 auto 0 0!important;
+  width:58%!important;
   height:100%!important;
-  min-height:620px!important;
+  min-height:0!important;
   margin:0!important;
+  border:0!important;
   border-radius:0!important;
   overflow:hidden!important;
   background:transparent!important;
   box-shadow:none!important;
-  z-index:0;
-  opacity:.52;
-}
-.about-grid>.about-image.about-interactive:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:2;
-  pointer-events:none;
-  background:linear-gradient(90deg,rgba(219,232,255,.02) 0%,rgba(225,234,255,.12) 62%,#e9eeff 100%);
-}
-.about-grid .about-vector-scene{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  overflow:hidden;
-}
-.about-grid .about-vector-art{
-  display:block!important;
-  width:100%!important;
-  height:100%!important;
-  object-fit:cover!important;
-  transform:translate3d(var(--about-x,0px),var(--about-y,0px),0) scale(1.04);
-  transform-origin:center;
-}
-.about-grid>.about-copy{
-  grid-column:2;
-  grid-row:1;
-  position:relative!important;
-  z-index:3!important;
-  align-self:center;
-  min-width:0;
-  margin:0!important;
-  padding:64px clamp(28px,4.5vw,66px) 64px 24px!important;
-  background:linear-gradient(90deg,rgba(238,242,255,.88),rgba(247,248,255,.97) 22%,rgba(247,248,255,.98));
-}
-.about-grid .about-copy .section-kicker{color:#3158e8!important}
-.about-grid .about-copy h2{color:#111747!important;font-size:clamp(2rem,3.5vw,3.15rem);line-height:1.12}
-.about-grid .about-copy p{color:#405783!important;line-height:1.8}
-.about-grid .about-copy strong{color:#152653!important}
-@media(max-width:720px){
-  .about-grid{
-    display:block!important;
-    min-height:0;
-    border-radius:20px;
-  }
-  .about-grid>.about-image.about-interactive{
-    position:absolute!important;
-    inset:0!important;
-    width:100%!important;
-    height:100%!important;
-    min-height:100%!important;
-    opacity:.2;
-  }
-  .about-grid>.about-image.about-interactive:before{
-    background:linear-gradient(180deg,rgba(229,238,255,.3),rgba(245,247,255,.88) 62%,rgba(247,248,255,.96));
-  }
-  .about-grid>.about-copy{
-    position:relative!important;
-    width:100%;
-    padding:44px 25px!important;
-    background:linear-gradient(180deg,rgba(241,245,255,.8),rgba(248,249,255,.95) 28%,rgba(248,249,255,.98));
-  }
-  .about-grid .about-copy h2{font-size:clamp(1.85rem,7vw,2.4rem)}
-}
-
-/* DECHO FIX: valid stylesheet + background artwork layout */
-.page-main section.about-background-section{
-  position:relative!important;isolation:isolate!important;overflow:hidden!important;
-  padding:clamp(64px,7vw,100px) 0!important;
-  background:linear-gradient(110deg,#cfe2ff 0%,#e6edff 43%,#f1efff 100%)!important;
-}
-.page-main section.about-background-section>.container.about-grid{
-  display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
-  grid-template-areas:"art copy"!important;gap:clamp(24px,4vw,56px)!important;
-  align-items:center!important;position:relative!important;min-height:0!important;
-  width:min(1200px,calc(100% - 48px))!important;max-width:1200px!important;
-  margin-inline:auto!important;overflow:visible!important;border-radius:0!important;
-  background:transparent!important;box-shadow:none!important;
-}
-.page-main section.about-background-section>.container.about-grid>.about-background-art{
-  grid-area:art!important;grid-column:1!important;grid-row:1!important;
-  position:relative!important;inset:auto!important;transform:none!important;
-  display:block!important;width:100%!important;height:auto!important;min-height:0!important;
-  max-height:none!important;aspect-ratio:620/500!important;opacity:1!important;
-  overflow:hidden!important;border-radius:24px!important;background:transparent!important;
-  box-shadow:none!important;z-index:0!important;pointer-events:none!important;
+  opacity:1!important;
+  z-index:0!important;
+  pointer-events:none!important;
 }
 .page-main section.about-background-section .about-vector-scene{
   position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  overflow:hidden!important;
 }
 .page-main section.about-background-section .about-vector-art{
-  display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;
-  transform:translate3d(var(--about-x,0px),var(--about-y,0px),0)!important;
+  display:block!important;width:100%!important;height:100%!important;max-width:none!important;
+  object-fit:cover!important;object-position:center!important;
+  transform:translate3d(var(--about-x,0px),var(--about-y,0px),0) scale(1.02)!important;
+  transform-origin:center!important;
 }
-.page-main section.about-background-section .about-vector-art>rect:first-of-type{opacity:.2!important}
+.page-main section.about-background-section>.container.about-grid>.about-background-art:after{
+  content:""!important;position:absolute!important;inset:0!important;z-index:1!important;
+  pointer-events:none!important;
+  background:linear-gradient(90deg,rgba(217,232,255,.04) 0%,rgba(232,237,255,.14) 55%,#f3f5ff 100%)!important;
+}
 .page-main section.about-background-section>.container.about-grid>.about-copy{
-  grid-area:copy!important;grid-column:2!important;grid-row:1!important;
-  position:relative!important;display:block!important;box-sizing:border-box!important;
-  width:100%!important;max-width:620px!important;min-width:0!important;
-  margin:0!important;padding:8px 0 8px clamp(0px,1vw,16px)!important;
-  background:transparent!important;opacity:1!important;visibility:visible!important;
-  transform:none!important;z-index:1!important;
+  grid-area:copy!important;
+  grid-column:2!important;grid-row:1!important;
+  position:relative!important;z-index:2!important;
+  align-self:center!important;justify-self:stretch!important;
+  width:100%!important;max-width:none!important;min-width:0!important;
+  margin:0!important;padding:58px clamp(28px,4vw,58px) 58px 28px!important;
+  background:linear-gradient(90deg,rgba(242,245,255,.76),rgba(247,248,255,.96) 24%,rgba(247,248,255,.98))!important;
+  visibility:visible!important;opacity:1!important;transform:none!important;
 }
 .page-main section.about-background-section .about-copy .section-kicker{
   color:#3158e8!important;font-weight:800!important;letter-spacing:.16em!important;
 }
 .page-main section.about-background-section .about-copy h2{
-  color:#111747!important;font-size:clamp(2rem,3.5vw,3.15rem)!important;
+  color:#111747!important;font-size:clamp(2rem,3.1vw,3rem)!important;
   line-height:1.12!important;letter-spacing:-.035em!important;overflow-wrap:normal!important;
 }
 .page-main section.about-background-section .about-copy p{
-  color:#405783!important;line-height:1.8!important;font-size:1rem!important;
+  color:#405783!important;line-height:1.75!important;font-size:1rem!important;
 }
 .page-main section.about-background-section .about-copy strong{color:#152653!important}
 .page-main section.about-background-section .about-copy .text-link{color:#3158e8!important}
 @media(max-width:760px){
- .page-main section.about-background-section{padding:42px 0!important}
+ .page-main section.about-background-section{padding:44px 0!important}
  .page-main section.about-background-section>.container.about-grid{
-  width:calc(100% - 36px)!important;grid-template-columns:minmax(0,1fr)!important;
-  grid-template-areas:"art" "copy"!important;gap:24px!important;
+  display:flex!important;flex-direction:column!important;align-items:stretch!important;
+  width:calc(100% - 32px)!important;min-height:0!important;border-radius:20px!important;
  }
  .page-main section.about-background-section>.container.about-grid>.about-background-art{
-  grid-column:1!important;grid-row:1!important;width:100%!important;max-width:520px!important;
-  margin:0 auto!important;aspect-ratio:620/400!important;opacity:.9!important;
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  min-height:0!important;opacity:.18!important;
+ }
+ .page-main section.about-background-section>.container.about-grid>.about-background-art:after{
+  background:linear-gradient(180deg,rgba(229,238,255,.24),rgba(245,247,255,.84) 55%,rgba(247,248,255,.97))!important;
  }
  .page-main section.about-background-section>.container.about-grid>.about-copy{
-  grid-column:1!important;grid-row:2!important;width:100%!important;max-width:none!important;
-  padding:0!important;
+  position:relative!important;z-index:2!important;width:100%!important;max-width:none!important;
+  padding:38px 24px!important;
+  background:linear-gradient(180deg,rgba(242,245,255,.78),rgba(248,249,255,.95) 35%,rgba(248,249,255,.98))!important;
  }
  .page-main section.about-background-section .about-copy h2{font-size:clamp(1.85rem,7vw,2.4rem)!important}
 }
 @media(prefers-reduced-motion:reduce){
+ .page-main section.about-background-section .about-vector-art,
  .page-main section.about-background-section .about-vector-art *{animation:none!important;transition:none!important}
 }
 </style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
