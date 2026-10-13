@@ -1656,6 +1656,102 @@ section.section.about-background-section > .container.about-grid > .about-copy{
  #beranda.hero .decho-scene-art{transition:none!important}
 }
 
+
+/* DECHO NO CSS GRID v1 — use flexible natural layouts instead of CSS Grid */
+.about-grid,
+.page-main .section>.container.about-grid,
+.page-main section.section>.container.about-grid,
+.page-main section.section.about-background-section>.container.about-grid{
+  display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
+  align-items:stretch!important;justify-content:space-between!important;
+  gap:clamp(28px,5vw,64px)!important;
+  grid-template-columns:none!important;grid-template-rows:none!important;
+  grid-template-areas:none!important;column-gap:clamp(28px,5vw,64px)!important;
+}
+.about-grid>.about-image,
+.about-grid>.about-interactive,
+.about-grid>.about-background-art,
+.about-grid>.about-copy,
+.page-main section.section.about-background-section>.container.about-grid>.about-image,
+.page-main section.section.about-background-section>.container.about-grid>.about-copy{
+  grid-area:auto!important;grid-column:auto!important;grid-row:auto!important;
+  min-width:0!important;flex:1 1 0!important;width:auto!important;max-width:none!important;
+}
+.about-grid>.about-image,
+.about-grid>.about-interactive,
+.about-grid>.about-background-art{flex-basis:50%!important}
+.about-grid>.about-copy{flex-basis:50%!important}
+.cards,.news-grid,.quick-links,.team-grid{
+  display:flex!important;flex-wrap:wrap!important;align-items:stretch!important;
+  gap:22px!important;grid-template-columns:none!important;grid-template-rows:none!important;
+}
+.cards>.service-card,.news-grid>.news-card,.quick-links>.quick-card,.team-grid>.team-card{
+  flex:1 1 calc(33.333% - 22px)!important;min-width:240px!important;
+}
+.stats{
+  display:flex!important;flex-wrap:wrap!important;gap:1px!important;
+  grid-template-columns:none!important;grid-template-rows:none!important;
+}
+.stats>.stat{flex:1 1 calc(25% - 1px)!important;min-width:150px!important}
+.feature-banner{
+  display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
+  grid-template-columns:none!important;grid-template-rows:none!important;
+}
+.feature-banner>.feature-copy,.feature-banner>.feature-visual{flex:1 1 50%!important;min-width:0!important}
+.sustain-grid{
+  display:flex!important;flex-direction:row!important;align-items:center!important;
+  gap:clamp(28px,5vw,55px)!important;grid-template-columns:none!important;
+}
+.sustain-grid>*{flex:1 1 50%!important;min-width:0!important}
+.footer-grid{
+  display:flex!important;flex-wrap:wrap!important;align-items:flex-start!important;
+  gap:35px!important;grid-template-columns:none!important;
+}
+.footer-grid>*{flex:1 1 190px!important;min-width:0!important}
+.check-list,.footer-links,.contact-info{
+  display:flex!important;flex-direction:column!important;gap:12px!important;
+  grid-template-columns:none!important;
+}
+.brandmark,.iconbox,.socials a{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+}
+@media(max-width:960px){
+  .about-grid,.page-main .section>.container.about-grid,
+  .page-main section.section>.container.about-grid,
+  .page-main section.section.about-background-section>.container.about-grid{
+    gap:30px!important;
+  }
+  .cards>.service-card,.news-grid>.news-card,.quick-links>.quick-card,.team-grid>.team-card{
+    flex-basis:calc(50% - 22px)!important;
+  }
+  .footer-grid>*{flex-basis:calc(50% - 35px)!important}
+}
+@media(max-width:720px){
+  .about-grid,.page-main .section>.container.about-grid,
+  .page-main section.section>.container.about-grid,
+  .page-main section.section.about-background-section>.container.about-grid{
+    flex-direction:column!important;flex-wrap:nowrap!important;gap:24px!important;
+    grid-template-columns:none!important;grid-template-areas:none!important;
+  }
+  .about-grid>.about-image,.about-grid>.about-interactive,.about-grid>.about-background-art,
+  .about-grid>.about-copy,
+  .page-main section.section.about-background-section>.container.about-grid>.about-image,
+  .page-main section.section.about-background-section>.container.about-grid>.about-copy{
+    flex:0 0 auto!important;width:100%!important;max-width:100%!important;
+  }
+  .cards,.news-grid,.quick-links,.team-grid{flex-direction:column!important;flex-wrap:nowrap!important}
+  .cards>.service-card,.news-grid>.news-card,.quick-links>.quick-card,.team-grid>.team-card{
+    flex:0 0 auto!important;width:100%!important;min-width:0!important;
+  }
+  .stats>.stat{flex:1 1 calc(50% - 1px)!important;min-width:120px!important}
+  .feature-banner,.sustain-grid{flex-direction:column!important;flex-wrap:nowrap!important}
+  .feature-banner>.feature-copy,.feature-banner>.feature-visual,.sustain-grid>*{
+    flex:0 0 auto!important;width:100%!important;
+  }
+  .footer-grid{flex-direction:column!important;flex-wrap:nowrap!important;gap:28px!important}
+  .footer-grid>*{flex:0 0 auto!important;width:100%!important}
+}
+
 </style>
 
 
@@ -1677,7 +1773,7 @@ section.section.about-background-section > .container.about-grid > .about-copy{
 <svg class="about-vector-art" viewBox="0 0 620 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <defs><linearGradient id="planBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7f9ff"></stop><stop offset="1" stop-color="#dce6ff"></stop></linearGradient><linearGradient id="planGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7c91ff"></stop><stop offset="1" stop-color="#42c4ef"></stop></linearGradient></defs>
 <rect width="620" height="500" fill="url(#planBg)"></rect>
-<g class="about-blueprint" fill="none" stroke="#a8b8ed" stroke-width="1.5" opacity=".72"><path d="M20 80H600M20 120H600M20 160H600M20 200H600M20 240H600M20 280H600M20 320H600M20 360H600M20 400H600"></path><path d="M60 30V470M100 30V470M140 30V470M180 30V470M220 30V470M260 30V470M300 30V470M340 30V470M380 30V470M420 30V470M460 30V470M500 30V470M540 30V470M580 30V470"></path></g>
+<!-- Decorative blueprint grid removed; construction illustration retained. -->
 <g class="about-building"><path d="M315 325V135L420 85L525 135V325Z" fill="#eaf0ff" stroke="#526bd4" stroke-width="4"></path><path d="M300 137L420 72L540 137" fill="none" stroke="#6958d8" stroke-width="9" stroke-linejoin="round"></path><path d="M342 165H395V220H342ZM445 165H498V220H445ZM342 245H395V300H342ZM445 245H498V300H445Z" fill="url(#planGlass)" stroke="#fff" stroke-width="4"></path><path d="M420 135V325" stroke="#526bd4" stroke-width="4"></path><path d="M285 325H555" stroke="#526bd4" stroke-width="4"></path></g>
 <g class="about-vector-crane" stroke="#514bb6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M395 62H580M425 62V360M455 62L470 76L485 62L500 76L515 62L530 76L545 62L560 76L575 62"></path><path d="M530 62V145M516 145H544M530 145L520 158H540Z"></path></g>
 <g class="about-engineer-one"><circle cx="185" cy="190" r="24" fill="#c98262"></circle><path d="M157 190Q160 153 185 157Q210 157 213 190Z" fill="#fff"></path><path d="M151 187H219L210 197H160Z" fill="#7d8eff"></path><path d="M153 220Q185 204 217 220L237 318H134Z" fill="#24376f"></path><path d="M164 232L170 305M205 232L199 305" stroke="#b8ed59" stroke-width="9"></path><path d="M151 238L115 286L143 301M218 238L248 269" fill="none" stroke="#24376f" stroke-width="17" stroke-linecap="round"></path><path d="M150 316L143 407H173L185 320M199 316L211 407H241L222 316" fill="#18234f"></path><path d="M248 269L276 290" stroke="#c98262" stroke-width="12" stroke-linecap="round"></path></g>
