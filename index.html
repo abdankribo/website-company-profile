@@ -196,6 +196,42 @@ input::placeholder,textarea::placeholder{color:#626985;opacity:1}
 :focus-visible{outline:3px solid #8b5cf6;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
+
+<style id="decho-logo-layout-fix">
+/* DECHO logo: keep the symbol and wordmark aligned, crisp, and responsive */
+.brand.brand-split-logo{
+  display:inline-flex!important;align-items:center!important;justify-content:flex-start;
+  gap:12px!important;flex:0 0 auto;min-width:0;line-height:1;
+  text-decoration:none;white-space:nowrap;
+}
+.brand.brand-split-logo .brandmark{
+  display:block!important;flex:0 0 42px!important;width:42px!important;height:42px!important;
+  max-width:42px;object-fit:contain!important;object-position:center;
+  padding:0!important;margin:0!important;background:transparent!important;border:0!important;
+}
+.brand.brand-split-logo .brand-name-image{
+  display:block!important;flex:0 1 auto;width:clamp(104px,11vw,148px)!important;
+  max-width:148px;height:auto!important;max-height:42px;object-fit:contain!important;
+  object-position:left center;margin:0!important;padding:0!important;border:0!important;
+  background:transparent!important;
+}
+.footer .brand.brand-split-logo{gap:10px!important;margin-bottom:20px}
+.footer .brand.brand-split-logo .brandmark{width:40px!important;height:40px!important;flex-basis:40px!important}
+.footer .brand.brand-split-logo .brand-name-image{width:130px!important;max-height:40px;filter:brightness(0) invert(1)}
+@media(max-width:720px){
+  .brand.brand-split-logo{gap:8px!important}
+  .brand.brand-split-logo .brandmark{width:34px!important;height:34px!important;flex-basis:34px!important;max-width:34px}
+  .brand.brand-split-logo .brand-name-image{width:clamp(88px,27vw,116px)!important;max-width:116px;max-height:34px}
+  .footer .brand.brand-split-logo .brandmark{width:36px!important;height:36px!important;flex-basis:36px!important}
+  .footer .brand.brand-split-logo .brand-name-image{width:116px!important;max-height:36px}
+}
+@media(max-width:360px){
+  .brand.brand-split-logo{gap:6px!important}
+  .brand.brand-split-logo .brandmark{width:30px!important;height:30px!important;flex-basis:30px!important;max-width:30px}
+  .brand.brand-split-logo .brand-name-image{width:88px!important;max-height:30px}
+}
+</style>
+
 </head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
 <section class="hero" id="beranda"><div class="container"><div class="hero-content"><div class="eyebrow">PT. Dermawan Charisma Olahkarya · DECHO</div><h1>Membangun dengan kualitas,<br><span>menjaga kepercayaan.</span></h1><p>Perusahaan jasa konstruksi yang berfokus pada pembangunan hunian, renovasi, dan pekerjaan struktural. Kami mengutamakan kualitas pengerjaan, integritas, profesionalisme, serta efisiensi biaya demi hasil terbaik bagi setiap klien.</p><div class="hero-actions"><a class="btn" href="layanan.html">Lihat Layanan Konstruksi ↗</a><a class="btn outline" href="kontak.html">Konsultasi Proyek</a></div></div></div><div class="container hero-bottom"><span class="slide-count">PT. DECHO · It’s About Us, It’s About Trust</span><span class="scroll-note">GULIR UNTUK MENJELAJAH ↓</span></div></section>
 <section class="section"><div class="container about-grid"><div><div class="section-kicker">Profil Perusahaan</div><h2>Tentang PT. Dermawan Charisma Olahkarya</h2><p>PT. Dermawan Charisma Olahkarya (DECHO) resmi didirikan pada tahun 2026, berlandaskan pengalaman praktis dalam pelaksanaan konstruksi yang telah dimulai sejak tahun 2022.</p><p>Berbekal pengalaman lapangan, pembelajaran berkelanjutan, dan kepercayaan yang terbangun melalui berbagai proyek, DECHO berkembang sebagai perusahaan konstruksi yang profesional, adaptif, dan berorientasi pada kualitas.</p><p>Pendirian resmi DECHO menandai langkah strategis untuk memperkuat fondasi perusahaan, memperluas peluang kemitraan, serta meningkatkan kapasitas dalam memenuhi kebutuhan proyek yang semakin beragam.</p><p><strong>Motto: “Ini Tentang Kami, Ini tentang Kepercayaan”.</strong></p><a class="text-link" href="tentang.html">Baca Profil Perusahaan ↗</a></div><div class="about-image" role="img" aria-label="Pekerjaan konstruksi"><div class="image-label">Kualitas · Integritas · Kepercayaan<span>Prinsip dalam setiap tahapan proyek</span></div></div></div></section>
