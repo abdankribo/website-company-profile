@@ -757,19 +757,17 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
 
 
 <style id="decho-hero-flat-layout">.hero{display:block}.hero-content.container{position:relative;z-index:1;width:min(1180px,calc(100% - 44px));margin:0 auto}.hero-bottom.container{width:min(1180px,calc(100% - 44px));margin:0 auto}@media(max-width:600px){.hero-content.container{padding-top:90px;padding-bottom:125px}.hero-bottom.container{gap:12px;align-items:flex-start}.scroll-note{text-align:right}}</style><style id="decho-interactive-hero-scene">
-/* Hero-only layout correction: leave navbar and all other sections unchanged. */
-#beranda.hero{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;min-height:640px!important;isolation:isolate!important;overflow:hidden!important;background:#101747!important;background-image:radial-gradient(ellipse at 82% 45%,rgba(89,77,238,.55),transparent 42%),linear-gradient(115deg,#0b1034 0%,#171d5d 58%,#4034a2 100%)!important}
-#beranda.hero:before{z-index:0!important;background:linear-gradient(90deg,rgba(11,16,52,.99) 0%,rgba(17,23,71,.96) 38%,rgba(24,28,89,.65) 61%,rgba(34,28,109,.12) 100%)!important;pointer-events:none}
-#beranda.hero:after{z-index:1!important;inset:0!important;height:100%!important;background:linear-gradient(180deg,rgba(111,91,220,.1),rgba(67,54,151,.02) 40%,rgba(17,23,71,.4) 100%)!important;pointer-events:none}
-#beranda.hero>.decho-scene{position:absolute!important;z-index:0!important;top:0!important;right:0!important;bottom:0!important;left:43%!important;width:57%!important;height:100%!important;overflow:hidden!important;pointer-events:none!important}
-#beranda.hero .decho-scene-art{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important;transform:translate3d(var(--scene-x,0),var(--scene-y,0),0)!important;transition:transform .22s ease-out}
-#beranda.hero>header.hero-content.container{position:relative!important;z-index:2!important;display:block!important;flex:1 1 100%!important;width:min(1120px,calc(100% - 48px))!important;max-width:1120px!important;margin:0 auto!important;padding:78px 0 112px!important;box-sizing:border-box!important}
-#beranda.hero>header.hero-content.container .eyebrow,
-#beranda.hero>header.hero-content.container h1,
-#beranda.hero>header.hero-content.container p,
-#beranda.hero>header.hero-content.container .hero-actions{width:100%!important;max-width:560px!important}
-#beranda.hero>header.hero-content.container h1{font-size:clamp(2.65rem,4.5vw,4.4rem)!important;line-height:1.04!important;letter-spacing:-.045em!important}
-#beranda.hero>header.hero-content.container p{font-size:1rem!important;line-height:1.75!important;margin:22px 0 28px!important}
+/* Final hero composition only. Navbar and remaining page sections are untouched. */
+#beranda.hero{display:flex!important;position:relative!important;align-items:center!important;justify-content:flex-start!important;isolation:isolate!important;overflow:hidden!important;min-height:650px!important;color:#fff!important;background:#101747!important;background-image:radial-gradient(ellipse at 82% 42%,rgba(89,77,238,.5),transparent 43%),linear-gradient(115deg,#0b1034 0%,#171d5d 58%,#4034a2 100%)!important}
+#beranda.hero:before{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:linear-gradient(90deg,#0b1034 0%,rgba(13,18,59,.99) 33%,rgba(17,23,71,.9) 48%,rgba(24,28,89,.28) 76%,rgba(34,28,109,.08) 100%)!important;pointer-events:none!important}
+#beranda.hero:after{content:""!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:1!important;background:linear-gradient(180deg,rgba(111,91,220,.08),transparent 35%,rgba(17,23,71,.42) 100%)!important;pointer-events:none!important}
+#beranda.hero>.decho-scene{position:absolute!important;inset:0 0 0 auto!important;left:auto!important;z-index:0!important;width:56%!important;height:100%!important;overflow:hidden!important;pointer-events:none!important}
+#beranda.hero .decho-scene-art{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important;transform:translate3d(var(--scene-x,0),var(--scene-y,0),0)!important;transition:transform .22s ease-out!important}
+#beranda.hero>header.hero-content.container{display:block!important;position:relative!important;z-index:2!important;flex:0 0 100%!important;width:min(1120px,calc(100% - 48px))!important;max-width:1120px!important;margin:0 auto!important;padding:76px 0 112px!important;box-sizing:border-box!important}
+#beranda.hero>header.hero-content.container .eyebrow{display:inline-flex!important;max-width:100%!important;width:auto!important}
+#beranda.hero>header.hero-content.container h1{width:49%!important;max-width:540px!important;font-size:clamp(2.55rem,4.2vw,4.2rem)!important;line-height:1.06!important;letter-spacing:-.045em!important;overflow-wrap:normal!important}
+#beranda.hero>header.hero-content.container p{width:47%!important;max-width:520px!important;font-size:1rem!important;line-height:1.75!important;margin:22px 0 28px!important}
+#beranda.hero>header.hero-content.container .hero-actions{width:49%!important;max-width:540px!important;display:flex!important;flex-wrap:wrap!important;gap:12px!important}
 #beranda.hero>.hero-bottom.container{position:absolute!important;z-index:3!important;left:50%!important;right:auto!important;bottom:22px!important;transform:translateX(-50%)!important;width:min(1120px,calc(100% - 48px))!important;max-width:1120px!important;margin:0!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important}
 #beranda.hero .decho-badge{transform-box:fill-box;transform-origin:center;animation:dechoBadgeFloat 5s ease-in-out infinite}
 #beranda.hero .decho-badge-two{animation-delay:-1.6s}#beranda.hero .decho-badge-three{animation-delay:-3.1s}
@@ -785,22 +783,25 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
 @keyframes dechoCraneMove{0%,100%{rotate:0deg}50%{rotate:.7deg}}
 @keyframes dechoLinesPulse{0%,100%{opacity:.45}50%{opacity:.95}}
 @keyframes dechoOrbDrift{0%,100%{transform:translate3d(0,0,0);opacity:.55}50%{transform:translate3d(-14px,-18px,0);opacity:1}}
-@media(max-width:900px){
-#beranda.hero>.decho-scene{left:38%!important;width:62%!important;opacity:.72!important}
-#beranda.hero>header.hero-content.container{width:calc(100% - 48px)!important}
-#beranda.hero>header.hero-content.container .eyebrow,#beranda.hero>header.hero-content.container h1,#beranda.hero>header.hero-content.container p,#beranda.hero>header.hero-content.container .hero-actions{max-width:52%!important}
-#beranda.hero>header.hero-content.container h1{font-size:clamp(2.35rem,4.6vw,3.6rem)!important}
+@media(max-width:900px) and (min-width:651px){
+#beranda.hero{min-height:620px!important}
+#beranda.hero>.decho-scene{width:53%!important;opacity:.82!important}
+#beranda.hero>header.hero-content.container{width:calc(100% - 44px)!important}
+#beranda.hero>header.hero-content.container h1{width:48%!important;font-size:clamp(2.25rem,4.2vw,3.3rem)!important}
+#beranda.hero>header.hero-content.container p{width:46%!important;font-size:.94rem!important}
+#beranda.hero>header.hero-content.container .hero-actions{width:48%!important}
 }
 @media(max-width:650px){
-#beranda.hero{min-height:690px!important;align-items:flex-start!important}
-#beranda.hero>.decho-scene{left:0!important;top:auto!important;right:0!important;bottom:0!important;width:100%!important;height:48%!important;opacity:.42!important}
-#beranda.hero:before{background:linear-gradient(180deg,rgba(11,16,52,.99) 0%,rgba(17,23,71,.96) 54%,rgba(17,23,71,.5) 100%)!important}
-#beranda.hero>header.hero-content.container{width:calc(100% - 40px)!important;padding:62px 0 160px!important}
-#beranda.hero>header.hero-content.container .eyebrow,#beranda.hero>header.hero-content.container h1,#beranda.hero>header.hero-content.container p,#beranda.hero>header.hero-content.container .hero-actions{max-width:100%!important}
-#beranda.hero>header.hero-content.container h1{font-size:clamp(2.25rem,9vw,3.2rem)!important}
-#beranda.hero>header.hero-content.container p{font-size:.96rem!important}
-#beranda.hero>.hero-bottom.container{width:calc(100% - 40px)!important;bottom:16px!important;align-items:flex-start!important;font-size:.68rem!important}
-#beranda.hero .decho-badge{opacity:.7}
+#beranda.hero{min-height:760px!important;align-items:flex-start!important}
+#beranda.hero:before{background:linear-gradient(180deg,rgba(11,16,52,.99) 0%,rgba(17,23,71,.97) 49%,rgba(17,23,71,.58) 100%)!important}
+#beranda.hero>.decho-scene{inset:auto 0 0!important;left:0!important;width:100%!important;height:43%!important;opacity:.5!important}
+#beranda.hero>header.hero-content.container{width:calc(100% - 40px)!important;padding:58px 0 165px!important}
+#beranda.hero>header.hero-content.container .eyebrow{font-size:.68rem!important;letter-spacing:.1em!important}
+#beranda.hero>header.hero-content.container h1{width:100%!important;max-width:100%!important;font-size:clamp(2.25rem,9vw,3.1rem)!important}
+#beranda.hero>header.hero-content.container p{width:100%!important;max-width:100%!important;font-size:.95rem!important;line-height:1.65!important}
+#beranda.hero>header.hero-content.container .hero-actions{width:100%!important;max-width:100%!important}
+#beranda.hero>.hero-bottom.container{width:calc(100% - 40px)!important;bottom:15px!important;align-items:flex-start!important;font-size:.68rem!important}
+#beranda.hero .decho-badge{opacity:.68}
 }
 @media(prefers-reduced-motion:reduce){#beranda.hero .decho-badge,#beranda.hero .decho-worker,#beranda.hero .decho-worker-small,#beranda.hero .decho-crane,#beranda.hero .decho-float-slow,#beranda.hero .decho-orb{animation:none!important}#beranda.hero .decho-scene-art{transition:none!important}}
 </style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
