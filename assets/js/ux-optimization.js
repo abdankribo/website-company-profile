@@ -55,9 +55,13 @@
     let activeFilter='all';
     const normalize=s=>(s||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('id').replace(/&amp;/g,'&');
     function categoryFor(card){
+      const title=normalize($('h3',card)?.textContent||'');
       const content=normalize(card.textContent);
-      if(/warehouse|gudang/.test(content)) return 'gudang';
-      if(/residential|rumah hunian|rumah tinggal|rungkut city/.test(content)) return 'hunian';
+      // Categorize by the actual project type/name, not every mention of "pelabuhan"
+      // in its location, because warehouse projects can also be located at a port.
+      if(/warehouse|gudang/.test(title)) return 'gudang';
+      if(/residential|rumah hunian|rumah tinggal|rungkut city/.test(title)) return 'hunian';
+      if(/moveable bridge|catwalk|control room|frontal frame|marine steel|pelabuhan|port/.test(title+' '+content)) return 'pelabuhan';
       return 'pelabuhan';
     }
     function applyProjectFilters(){
