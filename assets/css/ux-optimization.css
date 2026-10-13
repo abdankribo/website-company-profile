@@ -636,3 +636,55 @@ body:has(.hero#beranda) .cards .service-card:nth-child(3){
 body{animation:dechoPageEnter .42s ease-out both}
 body.decho-page-leaving{opacity:0;transform:translateY(-4px);transition:opacity .18s ease,transform .18s ease}
 @media(prefers-reduced-motion:reduce){body,body.decho-page-leaving{animation:none;transition:none;opacity:1;transform:none}}
+
+
+/* Contrast-first service cards: text sits on a solid surface, photos remain decorative */
+body:has(.hero#beranda) .cards .service-card{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:#fff!important;background-image:none!important;
+  color:#111747;border:1px solid #dfe4f2!important;
+  box-shadow:0 8px 26px rgba(17,23,71,.06);
+}
+body:has(.hero#beranda) .cards .service-card:before{
+  content:"";position:absolute;inset:0 0 auto;height:5px;
+  background:linear-gradient(90deg,#3158e8,#7353df);z-index:-1;
+}
+body:has(.hero#beranda) .cards .service-card h3,
+body:has(.hero#beranda) .cards .service-card .iconbox{color:#172554!important}
+body:has(.hero#beranda) .cards .service-card p{color:#4d5877!important}
+body:has(.hero#beranda) .cards .service-card:hover{
+  background:#f8f9ff!important;border-color:#aab8f0!important;
+}
+body:has(.section.dark) .section-head h2,
+body:has(.section.dark) .section-head .section-kicker{color:#fff}
+body:has(.section.dark) .section-head p{color:#e3e8ff!important}
+body:has(.section.dark) .cards .service-card{
+  background:#fff!important;color:#111747;
+}
+body:has(.section.dark) .cards .service-card h3{color:#111747!important}
+body:has(.section.dark) .cards .service-card p{color:#4d5877!important}
+
+/* Project search/filter controls: clear contrast and reliable wrapping */
+.project-tools{
+  background:#f5f7ff!important;border:1px solid #dfe5fa!important;
+  border-radius:18px!important;padding:16px!important;
+}
+.project-search{
+  background:#fff!important;color:#172033!important;border:1px solid #cbd5ee!important;
+}
+.project-search::placeholder{color:#68728b!important;opacity:1}
+.project-filter{
+  background:#fff!important;color:#263252!important;border-color:#d4dcf1!important;
+  white-space:normal;line-height:1.35;
+}
+.project-filter[aria-pressed=true],.project-filter:hover,.project-filter:focus-visible{
+  color:#fff!important;background:linear-gradient(115deg,#111747,#3158e8,#7353df)!important;
+  border-color:transparent!important;
+}
+.project-results{color:#394563!important;font-weight:700}
+.project-grid .project-card h3,.project-grid .project-card p{color:#172033}
+.project-grid .project-card .iconbox{z-index:2}
+@media(max-width:760px){
+ .project-tools{padding:12px!important}
+ .project-filter-list{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
