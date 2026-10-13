@@ -1124,3 +1124,55 @@ body:has(.hero#beranda) .cards .service-card:focus-within::after{
     transition:none!important;
   }
 }
+
+
+/* DECHO project showcase: force the deep-purple futuristic theme */
+html body main section.decho-showcase#proyek-utama{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(ellipse at 50% -18%,rgba(168,85,247,.25),transparent 48%),
+    radial-gradient(ellipse at 100% 80%,rgba(109,40,217,.20),transparent 42%),
+    linear-gradient(135deg,#16082f 0%,#1b0b3d 48%,#100725 100%)!important;
+  color:#fff!important;
+}
+html body main section.decho-showcase#proyek-utama .showcase-heading h2,
+html body main section.decho-showcase#proyek-utama .showcase-heading p,
+html body main section.decho-showcase#proyek-utama .showcase-heading .showcase-kicker{
+  color:#f5f0ff!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+html body main section.decho-showcase#proyek-utama .showcase-heading h2 span{
+  color:#c4a5ff!important;
+  background:none!important;
+  -webkit-text-fill-color:#c4a5ff!important;
+}
+html body main section.decho-showcase#proyek-utama .showcase-card,
+html body main section.decho-showcase#proyek-utama .showcase-card-body{
+  background:linear-gradient(155deg,#281047 0%,#20103e 58%,#180c32 100%)!important;
+  color:#f5f0ff!important;
+  border-color:#6d3bb5!important;
+}
+html body main section.decho-showcase#proyek-utama .showcase-card h3,
+html body main section.decho-showcase#proyek-utama .showcase-card p,
+html body main section.decho-showcase#proyek-utama .showcase-card .showcase-meta,
+html body main section.decho-showcase#proyek-utama .showcase-card .showcase-meta span{
+  color:#eee7ff!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+html body main section.decho-showcase#proyek-utama .showcase-card .showcase-number{
+  color:#c4a5ff!important;
+}
+html body main section.decho-showcase#proyek-utama .showcase-card:hover,
+html body main section.decho-showcase#proyek-utama .showcase-card:focus-within{
+  background:linear-gradient(145deg,#482078 0%,#34205f 58%,#25215e 100%)!important;
+  border-color:#c084fc!important;
+  box-shadow:0 24px 55px rgba(126,34,206,.32)!important;
+}
+html body main section.decho-showcase#proyek-utama .showcase-card:hover .showcase-card-body,
+html body main section.decho-showcase#proyek-utama .showcase-card:focus-within .showcase-card-body{
+  background:linear-gradient(145deg,#482078 0%,#34205f 58%,#25215e 100%)!important;
+}
