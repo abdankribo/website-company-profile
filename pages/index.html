@@ -1972,6 +1972,33 @@ section.about-background-section>.container.about-grid>.about-copy{
     padding:28px 22px 32px!important;border-radius:0 0 22px 22px!important;
   }
 }
+
+/* DECHO ABOUT ILLUSTRATION FIX v4 — show the complete SVG without clipping */
+.page-main section.section.about-background-section > .container.about-grid{overflow:visible!important}
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  flex:0 0 48%!important;width:48%!important;max-width:48%!important;height:auto!important;
+  min-height:0!important;aspect-ratio:620/500!important;align-self:center!important;
+  overflow:visible!important;border-radius:28px 0 0 28px!important
+}
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art > .about-vector-art,
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art .about-vector-art{
+  position:relative!important;inset:auto!important;display:block!important;width:100%!important;
+  height:auto!important;aspect-ratio:620/500!important;min-height:0!important;
+  object-fit:contain!important;object-position:center!important;overflow:visible!important
+}
+@media(max-width:760px){
+  .page-main section.section.about-background-section > .container.about-grid{overflow:visible!important}
+  .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+    flex:0 0 auto!important;width:100%!important;max-width:100%!important;height:auto!important;
+    min-height:0!important;aspect-ratio:620/500!important;overflow:visible!important;
+    border-radius:22px 22px 0 0!important
+  }
+  .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art > .about-vector-art,
+  .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art .about-vector-art{
+    width:100%!important;height:auto!important;aspect-ratio:620/500!important
+  }
+}
+
 </style>
 
 
