@@ -1528,19 +1528,21 @@ html body main.page-main .project-grid > .service-card.project-card:focus-within
 
 <style id="decho-project-photo-size-match">
 
-/* Final override: force the project photos themselves to match showcase photos.
-   Scoped to all project cards, including variants whose section wrapper differs. */
-html body main.page-main article.service-card.project-card > img.project-photo,
-html body main.page-main .project-grid article.project-card > img.project-photo,
-html body main.page-main section article.project-card > img.project-photo {
+/* Full-bleed project photos: align every photo edge-to-edge with its card,
+   matching the featured showcase image treatment. */
+html body main.page-main #seluruh-proyek .project-grid > article.service-card.project-card > img.project-photo,
+html body main.page-main #seluruh-proyek .project-grid > article.project-card > img.project-photo,
+html body main.page-main article.service-card.project-card > img.project-photo {
   display:block!important;
+  position:relative!important;
   box-sizing:border-box!important;
-  width:calc(100% + 40px)!important;
+  width:calc(100% + 48px)!important;
+  max-width:none!important;
   height:clamp(190px,17vw,245px)!important;
   min-height:clamp(190px,17vw,245px)!important;
   max-height:245px!important;
-  flex:none!important;
-  margin:0 -20px 20px!important;
+  flex:0 0 clamp(190px,17vw,245px)!important;
+  margin:0 -24px 20px!important;
   padding:0!important;
   object-fit:cover!important;
   object-position:center 45%!important;
@@ -1549,14 +1551,14 @@ html body main.page-main section article.project-card > img.project-photo {
   border-radius:0!important;
 }
 @media(max-width:600px) {
-  html body main.page-main article.service-card.project-card > img.project-photo,
-  html body main.page-main .project-grid article.project-card > img.project-photo,
-  html body main.page-main section article.project-card > img.project-photo {
+  html body main.page-main #seluruh-proyek .project-grid > article.service-card.project-card > img.project-photo,
+  html body main.page-main #seluruh-proyek .project-grid > article.project-card > img.project-photo,
+  html body main.page-main article.service-card.project-card > img.project-photo {
     width:calc(100% + 40px)!important;
     height:220px!important;
     min-height:220px!important;
     max-height:220px!important;
-    flex:none!important;
+    flex-basis:220px!important;
     margin:0 -20px 20px!important;
   }
 }
