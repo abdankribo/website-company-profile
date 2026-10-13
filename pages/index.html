@@ -1123,6 +1123,72 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
  }
  .page-main section.section.about-background-section .about-copy h2{font-size:clamp(1.85rem,7vw,2.4rem)!important}
 }
+
+/* FINAL ABOUT COPY POSITION FIX — intentionally last to override legacy styles */
+.page-main section.section.about-background-section > .container.about-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  grid-template-rows:minmax(560px,auto)!important;
+  grid-template-areas:"visual copy"!important;
+  align-items:stretch!important;
+  position:relative!important;
+  width:min(1200px,calc(100% - 48px))!important;
+  max-width:1200px!important;
+  min-height:560px!important;
+  margin-inline:auto!important;
+  padding:0!important;
+  overflow:hidden!important;
+}
+.page-main section.section.about-background-section > .container.about-grid > .about-background-art{
+  position:absolute!important;
+  inset:0 auto 0 0!important;
+  width:50%!important;
+  height:100%!important;
+  min-height:100%!important;
+  margin:0!important;
+  grid-column:1!important;
+  grid-row:1!important;
+  opacity:.72!important;
+  z-index:0!important;
+}
+.page-main section.section.about-background-section > .container.about-grid > .about-copy{
+  display:block!important;
+  grid-area:copy!important;
+  grid-column:2!important;
+  grid-row:1!important;
+  position:relative!important;
+  inset:auto!important;
+  align-self:center!important;
+  justify-self:stretch!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:clamp(32px,4vw,58px)!important;
+  float:none!important;
+  clear:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  z-index:2!important;
+  background:linear-gradient(90deg,rgba(239,243,255,.84),rgba(247,248,255,.98) 20%)!important;
+}
+@media(max-width:760px){
+ .page-main section.section.about-background-section > .container.about-grid{
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+  grid-template-rows:auto!important;grid-template-areas:"copy"!important;
+  width:calc(100% - 32px)!important;min-height:0!important;height:auto!important;
+ }
+ .page-main section.section.about-background-section > .container.about-grid > .about-background-art{
+  inset:0!important;width:100%!important;height:100%!important;min-height:100%!important;
+  opacity:.18!important;
+ }
+ .page-main section.section.about-background-section > .container.about-grid > .about-copy{
+  grid-area:copy!important;grid-column:1!important;grid-row:1!important;
+  padding:34px 24px!important;
+  background:linear-gradient(180deg,rgba(245,247,255,.82),rgba(248,249,255,.97))!important;
+ }
+}
 </style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
 <section class="hero" id="beranda"><div class="decho-scene" aria-hidden="true">
 <svg class="decho-scene-art" viewBox="0 0 900 650" role="presentation" xmlns="http://www.w3.org/2000/svg">
