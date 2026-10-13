@@ -91,3 +91,48 @@
   }
   const year=$('#year');if(year&&!year.textContent.trim())year.textContent=new Date().getFullYear();
 })();
+
+/* Site-wide image resilience: ensure local photos remain visible if a source path fails */
+(function(){
+  'use strict';
+  const nested = location.pathname.includes('/proyek/');
+  const prefix = nested ? '../' : '';
+  const fallbackCandidates = [
+    prefix + 'assets/images/foto-Steel%20Fabrication%20and%20Installation_03%20(1).jpg',
+    prefix + 'assets/images/foto-Steel%20and%20Hydraulic%20Fabrication%20at%20Workshop_05%20(1).jpg',
+    prefix + 'assets/images/foto-Civil%20%26%20Architecture%20Work%E2%80%99s-rungkut%20city_01%20(1).jpg'
+  ];
+  let fallbackIndex = 0;
+  function setFallback(img){
+    if(!img || img.dataset.dechoFallbackDone === '1') return;
+    img.dataset.dechoFallbackDone = '1';
+    img.src = fallbackCandidates[fallbackIndex % fallbackCandidates.length];
+    fallbackIndex++;
+  }
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', () => setFallback(img), { once: true });
+    if(img.complete && img.naturalWidth === 0 && img.getAttribute('src')) setFallback(img);
+  });
+
+  // CSS background images do not emit an error event, so verify them explicitly.
+  const checked = new Set();
+  document.querySelectorAll('*').forEach(el => {
+    const bg = getComputedStyle(el).backgroundImage;
+    if(!bg || bg === 'none') return;
+    const matches = [...bg.matchAll(/url\(["']?(.*?)["']?\)/g)];
+    matches.forEach(match => {
+      const url = match[1];
+      if(!url || url.startsWith('data:') || checked.has(url)) return;
+      checked.add(url);
+      const probe = new Image();
+      probe.onerror = () => {
+        if(el.dataset.dechoBgFallback === '1') return;
+        el.dataset.dechoBgFallback = '1';
+        el.style.backgroundImage = 'linear-gradient(135deg, rgba(17,23,71,.12), rgba(49,88,232,.08)), url("' + fallbackCandidates[0] + '")';
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      };
+      probe.src = url;
+    });
+  });
+})();
