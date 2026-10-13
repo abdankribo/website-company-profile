@@ -927,7 +927,60 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
     grid-row: 2 !important;
   }
 }
-</style></style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
+<style id="decho-about-background-layout">
+/* About section: construction artwork is a faded background, never a grid column. */
+.page-main section.about-background-section{
+ position:relative!important;isolation:isolate!important;overflow:hidden!important;
+ background:linear-gradient(115deg,#d9e8ff 0%,#edf1ff 48%,#e9e5ff 100%)!important;
+ padding-block:clamp(64px,8vw,112px)!important;
+}
+.page-main section.about-background-section>.container.about-grid{
+ display:block!important;position:relative!important;width:min(1200px,calc(100% - 48px))!important;
+ max-width:1200px!important;margin-inline:auto!important;min-height:500px!important;
+}
+.page-main section.about-background-section>.container.about-grid>.about-background-art{
+ position:absolute!important;left:-5vw!important;top:50%!important;transform:translateY(-50%)!important;
+ width:56%!important;height:100%!important;min-height:480px!important;max-height:620px!important;
+ margin:0!important;float:none!important;z-index:-1!important;opacity:.30!important;
+ pointer-events:none!important;overflow:hidden!important;background:transparent!important;
+ box-shadow:none!important;border:0!important;
+}
+.page-main section.about-background-section .about-vector-scene{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+}
+.page-main section.about-background-section .about-vector-art{
+ display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;
+}
+.page-main section.about-background-section .about-vector-art>rect:first-of-type{opacity:0!important}
+.page-main section.about-background-section .about-copy{
+ position:relative!important;display:block!important;box-sizing:border-box!important;
+ width:49%!important;max-width:620px!important;margin-left:auto!important;margin-right:0!important;
+ padding:16px 0!important;float:none!important;z-index:1!important;
+ opacity:1!important;visibility:visible!important;transform:none!important;
+}
+.page-main section.about-background-section .about-copy h2{
+ color:#172554!important;line-height:1.12!important;letter-spacing:-.035em!important;
+}
+.page-main section.about-background-section .about-copy p{color:#405781!important;line-height:1.8!important}
+.page-main section.about-background-section .about-copy .section-kicker,
+.page-main section.about-background-section .about-copy .text-link{color:#3858d9!important}
+@media(max-width:760px){
+ .page-main section.about-background-section{padding-block:44px!important}
+ .page-main section.about-background-section>.container.about-grid{
+  width:calc(100% - 36px)!important;min-height:0!important;
+ }
+ .page-main section.about-background-section>.container.about-grid>.about-background-art{
+  left:-20%!important;top:0!important;transform:none!important;width:95%!important;height:390px!important;
+  min-height:0!important;opacity:.16!important;
+ }
+ .page-main section.about-background-section .about-copy{
+  width:100%!important;max-width:none!important;margin:0!important;padding:0!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .page-main section.about-background-section .about-vector-art *{animation:none!important;transition:none!important}
+}
+</style></style></style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
 <section class="hero" id="beranda"><div class="decho-scene" aria-hidden="true">
 <svg class="decho-scene-art" viewBox="0 0 900 650" role="presentation" xmlns="http://www.w3.org/2000/svg">
 <defs><linearGradient id="dechoGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a8baff"/><stop offset="1" stop-color="#4540a8"/></linearGradient><linearGradient id="dechoWall" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#f7f5ff"/><stop offset="1" stop-color="#a8b3f5"/></linearGradient><linearGradient id="dechoVest" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e5ff68"/><stop offset="1" stop-color="#8ebd35"/></linearGradient><filter id="dechoGlow"><feGaussianBlur stdDeviation="5"/></filter></defs>
@@ -941,7 +994,7 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
 <!-- foreground engineer --> <g class="decho-worker" transform="translate(425 350)"><ellipse cx="10" cy="212" rx="88" ry="15" fill="#101747" opacity=".35"/><path d="M-45 98L-64 204L-43 258L-7 258L3 185L22 258L61 258L76 197L48 98Z" fill="#17204f"/><path d="M-55 58Q-42 28 -5 30Q31 27 48 58L75 150L47 183L-54 176L-78 144Z" fill="#1b2864"/><path d="M-48 63L-18 50L31 54L52 150L-47 150Z" fill="url(#dechoVest)" stroke="#d9ff8a" stroke-width="3"/><path d="M-31 66L-26 148 M28 60L38 148" stroke="#f7f7ff" stroke-width="7"/><path d="M-42 88L42 88" stroke="#f7f7ff" stroke-width="5"/><path d="M-20 77L-8 62L5 77L5 96L-20 96Z" fill="#252f86"/><path d="M-16 78L-7 70L1 78V91H-16Z" fill="#a8a0ff"/><text x="-25" y="116" font-family="Arial,sans-serif" font-size="13" font-weight="800" fill="#18245e">DECHO</text><path d="M-53 73L-78 116L-60 135L-35 103" fill="#17204f" stroke="#283777" stroke-width="5"/><path d="M39 72L67 105L49 130L22 104" fill="#17204f"/><path d="M45 96L84 105L70 139L36 126Z" fill="#20285e"/><rect x="45" y="102" width="38" height="48" rx="4" fill="#566dff" stroke="#c5d1ff" stroke-width="3" transform="rotate(12 45 102)"/><path d="M52 112L75 117M51 120L73 125M51 128L68 132" stroke="#a7f4ff" stroke-width="2"/><path d="M-21 28Q-35 9 -28 -16L-13 -38L20 -38L38 -13L31 28Z" fill="#d89a7d"/><path d="M-29 -14Q-29 -49 4 -48Q34 -48 39 -12L28 -1L-21 -2Z" fill="#fff"/><path d="M-35 -13Q-30 -32 3 -33Q30 -33 42 -14L36 -7L-34 -7Z" fill="#d9e0ff"/><path d="M-16 -40Q4 -52 25 -40" fill="none" stroke="#b3bcf8" stroke-width="3"/></g>
 <!-- floating badges --> <g class="decho-badge decho-badge-one"><rect x="250" y="105" width="205" height="62" rx="15" fill="#fff" fill-opacity=".13" stroke="#b9b2ff" stroke-opacity=".65"/><path d="M272 137L285 125L298 137V151H289V141H281V151H272Z" fill="#c3b8ff"/><text x="310" y="131" fill="#fff" font-size="13" font-weight="700">Hunian Berkualitas</text><text x="310" y="150" fill="#e0e3ff" font-size="10">Nyaman untuk masa depan</text></g><g class="decho-badge decho-badge-two"><rect x="600" y="220" width="205" height="62" rx="15" fill="#fff" fill-opacity=".13" stroke="#b9b2ff" stroke-opacity=".65"/><path d="M623 237L638 232L653 237V250L638 264L623 250Z" fill="#fff"/><path d="M633 247L637 251L644 243" fill="none" stroke="#5c58c8" stroke-width="3"/><text x="663" y="246" fill="#fff" font-size="13" font-weight="700">Struktur Kuat</text><text x="663" y="264" fill="#e0e3ff" font-size="10">Aman dan tahan lama</text></g><g class="decho-badge decho-badge-three"><rect x="585" y="390" width="220" height="62" rx="15" fill="#fff" fill-opacity=".13" stroke="#b9b2ff" stroke-opacity=".65"/><circle cx="610" cy="414" r="7" fill="#fff"/><circle cx="625" cy="414" r="7" fill="#fff"/><path d="M597 435Q597 420 610 420Q623 420 623 435M613 435Q613 420 626 420Q639 420 639 435" fill="#fff"/><text x="649" y="416" fill="#fff" font-size="13" font-weight="700">Tim Profesional</text><text x="649" y="434" fill="#e0e3ff" font-size="10">Berpengalaman &amp; terpercaya</text></g>
 </svg><span class="decho-orb decho-orb-a"></span><span class="decho-orb decho-orb-b"></span></div><header class="hero-content container"><span class="eyebrow">PT. Dermawan Charisma Olahkarya · DECHO</span><h1>Membangun dengan kualitas,<br><span>menjaga kepercayaan.</span></h1><p>Perusahaan jasa konstruksi yang berfokus pada pembangunan hunian, renovasi, dan pekerjaan struktural. Kami mengutamakan kualitas pengerjaan, integritas, profesionalisme, serta efisiensi biaya demi hasil terbaik bagi setiap klien.</p><nav class="hero-actions" aria-label="Aksi utama"><a class="btn" href="layanan.html">Lihat Layanan Konstruksi ↗</a><a class="btn outline" href="kontak.html">Konsultasi Proyek</a></nav></header><aside class="hero-bottom container"><span class="slide-count">PT. DECHO · It’s About Us, It’s About Trust</span><span class="scroll-note">GULIR UNTUK MENJELAJAH ↓</span></aside></section>
-<section class="section"><div class="container about-grid"><div class="about-image about-interactive" role="img" aria-label="Ilustrasi interaktif dua insinyur merencanakan proyek konstruksi dengan cetak biru">
+<section class="section about-background-section"><div class="container about-grid"><div class="about-image about-interactive about-background-art" role="img" aria-label="Ilustrasi interaktif dua insinyur merencanakan proyek konstruksi dengan cetak biru">
 <div class="about-vector-scene" aria-hidden="true"><svg class="about-vector-art" viewBox="0 0 620 500" xmlns="http://www.w3.org/2000/svg">
 <defs><linearGradient id="planBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7f9ff"/><stop offset="1" stop-color="#dce6ff"/></linearGradient><linearGradient id="planGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7c91ff"/><stop offset="1" stop-color="#42c4ef"/></linearGradient></defs>
 <rect width="620" height="500" fill="url(#planBg)"/>
