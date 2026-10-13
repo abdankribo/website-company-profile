@@ -1204,3 +1204,22 @@ html body main.page-main > section.decho-showcase#proyek-utama{
     linear-gradient(135deg,#16082b 0%,#1b0b36 48%,#10071f 100%)!important;
   color:#fff!important;
 }
+
+
+/* Separate the project page hero from the showcase: hero stays dark navy-blue,
+   while the showcase remains deep purple. */
+html body main.page-main > section.page-hero{
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(49,88,232,.22),transparent 46%),
+    linear-gradient(135deg,#0b1638 0%,#101e4c 55%,#17245b 100%)!important;
+  color:#f7f8ff!important;
+}
+html body main.page-main > section.page-hero .section-kicker{
+  color:#aebfff!important;
+}
+html body main.page-main > section.page-hero h1{
+  color:#ffffff!important;
+}
+html body main.page-main > section.page-hero p{
+  color:#d6defc!important;
+}
