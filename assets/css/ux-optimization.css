@@ -1223,3 +1223,22 @@ html body main.page-main > section.page-hero h1{
 html body main.page-main > section.page-hero p{
   color:#d6defc!important;
 }
+
+
+/* User preference: keep the project hero light, distinct from the deep-purple showcase */
+html body main.page-main > section.page-hero{
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(196,181,253,.36),transparent 46%),
+    radial-gradient(ellipse at 92% 85%,rgba(165,180,252,.25),transparent 42%),
+    linear-gradient(135deg,#f7f4ff 0%,#eee9ff 54%,#e7eaff 100%)!important;
+  color:#171536!important;
+}
+html body main.page-main > section.page-hero .section-kicker{
+  color:#6842c2!important;opacity:1!important;
+}
+html body main.page-main > section.page-hero h1{
+  color:#171536!important;text-shadow:none!important;
+}
+html body main.page-main > section.page-hero p{
+  color:#4b4768!important;opacity:1!important;
+}
