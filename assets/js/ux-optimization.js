@@ -44,13 +44,12 @@
       hero.classList.add('decho-gradient-motion');
     }
   }
-  // Live search and category filters for the complete portfolio.
+  // Live search and category filters for every project card.
   const projectSearch=$('#projectSearch');
   if(projectSearch){
-    const grids=$('.project-grid');
-    const projectGrid=grids[grids.length-1];
-    const cards=projectGrid?$('.project-card',projectGrid):[];
-    const filters=$('[data-project-filter]');
+    const projectGrid=$$('.project-grid').slice(-1)[0];
+    const cards=projectGrid?$$('.project-card',projectGrid):[];
+    const filters=$$('[data-project-filter]');
     const resultLabel=$('#projectResults');
     let activeFilter='all';
     function applyProjectFilters(){
@@ -59,7 +58,7 @@
       cards.forEach(card=>{
         const heading=$('h3',card)?.textContent.toLocaleLowerCase('id')||'';
         const text=card.textContent.toLocaleLowerCase('id');
-        const category=heading.includes('warehouse')||heading.includes('gudang')?'gudang':heading.includes('residential')||heading.includes('rumah')?'hunian':'pelabuhan';
+        const category=heading.includes('warehouse')||heading.includes('gudang')?'gudang':heading.includes('residential')||heading.includes('rumah')||heading.includes('hunian')?'hunian':'pelabuhan';
         const matchesCategory=activeFilter==='all'||category===activeFilter;
         const matchesQuery=!query||text.includes(query);
         card.hidden=!(matchesCategory&&matchesQuery);
