@@ -1276,6 +1276,49 @@ html body section#proyek-utama .showcase-card-body>p{color:#d4ddff!important}
 html body section#proyek-utama .showcase-link{color:#fff!important}
 html body section#proyek-utama .showcase-arrow{background:linear-gradient(135deg,#c084fc,#668cff)!important;color:#fff!important;box-shadow:0 0 18px rgba(168,85,247,.25)!important}
 </style>
+
+<style id="decho-showcase-force-dark-fix">
+/* Force the featured-project section to keep its intended futuristic purple/navy theme.
+   High-specificity overrides prevent older light-theme rules from washing out the text. */
+html body section#proyek-utama.decho-showcase{
+  position:relative!important;
+  isolation:isolate!important;
+  background-color:#090f30!important;
+  background-image:
+    radial-gradient(ellipse at 50% -18%,rgba(111,55,226,.48) 0%,transparent 52%),
+    radial-gradient(ellipse at 100% 65%,rgba(35,82,207,.25) 0%,transparent 42%),
+    linear-gradient(135deg,#080d2b 0%,#111747 48%,#17104a 100%)!important;
+  color:#f8faff!important;
+}
+html body section#proyek-utama.decho-showcase:before{
+  content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;pointer-events:none!important;
+  width:auto!important;height:auto!important;transform:none!important;
+  background-image:linear-gradient(rgba(153,135,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(153,135,255,.055) 1px,transparent 1px)!important;
+  background-size:42px 42px!important;opacity:.55!important;
+}
+html body section#proyek-utama.decho-showcase .showcase-heading .showcase-kicker{color:#a9c5ff!important}
+html body section#proyek-utama.decho-showcase .showcase-heading h2{color:#fff!important;-webkit-text-fill-color:#fff!important;text-shadow:0 2px 22px rgba(0,0,0,.35)!important}
+html body section#proyek-utama.decho-showcase .showcase-heading h2 span{
+  background-image:linear-gradient(90deg,#d18aff 0%,#7d8dff 52%,#67caff 100%)!important;
+  background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important;
+}
+html body section#proyek-utama.decho-showcase .showcase-heading>p{color:#c4d4ff!important}
+html body section#proyek-utama.decho-showcase .showcase-card{
+  background:linear-gradient(145deg,rgba(20,25,77,.98),rgba(9,19,56,.98))!important;
+  border:1px solid rgba(111,105,255,.8)!important;
+  box-shadow:0 18px 45px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.045)!important;
+}
+html body section#proyek-utama.decho-showcase .showcase-card h3{color:#fff!important}
+html body section#proyek-utama.decho-showcase .showcase-card p,
+html body section#proyek-utama.decho-showcase .showcase-meta,
+html body section#proyek-utama.decho-showcase .showcase-meta span{color:#d5e0ff!important}
+html body section#proyek-utama.decho-showcase .showcase-number{color:#c6b4ff!important}
+html body section#proyek-utama.decho-showcase .showcase-link{color:#fff!important}
+html body section#proyek-utama.decho-showcase .showcase-card:hover{
+  border-color:#8f7dff!important;box-shadow:0 25px 55px rgba(72,62,190,.32)!important;
+}
+</style>
+
 </head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main"><section class="page-hero"><div class="container"><div class="section-kicker">Portofolio DECHO</div><h1>Proyek Utama</h1><p>Pengalaman pekerjaan konstruksi meliputi konstruksi gudang, sistem moveable bridge dan pekerjaan struktur baja pelabuhan, serta pembangunan dan renovasi rumah hunian.</p></div></section><section class="decho-showcase" id="proyek-utama">
   <div class="container">
     <div class="showcase-heading">
