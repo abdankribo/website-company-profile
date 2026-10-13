@@ -820,7 +820,7 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
 @media(prefers-reduced-motion:reduce){.about-blueprint,.about-engineer-one,.about-engineer-two,.about-blueprint-sheet,.about-vector-crane,.about-float-tag,.about-float-dot{animation:none!important}.about-vector-art{transition:none!important}}
 </style><style id="decho-about-layout-final">
 /* Final layout override: keep the illustration and copy in separate grid columns. */
-main#main-content .section>.container.about-grid{
+.page-main .section>.container.about-grid{
  display:grid!important;
  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
  grid-template-areas:"visual copy"!important;
@@ -828,33 +828,33 @@ main#main-content .section>.container.about-grid{
  row-gap:32px!important;
  align-items:center!important;
 }
-main#main-content .section>.container.about-grid>.about-interactive{
+.page-main .section>.container.about-grid>.about-interactive{
  grid-area:visual!important;grid-column:1!important;grid-row:1!important;
  width:100%!important;min-width:0!important;max-width:100%!important;
  float:none!important;z-index:1!important;
 }
-main#main-content .section>.container.about-grid>.about-copy{
+.page-main .section>.container.about-grid>.about-copy{
  grid-area:copy!important;grid-column:2!important;grid-row:1!important;
  position:relative!important;display:block!important;visibility:visible!important;
  opacity:1!important;width:100%!important;min-width:0!important;max-width:100%!important;
  float:none!important;z-index:2!important;transform:none!important;
 }
-main#main-content .section>.container.about-grid>.about-interactive .about-vector-scene{
+.page-main .section>.container.about-grid>.about-interactive .about-vector-scene{
  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:1!important;
 }
-main#main-content .section>.container.about-grid>.about-interactive .about-vector-art{
+.page-main .section>.container.about-grid>.about-interactive .about-vector-art{
  display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;
 }
 @media(max-width:720px){
- main#main-content .section>.container.about-grid{
+ .page-main .section>.container.about-grid{
   grid-template-columns:minmax(0,1fr)!important;
   grid-template-areas:"visual" "copy"!important;
   row-gap:28px!important;
  }
- main#main-content .section>.container.about-grid>.about-interactive{
+ .page-main .section>.container.about-grid>.about-interactive{
   grid-area:visual!important;grid-column:1!important;grid-row:1!important;min-height:300px!important;
  }
- main#main-content .section>.container.about-grid>.about-copy{
+ .page-main .section>.container.about-grid>.about-copy{
   grid-area:copy!important;grid-column:1!important;grid-row:2!important;
  }
 }
