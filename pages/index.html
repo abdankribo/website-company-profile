@@ -1912,23 +1912,24 @@ section.about-background-section>.container.about-grid>.about-copy{
 }
 
 
-/* DECHO ABOUT IMAGE VISIBILITY FIX v2 — override older illustration rules */
+/* DECHO ABOUT LAYOUT FIX v3 — independent flex columns, no overlap */
 .page-main section.section.about-background-section > .container.about-grid{
-  position:relative!important;display:block!important;
+  position:relative!important;display:flex!important;flex-direction:row!important;
+  align-items:stretch!important;justify-content:space-between!important;
   width:min(1180px,calc(100% - 44px))!important;max-width:1180px!important;
   min-height:560px!important;height:auto!important;margin:0 auto!important;
-  padding:0!important;overflow:hidden!important;
-  grid-template-columns:none!important;grid-template-areas:none!important;gap:0!important;
-  isolation:isolate!important;
+  padding:0!important;overflow:hidden!important;gap:0!important;
+  grid-template-columns:none!important;grid-template-areas:none!important;
+  isolation:isolate!important;box-sizing:border-box!important;
 }
 .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
-  position:absolute!important;inset:0 auto 0 0!important;
-  display:block!important;width:48%!important;max-width:48%!important;
-  height:100%!important;min-height:560px!important;margin:0!important;padding:0!important;
-  opacity:1!important;visibility:visible!important;overflow:hidden!important;
-  background:linear-gradient(135deg,#f7f9ff 0%,#dce6ff 100%)!important;
-  border-radius:28px 0 0 28px!important;
-  z-index:1!important;flex:none!important;transform:none!important;
+  position:relative!important;inset:auto!important;display:block!important;
+  flex:0 0 48%!important;width:48%!important;max-width:48%!important;
+  min-width:0!important;height:auto!important;min-height:560px!important;
+  margin:0!important;padding:0!important;opacity:1!important;visibility:visible!important;
+  overflow:hidden!important;background:linear-gradient(135deg,#f7f9ff 0%,#dce6ff 100%)!important;
+  border-radius:28px 0 0 28px!important;z-index:1!important;transform:none!important;
+  box-sizing:border-box!important;
 }
 .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art > .about-vector-art,
 .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art .about-vector-art{
@@ -1939,23 +1940,26 @@ section.about-background-section>.container.about-grid>.about-copy{
   transform:translate3d(var(--about-x,0px),var(--about-y,0px),0)!important;
 }
 .page-main section.section.about-background-section > .container.about-grid > .about-copy{
-  position:relative!important;display:flex!important;flex-direction:column!important;justify-content:center!important;
+  position:relative!important;display:flex!important;flex:1 1 52%!important;
+  flex-direction:column!important;justify-content:center!important;align-self:stretch!important;
   box-sizing:border-box!important;width:52%!important;max-width:52%!important;min-width:0!important;
-  min-height:560px!important;margin:0 0 0 48%!important;
+  min-height:560px!important;height:auto!important;margin:0!important;
   padding:clamp(30px,4vw,56px)!important;opacity:1!important;visibility:visible!important;
   overflow-wrap:anywhere!important;z-index:2!important;
   background:linear-gradient(135deg,#f8f9ff 0%,#f4f6ff 100%)!important;
-  border-radius:0 28px 28px 0!important;flex:none!important;
+  border-radius:0 28px 28px 0!important;transform:none!important;
 }
 @media(max-width:760px){
   .page-main section.section.about-background-section > .container.about-grid{
+    display:flex!important;flex-direction:column!important;align-items:stretch!important;
     width:calc(100% - 36px)!important;min-height:0!important;height:auto!important;
     overflow:hidden!important;
   }
   .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
-    position:relative!important;inset:auto!important;display:block!important;
-    width:100%!important;max-width:100%!important;height:auto!important;min-height:0!important;
-    aspect-ratio:620/500!important;border-radius:22px 22px 0 0!important;
+    position:relative!important;inset:auto!important;flex:0 0 auto!important;
+    display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;
+    height:auto!important;min-height:0!important;aspect-ratio:620/500!important;
+    border-radius:22px 22px 0 0!important;
   }
   .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art > .about-vector-art,
   .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art .about-vector-art{
@@ -1963,12 +1967,11 @@ section.about-background-section>.container.about-grid>.about-copy{
     min-height:0!important;object-fit:contain!important;object-position:center!important;
   }
   .page-main section.section.about-background-section > .container.about-grid > .about-copy{
-    width:100%!important;max-width:100%!important;min-height:0!important;
-    margin:0!important;padding:28px 22px 32px!important;
-    border-radius:0 0 22px 22px!important;
+    flex:0 0 auto!important;width:100%!important;max-width:100%!important;min-width:0!important;
+    min-height:0!important;height:auto!important;margin:0!important;
+    padding:28px 22px 32px!important;border-radius:0 0 22px 22px!important;
   }
 }
-
 </style>
 
 
