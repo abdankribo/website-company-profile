@@ -154,6 +154,44 @@ html body .decho-all-projects .project-card[hidden]{display:none!important}
 @media(max-width:600px){html body .decho-all-projects .project-grid{grid-template-columns:1fr!important;gap:19px!important}html body .decho-all-projects .project-card{min-height:0!important;height:auto!important;padding-bottom:22px!important}html body .decho-all-projects .project-card .project-photo{height:clamp(210px,58vw,250px)!important;min-height:clamp(210px,58vw,250px)!important;max-height:250px!important;flex-basis:clamp(210px,58vw,250px)!important}html body .decho-all-projects .project-card h3{min-height:0!important}}
 @media(prefers-reduced-motion:reduce){html body .decho-all-projects .project-card,html body .decho-all-projects .project-card *{transition:none!important}}
 
+
+/* Final contrast override: prevent global service-card hover rules washing out text */
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within{
+  background:linear-gradient(145deg,#302064 0%,#202b72 56%,#123f75 100%)!important;
+  background-color:#202b72!important;
+  color:#ffffff!important;
+  border-color:#9b8cff!important;
+}
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover h1,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover h2,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover h3,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover h4,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover p,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover strong,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover span,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover li,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover a,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within h1,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within h2,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within h3,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within h4,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within p,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within strong,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within span,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within li,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within a{
+  color:#ffffff!important;
+  -webkit-text-fill-color:#ffffff!important;
+}
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover p,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within p{color:#edf2ff!important;-webkit-text-fill-color:#edf2ff!important}
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover p strong,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within p strong{color:#e2c8ff!important;-webkit-text-fill-color:#e2c8ff!important}
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:hover .project-open:before,
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within .project-open:before{color:#fff!important;-webkit-text-fill-color:#fff!important}
+html body section.decho-all-projects .cards.project-grid>.service-card.project-card .project-photo{opacity:1!important;filter:none!important}
+
 </style>
 <link rel="stylesheet" href="../assets/css/ux-optimization.css">
 
