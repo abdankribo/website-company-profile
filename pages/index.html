@@ -818,6 +818,46 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
 .about-interactive:hover .image-label{transform:translateY(-4px);box-shadow:0 16px 42px rgba(10,18,65,.16)}
 @media(max-width:720px){.about-grid{grid-template-columns:minmax(0,1fr)!important;grid-template-areas:"visual" "copy";gap:28px!important}.about-grid>.about-interactive{grid-area:visual;grid-column:1;grid-row:1}.about-grid>.about-copy{grid-area:copy;grid-column:1;grid-row:2}.about-interactive{min-height:300px!important}.about-vector-scene{opacity:1}.about-interactive .image-label{left:14px;bottom:14px;max-width:205px}} .about-grid>.about-copy{position:relative!important;z-index:2!important;display:block!important;visibility:visible!important;opacity:1!important;min-width:0!important;align-self:center!important}.about-grid>.about-interactive{position:relative!important;z-index:1!important;min-width:0!important}.about-vector-scene{z-index:1!important}
 @media(prefers-reduced-motion:reduce){.about-blueprint,.about-engineer-one,.about-engineer-two,.about-blueprint-sheet,.about-vector-crane,.about-float-tag,.about-float-dot{animation:none!important}.about-vector-art{transition:none!important}}
+</style><style id="decho-about-layout-final">
+/* Final layout override: keep the illustration and copy in separate grid columns. */
+main#main-content .section>.container.about-grid{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+ grid-template-areas:"visual copy"!important;
+ column-gap:clamp(28px,5vw,72px)!important;
+ row-gap:32px!important;
+ align-items:center!important;
+}
+main#main-content .section>.container.about-grid>.about-interactive{
+ grid-area:visual!important;grid-column:1!important;grid-row:1!important;
+ width:100%!important;min-width:0!important;max-width:100%!important;
+ float:none!important;z-index:1!important;
+}
+main#main-content .section>.container.about-grid>.about-copy{
+ grid-area:copy!important;grid-column:2!important;grid-row:1!important;
+ position:relative!important;display:block!important;visibility:visible!important;
+ opacity:1!important;width:100%!important;min-width:0!important;max-width:100%!important;
+ float:none!important;z-index:2!important;transform:none!important;
+}
+main#main-content .section>.container.about-grid>.about-interactive .about-vector-scene{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:1!important;
+}
+main#main-content .section>.container.about-grid>.about-interactive .about-vector-art{
+ display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;
+}
+@media(max-width:720px){
+ main#main-content .section>.container.about-grid{
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-areas:"visual" "copy"!important;
+  row-gap:28px!important;
+ }
+ main#main-content .section>.container.about-grid>.about-interactive{
+  grid-area:visual!important;grid-column:1!important;grid-row:1!important;min-height:300px!important;
+ }
+ main#main-content .section>.container.about-grid>.about-copy{
+  grid-area:copy!important;grid-column:1!important;grid-row:2!important;
+ }
+}
 </style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
 <section class="hero" id="beranda"><div class="decho-scene" aria-hidden="true">
 <svg class="decho-scene-art" viewBox="0 0 900 650" role="presentation" xmlns="http://www.w3.org/2000/svg">
