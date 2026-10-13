@@ -1,47 +1,42 @@
-# Nusantara Steel Industries (NSI) — Company Profile
+# DECHO — Company Profile
 
-Website company profile Nusantara Steel Industries dengan identitas visual korporat biru navy, aksen biru-ungu, video hero, navigasi lintas halaman, dan layout responsif desktop maupun mobile.
+Website profil PT. Dermawan Charisma Olahkarya (DECHO), dibuat sebagai situs HTML statis responsif dengan identitas visual biru, ungu, dan putih.
 
-## Sumber website
+## Struktur proyek
 
-File HTML statis di root repository adalah sumber tampilan utama:
-- `index.html` — Beranda.
-- `tentang.html` — Profil, visi, misi, dan nilai perusahaan.
-- `layanan.html` — Material baja, pemrosesan, fabrikasi, serta distribusi.
-- `proyek.html` — Area kapabilitas proyek.
-- `tim.html` — Tim dan pola kolaborasi.
-- `keberlanjutan.html` — Keselamatan, efisiensi material, dan kemitraan bertanggung jawab.
-- `berita.html` — Wawasan industri dan material.
-- `kontak.html` — Informasi untuk memulai diskusi melalui email.
-- `language.js` — Fitur bahasa yang digunakan oleh halaman HTML.
+- `pages/` — halaman HTML utama: Beranda, Tentang, Layanan, Proyek, Kontak, Berita, Keberlanjutan, dan Tim.
+- `assets/css/` — stylesheet eksternal.
+- `assets/js/` — JavaScript, termasuk `language.js` dan `ux-optimization.js`.
+- `assets/images/` — logo dan gambar website.
+- `proyek/` — halaman detail tiap proyek.
+- `scripts/build-static.mjs` — menyiapkan keluaran statis untuk Cloudflare Workers.
+- `app/` — dipertahankan apa adanya dan tidak diubah dalam reorganisasi ini.
 
-## Menyamakan Cloudflare dengan GitHub Pages
+File HTML lama di root dipertahankan sebagai halaman pengarah ke `pages/`, sehingga URL lama seperti `/tentang.html` dan `/layanan.html` tetap bisa digunakan.
 
-Cloudflare Worker `decho` sekarang dikonfigurasi untuk menerbitkan versi HTML statis yang sama dengan GitHub Pages, bukan halaman Next.js yang berbeda.
+## Build statis
 
-Di Cloudflare Dashboard → Worker `decho` → Settings / Builds (Workers Builds), gunakan:
+Build membutuhkan Node.js:
 
-- **Production branch:** `main`
-- **Build command:** `npm run build:static`
-- **Deploy command:** `npx wrangler deploy`
-- **Root directory:** `/` jika repository dipakai langsung dari root.
+```bash
+npm run build:static
+```
 
-Build statis menyalin seluruh file `.html` di root dan `language.js` ke folder `dist/`. Wrangler menerbitkan folder tersebut sebagai static assets. Konfigurasi deployment ada di `wrangler.jsonc`.
+Hasil build berada di `dist/`. Script menyalin halaman pengarah root, folder `pages/`, `assets/`, dan `proyek/`.
 
-Setelah perubahan konfigurasi disimpan, jalankan ulang deployment dari `main`. Halaman Cloudflare menggunakan jalur file HTML seperti `/tentang.html`, sama seperti GitHub Pages. Perubahan konten pada file HTML sumber akan ikut diterbitkan pada deployment berikutnya.
+## Deploy Cloudflare Workers
 
-## Menjalankan aplikasi
+Konfigurasi `wrangler.jsonc` menggunakan folder `dist/` sebagai static assets. Di Cloudflare Workers Builds gunakan:
 
-Untuk pratinjau website statis, gunakan Node.js dan jalankan:
+- Production branch: `main`
+- Build command: `npm run build:static`
+- Deploy command: `npx wrangler deploy`
+- Root directory: `/`
 
-1. `npm install`
-2. `npm run build:static`
+## GitHub Pages
 
-Folder `dist/` berisi file yang akan diterbitkan. File sumber HTML tetap berada di root repository.
-
-Aplikasi Next.js di folder `app/` tetap ada sebagai versi aplikasi alternatif, tetapi tidak digunakan oleh deployment Cloudflare statis yang disetel agar sama dengan GitHub Pages.
+Atur GitHub Pages agar menerbitkan branch `main` dari root repository. Halaman utama tersimpan di `pages/`; file HTML di root menjaga kompatibilitas URL lama dan mengarahkan pengunjung ke halaman yang tersusun di folder tersebut.
 
 ## Catatan
 
-- Halaman menggunakan beberapa gambar/video dan Google Fonts dari URL eksternal, sehingga aset eksternal tetap membutuhkan koneksi internet.
-- Email kontak pada halaman kontak saat ini adalah alamat contoh `info@nusantarasteel.example`; ganti dengan alamat resmi perusahaan sebelum dipublikasikan.
+Perubahan struktur di GitHub tidak otomatis berarti website Cloudflare sudah di-deploy ulang. Deployment tetap mengikuti pengaturan platform yang digunakan.
