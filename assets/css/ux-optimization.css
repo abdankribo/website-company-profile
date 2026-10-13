@@ -537,3 +537,48 @@ body:has(main .details) .gallery img{
 @media(max-width:900px){
   .project-grid .project-card:nth-child(n){grid-column:span 1}
 }
+
+
+/* Final project-card image layout: fill media frame cleanly, remove oversized blank bars */
+.project-grid .project-card{display:flex;flex-direction:column;min-width:0}
+.project-grid .project-card>img.project-photo,
+.project-grid .project-card:nth-child(6n + 1)>img.project-photo,
+.project-grid .project-card:nth-child(6n + 5)>img.project-photo{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:16 / 10!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  max-height:none!important;
+  background:#e9edf7;
+}
+.project-grid .project-card .iconbox{
+  position:absolute;
+  top:calc((100vw - 44px) * .625);
+  left:18px;
+  transform:translateY(-50%);
+}
+/* Keep number badge positioned at the lower edge of the image rather than card content */
+.project-grid .project-card{position:relative}
+.project-grid .project-card .iconbox{top:clamp(175px,19vw,245px)}
+@media(min-width:901px){
+ .project-grid .project-card .iconbox{top:clamp(175px,19vw,245px)}
+ .project-grid .project-card:nth-child(6n + 1) .iconbox,
+ .project-grid .project-card:nth-child(6n + 5) .iconbox{top:clamp(195px,22vw,285px)}
+}
+@media(max-width:900px){
+ .project-grid .project-card .iconbox,
+ .project-grid .project-card:nth-child(6n + 1) .iconbox,
+ .project-grid .project-card:nth-child(6n + 5) .iconbox{top:clamp(165px,29vw,230px)}
+}
+@media(max-width:560px){
+ .project-grid .project-card .iconbox,
+ .project-grid .project-card:nth-child(6n + 1) .iconbox,
+ .project-grid .project-card:nth-child(6n + 5) .iconbox{top:clamp(150px,52vw,205px)}
+}
+/* Project detail gallery: consistent thumbnails without letterbox gaps */
+body:has(main .details) .gallery img{
+  display:block;width:100%;height:auto!important;aspect-ratio:4 / 3!important;
+  object-fit:cover!important;object-position:center;background:#e9edf7;
+}
