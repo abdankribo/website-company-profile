@@ -2165,6 +2165,79 @@ section.about-background-section>.container.about-grid>.about-copy{
  }
  .page-main section.section.about-background-section .about-copy h2{font-size:clamp(1.85rem,7vw,2.45rem)!important}
 }
+
+/* DECHO About layout correction: normal two-column flow, no image panel or divider. */
+html body .page-main section.section.about-background-section{
+  display:block!important;position:relative!important;isolation:isolate!important;
+  overflow:visible!important;padding:clamp(44px,6vw,84px) 0!important;
+  background:linear-gradient(110deg,#f5f8ff 0%,#fff 62%,#f4f6ff 100%)!important;
+}
+html body .page-main section.section.about-background-section > .container.about-grid{
+  display:grid!important;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)!important;
+  grid-template-areas:"art copy"!important;grid-template-rows:auto!important;
+  align-items:center!important;align-content:center!important;
+  gap:clamp(28px,4vw,60px)!important;
+  position:relative!important;isolation:isolate!important;
+  box-sizing:border-box!important;width:min(1240px,calc(100% - 48px))!important;
+  max-width:1240px!important;min-height:0!important;height:auto!important;
+  margin:0 auto!important;padding:0!important;overflow:visible!important;
+  border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;
+}
+html body .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  display:block!important;grid-area:art!important;grid-column:1!important;grid-row:1!important;
+  position:relative!important;inset:auto!important;align-self:center!important;justify-self:stretch!important;
+  width:100%!important;height:auto!important;aspect-ratio:700/620!important;
+  min-height:0!important;max-width:none!important;margin:0!important;padding:0!important;
+  float:none!important;overflow:visible!important;opacity:1!important;z-index:1!important;
+  pointer-events:none!important;background:transparent!important;background-image:none!important;
+  border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;
+}
+html body .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art:before,
+html body .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art:after{
+  content:none!important;display:none!important;background:none!important;border:0!important;box-shadow:none!important;
+}
+html body .page-main section.section.about-background-section .about-background-art > .about-vector-art{
+  display:block!important;position:absolute!important;inset:0!important;
+  width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;
+  object-fit:contain!important;object-position:center!important;overflow:visible!important;
+  background:transparent!important;transform:translate3d(var(--about-x,0px),var(--about-y,0px),0)!important;
+}
+html body .page-main section.section.about-background-section > .container.about-grid > .about-copy{
+  display:block!important;grid-area:copy!important;grid-column:2!important;grid-row:1!important;
+  position:relative!important;inset:auto!important;align-self:center!important;justify-self:stretch!important;
+  box-sizing:border-box!important;width:100%!important;max-width:620px!important;min-width:0!important;
+  height:auto!important;min-height:0!important;margin:0!important;padding:0!important;
+  float:none!important;clear:none!important;opacity:1!important;visibility:visible!important;
+  overflow:visible!important;transform:none!important;z-index:2!important;
+  background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+}
+html body .page-main section.section.about-background-section .about-copy h2{
+  color:#111747!important;font-size:clamp(2rem,3.2vw,3.1rem)!important;
+  line-height:1.1!important;letter-spacing:-.035em!important;overflow-wrap:break-word!important;
+}
+html body .page-main section.section.about-background-section .about-copy p{
+  color:#405783!important;line-height:1.75!important;
+}
+@media(max-width:760px){
+ html body .page-main section.section.about-background-section{padding:34px 0!important}
+ html body .page-main section.section.about-background-section > .container.about-grid{
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+  grid-template-areas:"art" "copy"!important;grid-template-rows:auto auto!important;
+  gap:12px!important;width:calc(100% - 32px)!important;min-height:0!important;
+ }
+ html body .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  grid-area:art!important;grid-column:1!important;grid-row:1!important;
+  position:relative!important;inset:auto!important;width:100%!important;height:auto!important;
+  aspect-ratio:700/570!important;min-height:0!important;max-height:none!important;
+ }
+ html body .page-main section.section.about-background-section > .container.about-grid > .about-copy{
+  grid-area:copy!important;grid-column:1!important;grid-row:2!important;
+  width:100%!important;max-width:none!important;margin:0!important;padding:12px 2px 0!important;
+ }
+ html body .page-main section.section.about-background-section .about-copy h2{
+  font-size:clamp(1.9rem,7vw,2.5rem)!important;
+ }
+}
 </style>
 
 
