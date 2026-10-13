@@ -1058,3 +1058,38 @@ body .page-main .about-image .image-label span{color:#465371!important}
 @media(max-width:720px){
   body .page-main .page-hero{background:linear-gradient(145deg,#111a43,#0b1030 70%,#211b51)!important}
 }
+
+
+/* Homepage polish: clear navigation, readable copy, balanced desktop sizing */
+body:has(.hero) .navbar{background:#fff!important;border-bottom:1px solid #dfe4f4!important}
+body:has(.hero) .navbar .navlinks a,
+body:has(.hero) .navbar .navlinks a:visited{color:#17204f!important;opacity:1!important;text-shadow:none!important}
+body:has(.hero) .navbar .navlinks a:hover,
+body:has(.hero) .navbar .navlinks a.active{color:#3158e8!important}
+body:has(.hero) .navbar .lang-toggle{color:#17204f!important;background:#eef1ff!important;border:1px solid #dce2ff!important}
+body:has(.hero) .navbar .menu-toggle{color:#17204f!important}
+body:has(.hero) .hero{min-height:clamp(570px,68vh,760px)!important}
+body:has(.hero) .hero-content{width:min(790px,100%)!important;max-width:790px!important}
+body:has(.hero) .hero h1{font-size:clamp(2.8rem,5.2vw,5rem)!important;line-height:1.04!important;color:#fff!important}
+body:has(.hero) .hero p{color:#f0f3ff!important;opacity:1!important;font-size:clamp(1rem,1.2vw,1.12rem)!important;line-height:1.8!important}
+body:has(.hero) .eyebrow,
+body:has(.hero) .scroll-note,
+body:has(.hero) .slide-count{color:#e5eaff!important;opacity:1!important}
+body:has(.hero) main .section:not(.dark) h2,
+body:has(.hero) main .section:not(.dark) h3{color:#fff!important}
+body:has(.hero) main .section:not(.dark) p,
+body:has(.hero) main .section:not(.dark) li{color:#dbe2ff!important;opacity:1!important}
+body:has(.hero) main .section:not(.dark) .section-kicker{color:#b9c5ff!important}
+body:has(.hero) main .section:not(.dark) .service-card,
+body:has(.hero) main .section:not(.dark) .news-card{background:#19234d!important;border-color:#35416f!important}
+body:has(.hero) main .section:not(.dark) .service-card h3,
+body:has(.hero) main .section:not(.dark) .news-card h3{color:#fff!important}
+body:has(.hero) main .section:not(.dark) .service-card p,
+body:has(.hero) main .section:not(.dark) .news-card p{color:#dbe2ff!important}
+body:has(.hero) main .section:not(.dark) .image-label{background:#f4f6ff!important;color:#111747!important}
+body:has(.hero) main .section:not(.dark) .image-label span{color:#465371!important}
+@media(max-width:720px){
+ body:has(.hero) .hero{min-height:650px!important}
+ body:has(.hero) .hero-content{padding:70px 0 95px!important}
+ body:has(.hero) .hero h1{font-size:clamp(2.5rem,10vw,3.7rem)!important}
+}
