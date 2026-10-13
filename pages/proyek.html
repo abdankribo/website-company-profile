@@ -192,6 +192,40 @@ html body section.decho-all-projects .cards.project-grid>.service-card.project-c
 html body section.decho-all-projects .cards.project-grid>.service-card.project-card:focus-within .project-open:before{color:#fff!important;-webkit-text-fill-color:#fff!important}
 html body section.decho-all-projects .cards.project-grid>.service-card.project-card .project-photo{opacity:1!important;filter:none!important}
 
+
+/* Emergency readability fix: override any global hover/frosted-card effects */
+html body section.decho-all-projects .project-card,
+html body section.decho-all-projects .project-card:hover,
+html body section.decho-all-projects .project-card:focus-within{
+  background-color:#0b153c!important;
+  background-image:linear-gradient(145deg,#0d1947 0%,#0b153c 62%,#111c50 100%)!important;
+  color:#f8faff!important;
+  -webkit-text-fill-color:#f8faff!important;
+  opacity:1!important;
+  filter:none!important;
+}
+html body section.decho-all-projects .project-card:hover,
+html body section.decho-all-projects .project-card:focus-within{
+  background-color:#20245f!important;
+  background-image:linear-gradient(145deg,#302064 0%,#202b72 56%,#123f75 100%)!important;
+  border-color:#9b8cff!important;
+}
+html body section.decho-all-projects .project-card h3,
+html body section.decho-all-projects .project-card:hover h3,
+html body section.decho-all-projects .project-card:focus-within h3{color:#fff!important;-webkit-text-fill-color:#fff!important;opacity:1!important}
+html body section.decho-all-projects .project-card p,
+html body section.decho-all-projects .project-card:hover p,
+html body section.decho-all-projects .project-card:focus-within p{color:#e6edff!important;-webkit-text-fill-color:#e6edff!important;opacity:1!important}
+html body section.decho-all-projects .project-card p strong,
+html body section.decho-all-projects .project-card:hover p strong,
+html body section.decho-all-projects .project-card:focus-within p strong{color:#d9b8ff!important;-webkit-text-fill-color:#d9b8ff!important;opacity:1!important}
+html body section.decho-all-projects .project-card a,
+html body section.decho-all-projects .project-card:hover a,
+html body section.decho-all-projects .project-card:focus-within a{color:#fff!important;-webkit-text-fill-color:#fff!important;opacity:1!important}
+html body section.decho-all-projects .project-card .project-open:before{color:#fff!important;-webkit-text-fill-color:#fff!important;opacity:1!important}
+html body section.decho-all-projects .project-card:before,
+html body section.decho-all-projects .project-card:after{opacity:0!important;pointer-events:none!important}
+
 </style>
 <link rel="stylesheet" href="../assets/css/ux-optimization.css">
 
