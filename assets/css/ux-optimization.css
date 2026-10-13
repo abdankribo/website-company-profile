@@ -1177,3 +1177,19 @@ html body main section.decho-showcase#proyek-utama .showcase-card:focus-within .
 }
 
 
+
+
+/* Projects page: keep the title hero white, separate from the navy showcase */
+html body main.page-main > section.page-hero{
+  background:#ffffff!important;
+  color:#171536!important;
+}
+html body main.page-main > section.page-hero .section-kicker{
+  color:#6842c2!important;opacity:1!important;
+}
+html body main.page-main > section.page-hero h1{
+  color:#171536!important;text-shadow:none!important;
+}
+html body main.page-main > section.page-hero p{
+  color:#4b4768!important;opacity:1!important;
+}
