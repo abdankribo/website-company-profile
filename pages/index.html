@@ -980,7 +980,7 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
 @media(prefers-reduced-motion:reduce){
  .page-main section.about-background-section .about-vector-art *{animation:none!important;transition:none!important}
 }
-/* DECHO about section: illustration as a soft background, copy stays in clear right column */
+/* DECHO about section: illustration background + readable copy */
 .about-grid{
   position:relative!important;
   display:grid!important;
@@ -1002,12 +1002,13 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
   width:100%!important;
   height:100%!important;
   min-height:620px!important;
+  margin:0!important;
   border-radius:0!important;
   overflow:hidden!important;
   background:transparent!important;
   box-shadow:none!important;
   z-index:0;
-  opacity:.48;
+  opacity:.52;
 }
 .about-grid>.about-image.about-interactive:before{
   content:"";
@@ -1015,7 +1016,7 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
   inset:0;
   z-index:2;
   pointer-events:none;
-  background:linear-gradient(90deg,rgba(219,232,255,.04) 0%,rgba(225,234,255,.18) 65%,#e9eeff 100%);
+  background:linear-gradient(90deg,rgba(219,232,255,.02) 0%,rgba(225,234,255,.12) 62%,#e9eeff 100%);
 }
 .about-grid .about-vector-scene{
   position:absolute!important;
@@ -1041,7 +1042,7 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
   min-width:0;
   margin:0!important;
   padding:64px clamp(28px,4.5vw,66px) 64px 24px!important;
-  background:linear-gradient(90deg,rgba(238,242,255,.84),rgba(247,248,255,.96) 22%,rgba(247,248,255,.97));
+  background:linear-gradient(90deg,rgba(238,242,255,.88),rgba(247,248,255,.97) 22%,rgba(247,248,255,.98));
 }
 .about-grid .about-copy .section-kicker{color:#3158e8!important}
 .about-grid .about-copy h2{color:#111747!important;font-size:clamp(2rem,3.5vw,3.15rem);line-height:1.12}
@@ -1049,8 +1050,7 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
 .about-grid .about-copy strong{color:#152653!important}
 @media(max-width:720px){
   .about-grid{
-    display:flex!important;
-    flex-direction:column!important;
+    display:block!important;
     min-height:0;
     border-radius:20px;
   }
@@ -1060,7 +1060,7 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
     width:100%!important;
     height:100%!important;
     min-height:100%!important;
-    opacity:.22;
+    opacity:.2;
   }
   .about-grid>.about-image.about-interactive:before{
     background:linear-gradient(180deg,rgba(229,238,255,.3),rgba(245,247,255,.88) 62%,rgba(247,248,255,.96));
@@ -1069,7 +1069,7 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
     position:relative!important;
     width:100%;
     padding:44px 25px!important;
-    background:linear-gradient(180deg,rgba(241,245,255,.78),rgba(248,249,255,.93) 28%,rgba(248,249,255,.97));
+    background:linear-gradient(180deg,rgba(241,245,255,.8),rgba(248,249,255,.95) 28%,rgba(248,249,255,.98));
   }
   .about-grid .about-copy h2{font-size:clamp(1.85rem,7vw,2.4rem)}
 }
