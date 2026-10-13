@@ -1999,6 +1999,26 @@ section.about-background-section>.container.about-grid>.about-copy{
   }
 }
 
+
+/* DECHO ABOUT FIX v5 — remove the visible image panel/divider */
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  background:transparent!important;background-image:none!important;border:0!important;
+  box-shadow:none!important;border-radius:0!important;overflow:visible!important;
+}
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art:before,
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art:after{
+  content:none!important;display:none!important;background:none!important;
+}
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art > .about-vector-art,
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art .about-vector-art{
+  background:transparent!important;background-color:transparent!important;
+}
+@media(max-width:760px){
+  .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+    border-radius:0!important;
+  }
+}
+
 </style>
 
 
@@ -2019,7 +2039,7 @@ section.about-background-section>.container.about-grid>.about-copy{
 <section class="section about-background-section"><div class="container about-grid"><div class="about-image about-interactive about-background-art" role="img" aria-label="Ilustrasi dua insinyur merencanakan proyek konstruksi dengan cetak biru">
 <svg class="about-vector-art" viewBox="0 0 620 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <defs><linearGradient id="planBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7f9ff"></stop><stop offset="1" stop-color="#dce6ff"></stop></linearGradient><linearGradient id="planGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7c91ff"></stop><stop offset="1" stop-color="#42c4ef"></stop></linearGradient></defs>
-<rect width="620" height="500" fill="url(#planBg)"></rect>
+<!-- Transparent canvas: remove the solid panel behind the construction illustration. -->
 <!-- Decorative blueprint grid removed; construction illustration retained. -->
 <g class="about-building"><path d="M315 325V135L420 85L525 135V325Z" fill="#eaf0ff" stroke="#526bd4" stroke-width="4"></path><path d="M300 137L420 72L540 137" fill="none" stroke="#6958d8" stroke-width="9" stroke-linejoin="round"></path><path d="M342 165H395V220H342ZM445 165H498V220H445ZM342 245H395V300H342ZM445 245H498V300H445Z" fill="url(#planGlass)" stroke="#fff" stroke-width="4"></path><path d="M420 135V325" stroke="#526bd4" stroke-width="4"></path><path d="M285 325H555" stroke="#526bd4" stroke-width="4"></path></g>
 <g class="about-vector-crane" stroke="#514bb6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M395 62H580M425 62V360M455 62L470 76L485 62L500 76L515 62L530 76L545 62L560 76L575 62"></path><path d="M530 62V145M516 145H544M530 145L520 158H540Z"></path></g>
