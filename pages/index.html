@@ -1189,6 +1189,72 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
   background:linear-gradient(180deg,rgba(245,247,255,.82),rgba(248,249,255,.97))!important;
  }
 }
+
+/* FINAL FIX: pin About illustration and copy to separate desktop columns.
+   Scoped only to the About section to avoid legacy layout rules elsewhere. */
+.page-main section.section.about-background-section > .container.about-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  grid-template-areas:"art copy"!important;
+  align-items:stretch!important;
+  position:relative!important;
+  width:min(1180px,calc(100% - 44px))!important;
+  min-height:620px!important;
+  height:auto!important;
+  overflow:hidden!important;
+}
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  grid-area:art!important;
+  grid-column:1!important;
+  grid-row:1!important;
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:620px!important;
+  opacity:1!important;
+  z-index:1!important;
+}
+.page-main section.section.about-background-section > .container.about-grid > .about-copy{
+  grid-area:copy!important;
+  grid-column:2!important;
+  grid-row:1!important;
+  position:relative!important;
+  inset:auto!important;
+  align-self:center!important;
+  width:100%!important;
+  min-width:0!important;
+  height:auto!important;
+  margin:0!important;
+  padding:54px clamp(24px,4vw,56px)!important;
+  opacity:1!important;
+  z-index:2!important;
+  background:linear-gradient(90deg,rgba(245,247,255,.94),rgba(248,249,255,.98))!important;
+  overflow-wrap:anywhere!important;
+}
+.page-main section.section.about-background-section > .container.about-grid > .about-copy h2,
+.page-main section.section.about-background-section > .container.about-grid > .about-copy p,
+.page-main section.section.about-background-section > .container.about-grid > .about-copy .section-kicker,
+.page-main section.section.about-background-section > .container.about-grid > .about-copy a{
+  position:relative!important;
+  max-width:100%!important;
+}
+@media(max-width:720px){
+ .page-main section.section.about-background-section > .container.about-grid{
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+  grid-template-areas:"copy"!important;min-height:0!important;
+ }
+ .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  grid-area:copy!important;grid-column:1!important;grid-row:1!important;
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+  min-height:100%!important;opacity:.16!important;
+ }
+ .page-main section.section.about-background-section > .container.about-grid > .about-copy{
+  grid-area:copy!important;grid-column:1!important;grid-row:1!important;
+  padding:36px 24px!important;background:rgba(248,249,255,.9)!important;
+ }
+}
+
 </style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
 <section class="hero" id="beranda"><div class="decho-scene" aria-hidden="true">
 <svg class="decho-scene-art" viewBox="0 0 900 650" role="presentation" xmlns="http://www.w3.org/2000/svg">
