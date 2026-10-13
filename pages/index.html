@@ -997,6 +997,92 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
  .page-main section.section.about-background-section .about-vector-art,
  .page-main section.section.about-background-section .about-vector-art *{animation:none!important;transition:none!important}
 }
+
+/* DECHO ABOUT FIX v3 — explicit grid placement; artwork is decorative only */
+.page-main .about-background-section > .about-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  grid-template-rows:minmax(560px,auto)!important;
+  grid-template-areas:"copy copy"!important;
+  gap:0!important;
+  position:relative!important;
+  width:min(1200px,calc(100% - 48px))!important;
+  max-width:1200px!important;
+  min-height:560px!important;
+  height:auto!important;
+  margin:0 auto!important;
+  padding:0!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+  border-radius:28px!important;
+}
+.page-main .about-background-section > .about-grid > .about-background-art{
+  position:absolute!important;
+  display:block!important;
+  inset:0!important;
+  width:58%!important;
+  height:100%!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:0!important;
+  float:none!important;
+  opacity:.38!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  transform:none!important;
+  overflow:hidden!important;
+}
+.page-main .about-background-section .about-background-art .about-vector-scene{
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+}
+.page-main .about-background-section .about-background-art .about-vector-art{
+  position:absolute!important;inset:0!important;display:block!important;
+  width:100%!important;height:100%!important;object-fit:contain!important;
+  object-position:center!important;
+}
+.page-main .about-background-section > .about-grid > .about-copy{
+  grid-area:copy!important;
+  grid-column:2!important;
+  grid-row:1!important;
+  justify-self:stretch!important;
+  align-self:center!important;
+  position:relative!important;
+  inset:auto!important;
+  display:block!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:clamp(38px,5vw,68px)!important;
+  box-sizing:border-box!important;
+  float:none!important;
+  clear:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+  z-index:2!important;
+  background:linear-gradient(90deg,rgba(245,247,255,.78),rgba(248,249,255,.96) 20%,rgba(248,249,255,.98))!important;
+}
+.page-main .about-background-section .about-copy h2{font-size:clamp(2rem,3.3vw,3.1rem)!important;line-height:1.12!important;color:#111747!important}
+.page-main .about-background-section .about-copy p{font-size:1rem!important;line-height:1.8!important;color:#405783!important}
+@media(max-width:760px){
+ .page-main .about-background-section > .about-grid{
+  width:calc(100% - 32px)!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-rows:auto!important;
+  grid-template-areas:"copy"!important;
+  min-height:0!important;
+  border-radius:20px!important;
+ }
+ .page-main .about-background-section > .about-grid > .about-background-art{
+  width:100%!important;height:100%!important;opacity:.13!important;
+ }
+ .page-main .about-background-section > .about-grid > .about-copy{
+  grid-column:1!important;grid-row:1!important;
+  padding:34px 24px!important;
+  background:linear-gradient(180deg,rgba(245,247,255,.78),rgba(248,249,255,.95))!important;
+ }
+}
 </style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
 <section class="hero" id="beranda"><div class="decho-scene" aria-hidden="true">
 <svg class="decho-scene-art" viewBox="0 0 900 650" role="presentation" xmlns="http://www.w3.org/2000/svg">
