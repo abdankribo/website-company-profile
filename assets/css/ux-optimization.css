@@ -792,3 +792,26 @@ body .page-hero p{
   body .page-hero h1{color:#080d2e!important}
   body .page-hero p{color:#30394f!important}
 }
+
+
+/* Official DECHO combined logo lockup */
+.brand.brand-image-only{
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:0;
+  flex:0 0 auto;
+  line-height:0;
+  text-decoration:none;
+}
+.brand-logo-full{
+  display:block;
+  width:clamp(174px,18vw,218px);
+  height:52px;
+  max-width:100%;
+  object-fit:contain;
+  object-position:left center;
+}
+@media(max-width:720px){
+  .brand-logo-full{width:clamp(150px,43vw,190px);height:46px}
+}
