@@ -961,3 +961,38 @@ footer a:hover,.footer a:hover{color:#fff!important;text-decoration:underline}
     max-width:32px!important;max-height:32px!important;flex-basis:32px!important;
   }
 }
+
+
+/* Layout refinement: tighter inner-page hero and aligned content columns */
+body .page-main .page-hero{
+  min-height:0!important;
+  padding:64px 0 58px!important;
+  display:block!important;
+}
+body .page-main .page-hero .container{
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+body .page-main .page-hero h1{
+  max-width:900px!important;
+  font-size:clamp(2.35rem,4.5vw,4.1rem)!important;
+  line-height:1.08!important;
+  margin:0 0 18px!important;
+  letter-spacing:-.045em!important;
+}
+body .page-main .page-hero p{
+  max-width:720px!important;
+  margin:0!important;
+  font-size:1.02rem!important;
+  line-height:1.7!important;
+}
+body .page-main .page-hero .section-kicker{margin-bottom:16px!important}
+body .page-main .about-grid,
+body .page-main .sustain-grid{align-items:start!important}
+body .page-main .about-grid>.about-image,
+body .page-main .sustain-grid>.sustain-image{margin-top:8px!important}
+@media(max-width:720px){
+  body .page-main .page-hero{padding:42px 0 38px!important}
+  body .page-main .page-hero h1{font-size:clamp(2rem,8vw,2.8rem)!important;line-height:1.12!important}
+  body .page-main .page-hero p{font-size:.96rem!important}
+}
