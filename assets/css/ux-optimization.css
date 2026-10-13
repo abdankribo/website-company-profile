@@ -752,3 +752,43 @@ body:has(.hero#beranda) .section.soft .cards .service-card h3{color:#111747!impo
 body:has(.hero#beranda) .section.soft .cards .service-card p{color:#465371!important}
 .project-card .project-open,.service-card .btn{position:relative;z-index:4}
 .project-card img{display:block}
+
+
+/* Page hero contrast: readable headings and copy on every inner page */
+body .page-hero{
+  position:relative;
+  isolation:isolate;
+  background:linear-gradient(125deg,#f2f5ff 0%,#ffffff 56%,#f4f2ff 100%)!important;
+  color:#172033!important;
+}
+body .page-hero::before{
+  z-index:-1!important;
+  opacity:.48!important;
+  background:
+    radial-gradient(ellipse at 10% 20%,rgba(49,88,232,.18),transparent 44%),
+    radial-gradient(ellipse at 90% 75%,rgba(115,83,223,.13),transparent 42%)!important;
+}
+body .page-hero::after{opacity:.06!important}
+body .page-hero .section-kicker{
+  color:#2449d8!important;
+  font-weight:800!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+body .page-hero h1{
+  color:#111747!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+body .page-hero p{
+  color:#465371!important;
+  opacity:1!important;
+  text-shadow:none!important;
+  max-width:760px;
+}
+@media(prefers-contrast:more){
+  body .page-hero{background:#fff!important}
+  body .page-hero .section-kicker{color:#1736a8!important}
+  body .page-hero h1{color:#080d2e!important}
+  body .page-hero p{color:#30394f!important}
+}
