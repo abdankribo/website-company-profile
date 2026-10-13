@@ -55,13 +55,14 @@
     let activeFilter='all';
     const normalize=s=>(s||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('id').replace(/&amp;/g,'&');
     function categoryFor(card){
+      // Honor explicit category metadata first so each category button maps
+      // deterministically to its intended project cards.
+      const explicit=(card.dataset.projectCategory||card.dataset.category||'').trim().toLowerCase();
+      if(['pelabuhan','gudang','hunian'].includes(explicit)) return explicit;
       const title=normalize($('h3',card)?.textContent||'');
-      const content=normalize(card.textContent);
-      // Categorize by the actual project type/name, not every mention of "pelabuhan"
-      // in its location, because warehouse projects can also be located at a port.
       if(/warehouse|gudang/.test(title)) return 'gudang';
       if(/residential|rumah hunian|rumah tinggal|rungkut city/.test(title)) return 'hunian';
-      if(/moveable bridge|catwalk|control room|frontal frame|marine steel|pelabuhan|port/.test(title+' '+content)) return 'pelabuhan';
+      if(/moveable bridge|catwalk|control room|frontal frame|marine steel|pelabuhan|port/.test(title)) return 'pelabuhan';
       return 'pelabuhan';
     }
     function applyProjectFilters(){
@@ -73,6 +74,7 @@
         const matchesQuery=!query||searchable.includes(query);
         const visible=matchesCategory&&matchesQuery;
         card.hidden=!visible;
+        card.style.display=visible?'':'none';
         card.setAttribute('aria-hidden',String(!visible));
         if(visible)shown++;
       });
