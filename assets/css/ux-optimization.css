@@ -629,3 +629,10 @@ body:has(.hero#beranda) .cards .service-card:nth-child(3){
  .section.dark .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:420px){.section.dark .stats{grid-template-columns:1fr}}
+
+
+/* Smooth page-to-page transition without hiding content or blocking navigation */
+@keyframes dechoPageEnter{from{opacity:.72;transform:translateY(5px)}to{opacity:1;transform:none}}
+body{animation:dechoPageEnter .42s ease-out both}
+body.decho-page-leaving{opacity:0;transform:translateY(-4px);transition:opacity .18s ease,transform .18s ease}
+@media(prefers-reduced-motion:reduce){body,body.decho-page-leaving{animation:none;transition:none;opacity:1;transform:none}}
