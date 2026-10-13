@@ -338,6 +338,73 @@ html body section.decho-all-projects .project-grid > .project-card > .project-op
  html body section.decho-all-projects .project-grid > .project-card > .project-photo{width:calc(100% + 40px)!important;height:220px!important;min-height:220px!important;max-height:220px!important;flex-basis:220px!important;margin:0 -20px 18px!important}
 }
 
+
+/* FINAL: identical card geometry in the entire project list */
+html body .decho-all-projects .cards.project-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  align-items:stretch!important;
+  grid-auto-rows:1fr!important;
+  gap:24px!important;
+}
+html body .decho-all-projects .cards.project-grid > article.project-card{
+  box-sizing:border-box!important;
+  width:100%!important;
+  height:610px!important;
+  min-height:610px!important;
+  max-height:610px!important;
+  margin:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  overflow:hidden!important;
+  padding:0 22px 22px!important;
+  border-radius:20px!important;
+}
+html body .decho-all-projects .cards.project-grid > article.project-card > img.project-photo{
+  box-sizing:border-box!important;
+  width:calc(100% + 44px)!important;
+  height:230px!important;
+  min-height:230px!important;
+  max-height:230px!important;
+  flex:0 0 230px!important;
+  margin:0 -22px 18px!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+html body .decho-all-projects .cards.project-grid > article.project-card > .iconbox{
+  flex:0 0 auto!important;
+  margin-bottom:10px!important;
+}
+html body .decho-all-projects .cards.project-grid > article.project-card > h3{
+  flex:0 0 auto!important;
+  height:2.7em!important;
+  min-height:2.7em!important;
+  max-height:2.7em!important;
+  overflow:hidden!important;
+  line-height:1.35!important;
+  margin:0 0 12px!important;
+}
+html body .decho-all-projects .cards.project-grid > article.project-card > p{
+  flex:0 0 auto!important;
+  line-height:1.45!important;
+  margin:0 0 9px!important;
+}
+html body .decho-all-projects .cards.project-grid > article.project-card > a.project-open{
+  flex:0 0 auto!important;
+  margin-top:auto!important;
+  align-self:flex-start!important;
+}
+@media(max-width:960px){
+ html body .decho-all-projects .cards.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:20px!important}
+ html body .decho-all-projects .cards.project-grid > article.project-card{height:610px!important;min-height:610px!important;max-height:610px!important}
+}
+@media(max-width:600px){
+ html body .decho-all-projects .cards.project-grid{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}
+ html body .decho-all-projects .cards.project-grid > article.project-card{height:600px!important;min-height:600px!important;max-height:600px!important;padding:0 20px 20px!important}
+ html body .decho-all-projects .cards.project-grid > article.project-card > img.project-photo{width:calc(100% + 40px)!important;height:220px!important;min-height:220px!important;max-height:220px!important;flex-basis:220px!important;margin:0 -20px 17px!important}
+}
+
 </style>
 <link rel="stylesheet" href="../assets/css/ux-optimization.css">
 
