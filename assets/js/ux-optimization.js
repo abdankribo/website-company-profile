@@ -44,34 +44,52 @@
       hero.classList.add('decho-gradient-motion');
     }
   }
-  // Live search and category filters for every project card.
+  // Project search/filter: use the grid adjacent to the search panel and enforce hidden state.
   const projectSearch=$('#projectSearch');
   if(projectSearch){
-    const projectGrid=$$('.project-grid').slice(-1)[0];
+    const section=projectSearch.closest('.section')||document;
+    const projectGrid=$('.project-grid',section);
     const cards=projectGrid?$$('.project-card',projectGrid):[];
-    const filters=$$('[data-project-filter]');
-    const resultLabel=$('#projectResults');
+    const filters=$$('[data-project-filter]',section);
+    const resultLabel=$('#projectResults',section);
     let activeFilter='all';
+    const normalize=s=>(s||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLocaleLowerCase('id').replace(/&amp;/g,'&');
+    function categoryFor(card){
+      const content=normalize(card.textContent);
+      if(/warehouse|gudang/.test(content)) return 'gudang';
+      if(/residential|rumah hunian|rumah tinggal|rungkut city/.test(content)) return 'hunian';
+      return 'pelabuhan';
+    }
     function applyProjectFilters(){
-      const query=projectSearch.value.trim().toLocaleLowerCase('id');
+      const query=normalize(projectSearch.value.trim());
       let shown=0;
       cards.forEach(card=>{
-        const heading=$('h3',card)?.textContent.toLocaleLowerCase('id')||'';
-        const text=card.textContent.toLocaleLowerCase('id');
-        const category=heading.includes('warehouse')||heading.includes('gudang')?'gudang':heading.includes('residential')||heading.includes('rumah')||heading.includes('hunian')?'hunian':'pelabuhan';
-        const matchesCategory=activeFilter==='all'||category===activeFilter;
-        const matchesQuery=!query||text.includes(query);
-        card.hidden=!(matchesCategory&&matchesQuery);
-        if(!card.hidden)shown++;
+        const searchable=normalize(card.textContent+' '+Array.from(card.querySelectorAll('img')).map(img=>img.alt).join(' '));
+        const matchesCategory=activeFilter==='all'||categoryFor(card)===activeFilter;
+        const matchesQuery=!query||searchable.includes(query);
+        const visible=matchesCategory&&matchesQuery;
+        card.hidden=!visible;
+        card.setAttribute('aria-hidden',String(!visible));
+        if(visible)shown++;
       });
       if(resultLabel)resultLabel.textContent='Menampilkan '+shown+' dari '+cards.length+' proyek.';
+      const empty=$('#projectNoResults',section);
+      if(shown===0){
+        if(!empty){const msg=document.createElement('p');msg.id='projectNoResults';msg.className='project-no-results';msg.setAttribute('role','status');msg.textContent='Tidak ada proyek yang cocok. Coba kata kunci atau kategori lain.';projectGrid?.after(msg);}
+      }else if(empty)empty.remove();
     }
     projectSearch.addEventListener('input',applyProjectFilters);
     filters.forEach(button=>button.addEventListener('click',()=>{
       activeFilter=button.dataset.projectFilter||'all';
-      filters.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+      filters.forEach(item=>{
+        const active=item===button;
+        item.setAttribute('aria-pressed',String(active));
+        item.classList.toggle('is-active',active);
+      });
       applyProjectFilters();
     }));
+    const initiallyActive=filters.find(button=>button.getAttribute('aria-pressed')==='true');
+    if(initiallyActive){activeFilter=initiallyActive.dataset.projectFilter||'all';filters.forEach(button=>button.classList.toggle('is-active',button===initiallyActive));}
     applyProjectFilters();
   }
   // Accessible lightbox for project and service photos.
