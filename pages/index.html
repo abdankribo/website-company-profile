@@ -980,7 +980,101 @@ html body main#main-content > section.section:not(.hero):nth-of-type(even) .quic
 @media(prefers-reduced-motion:reduce){
  .page-main section.about-background-section .about-vector-art *{animation:none!important;transition:none!important}
 }
-</style></style></style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
+</style></style>
+/* DECHO about section: illustration as a soft background, copy stays in clear right column */
+.about-grid{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  gap:0!important;
+  align-items:stretch!important;
+  min-height:620px;
+  overflow:hidden;
+  border-radius:28px;
+  isolation:isolate;
+  background:linear-gradient(105deg,#d9e8ff 0%,#eef2ff 42%,#f7f8ff 67%,#e9e8ff 100%);
+  box-shadow:0 22px 65px rgba(38,65,150,.10);
+}
+.about-grid>.about-image.about-interactive{
+  grid-column:1;
+  grid-row:1;
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:620px!important;
+  border-radius:0!important;
+  overflow:hidden!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  z-index:0;
+  opacity:.48;
+}
+.about-grid>.about-image.about-interactive:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(219,232,255,.04) 0%,rgba(225,234,255,.18) 65%,#e9eeff 100%);
+}
+.about-grid .about-vector-scene{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:hidden;
+}
+.about-grid .about-vector-art{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  transform:translate3d(var(--about-x,0px),var(--about-y,0px),0) scale(1.04);
+  transform-origin:center;
+}
+.about-grid>.about-copy{
+  grid-column:2;
+  grid-row:1;
+  position:relative!important;
+  z-index:3!important;
+  align-self:center;
+  min-width:0;
+  margin:0!important;
+  padding:64px clamp(28px,4.5vw,66px) 64px 24px!important;
+  background:linear-gradient(90deg,rgba(238,242,255,.84),rgba(247,248,255,.96) 22%,rgba(247,248,255,.97));
+}
+.about-grid .about-copy .section-kicker{color:#3158e8!important}
+.about-grid .about-copy h2{color:#111747!important;font-size:clamp(2rem,3.5vw,3.15rem);line-height:1.12}
+.about-grid .about-copy p{color:#405783!important;line-height:1.8}
+.about-grid .about-copy strong{color:#152653!important}
+@media(max-width:720px){
+  .about-grid{
+    display:flex!important;
+    flex-direction:column!important;
+    min-height:0;
+    border-radius:20px;
+  }
+  .about-grid>.about-image.about-interactive{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:100%!important;
+    opacity:.22;
+  }
+  .about-grid>.about-image.about-interactive:before{
+    background:linear-gradient(180deg,rgba(229,238,255,.3),rgba(245,247,255,.88) 62%,rgba(247,248,255,.96));
+  }
+  .about-grid>.about-copy{
+    position:relative!important;
+    width:100%;
+    padding:44px 25px!important;
+    background:linear-gradient(180deg,rgba(241,245,255,.78),rgba(248,249,255,.93) 28%,rgba(248,249,255,.97));
+  }
+  .about-grid .about-copy h2{font-size:clamp(1.85rem,7vw,2.4rem)}
+}
+</style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
 <section class="hero" id="beranda"><div class="decho-scene" aria-hidden="true">
 <svg class="decho-scene-art" viewBox="0 0 900 650" role="presentation" xmlns="http://www.w3.org/2000/svg">
 <defs><linearGradient id="dechoGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a8baff"/><stop offset="1" stop-color="#4540a8"/></linearGradient><linearGradient id="dechoWall" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#f7f5ff"/><stop offset="1" stop-color="#a8b3f5"/></linearGradient><linearGradient id="dechoVest" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e5ff68"/><stop offset="1" stop-color="#8ebd35"/></linearGradient><filter id="dechoGlow"><feGaussianBlur stdDeviation="5"/></filter></defs>
