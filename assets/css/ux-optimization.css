@@ -1093,3 +1093,34 @@ body:has(.hero) main .section:not(.dark) .image-label span{color:#465371!importa
  body:has(.hero) .hero-content{padding:70px 0 95px!important}
  body:has(.hero) .hero h1{font-size:clamp(2.5rem,10vw,3.7rem)!important}
 }
+
+
+/* FIX: Home service-card ::before/::after effects were hidden behind the card background.
+   Put decorative pseudo-elements above the background but below the card content. */
+body:has(.hero#beranda) .cards .service-card{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+}
+body:has(.hero#beranda) .cards .service-card::before{
+  z-index:0!important;
+  pointer-events:none!important;
+}
+body:has(.hero#beranda) .cards .service-card::after{
+  z-index:0!important;
+  pointer-events:none!important;
+}
+body:has(.hero#beranda) .cards .service-card > *{
+  position:relative;
+  z-index:1;
+}
+body:has(.hero#beranda) .cards .service-card:hover::after,
+body:has(.hero#beranda) .cards .service-card:focus-within::after{
+  opacity:1!important;
+}
+@media(prefers-reduced-motion:reduce){
+  body:has(.hero#beranda) .cards .service-card::before,
+  body:has(.hero#beranda) .cards .service-card::after{
+    transition:none!important;
+  }
+}
