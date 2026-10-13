@@ -1333,6 +1333,62 @@ section.section.about-background-section > .container.about-grid > .about-copy a
   }
 }
 
+
+/* Refine About card: remove visible edge lines and soften the transition */
+section.section.about-background-section,
+section.section.about-background-section::before,
+section.section.about-background-section::after,
+section.section.about-background-section > .container.about-grid::before,
+section.section.about-background-section > .container.about-grid::after,
+section.section.about-background-section > .container.about-grid > .about-image::before,
+section.section.about-background-section > .container.about-grid > .about-image::after,
+section.section.about-background-section > .container.about-grid > .about-copy::before,
+section.section.about-background-section > .container.about-grid > .about-copy::after{
+  border:0!important;
+  outline:0!important;
+}
+section.section.about-background-section > .container.about-grid{
+  border:0!important;
+  box-shadow:0 24px 70px rgba(39,54,112,.09)!important;
+  background:#f5f7ff!important;
+}
+section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+  background:linear-gradient(145deg,#eaf0ff 0%,#dce5ff 100%)!important;
+}
+section.section.about-background-section > .container.about-grid > .about-image .about-vector-scene{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  overflow:hidden!important;
+}
+section.section.about-background-section > .container.about-grid > .about-image .about-vector-art{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+section.section.about-background-section > .container.about-grid > .about-copy{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:linear-gradient(135deg,#f8f9ff 0%,#f4f6ff 100%)!important;
+}
+@media(min-width:721px){
+  section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+    border-radius:28px 0 0 28px!important;
+  }
+  section.section.about-background-section > .container.about-grid > .about-copy{
+    border-radius:0 28px 28px 0!important;
+  }
+}
+
 </style></head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main">
 <section class="hero" id="beranda"><div class="decho-scene" aria-hidden="true">
 <svg class="decho-scene-art" viewBox="0 0 900 650" role="presentation" xmlns="http://www.w3.org/2000/svg">
