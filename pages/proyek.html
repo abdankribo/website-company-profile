@@ -1073,6 +1073,71 @@ html body .lang-toggle{background:#fff!important;color:#3730a3!important;border-
 @media(max-width:720px){html body .navlinks{background:#fff!important}html body .navlinks a{color:#343858!important}html body .navlinks a:hover{color:#4f46e5!important}}
 </style>
 
+
+<style id="decho-project-card-compact-final">
+/* Compact, equal-sized project cards; photo stays inside the card bounds */
+html body section.decho-all-projects .cards.project-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  align-items:stretch!important;
+  gap:22px!important;
+}
+html body section.decho-all-projects .cards.project-grid > article.project-card{
+  box-sizing:border-box!important;
+  width:100%!important;
+  height:520px!important;
+  min-height:520px!important;
+  max-height:520px!important;
+  padding:0 18px 18px!important;
+  margin:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+  border-radius:18px!important;
+}
+html body section.decho-all-projects .cards.project-grid > article.project-card > img.project-photo{
+  display:block!important;
+  box-sizing:border-box!important;
+  width:calc(100% + 36px)!important;
+  max-width:none!important;
+  height:170px!important;
+  min-height:170px!important;
+  max-height:170px!important;
+  flex:0 0 170px!important;
+  margin:0 -18px 14px!important;
+  padding:0!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  border-radius:0!important;
+}
+html body section.decho-all-projects .cards.project-grid > article.project-card > .iconbox{
+  width:36px!important;height:36px!important;min-height:36px!important;
+  margin:0 0 9px!important;flex:0 0 36px!important;
+}
+html body section.decho-all-projects .cards.project-grid > article.project-card > h3{
+  font-size:1.03rem!important;line-height:1.3!important;
+  height:2.6em!important;min-height:2.6em!important;max-height:2.6em!important;
+  overflow:hidden!important;margin:0 0 9px!important;flex:0 0 auto!important;
+}
+html body section.decho-all-projects .cards.project-grid > article.project-card > p{
+  font-size:.82rem!important;line-height:1.45!important;
+  margin:0 0 7px!important;flex:0 0 auto!important;
+}
+html body section.decho-all-projects .cards.project-grid > article.project-card > a.project-open{
+  margin-top:auto!important;margin-bottom:0!important;flex:0 0 auto!important;
+  padding:9px 12px!important;font-size:.82rem!important;
+}
+@media(max-width:960px){
+ html body section.decho-all-projects .cards.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important}
+ html body section.decho-all-projects .cards.project-grid > article.project-card{height:520px!important;min-height:520px!important;max-height:520px!important}
+}
+@media(max-width:600px){
+ html body section.decho-all-projects .cards.project-grid{grid-template-columns:minmax(0,1fr)!important;gap:16px!important}
+ html body section.decho-all-projects .cards.project-grid > article.project-card{height:500px!important;min-height:500px!important;max-height:500px!important;padding:0 16px 16px!important}
+ html body section.decho-all-projects .cards.project-grid > article.project-card > img.project-photo{width:calc(100% + 32px)!important;height:165px!important;min-height:165px!important;max-height:165px!important;flex-basis:165px!important;margin:0 -16px 13px!important}
+}
+</style>
+
 </head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main"><section class="page-hero"><div class="container"><div class="section-kicker">Portofolio DECHO</div><h1>Proyek Utama</h1><p>Pengalaman pekerjaan konstruksi meliputi konstruksi gudang, sistem moveable bridge dan pekerjaan struktur baja pelabuhan, serta pembangunan dan renovasi rumah hunian.</p></div></section><section class="decho-showcase" id="proyek-utama">
   <div class="container">
     <div class="showcase-heading">
