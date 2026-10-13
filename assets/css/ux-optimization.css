@@ -582,3 +582,50 @@ body:has(main .details) .gallery img{
   display:block;width:100%;height:auto!important;aspect-ratio:4 / 3!important;
   object-fit:cover!important;object-position:center;background:#e9edf7;
 }
+
+
+/* Homepage/about page visibility and contrast corrections */
+body:has(.hero#beranda) .about-grid::after{content:none}
+.about-image{
+  position:relative;min-height:380px!important;aspect-ratio:4/3;
+  background:#e8edf7 url('../images/foto-aboutus_01%20(2).jpg') center/cover no-repeat!important;
+  border-radius:12px;overflow:hidden!important;box-shadow:14px 14px 0 #e7eaff;
+}
+.about-image .image-label{position:absolute;left:20px;right:20px;bottom:20px;z-index:2}
+.about-image:after{
+  content:"";position:absolute;inset:45% 0 0;
+  background:linear-gradient(180deg,transparent,rgba(17,23,71,.78));pointer-events:none;
+}
+.about-image .image-label{color:#fff}
+.about-image .image-label span{color:#f0f2ff}
+body:has(.hero#beranda) .about-grid .about-image,
+body:has(.hero#beranda) .cards .service-card{
+  background-color:#eef1fa;
+}
+body:has(.hero#beranda) .cards .service-card:nth-child(1){
+  background-image:linear-gradient(180deg,rgba(17,23,71,.04),rgba(17,23,71,.12)),url('../images/foto-Civil%20%26%20Architecture%20Work%E2%80%99s-rungkut%20city_01%20(1).jpg');
+  background-size:cover;background-position:center;
+}
+body:has(.hero#beranda) .cards .service-card:nth-child(2){
+  background-image:linear-gradient(180deg,rgba(17,23,71,.04),rgba(17,23,71,.12)),url('../images/foto-Steel%20Fabrication%20and%20Installation_03%20(1).jpg');
+  background-size:cover;background-position:center;
+}
+body:has(.hero#beranda) .cards .service-card:nth-child(3){
+  background-image:linear-gradient(180deg,rgba(17,23,71,.04),rgba(17,23,71,.12)),url('../images/foto-Steel%20and%20Hydraulic%20Fabrication%20at%20Workshop_05%20(1).jpg');
+  background-size:cover;background-position:center;
+}
+/* Keep statistic panels readable on dark sections */
+.section.dark .stats .stat,
+.stats .stat{
+  background:linear-gradient(145deg,#fff 0%,#f4f6ff 100%)!important;
+  border:1px solid #dce2f5!important;border-radius:14px!important;
+  box-shadow:0 12px 30px rgba(5,12,50,.12);
+}
+.section.dark .stats .stat strong,.stats .stat strong{color:#3158e8!important}
+.section.dark .stats .stat span,.stats .stat span{color:#596482!important;opacity:1!important}
+.section.dark .stats{gap:14px}
+@media(max-width:760px){
+ .about-image{min-height:280px!important;aspect-ratio:4/3}
+ .section.dark .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:420px){.section.dark .stats{grid-template-columns:1fr}}
