@@ -996,3 +996,65 @@ body .page-main .sustain-grid>.sustain-image{margin-top:8px!important}
   body .page-main .page-hero h1{font-size:clamp(2rem,8vw,2.8rem)!important;line-height:1.12!important}
   body .page-main .page-hero p{font-size:.96rem!important}
 }
+
+
+/* DECHO visual direction: deep navy surfaces with accessible contrast */
+:root{
+  --decho-bg:#0b1030;
+  --decho-bg-soft:#121b45;
+  --decho-ink:#f4f6ff;
+  --decho-copy:#d4dcf7;
+}
+body{background:#0b1030!important;color:#f4f6ff!important}
+main{background:#0b1030!important}
+main section.section:not(.dark){
+  background-color:#0b1030!important;
+  background-image:linear-gradient(135deg,#0b1030 0%,#111a43 58%,#171b4d 100%)!important;
+  color:#f4f6ff!important;
+}
+main section.section.soft:not(.dark){
+  background-color:#121b45!important;
+  background-image:linear-gradient(135deg,#121b45 0%,#192451 100%)!important;
+  color:#f4f6ff!important;
+}
+main section.section:not(.dark) h1,
+main section.section:not(.dark) h2,
+main section.section:not(.dark) h3,
+main section.section:not(.dark) h4{color:#fff!important;text-shadow:none!important}
+main section.section:not(.dark) p,
+main section.section:not(.dark) li,
+main section.section:not(.dark) .section-head p{color:#d4dcf7!important;opacity:1!important;text-shadow:none!important}
+main section.section:not(.dark) .section-kicker{color:#aebcff!important;opacity:1!important}
+body .page-main .page-hero{
+  background:linear-gradient(125deg,#111a43 0%,#0b1030 60%,#211b51 100%)!important;
+  color:#f4f6ff!important;
+}
+body .page-main .page-hero::before{
+  opacity:.65!important;
+  background:radial-gradient(ellipse at 12% 15%,rgba(75,111,255,.24),transparent 48%),radial-gradient(ellipse at 88% 80%,rgba(142,105,255,.20),transparent 45%)!important;
+}
+body .page-main .page-hero h1{color:#fff!important;text-shadow:none!important}
+body .page-main .page-hero p{color:#d4dcf7!important;text-shadow:none!important}
+body .page-main .page-hero .section-kicker{color:#aebcff!important}
+body .page-main .service-card,
+body .page-main .news-card,
+body .page-main .project-card,
+body .page-main .quick-card{
+  background:#19234d!important;
+  border-color:#35416f!important;
+  color:#f4f6ff!important;
+}
+body .page-main .service-card h3,
+body .page-main .news-card h3,
+body .page-main .project-card h3,
+body .page-main .quick-card h3{color:#fff!important}
+body .page-main .service-card p,
+body .page-main .news-card p,
+body .page-main .project-card p,
+body .page-main .quick-card p{color:#d4dcf7!important}
+body .page-main .check-list li{color:#e9edff!important}
+body .page-main .about-image .image-label{background:#f4f6ff!important;color:#111747!important}
+body .page-main .about-image .image-label span{color:#465371!important}
+@media(max-width:720px){
+  body .page-main .page-hero{background:linear-gradient(145deg,#111a43,#0b1030 70%,#211b51)!important}
+}
