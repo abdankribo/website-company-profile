@@ -367,3 +367,65 @@ input,textarea,select{border-radius:7px!important}
 @media(prefers-reduced-motion:reduce){
  .service-card,.quick-card,.team-card,.news-card,.news-image,.text-link,.navlinks a:after{transition:none!important}
 }
+
+
+/* Interactive service cards: cursor-responsive accent inspired by the reference */
+.service-card{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease,background-color .3s ease!important;
+}
+.service-card:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  left:0;
+  top:0;
+  bottom:0;
+  width:5px;
+  opacity:0;
+  background:linear-gradient(180deg,#3158e8 0%,#7353df 100%);
+  transform:scaleY(.35);
+  transform-origin:center;
+  transition:opacity .28s ease,transform .35s ease;
+}
+.service-card:after{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  inset:0;
+  opacity:0;
+  background:linear-gradient(115deg,#f3f5ff 0%,#fff 72%);
+  transition:opacity .3s ease;
+}
+.service-card:hover,
+.service-card:focus-within{
+  transform:translateY(-7px);
+  border-color:#aeb9ff!important;
+  box-shadow:0 22px 48px #3158e824!important;
+}
+.service-card:hover:before,
+.service-card:focus-within:before{opacity:1;transform:scaleY(1)}
+.service-card:hover:after,
+.service-card:focus-within:after{opacity:1}
+.service-card .iconbox{
+  transition:color .3s ease,background .3s ease,transform .3s ease,box-shadow .3s ease;
+}
+.service-card:hover .iconbox,
+.service-card:focus-within .iconbox{
+  color:#fff!important;
+  background:linear-gradient(135deg,#3158e8,#7353df)!important;
+  box-shadow:0 8px 20px #7353df30;
+  transform:translateY(-2px);
+}
+.service-card h3{transition:color .25s ease}
+.service-card:hover h3,
+.service-card:focus-within h3{color:#3158e8!important}
+.service-card p{transition:color .25s ease}
+.service-card:hover p,
+.service-card:focus-within p{color:#4f5674}
+@media(prefers-reduced-motion:reduce){
+ .service-card,.service-card:before,.service-card:after,.service-card .iconbox,.service-card h3,.service-card p{transition:none!important}
+}
