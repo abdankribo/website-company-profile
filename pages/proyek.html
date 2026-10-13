@@ -1526,6 +1526,37 @@ html body main.page-main .project-grid > .service-card.project-card:focus-within
 }
 </style>
 
+<style id="decho-project-photo-size-match">
+
+/* Match every all-projects card photo to the showcase photo dimensions.
+   All project photos use the same responsive height and full-bleed card width. */
+html body main.page-main .decho-all-projects .project-grid > article.project-card > img.project-photo {
+  display:block!important;
+  box-sizing:border-box!important;
+  width:calc(100% + 40px)!important;
+  height:clamp(190px,17vw,245px)!important;
+  min-height:clamp(190px,17vw,245px)!important;
+  max-height:245px!important;
+  flex:0 0 clamp(190px,17vw,245px)!important;
+  margin:0 -20px 20px!important;
+  padding:0!important;
+  object-fit:cover!important;
+  object-position:center 45%!important;
+  aspect-ratio:auto!important;
+  border:0!important;
+  border-radius:0!important;
+}
+@media(max-width:600px) {
+  html body main.page-main .decho-all-projects .project-grid > article.project-card > img.project-photo {
+    width:calc(100% + 40px)!important;
+    height:220px!important;
+    min-height:220px!important;
+    max-height:220px!important;
+    flex-basis:220px!important;
+    margin:0 -20px 20px!important;
+  }
+}
+</style>
 </head><body><div class="topbar"><div class="container"><span data-id="Solusi Baja · Kekuatan untuk membangun masa depan" data-en="Steel Solutions · Strength to build the future">Solusi Baja · Kekuatan untuk membangun masa depan</span></div></div><header class="navbar"><div class="container navinner"><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="../assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="../assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><button class="menu-toggle" id="menuToggle" aria-expanded="false">☰</button><nav class="navlinks" id="navlinks"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></nav><button id="langToggle" class="lang-toggle">EN</button></div></header><main class="page-main"><section class="page-hero"><div class="container"><div class="section-kicker">Portofolio DECHO</div><h1>Proyek Utama</h1><p>Pengalaman pekerjaan konstruksi meliputi konstruksi gudang, sistem moveable bridge dan pekerjaan struktur baja pelabuhan, serta pembangunan dan renovasi rumah hunian.</p></div></section><section class="decho-showcase decho-showcase-futuristic" id="proyek-utama">
   <div class="container">
     <div class="showcase-heading">
