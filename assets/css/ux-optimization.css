@@ -900,3 +900,64 @@ footer a:hover,.footer a:hover{color:#fff!important;text-decoration:underline}
  .brand.brand-split-logo .brandmark{width:38px;height:38px;flex-basis:38px}
  .brand.brand-split-logo .brand-name-image{width:clamp(125px,38vw,170px);height:40px}
 }
+
+
+/* HOTFIX: prevent DECHO wordmark image from overflowing into the hero */
+.navbar .brand.brand-split-logo,
+.footer .brand.brand-split-logo{
+  position:relative!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:100%!important;
+  overflow:hidden!important;
+  vertical-align:middle!important;
+}
+.navbar .brand.brand-split-logo .brandmark,
+.footer .brand.brand-split-logo .brandmark{
+  position:static!important;
+  display:block!important;
+  width:38px!important;
+  height:38px!important;
+  min-width:38px!important;
+  max-width:38px!important;
+  max-height:38px!important;
+  flex:0 0 38px!important;
+  object-fit:contain!important;
+  transform:none!important;
+}
+.navbar .brand.brand-split-logo .brand-name-image,
+.footer .brand.brand-split-logo .brand-name-image{
+  position:static!important;
+  display:block!important;
+  width:clamp(125px,15vw,185px)!important;
+  min-width:0!important;
+  max-width:185px!important;
+  height:38px!important;
+  max-height:38px!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+  transform:none!important;
+  margin:0!important;
+}
+.navbar .brand.brand-split-logo img,
+.footer .brand.brand-split-logo img{
+  inset:auto!important;
+  float:none!important;
+}
+@media(max-width:720px){
+  .navbar .brand.brand-split-logo .brand-name-image,
+  .footer .brand.brand-split-logo .brand-name-image{
+    width:clamp(112px,34vw,155px)!important;
+    max-width:155px!important;
+    height:34px!important;
+    max-height:34px!important;
+  }
+  .navbar .brand.brand-split-logo .brandmark,
+  .footer .brand.brand-split-logo .brandmark{
+    width:32px!important;height:32px!important;min-width:32px!important;
+    max-width:32px!important;max-height:32px!important;flex-basis:32px!important;
+  }
+}
