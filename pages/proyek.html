@@ -132,6 +132,28 @@ html body .decho-all-projects .project-card .project-meta{margin-left:22px!impor
 @media(max-width:960px){html body .decho-all-projects .project-card .project-photo{height:clamp(195px,27vw,225px)!important;flex-basis:clamp(195px,27vw,225px)!important}}
 @media(max-width:600px){html body .decho-all-projects .project-card{padding-bottom:22px!important}html body .decho-all-projects .project-card .project-photo{height:clamp(205px,58vw,245px)!important;flex-basis:clamp(205px,58vw,245px)!important;object-position:center center!important;margin-bottom:19px!important}html body .decho-all-projects .project-card h3,html body .decho-all-projects .project-card p,html body .decho-all-projects .project-card .project-open,html body .decho-all-projects .project-card .showcase-number{margin-left:18px!important;margin-right:18px!important}}
 
+
+/* Unified portfolio cards: equal heights, consistent image frame, coordinated hover colors */
+html body .decho-all-projects .project-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important;gap:24px!important}
+html body .decho-all-projects .project-card{box-sizing:border-box!important;min-width:0!important;height:100%!important;min-height:560px!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;overflow:hidden!important;padding:0 0 22px!important;background:linear-gradient(145deg,#0d1947 0%,#0b153c 60%,#111c50 100%)!important;border:1px solid #3f4bc0!important;border-radius:18px!important;color:#eaf0ff!important;box-shadow:0 12px 32px rgba(0,0,0,.2)!important;transition:background .25s ease,border-color .25s ease,box-shadow .25s ease,transform .25s ease!important}
+html body .decho-all-projects .project-card .project-photo{display:block!important;box-sizing:border-box!important;width:100%!important;height:220px!important;min-height:220px!important;max-height:220px!important;flex:0 0 220px!important;margin:0 0 20px!important;padding:0!important;object-fit:cover!important;object-position:center center!important;aspect-ratio:16/10!important;border:0!important;border-radius:0!important;background:#172653!important}
+html body .decho-all-projects .project-card .iconbox{display:none!important}
+html body .decho-all-projects .project-card h3{margin:0 22px 13px!important;color:#f5f7ff!important;font-size:1.12rem!important;line-height:1.35!important;min-height:3.05em!important;transition:color .25s ease!important}
+html body .decho-all-projects .project-card p{margin:0 22px 11px!important;color:#c3d0f4!important;font-size:.88rem!important;line-height:1.55!important;transition:color .25s ease!important}
+html body .decho-all-projects .project-card p strong{color:#a9baff!important;transition:color .25s ease!important}
+html body .decho-all-projects .project-card .project-open{display:inline-flex!important;align-items:center!important;gap:12px!important;align-self:flex-start!important;margin: auto 22px 0!important;padding:10px 0 0!important;background:transparent!important;color:#f6f7ff!important;box-shadow:none!important;transition:color .25s ease,transform .25s ease!important}
+html body .decho-all-projects .project-card .project-open:before{content:"→";display:grid;place-items:center;width:45px;height:38px;border-radius:30px;background:linear-gradient(120deg,#c56bff,#628cff);font-size:1.35rem;color:#fff;transition:background .25s ease,transform .25s ease!important}
+html body .decho-all-projects .project-card:hover,html body .decho-all-projects .project-card:focus-within{background:linear-gradient(145deg,#34206d 0%,#202b72 56%,#164f86 100%)!important;border-color:#8b8cff!important;box-shadow:0 22px 48px rgba(67,86,220,.3)!important;transform:translateY(-5px)!important}
+html body .decho-all-projects .project-card:hover h3,html body .decho-all-projects .project-card:focus-within h3{color:#ffffff!important}
+html body .decho-all-projects .project-card:hover p,html body .decho-all-projects .project-card:focus-within p{color:#f0f4ff!important}
+html body .decho-all-projects .project-card:hover p strong,html body .decho-all-projects .project-card:focus-within p strong{color:#e2c8ff!important}
+html body .decho-all-projects .project-card:hover .project-open,html body .decho-all-projects .project-card:focus-within .project-open{color:#fff!important}
+html body .decho-all-projects .project-card:hover .project-open:before,html body .decho-all-projects .project-card:focus-within .project-open:before{background:linear-gradient(120deg,#e879f9,#60a5fa);transform:translateX(3px)}
+html body .decho-all-projects .project-card[hidden]{display:none!important}
+@media(max-width:960px){html body .decho-all-projects .project-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}html body .decho-all-projects .project-card{min-height:555px!important}html body .decho-all-projects .project-card .project-photo{height:215px!important;min-height:215px!important;max-height:215px!important;flex-basis:215px!important}}
+@media(max-width:600px){html body .decho-all-projects .project-grid{grid-template-columns:1fr!important;gap:19px!important}html body .decho-all-projects .project-card{min-height:0!important;height:auto!important;padding-bottom:22px!important}html body .decho-all-projects .project-card .project-photo{height:clamp(210px,58vw,250px)!important;min-height:clamp(210px,58vw,250px)!important;max-height:250px!important;flex-basis:clamp(210px,58vw,250px)!important}html body .decho-all-projects .project-card h3{min-height:0!important}}
+@media(prefers-reduced-motion:reduce){html body .decho-all-projects .project-card,html body .decho-all-projects .project-card *{transition:none!important}}
+
 </style>
 <link rel="stylesheet" href="../assets/css/ux-optimization.css">
 
