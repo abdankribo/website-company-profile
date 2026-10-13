@@ -1455,6 +1455,75 @@ section.section.about-background-section > .container.about-grid > .about-copy{
  .page-main .about-vector-art * {animation:none!important;transition:none!important}
 }
 
+
+/* DECHO ABOUT ILLUSTRATION FULL VIEW v1
+   Show the complete SVG in its visual column instead of fading/cropping it. */
+.page-main section.section.about-background-section > .container.about-grid{
+  overflow:hidden!important;
+}
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  position:absolute!important;
+  inset:0 auto 0 0!important;
+  display:block!important;
+  width:50%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-width:50%!important;
+  margin:0!important;
+  padding:0!important;
+  opacity:1!important;
+  overflow:visible!important;
+  background:linear-gradient(145deg,#eaf0ff 0%,#dce5ff 100%)!important;
+  border:0!important;
+  box-shadow:none!important;
+  z-index:1!important;
+  pointer-events:auto!important;
+}
+.page-main section.section.about-background-section .about-vector-scene{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:visible!important;
+  opacity:1!important;
+}
+.page-main section.section.about-background-section .about-vector-art{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  overflow:visible!important;
+  opacity:1!important;
+}
+/* Restore the SVG's own illustrated background so the whole artwork reads as one image. */
+.page-main section.section.about-background-section .about-vector-art > rect:first-of-type{
+  opacity:1!important;
+}
+@media(max-width:760px){
+  .page-main section.section.about-background-section > .container.about-grid{
+    overflow:hidden!important;
+  }
+  .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    opacity:.20!important;
+    overflow:visible!important;
+  }
+  .page-main section.section.about-background-section .about-vector-art{
+    object-fit:contain!important;
+    object-position:center top!important;
+  }
+}
+
 </style>
 
 
