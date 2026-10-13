@@ -1524,6 +1524,138 @@ section.section.about-background-section > .container.about-grid > .about-copy{
   }
 }
 
+
+/* DECHO HERO LIGHT CONSTRUCTION v1 — layout inspired by the supplied reference */
+#beranda.hero{
+  min-height:clamp(720px,calc(100svh - 70px),920px)!important;
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  color:#151b50!important;overflow:hidden!important;isolation:isolate!important;
+  background:linear-gradient(115deg,#fbfcff 0%,#eff3ff 43%,#dbe5ff 72%,#cbd8ff 100%)!important;
+}
+#beranda.hero:before{
+  content:""!important;position:absolute!important;inset:0!important;z-index:0!important;
+  background:
+    radial-gradient(ellipse at 75% 30%,rgba(139,139,255,.22),transparent 43%),
+    linear-gradient(90deg,rgba(255,255,255,.93) 0%,rgba(246,248,255,.91) 34%,rgba(233,239,255,.55) 57%,rgba(207,220,255,.18) 100%)!important;
+  pointer-events:none!important;
+}
+#beranda.hero:after{
+  content:""!important;position:absolute!important;inset:0!important;z-index:1!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,transparent 72%,rgba(244,247,255,.92) 100%)!important;
+  pointer-events:none!important;
+}
+#beranda.hero>.decho-scene{
+  position:absolute!important;inset:0 0 0 auto!important;left:auto!important;
+  z-index:0!important;width:70%!important;height:100%!important;max-width:1120px!important;
+  transform:none!important;overflow:visible!important;opacity:1!important;
+  pointer-events:none!important;
+}
+#beranda.hero .decho-scene-art{
+  position:absolute!important;inset:0!important;display:block!important;
+  width:100%!important;height:100%!important;max-width:none!important;
+  object-fit:contain!important;object-position:center right!important;
+  transform:translate3d(var(--scene-x,0),var(--scene-y,0),0)!important;
+  transition:transform .22s ease-out!important;overflow:visible!important;
+}
+#beranda.hero>header.hero-content.container{
+  display:block!important;position:relative!important;z-index:2!important;
+  flex:0 0 auto!important;width:min(1320px,calc(100% - 80px))!important;
+  max-width:1320px!important;margin:0 auto!important;transform:none!important;
+  padding:100px 0 130px!important;box-sizing:border-box!important;
+}
+#beranda.hero>header.hero-content.container .eyebrow{
+  color:#4355d9!important;font-size:.82rem!important;letter-spacing:.16em!important;
+  margin-bottom:24px!important;
+}
+#beranda.hero>header.hero-content.container .eyebrow:before{background:#6b63f6!important}
+#beranda.hero>header.hero-content.container h1{
+  position:relative!important;width:min(64%,790px)!important;max-width:790px!important;
+  color:#151943!important;font-size:clamp(2.8rem,5.1vw,5.1rem)!important;
+  line-height:1.04!important;letter-spacing:-.055em!important;text-wrap:balance!important;
+}
+#beranda.hero>header.hero-content.container h1 span{
+  color:#4b63ed!important;
+  background:linear-gradient(90deg,#347bf0,#7552e8);-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;
+}
+#beranda.hero>header.hero-content.container p{
+  width:min(49%,620px)!important;max-width:620px!important;
+  color:#4b587f!important;font-size:clamp(1rem,1.15vw,1.13rem)!important;
+  line-height:1.85!important;margin:25px 0 32px!important;
+}
+#beranda.hero>header.hero-content.container .hero-actions{
+  width:min(62%,760px)!important;max-width:760px!important;display:flex!important;
+  flex-wrap:wrap!important;gap:14px!important;
+}
+#beranda.hero .hero-actions .btn{
+  min-height:50px!important;display:inline-flex!important;align-items:center!important;
+  justify-content:center!important;border-radius:16px!important;padding:14px 25px!important;
+  background:linear-gradient(110deg,#6550e9,#358fe9)!important;color:#fff!important;
+  border:1px solid transparent!important;box-shadow:0 12px 28px rgba(75,87,220,.19)!important;
+}
+#beranda.hero .hero-actions .btn.outline{
+  background:rgba(255,255,255,.74)!important;color:#4358d9!important;
+  border:1px solid #6170ff!important;box-shadow:none!important;
+}
+#beranda.hero>.hero-bottom.container{
+  position:absolute!important;z-index:3!important;left:50%!important;right:auto!important;
+  bottom:26px!important;transform:translateX(-50%)!important;
+  width:min(1320px,calc(100% - 80px))!important;max-width:1320px!important;
+  margin:0!important;display:flex!important;align-items:center!important;
+  justify-content:space-between!important;gap:20px!important;
+}
+#beranda.hero .slide-count,#beranda.hero .scroll-note{color:#344477!important}
+#beranda.hero .decho-badge{filter:drop-shadow(0 10px 18px rgba(49,57,135,.12))}
+#beranda.hero .decho-badge rect{
+  fill:#fff!important;fill-opacity:.86!important;stroke:#a8b2ff!important;stroke-opacity:.92!important;
+}
+#beranda.hero .decho-badge text{fill:#20265f!important}
+#beranda.hero .decho-badge-one path{fill:#6659e9!important}
+#beranda.hero .decho-badge-two path:first-of-type{fill:#6659e9!important}
+#beranda.hero .decho-badge-two path:last-of-type{stroke:#fff!important}
+#beranda.hero .decho-badge-three circle,#beranda.hero .decho-badge-three path{fill:#6659e9!important}
+#beranda.hero .decho-orb-a{background:#8e82ff!important;box-shadow:0 0 22px 8px #8e82ff!important}
+#beranda.hero .decho-orb-b{background:#4a9bff!important;box-shadow:0 0 18px 7px #7c6dff!important}
+@media(max-width:1000px) and (min-width:651px){
+ #beranda.hero{min-height:700px!important}
+ #beranda.hero>.decho-scene{width:72%!important;right:-5%!important;opacity:.9!important}
+ #beranda.hero>header.hero-content.container{width:calc(100% - 56px)!important;padding:85px 0 120px!important}
+ #beranda.hero>header.hero-content.container h1{width:63%!important;font-size:clamp(2.55rem,5vw,4rem)!important}
+ #beranda.hero>header.hero-content.container p{width:48%!important;font-size:.98rem!important}
+ #beranda.hero>header.hero-content.container .hero-actions{width:65%!important}
+ #beranda.hero>.hero-bottom.container{width:calc(100% - 56px)!important}
+}
+@media(max-width:650px){
+ #beranda.hero{min-height:900px!important;align-items:flex-start!important}
+ #beranda.hero:before{background:linear-gradient(180deg,rgba(250,252,255,.98) 0%,rgba(242,246,255,.96) 43%,rgba(216,227,255,.48) 100%)!important}
+ #beranda.hero:after{background:linear-gradient(180deg,transparent 50%,rgba(244,247,255,.92) 100%)!important}
+ #beranda.hero>.decho-scene{
+   inset:auto -12% 48px auto!important;width:118%!important;max-width:none!important;
+   height:51%!important;opacity:1!important;transform:none!important;overflow:visible!important;
+ }
+ #beranda.hero .decho-scene-art{object-fit:contain!important;object-position:center bottom!important}
+ #beranda.hero>header.hero-content.container{
+   width:calc(100% - 40px)!important;max-width:none!important;
+   transform:none!important;padding:58px 0 390px!important;
+ }
+ #beranda.hero>header.hero-content.container .eyebrow{font-size:.65rem!important;letter-spacing:.09em!important;margin-bottom:18px!important}
+ #beranda.hero>header.hero-content.container h1{width:100%!important;max-width:100%!important;font-size:clamp(2.35rem,10vw,3.45rem)!important;line-height:1.05!important}
+ #beranda.hero>header.hero-content.container p{width:100%!important;max-width:100%!important;font-size:.94rem!important;line-height:1.7!important;margin:20px 0 24px!important}
+ #beranda.hero>header.hero-content.container .hero-actions{width:100%!important;max-width:100%!important;gap:10px!important}
+ #beranda.hero .hero-actions .btn{padding:12px 16px!important;min-height:46px!important;font-size:.86rem!important}
+ #beranda.hero>.hero-bottom.container{
+   width:calc(100% - 40px)!important;bottom:14px!important;
+   align-items:flex-start!important;flex-wrap:wrap!important;gap:8px!important;
+ }
+ #beranda.hero .slide-count,#beranda.hero .scroll-note{font-size:.65rem!important}
+ #beranda.hero .decho-badge{opacity:.95}
+}
+@media(prefers-reduced-motion:reduce){
+ #beranda.hero .decho-badge,#beranda.hero .decho-worker,#beranda.hero .decho-worker-small,
+ #beranda.hero .decho-crane,#beranda.hero .decho-float-slow,#beranda.hero .decho-orb{animation:none!important}
+ #beranda.hero .decho-scene-art{transition:none!important}
+}
+
 </style>
 
 
