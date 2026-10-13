@@ -136,3 +136,23 @@
     });
   });
 })();
+
+
+/* Gentle transition for same-site page navigation; preserve browser and accessibility behavior */
+(function(){
+  'use strict';
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.addEventListener('click',function(event){
+    if(event.defaultPrevented || event.button!==0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link=event.target.closest('a[href]');
+    if(!link || link.target==='_blank' || link.hasAttribute('download')) return;
+    let destination;
+    try{destination=new URL(link.href,location.href)}catch(_){return}
+    if(destination.origin!==location.origin || destination.pathname===location.pathname && destination.hash) return;
+    if(destination.pathname===location.pathname && !destination.hash) return;
+    if(!document.body || link.closest('.decho-lightbox')) return;
+    event.preventDefault();
+    document.body.classList.add('decho-page-leaving');
+    window.setTimeout(()=>{location.href=destination.href},160);
+  });
+})();
