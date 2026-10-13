@@ -702,3 +702,53 @@ body:has(.section.dark) .cards .service-card p{color:#4d5877!important}
 .project-results{margin:16px 0 20px}
 @media(max-width:900px){.project-tools{grid-template-columns:1fr}.project-filter-list{justify-content:flex-start}}
 @media(max-width:520px){.project-filter-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.project-filter{width:100%}}
+
+
+/* Global text contrast pass: keep all copy readable on cards, images, and colored sections */
+:root{--decho-text:#172033;--decho-muted:#4b5875;--decho-contrast:#fff}
+body{color:var(--decho-text)}
+p,li,dd,figcaption{color:var(--decho-muted)}
+.section:not(.dark) .section-head h2,
+.page-hero h1,.page-hero h2,
+.section:not(.dark) h2,.section:not(.dark) h3,
+.service-card h3,.project-card h3,.news-card h3{color:#111747}
+.section-kicker,.eyebrow{font-weight:800;letter-spacing:.14em;color:#3158e8}
+.section.dark{color:#fff}
+.section.dark .section-head h2,.section.dark .section-head h3,
+.section.dark h2,.section.dark h3,.section.dark .section-kicker{color:#fff!important}
+.section.dark p,.section.dark li,.section.dark .section-head p{color:#e5eaff!important;opacity:1}
+.section.dark a:not(.btn){color:#dbe4ff}
+.service-card,.project-card,.news-card{
+  color:#172033;background:#fff;
+}
+.service-card h3,.project-card h3,.news-card h3{color:#111747!important}
+.service-card p,.project-card p,.news-card p{color:#465371!important;opacity:1}
+.service-card strong,.project-card strong{color:#263252}
+.service-card .iconbox,.project-card .iconbox{
+  color:#243bb7;background:#eef0ff;border:1px solid #dce2ff;
+}
+/* Image cards must have a readable overlay behind any text placed over photography */
+.service-card[style*="background-image"],.image-card,.feature-banner,.news-image-wrap{
+  position:relative;isolation:isolate;
+}
+.service-card[style*="background-image"] h3,
+.service-card[style*="background-image"] p,
+.image-card h3,.image-card p,.feature-banner h2,.feature-banner p{
+  position:relative;z-index:2;color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.7);
+}
+.service-card[style*="background-image"]:after,.image-card:after,.feature-banner:after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,17,47,.30),rgba(10,17,47,.82));
+  border-radius:inherit;
+}
+.service-card[style*="background-image"] .iconbox,.image-card .iconbox{
+  position:relative;z-index:3;color:#172554!important;text-shadow:none;
+}
+/* Keep homepage's three value cards on plain surfaces for maximum legibility */
+body:has(.hero#beranda) .section.soft .cards .service-card{
+  background:#fff!important;background-image:none!important;color:#172033!important;
+}
+body:has(.hero#beranda) .section.soft .cards .service-card h3{color:#111747!important}
+body:has(.hero#beranda) .section.soft .cards .service-card p{color:#465371!important}
+.project-card .project-open,.service-card .btn{position:relative;z-index:4}
+.project-card img{display:block}
