@@ -119,6 +119,19 @@ html body .decho-all-projects .project-card .project-open:hover{transform:transl
 @media(max-width:960px){html body .decho-all-projects{padding:68px 0}html body .decho-all-projects .project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){html body .decho-all-projects{padding:54px 0 60px}html body .decho-all-projects .project-grid{grid-template-columns:1fr;gap:18px}html body .decho-all-projects .project-card .project-photo{height:220px!important;flex-basis:220px!important}html body .decho-all-projects .project-filter-list{justify-content:flex-start}html body .decho-all-projects .project-filter{padding:9px 12px;font-size:.78rem}}
 
+
+/* Refine project image sizing and cropping across all screen sizes */
+html body .decho-all-projects .project-card{padding:0 0 22px!important}
+html body .decho-all-projects .project-card .project-photo{display:block!important;width:100%!important;height:clamp(200px,17vw,235px)!important;min-height:0!important;flex:0 0 clamp(200px,17vw,235px)!important;margin:0 0 20px!important;object-fit:cover!important;object-position:center center!important;aspect-ratio:16/10!important}
+html body .decho-all-projects .project-card h3,
+html body .decho-all-projects .project-card p,
+html body .decho-all-projects .project-card .project-open{margin-left:22px!important;margin-right:22px!important}
+html body .decho-all-projects .project-card .showcase-number,
+html body .decho-all-projects .project-card .project-meta{margin-left:22px!important;margin-right:22px!important}
+@media(min-width:1200px){html body .decho-all-projects .project-card .project-photo{height:225px!important;flex-basis:225px!important}}
+@media(max-width:960px){html body .decho-all-projects .project-card .project-photo{height:clamp(195px,27vw,225px)!important;flex-basis:clamp(195px,27vw,225px)!important}}
+@media(max-width:600px){html body .decho-all-projects .project-card{padding-bottom:22px!important}html body .decho-all-projects .project-card .project-photo{height:clamp(205px,58vw,245px)!important;flex-basis:clamp(205px,58vw,245px)!important;object-position:center center!important;margin-bottom:19px!important}html body .decho-all-projects .project-card h3,html body .decho-all-projects .project-card p,html body .decho-all-projects .project-card .project-open,html body .decho-all-projects .project-card .showcase-number{margin-left:18px!important;margin-right:18px!important}}
+
 </style>
 <link rel="stylesheet" href="../assets/css/ux-optimization.css">
 
