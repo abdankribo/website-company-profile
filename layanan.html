@@ -1112,20 +1112,19 @@ html body main.page-main > section.section.soft .quick-links > .quick-card:hover
 .decho-choice-route{position:absolute;z-index:0;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .decho-choice-route path{fill:none;stroke-width:32;stroke-linecap:butt;stroke-linejoin:round}
 .decho-choice-route .route-highlight{stroke:#f6f9fc;stroke-width:3;opacity:1}
-.decho-choice-route .decho-snake-flow path{
-  stroke-dasharray:22 1800;
-  stroke-dashoffset:0;
-  opacity:.95;
-  animation:dechoSnakeFlow 3.8s linear infinite;
-}
-.decho-choice-route .decho-snake-flow path:nth-child(2){animation-delay:.72s}
-.decho-choice-route .decho-snake-flow path:nth-child(3){animation-delay:1.44s}
-.decho-choice-route .decho-snake-flow path:nth-child(4){animation-delay:2.16s}
-.decho-choice-route .decho-snake-flow path:nth-child(5){animation-delay:2.88s}
-@keyframes dechoSnakeFlow{
-  from{stroke-dashoffset:0}
-  to{stroke-dashoffset:-1800}
-}
+.decho-choice-section{position:relative}
+.decho-choice-item .decho-choice-step,.decho-choice-item .decho-choice-content,.decho-choice-item .decho-choice-dot{opacity:0;transition:opacity .55s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.decho-choice-item .decho-choice-step{transform:scale(.35)}
+.decho-choice-item .decho-choice-content{transform:translateY(16px)}
+.decho-choice-item .decho-choice-dot{transform:scale(0)}
+.decho-choice-item.on .decho-choice-step,.decho-choice-item.on .decho-choice-content,.decho-choice-item.on .decho-choice-dot{opacity:1;transform:none}
+.decho-choice-route #decho-choice-cuts line{opacity:0;transition:opacity .3s}
+.decho-choice-route #decho-choice-arrow{opacity:0;transform:scaleY(.2);transform-box:fill-box;transform-origin:50% 100%;transition:opacity .35s ease,transform .5s cubic-bezier(.2,.9,.3,1.3)}
+.decho-choice-route #decho-choice-arrow.on{opacity:1;transform:none}
+.decho-choice-route #decho-choice-head{opacity:0;transition:opacity .2s}
+.decho-choice-hint{position:absolute;z-index:5;left:0;right:0;bottom:10px;text-align:center;font-size:13px;font-weight:600;color:#777b80;transition:opacity .4s;animation:dechoChoiceNudge 1.6s ease-in-out infinite;pointer-events:none}
+@keyframes dechoChoiceNudge{50%{transform:translateY(6px)}}
+@media(prefers-reduced-motion:reduce){.decho-choice-hint{animation:none}.decho-choice-item .decho-choice-step,.decho-choice-item .decho-choice-content,.decho-choice-item .decho-choice-dot,.decho-choice-route #decho-choice-arrow{transition:none}}
 .decho-choice-item{display:contents}
 .decho-choice-step{position:absolute;z-index:2;display:flex;align-items:center;justify-content:center;width:8.333%;aspect-ratio:1;height:auto;margin:0;padding:5px;border:3px solid #fff;border-radius:50%;background:var(--step-color);box-shadow:0 8px 18px rgba(20,20,40,.22);transition:transform .28s ease,box-shadow .28s ease}
 .decho-choice-step:before{position:absolute;inset:2px;border:1px solid rgba(255,255,255,.45);border-radius:50%;content:""}
@@ -1168,6 +1167,7 @@ html body main.page-main > section.section.soft .quick-links > .quick-card:hover
       <p>Beragam pilihan layanan konstruksi yang dirancang untuk memenuhi kebutuhan proyek Anda dengan mengutamakan kualitas, ketepatan, dan profesionalisme.</p>
     </div>
     <div class="decho-choice-stairs">
+      <div class="decho-choice-hint">Gulir ke bawah ↓</div>
       <svg class="decho-choice-route" viewBox="0 0 1152 648" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <g fill="none" stroke-width="32">
           <path d="M0 581H476A69 76 0 0 0 545 505" stroke="#7b68f2"/>
@@ -1184,8 +1184,9 @@ html body main.page-main > section.section.soft .quick-links > .quick-card:hover
           <path d="M700 345A80 83 0 0 1 790 262" />
           <path d="M790 262A71 71 0 0 0 861 191V118" />
         </g>
-        <polygon points="834,98 861,68 889,98" fill="#5be12b"/>
-        <g stroke="#f6f9fc" stroke-width="3">
+        <polygon id="decho-choice-arrow" points="834,98 861,68 889,98" fill="#5be12b"/>
+        <circle id="decho-choice-head" r="16" cx="0" cy="581" fill="#7b68f2"/>
+        <g id="decho-choice-cuts" stroke="#f6f9fc" stroke-width="3">
           <line x1="476" y1="563" x2="476" y2="599"/>
           <line x1="528" y1="505" x2="562" y2="505"/>
           <line x1="632" y1="409" x2="632" y2="445"/>
@@ -1196,24 +1197,75 @@ html body main.page-main > section.section.soft .quick-links > .quick-card:hover
       <article class="decho-choice-item choice-01">
         <div class="decho-choice-step"><div class="decho-choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 39h34M12 39V22l12-9 12 9v17M19 39V28h10v11M17 19l7-5 7 5"/><path d="M9 13h8M13 9v8"/></svg></div></div>
         <div class="decho-choice-content"><span class="decho-choice-label">PILIHAN 01</span><h3>Rancang Bangun</h3><p>Layanan terintegrasi mulai dari perencanaan hingga pelaksanaan konstruksi dengan mengutamakan kualitas, efisiensi, dan kesesuaian kebutuhan.</p></div>
-      </article>
+      <span class="decho-choice-dot" aria-hidden="true" style="position:absolute;left:calc(38.19% + 39px);top:calc(72.38% + 42px);width:22px;height:22px;border-radius:50%;background:#7b63f7;z-index:3"></span></article>
       <article class="decho-choice-item choice-02">
         <div class="decho-choice-step"><div class="decho-choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 39h34M12 39V13h8v26M20 19h14v20M26 19v-6h8v6M24 26h6M24 32h6"/></svg></div></div>
         <div class="decho-choice-content"><span class="decho-choice-label">PILIHAN 02</span><h3>Konstruksi Baja</h3><p>Pelaksanaan pekerjaan struktur baja meliputi fabrikasi, perakitan, pemasangan, serta pengecatan sesuai spesifikasi dan kebutuhan proyek.</p></div>
-      </article>
+      <span class="decho-choice-dot" aria-hidden="true" style="position:absolute;left:calc(49.39% + 39px);top:calc(68.36% + 42px);width:22px;height:22px;border-radius:50%;background:#078cff;z-index:3"></span></article>
       <article class="decho-choice-item choice-03">
         <div class="decho-choice-step"><div class="decho-choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 23 24 7l19 16M10 21v20h28V21M20 41V28h9v13M15 25h5M29 25h5"/></svg></div></div>
         <div class="decho-choice-content"><span class="decho-choice-label">PILIHAN 03</span><h3>Konstruksi Hunian</h3><p>Layanan pembangunan dan renovasi hunian yang mengutamakan kualitas, kenyamanan, fungsionalitas, serta estetika sesuai kebutuhan.</p></div>
-      </article>
+      <span class="decho-choice-dot" aria-hidden="true" style="position:absolute;left:calc(51.65% + 39px);top:calc(48.15% + 42px);width:22px;height:22px;border-radius:50%;background:#00bfae;z-index:3"></span></article>
       <article class="decho-choice-item choice-04">
         <div class="decho-choice-step"><div class="decho-choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m8 36 20-20 6 6-20 20H8zM25 13l4-4 10 10-4 4M7 13l4-4 7 7-4 4M8 28l-4 4 10 10 4-4"/></svg></div></div>
         <div class="decho-choice-content"><span class="decho-choice-label">PILIHAN 04</span><h3>Perbaikan &amp; Renovasi</h3><p>Layanan perbaikan dan renovasi bangunan untuk meningkatkan kualitas, fungsi, keamanan, serta estetika sesuai kebutuhan.</p></div>
-      </article>
+      <span class="decho-choice-dot" aria-hidden="true" style="position:absolute;left:calc(62.76% + 39px);top:calc(44.44% + 42px);width:22px;height:22px;border-radius:50%;background:#00ce83;z-index:3"></span></article>
       <article class="decho-choice-item choice-05">
         <div class="decho-choice-step"><div class="decho-choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 39h34M12 34l8-8 6 5 12-14M30 17h8v8"/><path d="M8 9h12M8 15h8"/></svg></div></div>
         <div class="decho-choice-content"><span class="decho-choice-label">PILIHAN 05</span><h3>Manajemen Proyek</h3><p>Perencanaan, koordinasi, dan pengawasan proyek untuk memastikan pekerjaan berjalan efektif, tepat waktu, sesuai anggaran, dan memenuhi standar kualitas.</p></div>
-      </article>
+      <span class="decho-choice-dot" aria-hidden="true" style="position:absolute;left:calc(65.19% + 39px);top:calc(24.38% + 42px);width:22px;height:22px;border-radius:50%;background:#55df26;z-index:3"></span></article>
     </div>
   </div>
-</section><section class="section soft"><div class="container"><div class="section-head"><div><div class="section-kicker">Proses Pekerjaan</div><h2>Alur kerja proyek</h2><p>Proses yang jelas dan terstruktur untuk menghasilkan pekerjaan berkualitas.</p></div></div><div class="quick-links"><article class="quick-card"><h3>01 · Konsultasi & Perencanaan</h3><p>Memperjelas ruang lingkup, anggaran, jadwal, dan visi klien.</p></article><article class="quick-card"><h3>02 · Desain & Anggaran</h3><p>Mengembangkan konsep, menentukan material, memfinalisasi anggaran, dan jadwal kerja.</p></article><article class="quick-card"><h3>03 · Perizinan & Persetujuan</h3><p>Mengurus perizinan dan persetujuan agar proyek memenuhi peraturan yang berlaku.</p></article><article class="quick-card"><h3>04 · Pelaksanaan Konstruksi</h3><p>Mengoordinasikan tenaga kerja, pemasok, dan pelaksanaan dengan perhatian pada keselamatan serta kualitas.</p></article><article class="quick-card"><h3>05 · Pengendalian Mutu</h3><p>Melakukan pemeriksaan menyeluruh untuk memastikan pekerjaan sesuai standar dan ketentuan.</p></article><article class="quick-card"><h3>06 · Serah Terima & Dukungan</h3><p>Melakukan peninjauan akhir, serah terima, dan tindak lanjut pasca-konstruksi sesuai kesepakatan.</p></article></div></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><p>Solusi baja terintegrasi untuk konstruksi, manufaktur, dan infrastruktur Indonesia.</p></div><div><h4>Jelajahi</h4><div class="footer-links"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></div></div><div><h4>Informasi</h4><div class="footer-links"><a href="kontak.html">Kontak</a></div></div><div><h4>Kontak</h4><div class="footer-links"><a href="mailto:constructiondecho@gmail.com">constructiondecho@gmail.com</a><a href="kontak.html">Formulir konsultasi</a></div></div></div><div class="footer-bottom">© <span id="year"></span> PT. Dermawan Charisma Olahkarya (DECHO). Company profile konsep.</div></div></footer><script>const mt=document.getElementById('menuToggle'),nav=document.getElementById('navlinks');if(mt&&nav)mt.addEventListener('click',()=>{nav.classList.toggle('open');mt.setAttribute('aria-expanded',nav.classList.contains('open'));mt.textContent=nav.classList.contains('open')?'×':'☰'});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');mt.setAttribute('aria-expanded','false');mt.textContent='☰'}));const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();const form=document.getElementById('contactForm');if(form)form.addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('name').value,email=document.getElementById('email').value,m=document.getElementById('message').value;location.href='mailto:constructiondecho@gmail.com?subject='+encodeURIComponent('Permintaan informasi dari '+n)+'&body='+encodeURIComponent(n+'\n'+email+'\n\n'+m)});</script><script src="assets/js/language.js"></script><script src="assets/js/ux-optimization.js?v=20261014-18" defer></script>
+</section><section class="section soft"><div class="container"><div class="section-head"><div><div class="section-kicker">Proses Pekerjaan</div><h2>Alur kerja proyek</h2><p>Proses yang jelas dan terstruktur untuk menghasilkan pekerjaan berkualitas.</p></div></div><div class="quick-links"><article class="quick-card"><h3>01 · Konsultasi & Perencanaan</h3><p>Memperjelas ruang lingkup, anggaran, jadwal, dan visi klien.</p></article><article class="quick-card"><h3>02 · Desain & Anggaran</h3><p>Mengembangkan konsep, menentukan material, memfinalisasi anggaran, dan jadwal kerja.</p></article><article class="quick-card"><h3>03 · Perizinan & Persetujuan</h3><p>Mengurus perizinan dan persetujuan agar proyek memenuhi peraturan yang berlaku.</p></article><article class="quick-card"><h3>04 · Pelaksanaan Konstruksi</h3><p>Mengoordinasikan tenaga kerja, pemasok, dan pelaksanaan dengan perhatian pada keselamatan serta kualitas.</p></article><article class="quick-card"><h3>05 · Pengendalian Mutu</h3><p>Melakukan pemeriksaan menyeluruh untuk memastikan pekerjaan sesuai standar dan ketentuan.</p></article><article class="quick-card"><h3>06 · Serah Terima & Dukungan</h3><p>Melakukan peninjauan akhir, serah terima, dan tindak lanjut pasca-konstruksi sesuai kesepakatan.</p></article></div></div></section></main><footer class="footer"><div class="container"><div class="footer-grid"><div><a class="brand brand-split-logo" href="index.html" aria-label="DECHO — PT. Dermawan Charisma Olahkarya"><img class="brandmark" src="assets/images/logo-decho-icon.png" alt="" aria-hidden="true" decoding="async"><img class="brand-name-image" src="assets/images/logo-decho-text.png" alt="DECHO — PT. Dermawan Charisma Olahkarya" decoding="async"></a><p>Solusi baja terintegrasi untuk konstruksi, manufaktur, dan infrastruktur Indonesia.</p></div><div><h4>Jelajahi</h4><div class="footer-links"><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a><a href="tentang.html" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a><a href="layanan.html" data-id="Layanan" data-en="Services">Layanan</a><a href="proyek.html" data-id="Proyek Kami" data-en="Projects">Proyek Kami</a><a href="kontak.html" data-id="Kontak" data-en="Contact">Kontak</a></div></div><div><h4>Informasi</h4><div class="footer-links"><a href="kontak.html">Kontak</a></div></div><div><h4>Kontak</h4><div class="footer-links"><a href="mailto:constructiondecho@gmail.com">constructiondecho@gmail.com</a><a href="kontak.html">Formulir konsultasi</a></div></div></div><div class="footer-bottom">© <span id="year"></span> PT. Dermawan Charisma Olahkarya (DECHO). Company profile konsep.</div></div></footer><script>const mt=document.getElementById('menuToggle'),nav=document.getElementById('navlinks');if(mt&&nav)mt.addEventListener('click',()=>{nav.classList.toggle('open');mt.setAttribute('aria-expanded',nav.classList.contains('open'));mt.textContent=nav.classList.contains('open')?'×':'☰'});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');mt.setAttribute('aria-expanded','false');mt.textContent='☰'}));const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();const form=document.getElementById('contactForm');if(form)form.addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('name').value,email=document.getElementById('email').value,m=document.getElementById('message').value;location.href='mailto:constructiondecho@gmail.com?subject='+encodeURIComponent('Permintaan informasi dari '+n)+'&body='+encodeURIComponent(n+'\n'+email+'\n\n'+m)});</script><script>
+(()=> {
+  const section=document.querySelector('.decho-choice-section');
+  const stage=document.querySelector('.decho-choice-stairs');
+  if(!section||!stage)return;
+  const paths=[...stage.querySelectorAll('.decho-choice-route .decho-snake-flow path')];
+  const cuts=[...stage.querySelectorAll('#decho-choice-cuts line')];
+  const items=[...stage.querySelectorAll('.decho-choice-item')];
+  const arrow=stage.querySelector('#decho-choice-arrow');
+  const head=stage.querySelector('#decho-choice-head');
+  const hint=stage.querySelector('.decho-choice-hint');
+  const colors=['#7b68f2','#0a84ff','#07c9ac','#10dc86','#5be12b'];
+  const cardToNode=[4,2,3,0,1];
+  const lengths=paths.map(p=>p.getTotalLength()),starts=[];
+  let total=0;
+  lengths.forEach((len,i)=>{starts[i]=total;total+=len;});
+  paths.forEach((p,i)=>{p.style.strokeDasharray=lengths[i]+' '+lengths[i];p.style.strokeDashoffset=lengths[i];});
+  const thresholds=[.8,.55,.6,.55,.5].map((v,i)=>starts[i]+lengths[i]*v);
+  function render(progress){
+    const distance=progress*total;
+    paths.forEach((path,i)=>{path.style.strokeDashoffset=lengths[i]-Math.min(lengths[i],Math.max(0,distance-starts[i]));});
+    cuts.forEach((line,i)=>{line.style.opacity=distance>starts[i]?1:0;});
+    items.forEach((item,i)=>{
+      const visible=distance>=thresholds[i];
+      item.classList.toggle('on',visible);
+    });
+    let index=0;while(index<4&&distance>starts[index]+lengths[index])index++;
+    const point=paths[index].getPointAtLength(Math.min(lengths[index],Math.max(0,distance-starts[index])));
+    head.setAttribute('cx',point.x);head.setAttribute('cy',point.y);head.setAttribute('fill',colors[index]);
+    head.style.opacity=(distance>0&&progress<.97)?1:0;
+    arrow.classList.toggle('on',progress>=.97);
+    hint.style.opacity=progress>.02?0:1;
+  }
+  function progress(){
+    const rect=section.getBoundingClientRect();
+    const travel=Math.max(1,rect.height-innerHeight);
+    return Math.min(1,Math.max(0,-rect.top/travel));
+  }
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){render(1);return;}
+  let current=0,frame=0;
+  function tick(){
+    const target=progress();
+    current+=(target-current)*.09;
+    if(Math.abs(target-current)<.0005)current=target;
+    render(current);
+    frame=requestAnimationFrame(tick);
+  }
+  tick();
+  addEventListener('resize',()=>{cancelAnimationFrame(frame);tick();},{passive:true});
+})();
+</script>
+<script src="assets/js/language.js"></script><script src="assets/js/ux-optimization.js?v=20261014-18" defer></script>
 </body></html>
