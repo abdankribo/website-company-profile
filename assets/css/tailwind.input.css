@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Tailwind utilities are compiled locally for production. Keep component-
+ * specific and legacy layout rules in their existing stylesheet during the
+ * incremental migration; move rules here only when their HTML is migrated.
+ */
