@@ -25,14 +25,7 @@
     if(!img.closest('.hero')&&!img.hasAttribute('loading'))img.loading='lazy';
     img.addEventListener('error',()=>{img.classList.add('decho-image-error');img.setAttribute('aria-label','Gambar tidak dapat dimuat: '+(img.alt||'foto'));},{once:true});
   });
-  // Reveal cards only after JS has loaded; without JS content remains visible.
-  const revealItems=$$('.service-card,.news-card,.gallery figure,.project-card,.process-card');
-  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-    revealItems.forEach(el=>el.classList.add('decho-reveal'));
-    const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('decho-in');io.unobserve(entry.target);}}),{threshold:.08,rootMargin:'0px 0px -28px 0px'});
-    revealItems.forEach(el=>io.observe(el));
-  }
-  // Smooth, restrained entrance motion for headings and hero content.
+
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     const hero=$('.hero,.page-hero');
     if(hero){
@@ -181,159 +174,72 @@
 })();
 
 
-/* DECHO interaction layer: reveal sections progressively, elevate sticky nav on scroll */
+/* DECHO scroll reveal: one observer, deduplicated targets, and accessible reduced motion. */
 (function(){
   'use strict';
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const nav = document.querySelector('.navbar, .nav, header.site-header');
-  let scheduled = false;
-  function updateScrollState(){
+  let scrollScheduled = false;
+  function updateNav(){
     if(nav) nav.classList.toggle('is-scrolled', window.scrollY > 18);
-    scheduled = false;
+    scrollScheduled = false;
   }
-  updateScrollState();
+  updateNav();
   window.addEventListener('scroll', function(){
-    if(!scheduled){ scheduled = true; window.requestAnimationFrame(updateScrollState); }
+    if(!scrollScheduled){
+      scrollScheduled = true;
+      window.requestAnimationFrame(updateNav);
+    }
   }, {passive:true});
 
-  if(reduce || !('IntersectionObserver' in window)) return;
   const selectors = [
-    '.section-head',
-    '.about-grid',
-    '.sustain-grid',
-    '.feature-banner',
-    '.contact-strip',
-    '.stats',
-    '.footer-grid',
-    '.project-intro',
-    '.project-search-panel',
-    '.contact-layout',
-    '.contact-form',
-    '.contact-info',
-    '.process-grid',
-    '.process-row'
+    '.section-head', '.about-grid', '.sustain-grid', '.feature-banner',
+    '.contact-strip', '.stats', '.footer-grid', '.project-intro',
+    '.project-search-panel', '.contact-layout', '.contact-form',
+    '.contact-info', '.process-grid', '.process-row',
+    '.service-card', '.news-card', '.project-card', '.team-card',
+    '.quick-card', '.gallery figure', '.stat'
   ];
-  const targets = [];
-  selectors.forEach(selector => document.querySelectorAll(selector).forEach(el => {
-    if(el.dataset.dechoMotionInit === '1' || el.classList.contains('decho-reveal')) return;
-    if(el.closest('.decho-lightbox,[hidden]')) return;
-    el.dataset.dechoMotionInit = '1';
-    el.classList.add('decho-scroll-reveal');
-    targets.push(el);
-  }));
-  if(!targets.length) return;
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(!entry.isIntersecting) return;
-      entry.target.classList.add('decho-scroll-in');
-      observer.unobserve(entry.target);
-    });
-  }, {threshold:0.08, rootMargin:'0px 0px -36px 0px'});
-  targets.forEach((el,index) => {
-    el.style.transitionDelay = Math.min((index % 4) * 70, 210) + 'ms';
-    observer.observe(el);
-  });
-})();
-
-
-/* DECHO scroll storytelling: animate content entering the viewport */
-(function(){
-  'use strict';
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduced) return;
-
-  const selectors = [
-    'main section',
-    'main .service-card',
-    'main .project-card',
-    'main .news-card',
-    'main .team-card',
-    'main .quick-card',
-    'main .process-row',
-    'main .stat',
-    'main .gallery figure'
-  ];
-  const elements = [];
-  selectors.forEach(selector => {
-    document.querySelectorAll(selector).forEach(el => {
-      if(el.dataset.dechoScrollStory === '1' || el.closest('.decho-lightbox')) return;
-      // Do not hide the first screen: animate only content lower in the document.
-      const rect = el.getBoundingClientRect();
-      const top = rect.top + window.scrollY;
-      if(top < window.innerHeight * 0.72) return;
-      el.dataset.dechoScrollStory = '1';
-      el.classList.add('decho-story-reveal');
-      elements.push(el);
+  const targets = new Set();
+  selectors.forEach(function(selector){
+    document.querySelectorAll(selector).forEach(function(el){
+      if(el.closest('.decho-lightbox,[hidden]')) return;
+      targets.add(el);
     });
   });
-  if(!elements.length) return;
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(!entry.isIntersecting) return;
-      entry.target.classList.add('decho-story-visible');
-      observer.unobserve(entry.target);
+  if(reduceMotion || !('IntersectionObserver' in window)){
+    targets.forEach(function(el){
+      el.classList.remove('decho-reveal');
+      el.classList.add('decho-in');
+      el.style.opacity = '';
+      el.style.transform = '';
+      el.style.filter = '';
+      el.style.transitionDelay = '';
     });
-  }, {threshold:0.12, rootMargin:'0px 0px -7% 0px'});
-
-  elements.forEach((el,index) => {
-    if(el.matches('.service-card,.project-card,.news-card,.team-card,.quick-card,.gallery figure')) {
-      el.style.setProperty('--decho-story-delay', (index % 4) * 65 + 'ms');
-    }
-    observer.observe(el);
-  });
-
-  // Gentle scroll-linked progress for the reading journey.
-  let ticking=false;
-  function progress(){
-    const max=document.documentElement.scrollHeight-window.innerHeight;
-    const amount=max>0 ? Math.min(1,Math.max(0,window.scrollY/max)) : 0;
-    document.documentElement.style.setProperty('--decho-scroll-progress', amount.toFixed(4));
-    ticking=false;
-  }
-  window.addEventListener('scroll',function(){
-    if(!ticking){ticking=true;window.requestAnimationFrame(progress);}
-  },{passive:true});
-  progress();
-})();
-
-
-/* DECHO scroll UX fallback: one dependable reveal observer for every page. */
-(function () {
-  'use strict';
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var candidates = document.querySelectorAll('main > section, main .section-head, main .about-grid, main .sustain-grid, main .feature-banner, main .contact-strip, main .stats, main .service-card, main .project-card, main .news-card, main .team-card, main .quick-card, main .process-row, main .gallery figure, main .stat');
-  if (reduce || !('IntersectionObserver' in window)) {
-    candidates.forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
     return;
   }
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      el.style.opacity = '1';
-      el.style.transform = 'translate3d(0,0,0)';
-      observer.unobserve(el);
+
+  const observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('decho-in');
+      observer.unobserve(entry.target);
     });
-  }, { threshold: 0.06, rootMargin: '0px 0px -36px 0px' });
-  candidates.forEach(function (el, index) {
-    if (el.dataset.dechoReliableReveal === '1') return;
-    el.dataset.dechoReliableReveal = '1';
-    var rect = el.getBoundingClientRect();
-    var initiallyVisible = rect.top < window.innerHeight * 0.88 && rect.bottom > 0;
-    el.style.transition = 'opacity 560ms cubic-bezier(.22,1,.36,1), transform 560ms cubic-bezier(.22,1,.36,1)';
-    el.style.transitionDelay = (index % 4) * 55 + 'ms';
-    if (initiallyVisible) {
-      el.style.opacity = '1';
-      el.style.transform = 'translate3d(0,0,0)';
-    } else {
-      el.style.opacity = '0';
-      el.style.transform = 'translate3d(0,24px,0)';
-      observer.observe(el);
-    }
+  }, {threshold:0.08, rootMargin:'0px 0px -32px 0px'});
+
+  let index = 0;
+  targets.forEach(function(el){
+    if(el.dataset.dechoRevealInit === '1') return;
+    el.dataset.dechoRevealInit = '1';
+    const rect = el.getBoundingClientRect();
+    const initiallyVisible = rect.top < window.innerHeight * 0.86 && rect.bottom > 0;
+    el.classList.add('decho-reveal');
+    el.style.transitionDelay = initiallyVisible ? '0ms' : ((index++ % 4) * 65) + 'ms';
+    if(initiallyVisible) el.classList.add('decho-in');
+    else observer.observe(el);
   });
 })();
-
 
 /* DECHO parallax-only layer: apply depth to real visual layers, including CSS-background artwork. */
 (function(){
