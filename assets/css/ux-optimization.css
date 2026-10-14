@@ -1342,3 +1342,35 @@ main article,.article-card,.blog-card,.post-card,.news-card{will-change:opacity,
   opacity:1!important;transform:none!important;filter:none!important;transition:none!important;will-change:auto!important
  }
 }
+
+
+/* Reversible scroll entrance/exit animation. Elements reset after leaving the viewport. */
+.decho-scroll-reveal{
+  opacity:0;
+  transform:translate3d(0,26px,0);
+  filter:blur(3px);
+  transition:
+    opacity .72s cubic-bezier(.22,1,.36,1),
+    transform .72s cubic-bezier(.22,1,.36,1),
+    filter .72s cubic-bezier(.22,1,.36,1);
+  transition-delay:var(--decho-reveal-delay,0ms);
+  will-change:opacity,transform,filter;
+}
+.reveal.decho-scroll-reveal{opacity:0;transform:translate3d(0,26px,0);filter:blur(3px)}
+.decho-scroll-reveal[data-decho-motion-type="right"]{transform:translate3d(30px,10px,0)}
+.decho-scroll-reveal[data-decho-motion-type="zoom"]{transform:translate3d(0,14px,0) scale(.97)}
+.decho-scroll-reveal.is-visible,
+.reveal.decho-scroll-reveal.is-visible{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+  filter:blur(0);
+}
+@media(prefers-reduced-motion:reduce){
+  .decho-scroll-reveal,.reveal.decho-scroll-reveal{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    transition:none!important;
+    will-change:auto;
+  }
+}
