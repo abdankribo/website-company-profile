@@ -1273,19 +1273,27 @@ main section.decho-story-reveal.decho-story-visible{transform:translate3d(0,0,0)
 @media(prefers-reduced-motion:reduce){.decho-parallax-visual{will-change:auto;transform:none!important;background-position:center!important}}
 
 
-/* DECHO parallax fix: make the scroll variable visibly affect background layers */
+/* DECHO parallax fix: give the background enough overscan for clearly visible movement */
 .hero, .page-hero, .about-image, .feature-visual, .sustain-image, .news-image,
 .project-hero, .project-cover, .decho-scene {
-  background-position: center calc(50% + var(--decho-parallax-y, 0px));
+  background-position: center calc(50% + var(--decho-parallax-y, 0px)) !important;
+  background-size: max(100%, calc(100% + 180px)) auto !important;
 }
 .hero-video, .decho-scene-art, .hero-image, .page-hero img {
   translate: 0 var(--decho-parallax-y, 0px);
   will-change: translate;
 }
+@media (max-width: 760px) {
+  .hero, .page-hero, .about-image, .feature-visual, .sustain-image, .news-image,
+  .project-hero, .project-cover, .decho-scene {
+    background-size: max(100%, calc(100% + 110px)) auto !important;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .hero, .page-hero, .about-image, .feature-visual, .sustain-image, .news-image,
   .project-hero, .project-cover, .decho-scene {
     background-position: center !important;
+    background-size: cover !important;
   }
   .hero-video, .decho-scene-art, .hero-image, .page-hero img {
     translate: none !important;
