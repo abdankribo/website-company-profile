@@ -1271,3 +1271,23 @@ main section.decho-story-reveal.decho-story-visible{transform:translate3d(0,0,0)
 .decho-parallax-visual.decho-scene{transform:translate3d(0,calc(var(--decho-parallax-offset,0px) * .7),0) scale(1.04)}
 @media(max-width:760px){.decho-parallax-visual{will-change:auto;transform:translate3d(0,calc(var(--decho-parallax-offset,0px) * .7),0) scale(1.025)}.decho-parallax-visual.decho-scene{transform:translate3d(0,calc(var(--decho-parallax-offset,0px) * .5),0) scale(1.03)}}
 @media(prefers-reduced-motion:reduce){.decho-parallax-visual{will-change:auto;transform:none!important;background-position:center!important}}
+
+
+/* DECHO parallax fix: make the scroll variable visibly affect background layers */
+.hero, .page-hero, .about-image, .feature-visual, .sustain-image, .news-image,
+.project-hero, .project-cover, .decho-scene {
+  background-position: center calc(50% + var(--decho-parallax-y, 0px));
+}
+.hero-video, .decho-scene-art, .hero-image, .page-hero img {
+  translate: 0 var(--decho-parallax-y, 0px);
+  will-change: translate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero, .page-hero, .about-image, .feature-visual, .sustain-image, .news-image,
+  .project-hero, .project-cover, .decho-scene {
+    background-position: center !important;
+  }
+  .hero-video, .decho-scene-art, .hero-image, .page-hero img {
+    translate: none !important;
+  }
+}
