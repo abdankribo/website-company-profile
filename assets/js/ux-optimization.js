@@ -179,6 +179,13 @@
   'use strict';
   var media = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   var reduce = !!(media && media.matches);
+  var navBar = document.querySelector('.navbar, .nav, header.site-header');
+  function updateNavState() {
+    if (navBar) navBar.classList.toggle('is-scrolled', window.scrollY > 18);
+  }
+  updateNavState();
+  window.addEventListener('scroll', updateNavState, { passive: true });
+
   var selector = 'main article, main .article-card, main .blog-card, main .post-card, main .news-card';
   var cards = Array.prototype.slice.call(document.querySelectorAll(selector)).filter(function (el) {
     return !el.closest('.decho-lightbox,[hidden]');
