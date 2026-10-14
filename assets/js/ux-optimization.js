@@ -174,11 +174,9 @@
 })();
 
 
-/* DECHO article reveal v2: single, repeatable observer with explicit visible state. */
+/* DECHO scroll reveal v3: animate actual page sections and content cards; replay on re-entry. */
 (function () {
   'use strict';
-  var media = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
-  var reduce = !!(media && media.matches);
   var navBar = document.querySelector('.navbar, .nav, header.site-header');
   function updateNavState() {
     if (navBar) navBar.classList.toggle('is-scrolled', window.scrollY > 18);
@@ -186,33 +184,54 @@
   updateNavState();
   window.addEventListener('scroll', updateNavState, { passive: true });
 
-  var selector = 'main article, main .article-card, main .blog-card, main .post-card, main .news-card';
-  var cards = Array.prototype.slice.call(document.querySelectorAll(selector)).filter(function (el) {
-    return !el.closest('.decho-lightbox,[hidden]');
+  var selector = [
+    'main > section:not(.hero):not(.page-hero)',
+    'main .section-head',
+    'main .about-grid > *',
+    'main .cards > *',
+    'main .quick-links > *',
+    'main .project-grid > *',
+    'main .news-grid > *',
+    'main .contact-strip',
+    'main .stats-grid > *',
+    'main .stat-card',
+    'main .service-card',
+    'main .quick-card',
+    'main .project-card',
+    'main .news-card',
+    'main article'
+  ].join(',');
+  var all = Array.prototype.slice.call(document.querySelectorAll(selector));
+  var targets = all.filter(function (el, index) {
+    if (el.closest('.decho-lightbox,[hidden]')) return false;
+    if (el.dataset.dechoScrollReveal === '1') return false;
+    // Prefer the more specific card/heading targets; do not animate their ancestors too.
+    var hasSpecificDescendant = el.querySelector('.service-card,.quick-card,.project-card,.news-card,.section-head,.about-grid > *');
+    if (hasSpecificDescendant && !el.matches('.service-card,.quick-card,.project-card,.news-card,.section-head,.about-grid > *,.contact-strip,.stat-card')) return false;
+    return all.indexOf(el) === index;
   });
-  if (!cards.length) return;
+  if (!targets.length) return;
 
-  if (reduce || !('IntersectionObserver' in window)) {
-    cards.forEach(function (el) {
-      el.classList.remove('decho-reveal-v2', 'decho-reveal-v2-right', 'decho-reveal-v2-visible');
-      el.style.removeProperty('--decho-reveal-v2-delay');
-    });
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('decho-scroll-reveal-visible'); });
     return;
   }
 
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
-      if (entry.isIntersecting) entry.target.classList.add('decho-reveal-v2-visible');
-      else entry.target.classList.remove('decho-reveal-v2-visible');
+      if (entry.isIntersecting) {
+        entry.target.classList.add('decho-scroll-reveal-visible');
+      } else {
+        entry.target.classList.remove('decho-scroll-reveal-visible');
+      }
     });
-  }, { threshold: 0.04, rootMargin: '0px 0px -3% 0px' });
+  }, { threshold: 0.01, rootMargin: '0px 0px -2% 0px' });
 
-  cards.forEach(function (el, index) {
-    if (el.dataset.dechoRevealV2 === '1') return;
-    el.dataset.dechoRevealV2 = '1';
-    el.classList.add('decho-reveal-v2');
-    if (index % 3 === 1) el.classList.add('decho-reveal-v2-right');
-    el.style.setProperty('--decho-reveal-v2-delay', (index % 3) * 70 + 'ms');
+  targets.forEach(function (el, index) {
+    el.dataset.dechoScrollReveal = '1';
+    el.classList.add('decho-scroll-reveal');
+    if (index % 3 === 1) el.classList.add('decho-scroll-reveal-right');
+    el.style.setProperty('--decho-scroll-delay', (index % 4) * 65 + 'ms');
     observer.observe(el);
   });
 })();
