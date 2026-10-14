@@ -296,3 +296,40 @@
   },{passive:true});
   progress();
 })();
+
+
+/* DECHO scroll UX fallback: one dependable reveal observer for every page. */
+(function () {
+  'use strict';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var candidates = document.querySelectorAll('main > section, main .section-head, main .about-grid, main .sustain-grid, main .feature-banner, main .contact-strip, main .stats, main .service-card, main .project-card, main .news-card, main .team-card, main .quick-card, main .process-row, main .gallery figure, main .stat');
+  if (reduce || !('IntersectionObserver' in window)) {
+    candidates.forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
+    return;
+  }
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      el.style.opacity = '1';
+      el.style.transform = 'translate3d(0,0,0)';
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -36px 0px' });
+  candidates.forEach(function (el, index) {
+    if (el.dataset.dechoReliableReveal === '1') return;
+    el.dataset.dechoReliableReveal = '1';
+    var rect = el.getBoundingClientRect();
+    var initiallyVisible = rect.top < window.innerHeight * 0.88 && rect.bottom > 0;
+    el.style.transition = 'opacity 560ms cubic-bezier(.22,1,.36,1), transform 560ms cubic-bezier(.22,1,.36,1)';
+    el.style.transitionDelay = (index % 4) * 55 + 'ms';
+    if (initiallyVisible) {
+      el.style.opacity = '1';
+      el.style.transform = 'translate3d(0,0,0)';
+    } else {
+      el.style.opacity = '0';
+      el.style.transform = 'translate3d(0,24px,0)';
+      observer.observe(el);
+    }
+  });
+})();
