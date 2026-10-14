@@ -1263,3 +1263,11 @@ main section.decho-story-reveal.decho-story-visible{transform:translate3d(0,0,0)
   opacity:1!important;transform:none!important;filter:none!important;transition:none!important;will-change:auto!important
  }
 }
+
+
+/* Parallax-only motion layer. Kept subtle so existing DECHO layouts remain unchanged. */
+.decho-parallax-section{isolation:isolate}
+.decho-parallax-visual{will-change:transform;background-position:center calc(50% + var(--decho-parallax-offset, 0px))!important}
+img.decho-parallax-visual,video.decho-parallax-visual{transform:translate3d(0,var(--decho-parallax-offset,0px),0) scale(1.035);}
+@media(max-width:760px){.decho-parallax-visual{will-change:auto}img.decho-parallax-visual,video.decho-parallax-visual{transform:translate3d(0,calc(var(--decho-parallax-offset,0px) * .55),0) scale(1.025)}}
+@media(prefers-reduced-motion:reduce){.decho-parallax-visual{will-change:auto}img.decho-parallax-visual,video.decho-parallax-visual{transform:none!important}}
