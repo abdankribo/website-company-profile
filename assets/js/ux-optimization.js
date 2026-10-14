@@ -174,17 +174,15 @@
 })();
 
 
-/* DECHO scroll reveal v3: animate actual page sections and content cards; replay on re-entry. */
+/* DECHO Tailwind-inspired motion system: fade-up, slide-in and zoom reveal on scroll. */
 (function () {
   'use strict';
   var navBar = document.querySelector('.navbar, .nav, header.site-header');
-  function updateNavState() {
-    if (navBar) navBar.classList.toggle('is-scrolled', window.scrollY > 18);
-  }
+  function updateNavState() { if (navBar) navBar.classList.toggle('is-scrolled', window.scrollY > 18); }
   updateNavState();
   window.addEventListener('scroll', updateNavState, { passive: true });
 
-  var selector = [
+  var selectors = [
     'main > section:not(.hero):not(.page-hero)',
     'main .section-head',
     'main .about-grid > *',
@@ -199,39 +197,36 @@
     'main .quick-card',
     'main .project-card',
     'main .news-card',
-    'main article'
+    'main article',
+    'main .container > h2',
+    'main .container > h3'
   ].join(',');
-  var all = Array.prototype.slice.call(document.querySelectorAll(selector));
-  var targets = all.filter(function (el, index) {
+  var candidates = Array.prototype.slice.call(document.querySelectorAll(selectors));
+  var targets = candidates.filter(function (el) {
     if (el.closest('.decho-lightbox,[hidden]')) return false;
-    if (el.dataset.dechoScrollReveal === '1') return false;
-    // Prefer the more specific card/heading targets; do not animate their ancestors too.
-    var hasSpecificDescendant = el.querySelector('.service-card,.quick-card,.project-card,.news-card,.section-head,.about-grid > *');
-    if (hasSpecificDescendant && !el.matches('.service-card,.quick-card,.project-card,.news-card,.section-head,.about-grid > *,.contact-strip,.stat-card')) return false;
-    return all.indexOf(el) === index;
+    if (el.dataset.dechoMotionReady === '1') return false;
+    // Don't animate a whole section when it contains individually animated cards/headings.
+    if (el.matches('main > section') && el.querySelector('.service-card,.quick-card,.project-card,.news-card,.section-head,.stats-grid')) return false;
+    return true;
   });
   if (!targets.length) return;
-
   if (!('IntersectionObserver' in window)) {
-    targets.forEach(function (el) { el.classList.add('decho-scroll-reveal-visible'); });
+    targets.forEach(function (el) { el.classList.add('decho-motion-visible'); });
     return;
   }
-
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('decho-scroll-reveal-visible');
-      } else {
-        entry.target.classList.remove('decho-scroll-reveal-visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('decho-motion-visible');
+      else entry.target.classList.remove('decho-motion-visible');
     });
-  }, { threshold: 0.01, rootMargin: '0px 0px -2% 0px' });
+  }, { threshold: 0.02, rootMargin: '0px 0px -4% 0px' });
 
   targets.forEach(function (el, index) {
-    el.dataset.dechoScrollReveal = '1';
-    el.classList.add('decho-scroll-reveal');
-    if (index % 3 === 1) el.classList.add('decho-scroll-reveal-right');
-    el.style.setProperty('--decho-scroll-delay', (index % 4) * 65 + 'ms');
+    el.dataset.dechoMotionReady = '1';
+    el.classList.add('decho-motion-reveal');
+    if (index % 4 === 1) el.classList.add('decho-motion-right');
+    else if (index % 4 === 3) el.classList.add('decho-motion-zoom');
+    el.style.setProperty('--decho-motion-delay', (index % 4) * 70 + 'ms');
     observer.observe(el);
   });
 })();
