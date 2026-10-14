@@ -1237,3 +1237,32 @@ body.decho-page-leaving{opacity:0;transform:translateY(-6px);pointer-events:none
  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
  .decho-scroll-reveal,.decho-scroll-reveal.decho-scroll-left,.decho-scroll-reveal.decho-scroll-right{opacity:1!important;transform:none!important;filter:none!important}
 }
+
+
+/* Scroll-triggered reveal animations */
+.decho-story-reveal{
+  opacity:0;
+  transform:translate3d(0,34px,0) scale(.99);
+  filter:blur(3px);
+  transition:opacity .78s cubic-bezier(.22,1,.36,1) var(--decho-story-delay,0ms),
+             transform .78s cubic-bezier(.22,1,.36,1) var(--decho-story-delay,0ms),
+             filter .78s cubic-bezier(.22,1,.36,1) var(--decho-story-delay,0ms);
+  will-change:opacity,transform;
+}
+.decho-story-reveal.decho-story-visible{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1);
+  filter:blur(0);
+}
+main section.decho-story-reveal{transform:translate3d(0,42px,0)}
+main section.decho-story-reveal.decho-story-visible{transform:translate3d(0,0,0)}
+@media(max-width:720px){
+ .decho-story-reveal{transform:translate3d(0,22px,0);filter:none;transition-duration:.58s;will-change:auto}
+ main section.decho-story-reveal{transform:translate3d(0,26px,0)}
+}
+@media(prefers-reduced-motion:reduce){
+ .decho-story-reveal,.decho-story-reveal.decho-story-visible,
+ main section.decho-story-reveal,main section.decho-story-reveal.decho-story-visible{
+  opacity:1!important;transform:none!important;filter:none!important;transition:none!important;will-change:auto!important
+ }
+}
