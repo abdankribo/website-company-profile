@@ -1,0 +1,32 @@
+name: Static site build
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install
+      - name: Build static site and compile Tailwind
+        run: npm run build:static
+      - name: Verify static output
+        run: |
+          test -s dist/assets/css/tailwind.css
+          test -s dist/index.html
+          html_count=$(find dist -type f -name '*.html' | wc -l)
+          echo "HTML pages generated: $html_count"
+          test "$html_count" -ge 18
