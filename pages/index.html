@@ -2342,6 +2342,33 @@ html body .page-main section.section.about-background-section .about-background-
  .page-main section.section.about-background-section .about-copy h2{font-size:clamp(1.9rem,7vw,2.5rem)!important}
 }
 
+
+/* DECHO ABOUT IMAGE UPDATE — use the full-resolution company image, without a card frame */
+.page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  background-image:url('/assets/images/foto-aboutus_01.jpg')!important;
+  background-repeat:no-repeat!important;
+  background-position:center center!important;
+  background-size:contain!important;
+  opacity:1!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  filter:none!important;
+  -webkit-mask-image:radial-gradient(ellipse at center, #000 54%, rgba(0,0,0,.96) 68%, rgba(0,0,0,.58) 82%, transparent 100%)!important;
+  mask-image:radial-gradient(ellipse at center, #000 54%, rgba(0,0,0,.96) 68%, rgba(0,0,0,.58) 82%, transparent 100%)!important;
+}
+.page-main section.section.about-background-section .about-vector-art,
+.page-main section.section.about-background-section .about-vector-scene{display:none!important}
+@media(max-width:760px){
+ .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  background-size:contain!important;
+  background-position:center center!important;
+  -webkit-mask-image:radial-gradient(ellipse at center, #000 60%, rgba(0,0,0,.8) 78%, transparent 100%)!important;
+  mask-image:radial-gradient(ellipse at center, #000 60%, rgba(0,0,0,.8) 78%, transparent 100%)!important;
+ }
+}
+
 </style>
 
 
