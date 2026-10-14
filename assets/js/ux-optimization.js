@@ -174,9 +174,9 @@
     if(destination.origin!==location.origin || destination.pathname===location.pathname && destination.hash) return;
     if(destination.pathname===location.pathname && !destination.hash) return;
     if(!document.body || link.closest('.decho-lightbox')) return;
+    if(/\.(?:pdf|zip|png|jpe?g|webp|gif|svg|mp4|webm|docx?|xlsx?)$/i.test(destination.pathname)) return;
     event.preventDefault();
     document.body.classList.add('decho-page-leaving');
-    if(/\.(?:pdf|zip|png|jpe?g|webp|gif|svg|mp4|webm|docx?|xlsx?)$/i.test(destination.pathname)) return;
     window.setTimeout(()=>{location.href=destination.href},220);
   });
 })();
