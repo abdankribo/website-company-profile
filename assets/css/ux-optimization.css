@@ -1265,9 +1265,9 @@ main section.decho-story-reveal.decho-story-visible{transform:translate3d(0,0,0)
 }
 
 
-/* Parallax-only motion layer. Kept subtle so existing DECHO layouts remain unchanged. */
+/* Parallax-only motion layer: visible depth on both image elements and CSS-background artwork. */
 .decho-parallax-section{isolation:isolate}
-.decho-parallax-visual{will-change:transform;background-position:center calc(50% + var(--decho-parallax-offset, 0px))!important}
-img.decho-parallax-visual,video.decho-parallax-visual{transform:translate3d(0,var(--decho-parallax-offset,0px),0) scale(1.035);}
-@media(max-width:760px){.decho-parallax-visual{will-change:auto}img.decho-parallax-visual,video.decho-parallax-visual{transform:translate3d(0,calc(var(--decho-parallax-offset,0px) * .55),0) scale(1.025)}}
-@media(prefers-reduced-motion:reduce){.decho-parallax-visual{will-change:auto}img.decho-parallax-visual,video.decho-parallax-visual{transform:none!important}}
+.decho-parallax-visual{will-change:transform;background-position:center calc(50% + var(--decho-parallax-offset, 0px))!important;transform:translate3d(0,var(--decho-parallax-offset,0px),0) scale(1.035);transform-origin:center center}
+.decho-parallax-visual.decho-scene{transform:translate3d(0,calc(var(--decho-parallax-offset,0px) * .7),0) scale(1.04)}
+@media(max-width:760px){.decho-parallax-visual{will-change:auto;transform:translate3d(0,calc(var(--decho-parallax-offset,0px) * .7),0) scale(1.025)}.decho-parallax-visual.decho-scene{transform:translate3d(0,calc(var(--decho-parallax-offset,0px) * .5),0) scale(1.03)}}
+@media(prefers-reduced-motion:reduce){.decho-parallax-visual{will-change:auto;transform:none!important;background-position:center!important}}
