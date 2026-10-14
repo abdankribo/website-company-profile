@@ -228,11 +228,11 @@
 
   const observer = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
-      if(!entry.isIntersecting) return;
-      entry.target.classList.add('decho-in');
-      observer.unobserve(entry.target);
+      // Toggle the state in both directions so reveal motion repeats on scroll down and up.
+      if(entry.isIntersecting) entry.target.classList.add('decho-in');
+      else entry.target.classList.remove('decho-in');
     });
-  }, {threshold:0.08, rootMargin:'0px 0px -32px 0px'});
+  }, {threshold:0.08, rootMargin:'0px 0px -8% 0px'});
 
   let index = 0;
   revealTargets.forEach(function(el){
@@ -243,7 +243,8 @@
     el.classList.add('decho-reveal');
     el.style.transitionDelay = initiallyVisible ? '0ms' : ((index++ % 4) * 65) + 'ms';
     if(initiallyVisible) el.classList.add('decho-in');
-    else observer.observe(el);
+    // Keep observing after entry so elements can animate again when they leave and re-enter.
+    observer.observe(el);
   });
 })();
 
