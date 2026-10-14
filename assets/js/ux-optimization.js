@@ -174,76 +174,68 @@
 })();
 
 
-/* DECHO scroll reveal: one observer, deduplicated targets, and accessible reduced motion. */
-(function(){
+/* DECHO scroll reveal: repeat on enter/exit with a single observer. */
+(function () {
   'use strict';
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const nav = document.querySelector('.navbar, .nav, header.site-header');
-  let scrollScheduled = false;
-  function updateNav(){
-    if(nav) nav.classList.toggle('is-scrolled', window.scrollY > 18);
-    scrollScheduled = false;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.querySelector('.navbar, .nav, header.site-header');
+  var scrollPending = false;
+  function updateNav() {
+    if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 18);
+    scrollPending = false;
   }
   updateNav();
-  window.addEventListener('scroll', function(){
-    if(!scrollScheduled){
-      scrollScheduled = true;
+  window.addEventListener('scroll', function () {
+    if (!scrollPending) {
+      scrollPending = true;
       window.requestAnimationFrame(updateNav);
     }
-  }, {passive:true});
+  }, { passive: true });
 
-  const selectors = [
-    '.section-head', '.about-grid', '.sustain-grid', '.feature-banner',
-    '.contact-strip', '.stats', '.footer-grid', '.project-intro',
-    '.project-search-panel', '.contact-layout', '.contact-form',
-    '.contact-info', '.process-grid', '.process-row',
-    '.service-card', '.news-card', '.project-card', '.team-card',
-    '.quick-card', '.gallery figure', '.stat'
-  ];
-  const targets = new Set();
-  selectors.forEach(function(selector){
-    document.querySelectorAll(selector).forEach(function(el){
-      if(el.closest('.decho-lightbox,[hidden]')) return;
-      targets.add(el);
-    });
+  var selector = [
+    'main .section-head', 'main .about-grid', 'main .sustain-grid',
+    'main .feature-banner', 'main .contact-strip', 'main .stats',
+    'main .project-intro', 'main .project-search-panel', 'main .contact-layout',
+    'main .contact-form', 'main .contact-info', 'main .process-grid',
+    'main .process-row', 'main .service-card', 'main .project-card',
+    'main .news-card', 'main .team-card', 'main .quick-card',
+    'main .gallery figure', 'main .stat', 'main > section'
+  ].join(',');
+  var all = Array.prototype.slice.call(document.querySelectorAll(selector)).filter(function (el) {
+    return !el.closest('.decho-lightbox,[hidden]') && !el.matches('.hero,.page-hero');
+  });
+  // Avoid animating a section and its children at the same time.
+  var targets = all.filter(function (el) {
+    return !all.some(function (other) { return other !== el && el.contains(other); });
   });
 
-  // Prefer the deepest animated elements so a parent and its cards do not animate twice.
-  const allTargets = Array.from(targets);
-  const revealTargets = allTargets.filter(function(el){
-    return !allTargets.some(function(other){ return other !== el && el.contains(other); });
-  });
-
-  if(reduceMotion || !('IntersectionObserver' in window)){
-    revealTargets.forEach(function(el){
+  if (reduce || !('IntersectionObserver' in window)) {
+    targets.forEach(function (el) {
       el.classList.remove('decho-reveal');
       el.classList.add('decho-in');
-      el.style.opacity = '';
-      el.style.transform = '';
-      el.style.filter = '';
-      el.style.transitionDelay = '';
+      el.style.removeProperty('opacity');
+      el.style.removeProperty('transform');
+      el.style.removeProperty('filter');
+      el.style.removeProperty('transition-delay');
     });
     return;
   }
 
-  const observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      // Toggle the state in both directions so reveal motion repeats on scroll down and up.
-      if(entry.isIntersecting) entry.target.classList.add('decho-in');
-      else entry.target.classList.remove('decho-in');
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      entry.target.classList.toggle('decho-in', entry.isIntersecting);
     });
-  }, {threshold:0.08, rootMargin:'0px 0px -8% 0px'});
+  }, { threshold: 0.01, rootMargin: '0px 0px -4% 0px' });
 
-  let index = 0;
-  revealTargets.forEach(function(el){
-    if(el.dataset.dechoRevealInit === '1') return;
+  var delayIndex = 0;
+  targets.forEach(function (el) {
+    if (el.dataset.dechoRevealInit === '1') return;
     el.dataset.dechoRevealInit = '1';
-    const rect = el.getBoundingClientRect();
-    const initiallyVisible = rect.top < window.innerHeight * 0.86 && rect.bottom > 0;
+    var rect = el.getBoundingClientRect();
+    var visibleAtStart = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
     el.classList.add('decho-reveal');
-    el.style.transitionDelay = initiallyVisible ? '0ms' : ((index++ % 4) * 65) + 'ms';
-    if(initiallyVisible) el.classList.add('decho-in');
-    // Keep observing after entry so elements can animate again when they leave and re-enter.
+    el.style.setProperty('--decho-reveal-delay', visibleAtStart ? '0ms' : ((delayIndex++ % 4) * 55) + 'ms');
+    el.classList.toggle('decho-in', visibleAtStart);
     observer.observe(el);
   });
 })();
