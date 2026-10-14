@@ -29,7 +29,7 @@
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     const hero=$('.hero,.page-hero');
     if(hero){
-      const targets=$('.eyebrow,.section-kicker,h1,.hero p,.hero-actions,.page-hero p',hero);
+      const targets=$$('.eyebrow,.section-kicker,h1,.hero p,.hero-actions,.page-hero p',hero);
       targets.forEach((el,i)=>{el.classList.add('decho-hero-enter');el.style.animationDelay=Math.min(i*.09,.36)+'s';});
       const heroImage=$('.hero img,.hero .hero-image,.page-hero img',hero);
       if(heroImage)heroImage.classList.add('decho-image-enter');
