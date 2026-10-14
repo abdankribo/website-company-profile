@@ -1374,3 +1374,40 @@ main article,.article-card,.blog-card,.post-card,.news-card{will-change:opacity,
     will-change:auto;
   }
 }
+
+
+/* Reliable scroll reveal override: make the state visible to all page-level CSS. */
+@media (prefers-reduced-motion: no-preference) {
+  .decho-scroll-reveal:not(.is-visible) {
+    opacity: 0 !important;
+    transform: translate3d(0, 30px, 0) !important;
+    filter: blur(3px) !important;
+  }
+  .decho-scroll-reveal[data-decho-motion-type="right"]:not(.is-visible) {
+    transform: translate3d(32px, 12px, 0) !important;
+  }
+  .decho-scroll-reveal[data-decho-motion-type="zoom"]:not(.is-visible) {
+    transform: translate3d(0, 16px, 0) scale(.97) !important;
+  }
+  .decho-scroll-reveal.is-visible {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) scale(1) !important;
+    filter: blur(0) !important;
+  }
+  .decho-scroll-reveal {
+    transition: opacity .7s cubic-bezier(.22, 1, .36, 1),
+      transform .7s cubic-bezier(.22, 1, .36, 1),
+      filter .7s cubic-bezier(.22, 1, .36, 1) !important;
+    transition-delay: var(--decho-reveal-delay, 0ms) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .decho-scroll-reveal,
+  .decho-scroll-reveal:not(.is-visible),
+  .decho-scroll-reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
