@@ -1342,3 +1342,62 @@ main article,.article-card,.blog-card,.post-card,.news-card{will-change:opacity,
   opacity:1!important;transform:none!important;filter:none!important;transition:none!important;will-change:auto!important
  }
 }
+
+
+/* DECHO article reveal v2 — isolated classes avoid legacy .reveal/AOS conflicts. */
+main article.decho-reveal-v2,
+main .article-card.decho-reveal-v2,
+main .blog-card.decho-reveal-v2,
+main .post-card.decho-reveal-v2,
+main .news-card.decho-reveal-v2 {
+  opacity: 0 !important;
+  transform: translate3d(0, 30px, 0) !important;
+  filter: blur(2px) !important;
+  transition:
+    opacity .7s cubic-bezier(.22,1,.36,1) var(--decho-reveal-v2-delay, 0ms),
+    transform .7s cubic-bezier(.22,1,.36,1) var(--decho-reveal-v2-delay, 0ms),
+    filter .7s cubic-bezier(.22,1,.36,1) var(--decho-reveal-v2-delay, 0ms) !important;
+}
+main article.decho-reveal-v2.decho-reveal-v2-right,
+main .article-card.decho-reveal-v2-right,
+main .blog-card.decho-reveal-v2-right,
+main .post-card.decho-reveal-v2-right,
+main .news-card.decho-reveal-v2-right {
+  transform: translate3d(36px, 8px, 0) !important;
+}
+main article.decho-reveal-v2.decho-reveal-v2-visible,
+main .article-card.decho-reveal-v2-visible,
+main .blog-card.decho-reveal-v2-visible,
+main .post-card.decho-reveal-v2-visible,
+main .news-card.decho-reveal-v2-visible {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+  filter: blur(0) !important;
+}
+@media (max-width: 720px) {
+  main article.decho-reveal-v2,
+  main .article-card.decho-reveal-v2,
+  main .blog-card.decho-reveal-v2,
+  main .post-card.decho-reveal-v2,
+  main .news-card.decho-reveal-v2,
+  main article.decho-reveal-v2.decho-reveal-v2-right,
+  main .article-card.decho-reveal-v2-right,
+  main .blog-card.decho-reveal-v2-right,
+  main .post-card.decho-reveal-v2-right,
+  main .news-card.decho-reveal-v2-right {
+    transform: translate3d(0, 22px, 0) !important;
+    filter: none !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  main article.decho-reveal-v2,
+  main .article-card.decho-reveal-v2,
+  main .blog-card.decho-reveal-v2,
+  main .post-card.decho-reveal-v2,
+  main .news-card.decho-reveal-v2 {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
