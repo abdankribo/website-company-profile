@@ -1100,65 +1100,48 @@ html body main.page-main > section.section.soft .quick-links > .quick-card:hover
 
 
 <style id="decho-choice-staircase">
-/* DECHO service journey: alternating callouts along a rising path */
-.decho-choice-section{position:relative;isolation:isolate;overflow:hidden;padding:76px 0 84px;background:radial-gradient(ellipse at 82% 18%,rgba(0,190,165,.10),transparent 34%),radial-gradient(ellipse at 10% 90%,rgba(117,86,255,.10),transparent 34%),linear-gradient(135deg,#f8fbff 0%,#f3f7fb 100%);color:#101828}
-.decho-choice-section:after{position:absolute;z-index:-1;inset:0;pointer-events:none;content:"";opacity:.35;background:linear-gradient(145deg,transparent 72%,rgba(0,132,255,.07) 72.2%,transparent 72.7%)}
-.decho-choice-section>.container{display:grid;grid-template-columns:minmax(270px,.85fr) minmax(0,1.4fr);align-items:center;gap:clamp(32px,5vw,78px)}
-.decho-choice-heading{position:relative;z-index:2;max-width:500px;margin:0}
+/* DECHO service journey — winding, color-coded construction path */
+.decho-choice-section{position:relative;isolation:isolate;overflow:hidden;padding:78px 0 86px;background:#f5f8fb;color:#101820}
+.decho-choice-section:after{position:absolute;z-index:-1;inset:0;pointer-events:none;content:"";background:radial-gradient(ellipse at 78% 25%,rgba(0,204,131,.07),transparent 31%),radial-gradient(ellipse at 12% 90%,rgba(114,88,255,.07),transparent 32%)}
+.decho-choice-section>.container{display:grid;grid-template-columns:1fr;gap:28px}
+.decho-choice-heading{position:relative;z-index:2;max-width:490px;margin:0}
 .decho-choice-eyebrow{display:inline-block;margin-bottom:14px;color:#0787ee;font-size:.76rem;font-weight:800;letter-spacing:.15em}
-.decho-choice-heading h2{margin:0 0 16px;color:#101b35;font-size:clamp(2.5rem,4.4vw,4.2rem);font-weight:850;line-height:.99;letter-spacing:-.06em}
-.decho-choice-heading p{max-width:470px;margin:0;color:#5e718b;font-size:1rem;line-height:1.65}
-.decho-choice-stairs{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 112px minmax(0,1fr);grid-template-rows:repeat(5,minmax(118px,auto));align-items:center;gap:0 12px;margin:0;padding:4px 0}
-.decho-choice-stairs:before{position:absolute;z-index:0;top:5%;bottom:5%;left:calc(50% - 13px);width:26px;border-radius:30px;content:"";background:linear-gradient(180deg,#55df26 0%,#00ce83 28%,#00c5b6 53%,#078cff 76%,#7a63ff 100%);box-shadow:0 0 0 7px rgba(255,255,255,.58);transform:skewY(-3deg)}
+.decho-choice-heading h2{margin:0 0 16px;color:#080b0e;font-size:clamp(2.5rem,4.4vw,4.2rem);font-weight:850;line-height:.99;letter-spacing:-.06em}
+.decho-choice-heading p{max-width:470px;margin:0;color:#747b82;font-size:1.02rem;line-height:1.58}
+.decho-choice-stairs{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 118px minmax(0,1fr);grid-template-rows:repeat(5,minmax(124px,auto));align-items:center;gap:0 18px;width:100%;margin:0;padding:2px 0 0}
+.decho-choice-route{position:absolute;z-index:0;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.decho-choice-route path{fill:none;stroke:url(#dechoRouteGradient);stroke-width:40;stroke-linecap:butt;stroke-linejoin:round}
+.decho-choice-route .route-highlight{stroke:#fff;stroke-width:3;opacity:.92}
 .decho-choice-item{display:contents}
-.decho-choice-step{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:100px;height:100px;margin:auto;padding:8px;border:4px solid #fff;border-radius:50%;background:linear-gradient(145deg,var(--step-light),var(--step-color));box-shadow:0 10px 20px rgba(19,40,74,.2);transition:transform .3s ease,box-shadow .3s ease}
-.decho-choice-item:hover .decho-choice-step{transform:scale(1.06);box-shadow:0 14px 26px rgba(19,40,74,.25)}
-.decho-choice-number{display:flex;flex-direction:column;align-items:center;justify-content:center;width:72px;height:72px;border:1px solid rgba(255,255,255,.8);border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 3px 9px rgba(10,25,50,.08)}
-.decho-choice-number span{color:var(--step-color);font-size:.54rem;font-weight:850;letter-spacing:.08em}
-.decho-choice-number strong{color:#10213c;font-size:1.8rem;font-weight:850;line-height:1.1}
-.decho-choice-content{position:relative;z-index:1;align-self:center;max-width:100%;padding:18px 20px 19px;border:1.5px solid var(--step-color);border-radius:13px;background:rgba(255,255,255,.94);box-shadow:0 8px 22px rgba(24,48,78,.045);transition:transform .25s ease,box-shadow .25s ease}
-.decho-choice-content:after{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:var(--step-color);content:"";transform:translateY(-50%)}
-.decho-choice-item:hover .decho-choice-content{transform:translateY(-3px);box-shadow:0 14px 28px rgba(24,48,78,.09)}
-.decho-choice-content h3{margin:0 0 7px;color:#101b35;font-size:.91rem;font-weight:850;line-height:1.3;letter-spacing:-.02em;text-transform:uppercase}
-.decho-choice-content p{margin:0;color:#65758c;font-size:.82rem;line-height:1.48}
-.decho-choice-item.choice-01 .decho-choice-step{grid-column:2;grid-row:5;--step-color:#7258ff;--step-light:#a08bff}
-.decho-choice-item.choice-01 .decho-choice-content{grid-column:1;grid-row:5;--step-color:#7258ff}
-.decho-choice-item.choice-01 .decho-choice-content:after{right:-7px}
-.decho-choice-item.choice-02 .decho-choice-step{grid-column:2;grid-row:4;--step-color:#078cff;--step-light:#51b5ff}
+.decho-choice-step{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:104px;height:104px;margin:auto;padding:8px;border:3px solid #fff;border-radius:50%;background:var(--step-color);box-shadow:0 9px 17px rgba(20,35,48,.22);transition:transform .28s ease,box-shadow .28s ease}
+.decho-choice-step:before{position:absolute;inset:5px;border:1px solid rgba(255,255,255,.52);border-radius:50%;content:""}
+.decho-choice-icon{display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#071015}
+.decho-choice-icon svg{width:46px;height:46px;fill:none;stroke:currentColor;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round}
+.decho-choice-item:hover .decho-choice-step{transform:scale(1.07);box-shadow:0 14px 26px rgba(20,35,48,.27)}
+.decho-choice-content{position:relative;z-index:1;align-self:center;max-width:100%;padding:19px 22px 20px;border:1.5px solid var(--step-color);border-radius:13px;background:rgba(255,255,255,.97);box-shadow:0 8px 22px rgba(24,48,78,.045);transition:transform .25s ease,box-shadow .25s ease}
+.decho-choice-content:after{position:absolute;top:50%;width:14px;height:14px;border-radius:50%;background:var(--step-color);content:"";transform:translateY(-50%)}
+.decho-choice-item:hover .decho-choice-content{transform:translateY(-3px);box-shadow:0 14px 28px rgba(24,48,78,.10)}
+.decho-choice-label{display:block;margin-bottom:7px;color:var(--step-color);font-size:.65rem;font-weight:850;letter-spacing:.13em}
+.decho-choice-content h3{margin:0 0 7px;color:#111518;font-size:1rem;font-weight:850;line-height:1.25;letter-spacing:-.02em;text-transform:uppercase}
+.decho-choice-content p{margin:0;color:#74787d;font-size:.9rem;line-height:1.42}
+.decho-choice-item.choice-01 .decho-choice-step{grid-column:2;grid-row:5;--step-color:#7b63f7}
+.decho-choice-item.choice-01 .decho-choice-content{grid-column:1;grid-row:5;--step-color:#7b63f7}
+.decho-choice-item.choice-01 .decho-choice-content:after{right:-8px}
+.decho-choice-item.choice-02 .decho-choice-step{grid-column:2;grid-row:4;--step-color:#078cff}
 .decho-choice-item.choice-02 .decho-choice-content{grid-column:3;grid-row:4;--step-color:#078cff}
-.decho-choice-item.choice-02 .decho-choice-content:after{left:-7px}
-.decho-choice-item.choice-03 .decho-choice-step{grid-column:2;grid-row:3;--step-color:#00bfae;--step-light:#49e0d0}
+.decho-choice-item.choice-02 .decho-choice-content:after{left:-8px}
+.decho-choice-item.choice-03 .decho-choice-step{grid-column:2;grid-row:3;--step-color:#00bfae}
 .decho-choice-item.choice-03 .decho-choice-content{grid-column:1;grid-row:3;--step-color:#00bfae}
-.decho-choice-item.choice-03 .decho-choice-content:after{right:-7px}
-.decho-choice-item.choice-04 .decho-choice-step{grid-column:2;grid-row:2;--step-color:#00c982;--step-light:#4be5a5}
-.decho-choice-item.choice-04 .decho-choice-content{grid-column:3;grid-row:2;--step-color:#00c982}
-.decho-choice-item.choice-04 .decho-choice-content:after{left:-7px}
-.decho-choice-item.choice-05 .decho-choice-step{grid-column:2;grid-row:1;--step-color:#55d928;--step-light:#9af267}
-.decho-choice-item.choice-05 .decho-choice-content{grid-column:1;grid-row:1;--step-color:#55d928}
-.decho-choice-item.choice-05 .decho-choice-content:after{right:-7px}
-@media(max-width:1050px){
- .decho-choice-section>.container{grid-template-columns:1fr;gap:36px}
- .decho-choice-heading{max-width:660px}
- .decho-choice-stairs{max-width:780px;width:100%;margin-inline:auto}
-}
-@media(max-width:650px){
- .decho-choice-section{padding:52px 0 58px}
- .decho-choice-section>.container{gap:30px}
- .decho-choice-heading h2{font-size:clamp(2.3rem,10vw,3.2rem)}
- .decho-choice-heading p{font-size:.92rem}
- .decho-choice-stairs{display:flex;flex-direction:column;gap:18px;padding-left:5px}
- .decho-choice-stairs:before{top:22px;bottom:22px;left:43px;width:12px;transform:none}
- .decho-choice-item{display:grid;grid-template-columns:86px minmax(0,1fr);align-items:center;gap:13px;width:100%}
- .decho-choice-item .decho-choice-step,.decho-choice-item .decho-choice-content{grid-column:auto;grid-row:auto}
- .decho-choice-step{width:78px;height:78px;margin:0;border-width:3px}
- .decho-choice-number{width:56px;height:56px}
- .decho-choice-number span{font-size:.46rem}
- .decho-choice-number strong{font-size:1.45rem}
- .decho-choice-content{padding:15px 14px}
- .decho-choice-content:after{left:-7px!important;right:auto!important}
- .decho-choice-content h3{font-size:.83rem}
- .decho-choice-content p{font-size:.78rem;line-height:1.5}
-}
+.decho-choice-item.choice-03 .decho-choice-content:after{right:-8px}
+.decho-choice-item.choice-04 .decho-choice-step{grid-column:2;grid-row:2;--step-color:#00ce83}
+.decho-choice-item.choice-04 .decho-choice-content{grid-column:3;grid-row:2;--step-color:#00ce83}
+.decho-choice-item.choice-04 .decho-choice-content:after{left:-8px}
+.decho-choice-item.choice-05 .decho-choice-step{grid-column:2;grid-row:1;--step-color:#55df26}
+.decho-choice-item.choice-05 .decho-choice-content{grid-column:1;grid-row:1;--step-color:#55df26}
+.decho-choice-item.choice-05 .decho-choice-content:after{right:-8px}
+@media(min-width:1400px){.decho-choice-stairs{grid-template-columns:minmax(0,1fr) 132px minmax(0,1fr);grid-template-rows:repeat(5,minmax(130px,auto));gap:0 24px}.decho-choice-step{width:112px;height:112px}.decho-choice-content{max-width:440px}.decho-choice-item.choice-01 .decho-choice-content,.decho-choice-item.choice-03 .decho-choice-content,.decho-choice-item.choice-05 .decho-choice-content{justify-self:end;width:min(100%,440px)}.decho-choice-item.choice-02 .decho-choice-content,.decho-choice-item.choice-04 .decho-choice-content{justify-self:start;width:min(100%,440px)}}
+@media(max-width:1050px){.decho-choice-section>.container{gap:32px}.decho-choice-heading{max-width:660px}.decho-choice-stairs{max-width:900px;margin-inline:auto;grid-template-columns:minmax(0,1fr) 100px minmax(0,1fr);gap:0 12px}.decho-choice-step{width:92px;height:92px}.decho-choice-content{padding:17px}.decho-choice-content p{font-size:.84rem}}
+@media(max-width:650px){.decho-choice-section{padding:52px 0 58px}.decho-choice-section>.container{gap:26px}.decho-choice-heading h2{font-size:clamp(2.3rem,10vw,3.2rem)}.decho-choice-heading p{font-size:.92rem}.decho-choice-stairs{display:flex;flex-direction:column;gap:17px;padding-left:2px}.decho-choice-route{display:none}.decho-choice-item{display:grid;grid-template-columns:70px minmax(0,1fr);align-items:center;gap:12px;width:100%}.decho-choice-item .decho-choice-step,.decho-choice-item .decho-choice-content{grid-column:auto;grid-row:auto}.decho-choice-step{width:68px;height:68px;margin:0;border-width:3px}.decho-choice-step:before{inset:3px}.decho-choice-icon svg{width:32px;height:32px}.decho-choice-content{padding:15px 14px}.decho-choice-content:after{left:-7px!important;right:auto!important;width:11px;height:11px}.decho-choice-label{font-size:.59rem;margin-bottom:6px}.decho-choice-content h3{font-size:.83rem}.decho-choice-content p{font-size:.78rem;line-height:1.5}}
 @media(prefers-reduced-motion:reduce){.decho-choice-step,.decho-choice-content{transition:none}}
 </style>
 
@@ -1170,25 +1153,30 @@ html body main.page-main > section.section.soft .quick-links > .quick-card:hover
       <p>Beragam pilihan layanan konstruksi yang dirancang untuk memenuhi kebutuhan proyek Anda dengan mengutamakan kualitas, ketepatan, dan profesionalisme.</p>
     </div>
     <div class="decho-choice-stairs">
+      <svg class="decho-choice-route" viewBox="0 0 1000 760" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <defs><linearGradient id="dechoRouteGradient" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#7b63f7"/><stop offset="24%" stop-color="#078cff"/><stop offset="49%" stop-color="#00bfae"/><stop offset="74%" stop-color="#00ce83"/><stop offset="100%" stop-color="#55df26"/></linearGradient></defs>
+        <path d="M -40 700 H 350 C 420 700 420 640 420 590 V 540 C 420 480 480 480 500 480 C 560 480 560 420 560 370 V 325 C 560 265 620 265 640 265 C 700 265 700 205 700 155 V 110 C 700 60 760 60 780 60 H 790 V -30"/>
+        <path class="route-highlight" d="M -40 700 H 350 C 420 700 420 640 420 590 V 540 C 420 480 480 480 500 480 C 560 480 560 420 560 370 V 325 C 560 265 620 265 640 265 C 700 265 700 205 700 155 V 110 C 700 60 760 60 780 60 H 790 V -30"/>
+      </svg>
       <article class="decho-choice-item choice-01">
-        <div class="decho-choice-step"><div class="decho-choice-number"><span>PILIHAN</span><strong>01</strong></div></div>
-        <div class="decho-choice-content"><h3>Rancang Bangun</h3><p>Layanan terintegrasi mulai dari perencanaan hingga pelaksanaan konstruksi dengan mengutamakan kualitas, efisiensi, dan kesesuaian kebutuhan.</p></div>
+        <div class="decho-choice-step"><div class="decho-choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 39h34M12 39V22l12-9 12 9v17M19 39V28h10v11M17 19l7-5 7 5"/><path d="M9 13h8M13 9v8"/></svg></div></div>
+        <div class="decho-choice-content"><span class="decho-choice-label">PILIHAN 01</span><h3>Rancang Bangun</h3><p>Layanan terintegrasi mulai dari perencanaan hingga pelaksanaan konstruksi dengan mengutamakan kualitas, efisiensi, dan kesesuaian kebutuhan.</p></div>
       </article>
       <article class="decho-choice-item choice-02">
-        <div class="decho-choice-step"><div class="decho-choice-number"><span>PILIHAN</span><strong>02</strong></div></div>
-        <div class="decho-choice-content"><h3>Konstruksi Baja</h3><p>Pelaksanaan pekerjaan struktur baja meliputi fabrikasi, perakitan, pemasangan, serta pengecatan sesuai spesifikasi dan kebutuhan proyek.</p></div>
+        <div class="decho-choice-step"><div class="decho-choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 39h34M12 39V13h8v26M20 19h14v20M26 19v-6h8v6M24 26h6M24 32h6"/></svg></div></div>
+        <div class="decho-choice-content"><span class="decho-choice-label">PILIHAN 02</span><h3>Konstruksi Baja</h3><p>Pelaksanaan pekerjaan struktur baja meliputi fabrikasi, perakitan, pemasangan, serta pengecatan sesuai spesifikasi dan kebutuhan proyek.</p></div>
       </article>
       <article class="decho-choice-item choice-03">
-        <div class="decho-choice-step"><div class="decho-choice-number"><span>PILIHAN</span><strong>03</strong></div></div>
-        <div class="decho-choice-content"><h3>Konstruksi Hunian</h3><p>Layanan pembangunan dan renovasi hunian yang mengutamakan kualitas, kenyamanan, fungsionalitas, serta estetika sesuai kebutuhan.</p></div>
+        <div class="decho-choice-step"><div class="decho-choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 23 24 7l19 16M10 21v20h28V21M20 41V28h9v13M15 25h5M29 25h5"/></svg></div></div>
+        <div class="decho-choice-content"><span class="decho-choice-label">PILIHAN 03</span><h3>Konstruksi Hunian</h3><p>Layanan pembangunan dan renovasi hunian yang mengutamakan kualitas, kenyamanan, fungsionalitas, serta estetika sesuai kebutuhan.</p></div>
       </article>
       <article class="decho-choice-item choice-04">
-        <div class="decho-choice-step"><div class="decho-choice-number"><span>PILIHAN</span><strong>04</strong></div></div>
-        <div class="decho-choice-content"><h3>Perbaikan &amp; Renovasi</h3><p>Layanan perbaikan dan renovasi bangunan untuk meningkatkan kualitas, fungsi, keamanan, serta estetika sesuai kebutuhan.</p></div>
+        <div class="decho-choice-step"><div class="decho-choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m8 36 20-20 6 6-20 20H8zM25 13l4-4 10 10-4 4M7 13l4-4 7 7-4 4M8 28l-4 4 10 10 4-4"/></svg></div></div>
+        <div class="decho-choice-content"><span class="decho-choice-label">PILIHAN 04</span><h3>Perbaikan &amp; Renovasi</h3><p>Layanan perbaikan dan renovasi bangunan untuk meningkatkan kualitas, fungsi, keamanan, serta estetika sesuai kebutuhan.</p></div>
       </article>
       <article class="decho-choice-item choice-05">
-        <div class="decho-choice-step"><div class="decho-choice-number"><span>PILIHAN</span><strong>05</strong></div></div>
-        <div class="decho-choice-content"><h3>Manajemen Proyek</h3><p>Perencanaan, koordinasi, dan pengawasan proyek untuk memastikan pekerjaan berjalan efektif, tepat waktu, sesuai anggaran, dan memenuhi standar kualitas.</p></div>
+        <div class="decho-choice-step"><div class="decho-choice-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 39h34M12 34l8-8 6 5 12-14M30 17h8v8"/><path d="M8 9h12M8 15h8"/></svg></div></div>
+        <div class="decho-choice-content"><span class="decho-choice-label">PILIHAN 05</span><h3>Manajemen Proyek</h3><p>Perencanaan, koordinasi, dan pengawasan proyek untuk memastikan pekerjaan berjalan efektif, tepat waktu, sesuai anggaran, dan memenuhi standar kualitas.</p></div>
       </article>
     </div>
   </div>
