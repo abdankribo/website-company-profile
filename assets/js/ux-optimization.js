@@ -335,16 +335,18 @@
 })();
 
 
-/* DECHO parallax-only layer: subtle depth on each main section while scrolling. */
+/* DECHO parallax-only layer: apply depth to real visual layers, including CSS-background artwork. */
 (function(){
   'use strict';
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const sections = Array.from(document.querySelectorAll('main section, main > .hero, main > .page-hero'));
-  if(reduced || !sections.length) return;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(motion.matches) return;
+  const sections = Array.from(document.querySelectorAll('main section, main > .hero, main > .page-hero, body > .hero'));
+  if(!sections.length) return;
   const visuals = [];
+  const selector = '.decho-scene, .about-image, .about-background-art, .sustain-image, .sustain-visual, .feature-visual, .news-image, .project-gallery img, .gallery img, .project-card img, .service-card > img, video.hero-video, .page-hero .hero-image, .hero > img';
   sections.forEach((section) => {
     section.classList.add('decho-parallax-section');
-    const candidates = section.querySelectorAll('.about-image, .sustain-image, .feature-visual, .news-image, .project-gallery img, .gallery img, .project-card img, .service-card > img, video.hero-video');
+    const candidates = section.matches(selector) ? [section] : Array.from(section.querySelectorAll(selector));
     candidates.forEach((el) => {
       if(el.dataset.dechoParallax === '1') return;
       el.dataset.dechoParallax = '1';
@@ -358,9 +360,9 @@
     const vh = window.innerHeight || 1;
     visuals.forEach(({el, section}) => {
       const rect = section.getBoundingClientRect();
-      if(rect.bottom < -80 || rect.top > vh + 80) return;
+      if(rect.bottom < -100 || rect.top > vh + 100) return;
       const progress = (vh - rect.top) / (vh + rect.height);
-      const travel = Math.max(-18, Math.min(18, (progress - .5) * 36));
+      const travel = Math.max(-26, Math.min(26, (progress - .5) * 52));
       el.style.setProperty('--decho-parallax-offset', travel.toFixed(2) + 'px');
     });
     frame = 0;
@@ -368,5 +370,6 @@
   function schedule(){ if(!frame) frame = window.requestAnimationFrame(update); }
   window.addEventListener('scroll', schedule, {passive:true});
   window.addEventListener('resize', schedule, {passive:true});
+  motion.addEventListener && motion.addEventListener('change', e => { if(e.matches) visuals.forEach(({el}) => {el.style.transform='none';}); });
   update();
 })();
