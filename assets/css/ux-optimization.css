@@ -1299,3 +1299,28 @@ main section.decho-story-reveal.decho-story-visible{transform:translate3d(0,0,0)
     translate: none !important;
   }
 }
+
+
+/* DECHO scroll reveal final override: reliable entry and exit states. */
+.decho-reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  filter: blur(2px);
+  transition:
+    opacity .68s cubic-bezier(.22,1,.36,1) var(--decho-reveal-delay, 0ms),
+    transform .68s cubic-bezier(.22,1,.36,1) var(--decho-reveal-delay, 0ms),
+    filter .68s cubic-bezier(.22,1,.36,1) var(--decho-reveal-delay, 0ms);
+}
+.decho-reveal.decho-in {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  filter: blur(0);
+}
+@media (max-width: 720px) {
+  .decho-reveal { transform: translate3d(0, 20px, 0); filter: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .decho-reveal, .decho-reveal.decho-in {
+    opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important;
+  }
+}
