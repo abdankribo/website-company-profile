@@ -399,14 +399,14 @@
       var rect = el.getBoundingClientRect();
       if (rect.bottom < -80 || rect.top > viewportHeight + 80) return;
       var centerDistance = (rect.top + rect.height / 2 - viewportHeight / 2) / Math.max(viewportHeight, 1);
-      var offset = Math.max(-28, Math.min(28, centerDistance * -34));
+      var offset = Math.max(-78, Math.min(78, centerDistance * -96));
       el.style.setProperty('--decho-parallax-y', offset.toFixed(2) + 'px');
     });
     foregroundLayers.forEach(function (el) {
       var rect = el.getBoundingClientRect();
       if (rect.bottom < -80 || rect.top > viewportHeight + 80) return;
       var centerDistance = (rect.top + rect.height / 2 - viewportHeight / 2) / Math.max(viewportHeight, 1);
-      var offset = Math.max(-22, Math.min(22, centerDistance * -26));
+      var offset = Math.max(-48, Math.min(48, centerDistance * -58));
       el.style.setProperty('--decho-parallax-y', offset.toFixed(2) + 'px');
     });
     ticking = false;
