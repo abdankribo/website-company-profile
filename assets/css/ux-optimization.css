@@ -1193,3 +1193,47 @@ html body main.page-main > section.page-hero h1{
 html body main.page-main > section.page-hero p{
   color:#4b4768!important;opacity:1!important;
 }
+
+
+/* DECHO INTERACTION POLISH — consistent hover, focus, scroll and page motion */
+:root{scroll-behavior:smooth;scroll-padding-top:100px}
+html{scrollbar-gutter:stable}
+body{transition:opacity .24s cubic-bezier(.22,1,.36,1),transform .24s cubic-bezier(.22,1,.36,1)}
+body.decho-page-leaving{opacity:0;transform:translateY(-6px);pointer-events:none}
+.navbar{transition:box-shadow .28s ease,background-color .28s ease,border-color .28s ease}
+.navbar.is-scrolled{box-shadow:0 12px 32px rgba(17,23,71,.09);border-bottom-color:rgba(115,83,223,.2)}
+.navlinks a,.footer-links a,.text-link,.navcta,.btn,.menu-toggle,.lang-toggle{transition:color .25s ease,background-color .25s ease,border-color .25s ease,box-shadow .3s ease,transform .3s cubic-bezier(.22,1,.36,1)!important}
+.navlinks a:hover,.navlinks a:focus-visible{color:var(--decho-purple,#7353df)!important}
+.btn:hover,.navcta:hover{transform:translateY(-3px) scale(1.015)!important;box-shadow:0 14px 30px rgba(49,88,232,.2)!important}
+.btn:active,.navcta:active,.project-filter:active{transform:translateY(0) scale(.985)!important}
+.service-card,.news-card,.project-card,.process-card,.quick-card,.team-card,.stat,.contact-strip,.feature-banner,.about-image,.sustain-image{transition:transform .42s cubic-bezier(.22,1,.36,1),box-shadow .42s ease,border-color .3s ease,filter .3s ease!important}
+@media(hover:hover) and (pointer:fine){
+ .service-card:hover,.news-card:hover,.project-card:hover,.process-card:hover,.quick-card:hover,.team-card:hover{transform:translateY(-7px)!important;box-shadow:0 22px 54px rgba(17,23,71,.13)!important;border-color:rgba(115,83,223,.42)!important}
+ .service-card:hover .iconbox,.quick-card:hover .iconbox,.team-card:hover .iconbox{transform:translateY(-2px) rotate(-3deg);background:linear-gradient(135deg,#dce6ff,#e8dcff);color:#543bd2}
+ .about-image:hover,.sustain-image:hover{filter:saturate(1.07);box-shadow:0 24px 60px rgba(17,23,71,.18)!important}
+ .stat:hover{background:rgba(255,255,255,.12);transform:translateY(-3px)}
+ .footer-links a:hover{transform:translateX(5px)!important}
+}
+:where(a,button,input,textarea,select,[tabindex]):focus-visible{outline:3px solid rgba(115,83,223,.65)!important;outline-offset:4px!important}
+:where(.service-card,.news-card,.project-card,.process-card,.quick-card,.team-card) a:focus-visible{outline-offset:2px!important}
+.decho-scroll-reveal{opacity:0;transform:translate3d(0,26px,0);filter:blur(2px);transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .72s cubic-bezier(.22,1,.36,1),filter .72s cubic-bezier(.22,1,.36,1)}
+.decho-scroll-reveal.decho-scroll-in{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
+.decho-scroll-reveal.decho-scroll-left{transform:translate3d(-24px,12px,0)}
+.decho-scroll-reveal.decho-scroll-left.decho-scroll-in{transform:translate3d(0,0,0)}
+.decho-scroll-reveal.decho-scroll-right{transform:translate3d(24px,12px,0)}
+.decho-scroll-reveal.decho-scroll-right.decho-scroll-in{transform:translate3d(0,0,0)}
+#decho-progress{will-change:width;box-shadow:0 0 10px rgba(115,83,223,.25)}
+#decho-top{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+#decho-top:hover{transform:translateY(-4px) scale(1.04)!important;box-shadow:0 14px 30px rgba(49,88,232,.26)}
+@media(max-width:720px){
+ :root{scroll-padding-top:82px}
+ .decho-scroll-reveal{transform:translate3d(0,18px,0);filter:none;transition-duration:.55s}
+ .decho-scroll-reveal.decho-scroll-left,.decho-scroll-reveal.decho-scroll-right{transform:translate3d(0,18px,0)}
+ .decho-scroll-reveal.decho-scroll-left.decho-scroll-in,.decho-scroll-reveal.decho-scroll-right.decho-scroll-in{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+ html,:root{scroll-behavior:auto!important}
+ body,body.decho-page-leaving{opacity:1!important;transform:none!important;transition:none!important;pointer-events:auto!important}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+ .decho-scroll-reveal,.decho-scroll-reveal.decho-scroll-left,.decho-scroll-reveal.decho-scroll-right{opacity:1!important;transform:none!important;filter:none!important}
+}
