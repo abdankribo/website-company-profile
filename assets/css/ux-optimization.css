@@ -1324,3 +1324,21 @@ main section.decho-story-reveal.decho-story-visible{transform:translate3d(0,0,0)
     opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important;
   }
 }
+
+
+/* Article and editorial cards: alternate a subtle right-side or bottom-up entrance. */
+.decho-reveal.decho-from-bottom{transform:translate3d(0,34px,0);filter:blur(2px)}
+.decho-reveal.decho-from-right{transform:translate3d(42px,8px,0);filter:blur(2px)}
+.decho-reveal.decho-from-bottom.decho-in,
+.decho-reveal.decho-from-right.decho-in{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
+main article,.article-card,.blog-card,.post-card,.news-card{will-change:opacity,transform}
+@media(max-width:720px){
+ .decho-reveal.decho-from-right{transform:translate3d(0,22px,0);filter:none}
+ .decho-reveal.decho-from-bottom{transform:translate3d(0,22px,0);filter:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .decho-reveal.decho-from-bottom,.decho-reveal.decho-from-right,
+ .decho-reveal.decho-from-bottom.decho-in,.decho-reveal.decho-from-right.decho-in{
+  opacity:1!important;transform:none!important;filter:none!important;transition:none!important;will-change:auto!important
+ }
+}
