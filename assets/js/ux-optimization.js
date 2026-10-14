@@ -333,3 +333,40 @@
     }
   });
 })();
+
+
+/* DECHO parallax-only layer: subtle depth on each main section while scrolling. */
+(function(){
+  'use strict';
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sections = Array.from(document.querySelectorAll('main section, main > .hero, main > .page-hero'));
+  if(reduced || !sections.length) return;
+  const visuals = [];
+  sections.forEach((section) => {
+    section.classList.add('decho-parallax-section');
+    const candidates = section.querySelectorAll('.about-image, .sustain-image, .feature-visual, .news-image, .project-gallery img, .gallery img, .project-card img, .service-card > img, video.hero-video');
+    candidates.forEach((el) => {
+      if(el.dataset.dechoParallax === '1') return;
+      el.dataset.dechoParallax = '1';
+      el.classList.add('decho-parallax-visual');
+      visuals.push({el, section});
+    });
+  });
+  if(!visuals.length) return;
+  let frame = 0;
+  function update(){
+    const vh = window.innerHeight || 1;
+    visuals.forEach(({el, section}) => {
+      const rect = section.getBoundingClientRect();
+      if(rect.bottom < -80 || rect.top > vh + 80) return;
+      const progress = (vh - rect.top) / (vh + rect.height);
+      const travel = Math.max(-18, Math.min(18, (progress - .5) * 36));
+      el.style.setProperty('--decho-parallax-offset', travel.toFixed(2) + 'px');
+    });
+    frame = 0;
+  }
+  function schedule(){ if(!frame) frame = window.requestAnimationFrame(update); }
+  window.addEventListener('scroll', schedule, {passive:true});
+  window.addEventListener('resize', schedule, {passive:true});
+  update();
+})();
