@@ -1112,6 +1112,20 @@ html body main.page-main > section.section.soft .quick-links > .quick-card:hover
 .decho-choice-route{position:absolute;z-index:0;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .decho-choice-route path{fill:none;stroke-width:32;stroke-linecap:butt;stroke-linejoin:round}
 .decho-choice-route .route-highlight{stroke:#f6f9fc;stroke-width:3;opacity:1}
+.decho-choice-route .decho-snake-flow path{
+  stroke-dasharray:22 1800;
+  stroke-dashoffset:0;
+  opacity:.95;
+  animation:dechoSnakeFlow 3.8s linear infinite;
+}
+.decho-choice-route .decho-snake-flow path:nth-child(2){animation-delay:.72s}
+.decho-choice-route .decho-snake-flow path:nth-child(3){animation-delay:1.44s}
+.decho-choice-route .decho-snake-flow path:nth-child(4){animation-delay:2.16s}
+.decho-choice-route .decho-snake-flow path:nth-child(5){animation-delay:2.88s}
+@keyframes dechoSnakeFlow{
+  from{stroke-dashoffset:0}
+  to{stroke-dashoffset:-1800}
+}
 .decho-choice-item{display:contents}
 .decho-choice-step{position:absolute;z-index:2;display:flex;align-items:center;justify-content:center;width:8.333%;aspect-ratio:1;height:auto;margin:0;padding:5px;border:3px solid #fff;border-radius:50%;background:var(--step-color);box-shadow:0 8px 18px rgba(20,20,40,.22);transition:transform .28s ease,box-shadow .28s ease}
 .decho-choice-step:before{position:absolute;inset:2px;border:1px solid rgba(255,255,255,.45);border-radius:50%;content:""}
@@ -1161,6 +1175,14 @@ html body main.page-main > section.section.soft .quick-links > .quick-card:hover
           <path d="M632 427A68 82 0 0 0 700 345" stroke="#07c9ac"/>
           <path d="M700 345A80 83 0 0 1 790 262" stroke="#10dc86"/>
           <path d="M790 262A71 71 0 0 0 861 191V118" stroke="#5be12b"/>
+        </g>
+        <!-- Kilatan bergerak seperti ular mengikuti jalur dari kiri bawah ke kanan atas -->
+        <g class="decho-snake-flow" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" aria-hidden="true">
+          <path d="M0 581H476A69 76 0 0 0 545 505" />
+          <path d="M545 505A87 78 0 0 1 632 427" />
+          <path d="M632 427A68 82 0 0 0 700 345" />
+          <path d="M700 345A80 83 0 0 1 790 262" />
+          <path d="M790 262A71 71 0 0 0 861 191V118" />
         </g>
         <polygon points="834,98 861,68 889,98" fill="#5be12b"/>
         <g stroke="#f6f9fc" stroke-width="3">
