@@ -7,7 +7,6 @@
   const assetPrefix=nested?'../':'';
   if(!$('main')){const first=$('header')||$('.hero')||$('body').firstElementChild;if(first&&first.parentNode){first.id=first.id||'main-content';}}
   const main=$('main')||$('#main-content')||$('body');
-  if(main&&!$('#decho-skip')){const skip=document.createElement('a');skip.id='decho-skip';skip.className='skip-link';skip.href='#'+(main.id||'main-content');if(!main.id)main.id='main-content';skip.textContent='Lewati ke konten utama';document.body.prepend(skip);}
   if(!$('#decho-progress')){const p=document.createElement('div');p.id='decho-progress';p.setAttribute('aria-hidden','true');document.body.append(p);}
   if(!$('#decho-top')){const b=document.createElement('button');b.id='decho-top';b.type='button';b.setAttribute('aria-label','Kembali ke atas');b.title='Kembali ke atas';b.innerHTML='↑';document.body.append(b);b.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));}
   const topBtn=$('#decho-top'), progress=$('#decho-progress');
