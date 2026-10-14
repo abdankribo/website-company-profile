@@ -174,79 +174,41 @@
 })();
 
 
-/* DECHO scroll reveal: repeat on enter/exit with a single observer. */
+/* DECHO article reveal v2: single, repeatable observer with explicit visible state. */
 (function () {
   'use strict';
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var nav = document.querySelector('.navbar, .nav, header.site-header');
-  var scrollPending = false;
-  function updateNav() {
-    if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 18);
-    scrollPending = false;
-  }
-  updateNav();
-  window.addEventListener('scroll', function () {
-    if (!scrollPending) {
-      scrollPending = true;
-      window.requestAnimationFrame(updateNav);
-    }
-  }, { passive: true });
-
-  var selector = [
-    'main .section-head', 'main .about-grid', 'main .sustain-grid',
-    'main .feature-banner', 'main .contact-strip', 'main .stats',
-    'main .project-intro', 'main .project-search-panel', 'main .contact-layout',
-    'main .contact-form', 'main .contact-info', 'main .process-grid',
-    'main .process-row', 'main .service-card', 'main .project-card',
-    'main .news-card', 'main .team-card', 'main .quick-card',
-    'main .gallery figure', 'main .stat', 'main article', 'main .article',
-    'main .article-card', 'main .blog-card', 'main .post-card', 'main .news-card',
-    'main > section'
-  ].join(',');
-  var all = Array.prototype.slice.call(document.querySelectorAll(selector)).filter(function (el) {
-    return !el.closest('.decho-lightbox,[hidden]') && !el.matches('.hero,.page-hero');
+  var media = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var reduce = !!(media && media.matches);
+  var selector = 'main article, main .article-card, main .blog-card, main .post-card, main .news-card';
+  var cards = Array.prototype.slice.call(document.querySelectorAll(selector)).filter(function (el) {
+    return !el.closest('.decho-lightbox,[hidden]');
   });
-  // Avoid animating a section and its children at the same time.
-  var targets = all.filter(function (el) {
-    return !all.some(function (other) { return other !== el && el.contains(other); });
-  });
+  if (!cards.length) return;
 
   if (reduce || !('IntersectionObserver' in window)) {
-    targets.forEach(function (el) {
-      el.classList.remove('decho-reveal');
-      el.classList.add('decho-in');
-      el.style.removeProperty('opacity');
-      el.style.removeProperty('transform');
-      el.style.removeProperty('filter');
-      el.style.removeProperty('transition-delay');
+    cards.forEach(function (el) {
+      el.classList.remove('decho-reveal-v2', 'decho-reveal-v2-right', 'decho-reveal-v2-visible');
+      el.style.removeProperty('--decho-reveal-v2-delay');
     });
     return;
   }
 
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
-      entry.target.classList.toggle('decho-in', entry.isIntersecting);
+      if (entry.isIntersecting) entry.target.classList.add('decho-reveal-v2-visible');
+      else entry.target.classList.remove('decho-reveal-v2-visible');
     });
-  }, { threshold: 0.01, rootMargin: '0px 0px -4% 0px' });
+  }, { threshold: 0.04, rootMargin: '0px 0px -3% 0px' });
 
-  var delayIndex = 0;
-  targets.forEach(function (el) {
-    if (el.dataset.dechoRevealInit === '1') return;
-    el.dataset.dechoRevealInit = '1';
-    var rect = el.getBoundingClientRect();
-    var visibleAtStart = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
-    el.classList.add('decho-reveal');
-    var articleLike = el.matches('article,.article,.article-card,.blog-card,.post-card,.news-card');
-    if (articleLike) {
-      var direction = (delayIndex++ % 3 === 1) ? 'decho-from-right' : 'decho-from-bottom';
-      el.classList.add(direction);
-    }
-    el.style.setProperty('--decho-reveal-delay', visibleAtStart ? '0ms' : ((delayIndex++ % 4) * 55) + 'ms');
-    el.classList.toggle('decho-in', visibleAtStart);
+  cards.forEach(function (el, index) {
+    if (el.dataset.dechoRevealV2 === '1') return;
+    el.dataset.dechoRevealV2 = '1';
+    el.classList.add('decho-reveal-v2');
+    if (index % 3 === 1) el.classList.add('decho-reveal-v2-right');
+    el.style.setProperty('--decho-reveal-v2-delay', (index % 3) * 70 + 'ms');
     observer.observe(el);
   });
 })();
-
 /* DECHO parallax-only layer: apply depth to real visual layers, including CSS-background artwork. */
 (function(){
   'use strict';
