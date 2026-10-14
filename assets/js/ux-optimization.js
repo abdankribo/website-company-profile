@@ -199,7 +199,9 @@
     'main .contact-form', 'main .contact-info', 'main .process-grid',
     'main .process-row', 'main .service-card', 'main .project-card',
     'main .news-card', 'main .team-card', 'main .quick-card',
-    'main .gallery figure', 'main .stat', 'main > section'
+    'main .gallery figure', 'main .stat', 'main article', 'main .article',
+    'main .article-card', 'main .blog-card', 'main .post-card', 'main .news-card',
+    'main > section'
   ].join(',');
   var all = Array.prototype.slice.call(document.querySelectorAll(selector)).filter(function (el) {
     return !el.closest('.decho-lightbox,[hidden]') && !el.matches('.hero,.page-hero');
@@ -234,6 +236,11 @@
     var rect = el.getBoundingClientRect();
     var visibleAtStart = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
     el.classList.add('decho-reveal');
+    var articleLike = el.matches('article,.article,.article-card,.blog-card,.post-card,.news-card');
+    if (articleLike) {
+      var direction = (delayIndex++ % 3 === 1) ? 'decho-from-right' : 'decho-from-bottom';
+      el.classList.add(direction);
+    }
     el.style.setProperty('--decho-reveal-delay', visibleAtStart ? '0ms' : ((delayIndex++ % 4) * 55) + 'ms');
     el.classList.toggle('decho-in', visibleAtStart);
     observer.observe(el);
