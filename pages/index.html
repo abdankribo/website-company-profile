@@ -2369,6 +2369,30 @@ html body .page-main section.section.about-background-section .about-background-
  }
 }
 
+
+/* DECHO ABOUT: gunakan sisi ilustrasi/orang dari asset 3D, tanpa teks yang tertanam di sisi kanan gambar */
+html body .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+  background-image:url('/assets/images/decho-about-3d.webp')!important;
+  background-repeat:no-repeat!important;
+  background-position:left center!important;
+  background-size:190% 100%!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  opacity:1!important;
+}
+html body .page-main section.section.about-background-section .about-vector-art,
+html body .page-main section.section.about-background-section .about-vector-scene{
+  display:none!important;
+}
+@media(max-width:760px){
+  html body .page-main section.section.about-background-section > .container.about-grid > .about-image.about-interactive.about-background-art{
+    background-size:190% 100%!important;
+    background-position:left center!important;
+  }
+}
+
 </style>
 
 
