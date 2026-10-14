@@ -373,3 +373,51 @@
   motion.addEventListener && motion.addEventListener('change', e => { if(e.matches) visuals.forEach(({el}) => {el.style.transform='none';}); });
   update();
 })();
+
+
+/* DECHO parallax fix: scroll-linked movement for the actual hero and background-image layers */
+(function () {
+  'use strict';
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  var backgroundLayers = Array.prototype.slice.call(document.querySelectorAll(
+    '.hero, .page-hero, .about-image, .feature-visual, .sustain-image, .news-image, .project-hero, .project-cover, .decho-scene'
+  )).filter(function (el) {
+    return getComputedStyle(el).backgroundImage !== 'none' || el.classList.contains('decho-scene');
+  });
+  var foregroundLayers = Array.prototype.slice.call(document.querySelectorAll(
+    '.hero-video, .decho-scene-art, .hero-image, .page-hero img'
+  ));
+
+  if (!backgroundLayers.length && !foregroundLayers.length) return;
+
+  var ticking = false;
+  function updateParallax() {
+    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    backgroundLayers.forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.bottom < -80 || rect.top > viewportHeight + 80) return;
+      var centerDistance = (rect.top + rect.height / 2 - viewportHeight / 2) / Math.max(viewportHeight, 1);
+      var offset = Math.max(-28, Math.min(28, centerDistance * -34));
+      el.style.setProperty('--decho-parallax-y', offset.toFixed(2) + 'px');
+    });
+    foregroundLayers.forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.bottom < -80 || rect.top > viewportHeight + 80) return;
+      var centerDistance = (rect.top + rect.height / 2 - viewportHeight / 2) / Math.max(viewportHeight, 1);
+      var offset = Math.max(-22, Math.min(22, centerDistance * -26));
+      el.style.setProperty('--decho-parallax-y', offset.toFixed(2) + 'px');
+    });
+    ticking = false;
+  }
+  function requestUpdate() {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(updateParallax);
+    }
+  }
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
+  updateParallax();
+})();
