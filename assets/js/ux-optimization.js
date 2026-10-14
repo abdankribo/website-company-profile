@@ -176,6 +176,62 @@
     if(!document.body || link.closest('.decho-lightbox')) return;
     event.preventDefault();
     document.body.classList.add('decho-page-leaving');
-    window.setTimeout(()=>{location.href=destination.href},160);
+    if(/\.(?:pdf|zip|png|jpe?g|webp|gif|svg|mp4|webm|docx?|xlsx?)$/i.test(destination.pathname)) return;
+    window.setTimeout(()=>{location.href=destination.href},220);
+  });
+})();
+
+
+/* DECHO interaction layer: reveal sections progressively, elevate sticky nav on scroll */
+(function(){
+  'use strict';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nav = document.querySelector('.navbar, .nav, header.site-header');
+  let scheduled = false;
+  function updateScrollState(){
+    if(nav) nav.classList.toggle('is-scrolled', window.scrollY > 18);
+    scheduled = false;
+  }
+  updateScrollState();
+  window.addEventListener('scroll', function(){
+    if(!scheduled){ scheduled = true; window.requestAnimationFrame(updateScrollState); }
+  }, {passive:true});
+
+  if(reduce || !('IntersectionObserver' in window)) return;
+  const selectors = [
+    '.section-head',
+    '.about-grid',
+    '.sustain-grid',
+    '.feature-banner',
+    '.contact-strip',
+    '.stats',
+    '.footer-grid',
+    '.project-intro',
+    '.project-search-panel',
+    '.contact-layout',
+    '.contact-form',
+    '.contact-info',
+    '.process-grid',
+    '.process-row'
+  ];
+  const targets = [];
+  selectors.forEach(selector => document.querySelectorAll(selector).forEach(el => {
+    if(el.dataset.dechoMotionInit === '1' || el.classList.contains('decho-reveal')) return;
+    if(el.closest('.decho-lightbox,[hidden]')) return;
+    el.dataset.dechoMotionInit = '1';
+    el.classList.add('decho-scroll-reveal');
+    targets.push(el);
+  }));
+  if(!targets.length) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('decho-scroll-in');
+      observer.unobserve(entry.target);
+    });
+  }, {threshold:0.08, rootMargin:'0px 0px -36px 0px'});
+  targets.forEach((el,index) => {
+    el.style.transitionDelay = Math.min((index % 4) * 70, 210) + 'ms';
+    observer.observe(el);
   });
 })();
