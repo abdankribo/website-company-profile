@@ -208,8 +208,14 @@
     });
   });
 
+  // Prefer the deepest animated elements so a parent and its cards do not animate twice.
+  const allTargets = Array.from(targets);
+  const revealTargets = allTargets.filter(function(el){
+    return !allTargets.some(function(other){ return other !== el && el.contains(other); });
+  });
+
   if(reduceMotion || !('IntersectionObserver' in window)){
-    targets.forEach(function(el){
+    revealTargets.forEach(function(el){
       el.classList.remove('decho-reveal');
       el.classList.add('decho-in');
       el.style.opacity = '';
@@ -229,7 +235,7 @@
   }, {threshold:0.08, rootMargin:'0px 0px -32px 0px'});
 
   let index = 0;
-  targets.forEach(function(el){
+  revealTargets.forEach(function(el){
     if(el.dataset.dechoRevealInit === '1') return;
     el.dataset.dechoRevealInit = '1';
     const rect = el.getBoundingClientRect();
