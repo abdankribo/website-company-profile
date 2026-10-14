@@ -235,3 +235,65 @@
     observer.observe(el);
   });
 })();
+
+
+/* DECHO scroll storytelling: animate content entering the viewport */
+(function(){
+  'use strict';
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced) return;
+
+  const selectors = [
+    'main section',
+    'main .service-card',
+    'main .project-card',
+    'main .news-card',
+    'main .team-card',
+    'main .quick-card',
+    'main .process-row',
+    'main .stat',
+    'main .gallery figure'
+  ];
+  const elements = [];
+  selectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(el => {
+      if(el.dataset.dechoScrollStory === '1' || el.closest('.decho-lightbox')) return;
+      // Do not hide the first screen: animate only content lower in the document.
+      const rect = el.getBoundingClientRect();
+      const top = rect.top + window.scrollY;
+      if(top < window.innerHeight * 0.72) return;
+      el.dataset.dechoScrollStory = '1';
+      el.classList.add('decho-story-reveal');
+      elements.push(el);
+    });
+  });
+  if(!elements.length) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('decho-story-visible');
+      observer.unobserve(entry.target);
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -7% 0px'});
+
+  elements.forEach((el,index) => {
+    if(el.matches('.service-card,.project-card,.news-card,.team-card,.quick-card,.gallery figure')) {
+      el.style.setProperty('--decho-story-delay', (index % 4) * 65 + 'ms');
+    }
+    observer.observe(el);
+  });
+
+  // Gentle scroll-linked progress for the reading journey.
+  let ticking=false;
+  function progress(){
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const amount=max>0 ? Math.min(1,Math.max(0,window.scrollY/max)) : 0;
+    document.documentElement.style.setProperty('--decho-scroll-progress', amount.toFixed(4));
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){ticking=true;window.requestAnimationFrame(progress);}
+  },{passive:true});
+  progress();
+})();
