@@ -1,0 +1,122 @@
+#decho-logo-stage {
+  --ink: #2b4990;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1920px;
+  height: 1080px;
+  margin: -540px 0 0 -960px;
+  transform-origin: 50% 50%;
+}
+
+#decho-logo-stage > svg,
+#decho-logo-stage .bars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+}
+
+#decho-logo-stage > svg {
+  pointer-events: none;
+}
+
+#decho-logo-stage .bars {
+  width: 1920px;
+  height: 1080px;
+  pointer-events: none;
+}
+
+#decho-logo-stage .bar {
+  position: absolute;
+  bottom: 270px;
+  width: 184px;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform .35s cubic-bezier(.2,.9,.3,1.2);
+}
+
+#decho-logo-stage .bar:hover {
+  transform: translateY(-12px);
+}
+
+#decho-logo-stage .bar-in {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+  clip-path: inset(100% 0 0 0 round 14px 14px 0 0);
+  transition: filter .3s;
+}
+
+#decho-logo-stage .bar:hover .bar-in {
+  filter: brightness(1.12) saturate(1.15);
+}
+
+#decho-logo-stage .bar-in i {
+  display: block;
+}
+
+#decho-logo-stage .bar-in i:nth-child(1) {
+  background: #3585ab;
+}
+
+#decho-logo-stage .bar-in i:nth-child(2) {
+  background: #69a2bf;
+}
+
+#decho-logo-stage .bar-in i:nth-child(3) {
+  flex: 1;
+  background: #96bfd3;
+}
+
+#decho-logo-stage.go .bar-in {
+  clip-path: inset(0 0 0 0 round 14px 14px 0 0);
+  transition: clip-path 1.2s cubic-bezier(.2,.8,.2,1) calc(.35s + var(--i) * .2s), filter .3s;
+}
+
+#decho-logo-stage .l {
+  fill: var(--ink);
+  fill-opacity: .96;
+  transform: translateY(300px);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  pointer-events: auto;
+  cursor: default;
+}
+
+#decho-logo-stage.go .l {
+  transform: none;
+  transition: transform 1s cubic-bezier(.2,.8,.2,1) calc(1.2s + var(--i) * .09s);
+}
+
+#decho-logo-stage.done .l {
+  transition: transform .35s cubic-bezier(.2,.9,.3,1.3), fill .3s;
+}
+
+#decho-logo-stage.done .l:hover {
+  transform: translateY(-16px);
+  fill: #4a6fe0;
+}
+
+#decho-logo-stage .sub {
+  fill: url(#gsub);
+  font: 800 50px 'Montserrat', 'Poppins', sans-serif;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+#decho-logo-stage.go .sub {
+  opacity: 1;
+  transform: none;
+  transition: opacity .8s ease 2s, transform .8s ease 2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #decho-logo-stage.go .bar-in,
+  #decho-logo-stage.go .l,
+  #decho-logo-stage.go .sub {
+    transition: none !important;
+  }
+}

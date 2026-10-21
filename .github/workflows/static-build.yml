@@ -27,6 +27,13 @@ jobs:
         run: |
           test -s dist/assets/css/tailwind.css
           test -s dist/index.html
-          html_count=$(find dist -type f -name '*.html' | wc -l)
-          echo "HTML pages generated: $html_count"
-          test "$html_count" -ge 18
+          html_count=$(find dist -maxdepth 2 -type f -name '*.html' | wc -l)
+          echo "Public HTML pages generated: $html_count"
+          test "$html_count" -eq 15
+          test -s dist/assets/css/decho-wave-background.css
+          test -s dist/assets/js/decho-wave-background.js
+          test -s dist/assets/css/decho-logo-animation.css
+          test -s dist/assets/js/decho-logo-animation.js
+          grep -q 'id="decho-logo-stage"' dist/index.html
+          ! grep -q '<iframe class="decho-logo-frame"' dist/index.html
+          ! grep -q '<g class="grid">' dist/index.html

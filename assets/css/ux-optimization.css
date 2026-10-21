@@ -585,7 +585,7 @@ body:has(main .details) .gallery img{
 body:has(.hero#beranda) .about-grid::after{content:none}
 .about-image{
   position:relative;min-height:380px!important;aspect-ratio:4/3;
-  background:#e8edf7 url('../images/foto-aboutus_01%20(2).jpg') center/cover no-repeat!important;
+  background:#e8edf7 url('../images/foto-aboutus.jpg') center/cover no-repeat!important;
   border-radius:12px;overflow:hidden!important;box-shadow:14px 14px 0 #e7eaff;
 }
 .about-image .image-label{position:absolute;left:20px;right:20px;bottom:20px;z-index:2}
@@ -1262,42 +1262,6 @@ main section.decho-story-reveal.decho-story-visible{transform:translate3d(0,0,0)
  main section.decho-story-reveal,main section.decho-story-reveal.decho-story-visible{
   opacity:1!important;transform:none!important;filter:none!important;transition:none!important;will-change:auto!important
  }
-}
-
-
-/* Parallax-only motion layer: visible depth on both image elements and CSS-background artwork. */
-.decho-parallax-section{isolation:isolate}
-.decho-parallax-visual{will-change:transform;background-position:center calc(50% + var(--decho-parallax-offset, 0px))!important;transform:translate3d(0,var(--decho-parallax-offset,0px),0) scale(1.035);transform-origin:center center}
-.decho-parallax-visual.decho-scene{transform:translate3d(0,calc(var(--decho-parallax-offset,0px) * .7),0) scale(1.04)}
-@media(max-width:760px){.decho-parallax-visual{will-change:auto;transform:translate3d(0,calc(var(--decho-parallax-offset,0px) * .7),0) scale(1.025)}.decho-parallax-visual.decho-scene{transform:translate3d(0,calc(var(--decho-parallax-offset,0px) * .5),0) scale(1.03)}}
-@media(prefers-reduced-motion:reduce){.decho-parallax-visual{will-change:auto;transform:none!important;background-position:center!important}}
-
-
-/* DECHO parallax fix: give the background enough overscan for clearly visible movement */
-.hero, .page-hero, .about-image, .feature-visual, .sustain-image, .news-image,
-.project-hero, .project-cover, .decho-scene {
-  background-position: center calc(50% + var(--decho-parallax-y, 0px)) !important;
-  background-size: max(100%, calc(100% + 180px)) auto !important;
-}
-.hero-video, .decho-scene-art, .hero-image, .page-hero img {
-  translate: 0 var(--decho-parallax-y, 0px);
-  will-change: translate;
-}
-@media (max-width: 760px) {
-  .hero, .page-hero, .about-image, .feature-visual, .sustain-image, .news-image,
-  .project-hero, .project-cover, .decho-scene {
-    background-size: max(100%, calc(100% + 110px)) auto !important;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero, .page-hero, .about-image, .feature-visual, .sustain-image, .news-image,
-  .project-hero, .project-cover, .decho-scene {
-    background-position: center !important;
-    background-size: cover !important;
-  }
-  .hero-video, .decho-scene-art, .hero-image, .page-hero img {
-    translate: none !important;
-  }
 }
 
 

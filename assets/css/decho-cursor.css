@@ -1,0 +1,83 @@
+@media (pointer: fine) {
+  html.decho-custom-cursor,
+  html.decho-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+#decho-cursor-ring,
+#decho-cursor-dot {
+  position: fixed;
+  z-index: 1500;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity .25s ease;
+}
+
+#decho-cursor-ring {
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  border: 1.5px solid #1c1aa8;
+  transition: opacity .25s ease, width .3s ease, height .3s ease, margin .3s ease, background .3s ease;
+}
+
+#decho-cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #1c1aa8;
+}
+
+html.decho-cursor-visible #decho-cursor-ring,
+html.decho-cursor-visible #decho-cursor-dot {
+  opacity: 1;
+}
+
+#decho-cursor-ring.is-large {
+  width: 76px;
+  height: 76px;
+  margin: -38px 0 0 -38px;
+  background: rgba(28, 26, 168, .08);
+}
+
+#decho-cursor-ring.is-down {
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  background: rgba(28, 26, 168, .18);
+}
+
+.decho-cursor-ripple {
+  position: fixed;
+  z-index: 1499;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border: 2px solid #1c1aa8;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: dechoCursorRipple .9s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+@keyframes dechoCursorRipple {
+  to {
+    transform: scale(18);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #decho-cursor-ring,
+  #decho-cursor-dot {
+    transition: none;
+  }
+
+  .decho-cursor-ripple {
+    display: none;
+  }
+}

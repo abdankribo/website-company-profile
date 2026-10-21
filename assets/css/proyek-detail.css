@@ -1,0 +1,202 @@
+/* Modal detail proyek — dibuka di halaman yang sama, tanpa halaman baru */
+html > #pd-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;overflow-y:auto;padding:16px;font-family:Manrope,system-ui,sans-serif}
+html > #pd-modal.is-open{display:flex}
+html > #pd-modal .pd-bd{position:absolute;inset:0;background:rgba(5,8,32,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+html > #pd-modal .pd-dlg{position:relative;display:grid;grid-template-columns:minmax(0,1fr);width:min(1180px,100%);max-height:calc(100dvh - 32px);overflow:auto;
+  border-radius:26px;border:1px solid #a78bfa;background:linear-gradient(160deg,#10185a,#080c2e);box-shadow:0 40px 90px -30px rgba(124,92,255,.8)}
+html > #pd-modal .pd-stage{position:relative;height:clamp(240px,55vh,560px);min-height:0;overflow:hidden;background:#060a28}
+html > #pd-modal .pd-bg{position:absolute;inset:-12%;background-size:cover;background-position:center;filter:blur(30px) brightness(.55) saturate(1.3)}
+html > #pd-modal .pd-fig{position:absolute;inset:0;margin:0;display:flex;align-items:center;justify-content:center;padding:56px;box-sizing:border-box;cursor:zoom-in}
+html > #pd-modal .pd-img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;border-radius:14px;box-shadow:0 24px 50px -18px #000;
+  transform-origin:var(--ox,50%) var(--oy,50%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+html > #pd-modal .pd-stage.is-zoom .pd-fig{cursor:zoom-out}
+html > #pd-modal .pd-stage.is-zoom .pd-img{transform:scale(2.1)}
+html > #pd-modal .pd-btn{appearance:none;-webkit-appearance:none;cursor:pointer;font:inherit;border:1px solid rgba(160,150,255,.5);background:rgba(8,12,45,.72);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:background .2s,transform .2s}
+html > #pd-modal :is(.pd-btn,.pd-title,.pd-count){color:#fff!important;-webkit-text-fill-color:#fff!important}
+html > #pd-modal .pd-btn:hover{background:rgba(124,92,255,.85)}
+html > #pd-modal :is(.pd-btn,.pd-th):focus-visible{outline:3px solid #ffe600;outline-offset:2px}
+html > #pd-modal .pd-x{position:absolute;top:14px;right:14px;z-index:5;width:40px;height:40px;border-radius:50%;font-size:1.4rem;line-height:1;padding:0}
+html > #pd-modal .pd-nav{position:absolute;top:50%;z-index:4;width:44px;height:44px;margin-top:-34px;border-radius:50%;font-size:1.6rem;line-height:1;padding:0}
+html > #pd-modal .pd-nav:hover{transform:scale(1.1)}
+html > #pd-modal .pd-prev{left:14px}html > #pd-modal .pd-next{right:14px}
+html > #pd-modal .pd-count{position:absolute;right:18px;bottom:24px;z-index:4;font-weight:800;font-size:.9rem;letter-spacing:.08em}
+html > #pd-modal .pd-info{display:flex;flex-direction:column;gap:14px;padding:28px 26px 30px;overflow-y:auto;min-width:0}
+html > #pd-modal :is(.pd-kick,.pd-h,.pd-sub){color:#c9bbff!important;-webkit-text-fill-color:#c9bbff!important}
+html > #pd-modal :is(.pd-desc,.pd-chip,.pd-tag){color:#e6ecff!important;-webkit-text-fill-color:#e6ecff!important}
+html > #pd-modal .pd-kick{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+html > #pd-modal .pd-title{margin:0;font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.12;letter-spacing:-.03em}
+html > #pd-modal .pd-sub{margin:0;font-size:.95rem;font-weight:700}
+html > #pd-modal .pd-chips{display:flex;flex-wrap:wrap;gap:8px}
+html > #pd-modal .pd-chip{padding:6px 13px;border-radius:30px;font-size:.84rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+html > #pd-modal .pd-desc{margin:0;font-size:.95rem;line-height:1.65}
+html > #pd-modal .pd-h{margin:6px 0 0;font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+html > #pd-modal .pd-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+html > #pd-modal .pd-tag{padding:7px 14px;border-radius:12px;font-size:.84rem;font-weight:700;background:rgba(124,92,255,.22);border:1px solid rgba(167,139,250,.5)}
+html > #pd-modal .pd-thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+html > #pd-modal .pd-th{position:relative;appearance:none;-webkit-appearance:none;padding:0;cursor:pointer;overflow:hidden;border-radius:12px;aspect-ratio:16/11;
+  border:2px solid transparent;background:#0b1242;opacity:.58;transition:opacity .3s,transform .3s,border-color .3s}
+html > #pd-modal .pd-th img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s}
+html > #pd-modal .pd-th:hover{opacity:1;transform:translateY(-3px)}
+html > #pd-modal .pd-th:hover img{transform:scale(1.12)}
+html > #pd-modal .pd-th.on{opacity:1;border-color:#a78bfa;box-shadow:0 10px 24px -10px rgba(124,92,255,.9)}
+html > #pd-modal .pd-th b{position:absolute;left:7px;bottom:4px;font-size:.78rem;color:#fff!important;-webkit-text-fill-color:#fff!important;text-shadow:0 1px 4px #000}
+@media(min-width:1024px){
+  html > #pd-modal .pd-dlg{grid-template-columns:minmax(0,1.5fr) minmax(360px,1fr);grid-template-rows:minmax(0,1fr);height:min(760px,calc(100dvh - 32px));overflow:hidden}
+  html > #pd-modal .pd-stage{height:auto;min-height:0;min-width:0}
+  html > #pd-modal .pd-info{min-height:0;padding:34px 30px}
+}
+@media(min-width:641px) and (max-width:1023px){
+  html > #pd-modal{padding:20px}
+  html > #pd-modal .pd-dlg{width:min(820px,100%);max-height:calc(100dvh - 40px);border-radius:22px}
+  html > #pd-modal .pd-stage{height:clamp(280px,42dvh,420px)}
+  html > #pd-modal .pd-fig{padding:52px}
+  html > #pd-modal .pd-info{padding:26px 28px 30px;gap:12px}
+}
+@media(max-width:640px){
+  html > #pd-modal{align-items:flex-start;padding:12px 10px}
+  html > #pd-modal .pd-dlg{width:100%;max-height:calc(100dvh - 24px);border-radius:18px}
+  html > #pd-modal .pd-stage{height:clamp(210px,38dvh,310px)}
+  html > #pd-modal .pd-fig{padding:48px 46px}
+  html > #pd-modal .pd-x{top:10px;right:10px;width:38px;height:38px}
+  html > #pd-modal .pd-nav{width:38px;height:38px;margin-top:-19px}
+  html > #pd-modal .pd-prev{left:8px}
+  html > #pd-modal .pd-next{right:8px}
+  html > #pd-modal .pd-count{right:12px;bottom:12px;font-size:.8rem}
+  html > #pd-modal .pd-info{gap:11px;padding:21px 18px 24px}
+  html > #pd-modal .pd-title{font-size:clamp(1.35rem,6vw,1.75rem)}
+  html > #pd-modal .pd-desc{font-size:.9rem}
+  html > #pd-modal .pd-thumbs{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+  html > #pd-modal .pd-th{border-radius:9px}
+}
+@media(prefers-reduced-motion:reduce){html > #pd-modal *{animation:none!important;transition:none!important}}
+/* Keep the modal animations self-contained; the project does not need Tailwind CDN. */
+#pd-modal .tw-animate-pd-fade{animation:pdFade .35s ease both}
+#pd-modal .tw-animate-pd-pop{animation:pdPop .55s cubic-bezier(.2,.8,.2,1) both}
+#pd-modal .tw-animate-pd-up{animation:pdUp .5s cubic-bezier(.2,.8,.2,1) both}
+#pd-modal .tw-animate-pd-swap{animation:pdSwap .6s cubic-bezier(.2,.8,.2,1) both}
+#pd-modal .pd-x:hover{transform:rotate(90deg)}
+@keyframes pdPop{from{opacity:0;transform:translateY(28px) scale(.95)}to{opacity:1;transform:none}}
+@keyframes pdFade{from{opacity:0}to{opacity:1}}
+@keyframes pdUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes pdSwap{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:none}}
+
+
+/* ===== Showcase proyek: tab proyek + panggung + timeline tahapan ===== */
+html body #proyek-utama .pj{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+html body #proyek-utama .pj-tabs{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 10px;margin:0}
+html body #proyek-utama .pj-tab{position:relative;overflow:hidden;flex:0 0 232px;scroll-snap-align:start;appearance:none;-webkit-appearance:none;
+  cursor:pointer;text-align:left;display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;font:inherit;
+  border:1px solid rgba(160,150,255,.3);background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.03));
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s,background .3s}
+html body #proyek-utama .pj-tab:before{content:"";position:absolute;left:0;top:14%;bottom:14%;width:4px;border-radius:4px;
+  background:linear-gradient(180deg,#c084fc,#628cff);transform:scaleY(0);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+html body #proyek-utama .pj-tab:hover{transform:translateX(4px);border-color:#a78bfa}
+html body #proyek-utama .pj-tab:focus-visible{outline:3px solid #ffe600;outline-offset:2px}
+html body #proyek-utama .pj-tab.is-on{border-color:#a78bfa;box-shadow:0 0 0 1px #a78bfa,0 24px 50px -22px rgba(124,92,255,.75);
+  background:linear-gradient(145deg,rgba(124,92,255,.38),rgba(98,140,255,.14))}
+html body #proyek-utama .pj-tab.is-on:before{transform:scaleY(1)}
+html body #proyek-utama .pj-tn{flex:none;font-family:Manrope,sans-serif;font-weight:800;font-size:2.2rem;line-height:1;letter-spacing:-.05em;
+  background:linear-gradient(160deg,#d8c7ff,#6f96ff);-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent!important}
+html body #proyek-utama .pj-tx{display:grid;gap:3px;min-width:0;flex:1}
+html body #proyek-utama .pj-tt{font-family:Manrope,sans-serif;font-weight:800;font-size:1rem;line-height:1.25;color:#fff!important;-webkit-text-fill-color:#fff!important}
+html body #proyek-utama .pj-tl{font-size:.8rem;line-height:1.35;color:#c9d3fb!important;-webkit-text-fill-color:#c9d3fb!important}
+html body #proyek-utama .pj-ta{flex:none;font-size:1.2rem;color:#c9bbff!important;-webkit-text-fill-color:#c9bbff!important;opacity:0;transform:translateX(-10px);transition:opacity .3s,transform .3s}
+html body #proyek-utama .pj-tab.is-on .pj-ta{opacity:1;transform:none}
+
+html body #proyek-utama .pj-stage{position:relative;overflow:hidden;min-width:0;display:flex;flex-direction:column;border-radius:24px;
+  border:1px solid #a78bfa;background:#0a1040;box-shadow:0 30px 60px -28px rgba(124,92,255,.85)}
+html body #proyek-utama .pj-hero{position:relative;height:410px;overflow:hidden;background:#0b1242}
+html body #proyek-utama .pj-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility 0s .6s}
+html body #proyek-utama .pj-slide.is-on{opacity:1;visibility:visible;transition-delay:0s}
+html body #proyek-utama .pj-par{position:absolute;inset:-5%;transform:translate(var(--px,0px),var(--py,0px));transition:transform .4s ease-out}
+html body #proyek-utama .pj-img{display:block;width:100%;height:100%;max-width:none;object-fit:cover;filter:saturate(1.05) brightness(.82);
+  transform:scale(1.12);transition:transform 1.6s cubic-bezier(.2,.8,.2,1)}
+html body #proyek-utama .pj-slide.is-on .pj-img{transform:scale(1)}
+html body #proyek-utama .pj-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,45,.1) 0%,rgba(8,12,45,.5) 45%,rgba(8,12,45,.95) 100%)}
+html body #proyek-utama .pj-big{position:absolute;top:10px;right:22px;font-family:Manrope,sans-serif;font-weight:800;font-size:96px;line-height:1;letter-spacing:-.06em;
+  color:transparent!important;-webkit-text-fill-color:transparent!important;-webkit-text-stroke:1.5px rgba(255,255,255,.55);
+  transform:translateY(-14px);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.2,1) .1s,opacity .7s .1s}
+html body #proyek-utama .pj-slide.is-on .pj-big{transform:none;opacity:1}
+html body #proyek-utama .pj-info{position:absolute;left:0;right:0;bottom:0;padding:0 22px 24px}
+html body #proyek-utama .pj-info>*{opacity:0;transform:translateY(18px);transition:opacity .45s,transform .6s cubic-bezier(.2,.8,.2,1)}
+html body #proyek-utama .pj-slide.is-on .pj-info>*{opacity:1;transform:none;transition-delay:calc(.18s + var(--k,0)*.09s)}
+html body #proyek-utama .pj-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+html body #proyek-utama .pj-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:30px;font-size:.82rem;
+  background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);
+  color:#eef2ff!important;-webkit-text-fill-color:#eef2ff!important}
+html body #proyek-utama .pj-chip b{color:#d8b4fe}
+html body #proyek-utama .pj-h{margin:0 0 8px;font-family:Manrope,sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.15;letter-spacing:-.03em;
+  color:#fff!important;-webkit-text-fill-color:#fff!important}
+html body #proyek-utama .pj-p{margin:0 0 16px;max-width:560px;font-size:.95rem;line-height:1.6;color:#e6ecff!important;-webkit-text-fill-color:#e6ecff!important}
+html body #proyek-utama .pj-link{display:inline-flex;align-items:center;gap:12px;font-weight:700;font-size:.9rem;text-decoration:none;
+  color:#fff!important;-webkit-text-fill-color:#fff!important}
+html body #proyek-utama .pj-arrow{display:grid;place-items:center;width:48px;height:38px;border-radius:30px;font-size:1.3rem;background:linear-gradient(120deg,#c56bff,#628cff);transition:transform .2s}
+html body #proyek-utama .pj-link:hover .pj-arrow,html body #proyek-utama .pj-link:focus-visible .pj-arrow{transform:translateX(5px)}
+html body #proyek-utama .pj-link:focus-visible{outline:3px solid #ffe600;outline-offset:4px;border-radius:30px}
+
+
+@media(min-width:1024px){html body #proyek-utama .pj{grid-template-columns:280px minmax(0,1fr);gap:22px}html body #proyek-utama .pj-tabs{flex-direction:column;overflow:visible;padding:0}html body #proyek-utama .pj-tab{flex:1 1 0}html body #proyek-utama .pj-hero{height:400px}html body #proyek-utama .pj-big{font-size:130px;right:28px}html body #proyek-utama .pj-info{padding:0 30px 28px}}
+@media(max-width:600px){html body #proyek-utama .pj-hero{height:430px}html body #proyek-utama .pj-big{font-size:72px}}
+@media(prefers-reduced-motion:reduce){html body #proyek-utama .pj *,html body #proyek-utama .pj-dot{animation:none!important;transition:none!important}html body #proyek-utama .pj-slide .pj-info>*,html body #proyek-utama .pj-big{opacity:1;transform:none}}
+
+html body #proyek-utama .pj-proc{padding:22px 22px 24px;background:#0a1040;border-top:1px solid rgba(160,150,255,.3)}
+html body #proyek-utama .pj-ph{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}
+html body #proyek-utama .pj-pk{display:block;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#c9bbff!important;-webkit-text-fill-color:#c9bbff!important}
+html body #proyek-utama .pj-pt{display:block;margin-top:2px;font-family:Manrope,sans-serif;font-size:.98rem;line-height:1.3;color:#fff!important;-webkit-text-fill-color:#fff!important}
+html body #proyek-utama .pj-ctrl{display:flex;gap:8px;flex:none}
+html body #proyek-utama .pj-cb{appearance:none;-webkit-appearance:none;cursor:pointer;width:38px;height:38px;border-radius:50%;padding:0;display:grid;place-items:center;
+  font-size:1rem;line-height:1;border:1px solid rgba(160,150,255,.5);background:rgba(255,255,255,.06);
+  color:#fff!important;-webkit-text-fill-color:#fff!important;transition:background .2s,transform .2s}
+html body #proyek-utama .pj-cb:hover{background:rgba(124,92,255,.75);transform:scale(1.08)}
+html body #proyek-utama .pj-cb:focus-visible{outline:3px solid #ffe600;outline-offset:2px}
+html body #proyek-utama .pj-scroller{overflow-x:auto;padding:12px 6px 12px;margin:0 -6px}
+html body #proyek-utama .pj-track{position:relative;min-width:640px}
+html body #proyek-utama .pj-line{position:absolute;top:20px;left:calc(100%/12);right:calc(100%/12);height:4px;border-radius:4px;background:rgba(255,255,255,.16)}
+html body #proyek-utama .pj-fill{position:absolute;left:0;top:0;bottom:0;width:var(--fill,0%);border-radius:4px;background:linear-gradient(90deg,#c084fc,#628cff);
+  transition:width .6s cubic-bezier(.2,.8,.2,1)}
+html body #proyek-utama .pj-nodes{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:0;list-style:none}
+html body #proyek-utama .pj-li{margin:0;padding:0;list-style:none}
+html body #proyek-utama .pj-node{appearance:none;-webkit-appearance:none;border:0;background:none;cursor:pointer;width:100%;font:inherit;
+  display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 4px;text-align:center}
+html body #proyek-utama .pj-node:focus-visible{outline:3px solid #ffe600;outline-offset:2px;border-radius:12px}
+html body #proyek-utama .pj-dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:Manrope,sans-serif;font-weight:800;font-size:.95rem;
+  background:var(--c);color:var(--t)!important;-webkit-text-fill-color:var(--t)!important;border:4px solid #0a1040;
+  opacity:.38;transform:scale(.88);animation:pjPop .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*70ms);
+  transition:opacity .3s,transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+html body #proyek-utama .pj-node:hover .pj-dot{opacity:.9;transform:scale(1.08)}
+html body #proyek-utama .pj-node.is-done .pj-dot{opacity:1;transform:scale(1)}
+html body #proyek-utama .pj-node.is-cur .pj-dot{opacity:1;transform:scale(1.2);box-shadow:0 0 0 3px #ffe600,0 0 24px rgba(255,230,0,.55)}
+html body #proyek-utama .pj-nl{font-size:.8rem;font-weight:700;line-height:1.25;color:#98a6dc!important;-webkit-text-fill-color:#98a6dc!important;transition:color .3s}
+html body #proyek-utama .pj-node.is-done .pj-nl{color:#d5defe!important;-webkit-text-fill-color:#d5defe!important}
+html body #proyek-utama .pj-node.is-cur .pj-nl{color:#fff!important;-webkit-text-fill-color:#fff!important}
+html body #proyek-utama .pj-detail{position:relative;overflow:hidden;margin-top:14px;padding:18px 20px 16px;border-radius:16px;min-height:104px;
+  background:rgba(255,255,255,.06);border-left:4px solid var(--c,#a78bfa);transition:border-color .3s}
+html body #proyek-utama .pj-timer{position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,#c084fc,#628cff);transform:scaleX(0);transform-origin:left;pointer-events:none}
+html body #proyek-utama .pj-timer.run{animation:pjTimer 4.5s linear forwards}
+html body #proyek-utama .pj.is-off .pj-timer,html body #proyek-utama .pj-proc:hover .pj-timer{animation-play-state:paused}
+html body #proyek-utama .pj-dt{display:block;font-family:Manrope,sans-serif;font-size:1rem;font-weight:800;color:#fff!important;-webkit-text-fill-color:#fff!important}
+html body #proyek-utama .pj-dd{display:block;margin-top:4px;font-size:.92rem;line-height:1.6;color:#d5defe!important;-webkit-text-fill-color:#d5defe!important}
+html body #proyek-utama .pj-detail.swap .pj-dt,html body #proyek-utama .pj-detail.swap .pj-dd{animation:pjIn .45s cubic-bezier(.2,.8,.2,1) both}
+html body #proyek-utama .pj-detail.swap .pj-dd{animation-delay:.06s}
+@keyframes pjPop{from{opacity:0;transform:translateY(14px) scale(.6)}}
+@keyframes pjIn{from{opacity:0;transform:translateY(10px)}}
+@keyframes pjTimer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+@media(min-width:1024px){
+  html body #proyek-utama .pj{grid-template-columns:280px minmax(0,1fr);gap:22px}
+  html body #proyek-utama .pj-tabs{flex-direction:column;overflow:visible;padding:0}
+  html body #proyek-utama .pj-tab{flex:1 1 0}
+  html body #proyek-utama .pj-hero{height:400px}
+  html body #proyek-utama .pj-big{font-size:130px;right:28px}
+  html body #proyek-utama .pj-info{padding:0 30px 28px}
+  html body #proyek-utama .pj-proc{padding:24px 30px 28px}
+}
+@media(max-width:600px){html body #proyek-utama .pj-hero{height:430px}html body #proyek-utama .pj-big{font-size:72px}}
+@media(prefers-reduced-motion:reduce){
+  html body #proyek-utama .pj *,html body #proyek-utama .pj-dot{animation:none!important;transition:none!important}
+  html body #proyek-utama .pj-slide .pj-info>*,html body #proyek-utama .pj-big{opacity:1;transform:none}
+  html body #proyek-utama .pj-dot{opacity:.38}
+  html body #proyek-utama .pj-node.is-done .pj-dot,html body #proyek-utama .pj-node.is-cur .pj-dot{opacity:1}
+}

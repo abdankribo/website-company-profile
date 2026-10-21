@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:static": "tailwindcss -c ./tailwind.config.cjs -i ./assets/css/tailwind.input.css -o ./assets/css/tailwind.css --minify && node scripts/build-static.mjs",
+    "build:static": "npm run build:contact-css && tailwindcss -c ./tailwind.config.cjs -i ./assets/css/tailwind.input.css -o ./assets/css/tailwind.css --minify && node scripts/build-static.mjs",
+    "build:contact-css": "tailwindcss -c ./tailwind.contact.config.cjs -i ./assets/css/contact-form.input.css -o ./assets/css/contact-form.css --minify",
     "dev:css": "tailwindcss -c ./tailwind.config.cjs -i ./assets/css/tailwind.input.css -o ./assets/css/tailwind.css --watch"
   },
   "devDependencies": {

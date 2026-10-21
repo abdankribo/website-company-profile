@@ -27,12 +27,47 @@
   snake.forEach(function (p, i) { p.style.strokeDasharray = lens[i] + ' ' + lens[i]; p.style.strokeDashoffset = lens[i]; });
   var th = [.8, .55, .6, .55, .5].map(function (f, i) { return starts[i] + lens[i] * f; });
 
+  var hideTimers = [];
+  function setCardVisible(i, visible) {
+    var node = nodes[i], card = cards[i];
+    card.classList.toggle('on', visible);
+    card.setAttribute('aria-hidden', String(!visible));
+    node.setAttribute('aria-expanded', String(visible));
+  }
+  function scheduleHide(i) {
+    clearTimeout(hideTimers[i]);
+    hideTimers[i] = setTimeout(function () {
+      if (!nodes[i].matches(':hover, :focus') && !cards[i].matches(':hover, :focus-within')) setCardVisible(i, false);
+    }, 180);
+  }
+  nodes.forEach(function (node, i) {
+    node.addEventListener('pointerenter', function () { clearTimeout(hideTimers[i]); setCardVisible(i, true); });
+    node.addEventListener('pointerleave', function () { scheduleHide(i); });
+    node.addEventListener('focus', function () { clearTimeout(hideTimers[i]); setCardVisible(i, true); });
+    node.addEventListener('blur', function () { scheduleHide(i); });
+    node.addEventListener('click', function () { setCardVisible(i, true); });
+    node.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setCardVisible(i, true);
+      }
+    });
+    cards[i].addEventListener('pointerenter', function () { clearTimeout(hideTimers[i]); });
+    cards[i].addEventListener('pointerleave', function () { scheduleHide(i); });
+    cards[i].addEventListener('focusin', function () { clearTimeout(hideTimers[i]); setCardVisible(i, true); });
+    cards[i].addEventListener('focusout', function () { scheduleHide(i); });
+  });
+
   function render(p) {
     var d = p * L;
     snake.forEach(function (el, i) { el.style.strokeDashoffset = lens[i] - Math.min(lens[i], Math.max(0, d - starts[i])); });
     cuts.forEach(function (c, i) { c.style.opacity = d > starts[i] ? 1 : 0; });
-    nodes.forEach(function (n, i) { n.classList.toggle('on', d >= th[i]); });
-    cards.forEach(function (c, i) { var on = d >= th[i]; c.classList.toggle('on', on); dots[i].classList.toggle('on', on); });
+    nodes.forEach(function (n, i) {
+      var on = d >= th[i];
+      n.classList.toggle('on', on);
+      n.tabIndex = on ? 0 : -1;
+      dots[i].classList.toggle('on', on);
+    });
     var s = 0; while (s < 4 && d > starts[s] + lens[s]) s++;
     var pt = snake[s].getPointAtLength(Math.min(lens[s], Math.max(0, d - starts[s])));
     head.setAttribute('cx', pt.x); head.setAttribute('cy', pt.y); head.setAttribute('fill', cols[s]);
@@ -52,7 +87,14 @@
     })(t0);
   }
 
-  if (reduce || !('IntersectionObserver' in window)) { render(1); return; }
+  if (reduce || !('IntersectionObserver' in window)) {
+    render(1);
+    if (!wide.matches) cards.forEach(function (card) {
+      card.classList.add('on');
+      card.setAttribute('aria-hidden', 'false');
+    });
+    return;
+  }
   render(0);
 
   /* desktop: ular + bulatan */
@@ -60,13 +102,24 @@
     es.forEach(function (e) {
       if (!wide.matches) return;
       if (e.intersectionRatio >= .35 && !played) { played = true; play(); }
-      else if (e.intersectionRatio === 0 && played) { played = false; cancelAnimationFrame(raf); render(0); }
+      else if (e.intersectionRatio === 0 && played) {
+        played = false;
+        cancelAnimationFrame(raf);
+        cards.forEach(function (_, i) { setCardVisible(i, false); });
+        render(0);
+      }
     });
   }, { threshold: [0, .35] }).observe(fit);
 
   /* layar kecil: kartu muncul satu per satu saat terlihat */
   var io2 = new IntersectionObserver(function (es) {
-    es.forEach(function (e) { if (e.isIntersecting && !wide.matches) { e.target.classList.add('on'); io2.unobserve(e.target); } });
+    es.forEach(function (e) {
+      if (e.isIntersecting && !wide.matches) {
+        e.target.classList.add('on');
+        e.target.setAttribute('aria-hidden', 'false');
+        io2.unobserve(e.target);
+      }
+    });
   }, { threshold: .2 });
   cards.forEach(function (c) { io2.observe(c); });
 })();

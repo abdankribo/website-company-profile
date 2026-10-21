@@ -5,11 +5,11 @@
 #decho-service-snake .dcs-svg{position:absolute;inset:0;width:1152px;height:648px;overflow:visible;pointer-events:none}
 #decho-service-snake .dcs-snake path{stroke-linecap:round;stroke-linejoin:round}
 #decho-service-snake .dcs-cuts line{opacity:0;transition:opacity .25s ease}
-#decho-service-snake .dcs-node{position:absolute;z-index:2;width:72px;height:72px;display:grid;place-items:center;border:5px solid #f6f7fb;border-radius:50%;box-shadow:0 8px 24px #10153f20;opacity:.35;transform:scale(.72);transition:opacity .45s ease,transform .55s cubic-bezier(.2,.8,.2,1)}
+#decho-service-snake .dcs-node{position:absolute;z-index:2;width:72px;height:72px;display:grid;place-items:center;border:5px solid #f6f7fb;border-radius:50%;box-shadow:0 8px 24px #10153f20;opacity:0;transform:scale(.72);transition:opacity .45s ease,transform .55s cubic-bezier(.2,.8,.2,1)}
 #decho-service-snake .dcs-node svg{width:36px;height:36px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 #decho-service-snake .dcs-node.on{opacity:1;transform:scale(1)}
-#decho-service-snake .dcs-card{position:absolute;z-index:3;width:330px;min-height:150px;display:flex;align-items:flex-start;gap:15px;padding:20px 21px;background:#fff;border:1px solid #e5e4f1;border-radius:16px;box-shadow:0 10px 30px #1a174b0c;opacity:0;transform:translateY(16px) scale(.985);transition:opacity .6s ease,transform .65s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,border-color .3s ease}
-#decho-service-snake .dcs-card.on{opacity:1;transform:translateY(0) scale(1)}
+#decho-service-snake .dcs-card{position:absolute;z-index:3;width:330px;min-height:150px;display:flex;align-items:flex-start;gap:15px;padding:20px 21px;background:#fff;border:1px solid #e5e4f1;border-radius:16px;box-shadow:0 10px 30px #1a174b0c;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility 0s linear .6s,box-shadow .3s ease,border-color .3s ease}
+#decho-service-snake .dcs-card.on{opacity:1;visibility:visible;transition-delay:0s}
 #decho-service-snake .dcs-card:hover{border-color:var(--c,#8b5cf6);box-shadow:0 16px 34px #21184c1c}
 #decho-service-snake .dcs-ico{display:block;flex:0 0 46px;width:46px;height:46px;padding:10px;border-radius:13px;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none;box-shadow:0 5px 13px #14103c1a}
 #decho-service-snake .dcs-card>div{min-width:0}
@@ -39,7 +39,12 @@
  #decho-service-snake .dcs-ico{flex-basis:42px;width:42px;height:42px;padding:9px}
  #decho-service-snake .dcs-card h3{font-size:1rem}
 }
+@media(min-width:1001px){
+ .decho-choice-section .decho-choice-heading{top:-35px!important;width:45%!important}
+}
 @media(prefers-reduced-motion:reduce){
  #decho-service-snake .dcs-node,#decho-service-snake .dcs-card,#decho-service-snake .dcs-dot,#decho-service-snake .dcs-arrow{transition:none!important}
- #decho-service-snake .dcs-card{opacity:1;transform:none}
+}
+@media(max-width:1000px) and (prefers-reduced-motion:reduce){
+ #decho-service-snake .dcs-card{opacity:1;visibility:visible;transform:none}
 }

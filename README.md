@@ -1,42 +1,35 @@
 # DECHO — Company Profile
 
-Website profil PT. Dermawan Charisma Olahkarya (DECHO), dibuat sebagai situs HTML statis responsif dengan identitas visual biru, ungu, dan putih.
+Situs profil PT. Dermawan Charisma Olahkarya (DECHO), disajikan sebagai situs HTML statis responsif.
 
 ## Struktur proyek
 
-- `pages/` — halaman HTML utama: Beranda, Tentang, Layanan, Proyek, Kontak, Berita, Keberlanjutan, dan Tim.
-- `assets/css/` — stylesheet eksternal.
-- `assets/js/` — JavaScript, termasuk `language.js` dan `ux-optimization.js`.
-- `assets/images/` — logo dan gambar website.
-- `proyek/` — halaman detail tiap proyek.
-- `scripts/build-static.mjs` — menyiapkan keluaran statis untuk Cloudflare Workers.
-- `app/` — dipertahankan apa adanya dan tidak diubah dalam reorganisasi ini.
-
-File HTML lama di root dipertahankan sebagai halaman pengarah ke `pages/`, sehingga URL lama seperti `/tentang.html` dan `/layanan.html` tetap bisa digunakan.
+- Halaman publik di root: Beranda, Tentang, Layanan, Proyek, dan Kontak.
+- `proyek/` — halaman detail proyek yang ditautkan dari katalog proyek.
+- `assets/css/`, `assets/js/`, dan `assets/images/` — stylesheet, skrip, dan gambar yang digunakan situs.
+- `assets/css/decho-wave-background.css` dan `assets/js/decho-wave-background.js` — animasi gelombang latar di seluruh section; merespons kursor/klik dan menghormati preferensi reduced-motion.
+- `assets/css/decho-logo-animation.css` dan `assets/js/decho-logo-animation.js` — animasi logo SVG yang markup-nya ditanam langsung di HTML beranda, tanpa iframe.
+- `scripts/build-static.mjs` — menyalin halaman publik dan aset yang diterbitkan ke `dist/`.
+- `app/` — sumber aplikasi Next.js terpisah; tidak disertakan dalam build situs statis.
 
 ## Build statis
 
-Build membutuhkan Node.js:
+Build membutuhkan Node.js dan dependensi yang tercantum di `package.json`.
 
 ```bash
+npm install
 npm run build:static
 ```
 
-Hasil build berada di `dist/`. Script menyalin halaman pengarah root, folder `pages/`, `assets/`, dan `proyek/`.
+Hasil situs statis berada di `dist/`. Build menerbitkan halaman HTML root, katalog proyek dan halaman detailnya, serta folder `assets/`. Folder arsip, sumber aplikasi `app/`, konfigurasi, dan alat build tidak disalin ke situs.
 
 ## Deploy Cloudflare Workers
 
-Konfigurasi `wrangler.jsonc` menggunakan folder `dist/` sebagai static assets. Di Cloudflare Workers Builds gunakan:
+Konfigurasi `wrangler.jsonc` menggunakan `dist/` sebagai static assets. Jalankan build sebelum deploy:
 
-- Production branch: `main`
-- Build command: `npm run build:static`
-- Deploy command: `npx wrangler deploy`
-- Root directory: `/`
+```bash
+npm run build:static
+npx wrangler deploy
+```
 
-## GitHub Pages
-
-Atur GitHub Pages agar menerbitkan branch `main` dari root repository. Halaman utama tersimpan di `pages/`; file HTML di root menjaga kompatibilitas URL lama dan mengarahkan pengunjung ke halaman yang tersusun di folder tersebut.
-
-## Catatan
-
-Perubahan struktur di GitHub tidak otomatis berarti website Cloudflare sudah di-deploy ulang. Deployment tetap mengikuti pengaturan platform yang digunakan.
+Build CI menjalankan `npm run build:static` dan memverifikasi jumlah halaman publik serta aset animasi logo dan latar gelombang.

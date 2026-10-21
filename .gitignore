@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.github-sync/
+.local-server.cjs
+.env
+.env.*
+!.env.example
+.wrangler/

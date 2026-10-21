@@ -28,7 +28,9 @@
     "Profil Perusahaan":"Company Profile","Tentang PT. Dermawan Charisma Olahkarya":"About PT. Dermawan Charisma Olahkarya","Mitra konstruksi untuk pembangunan hunian, renovasi, dan pekerjaan struktural.":"Your steel solutions partner for construction, manufacturing, and infrastructure.",
     "Tentang DECHO":"About DECHO","Lebih dari sekadar membangun.":"More than materials.","Mitra konstruksi tepercaya Anda.":"Your building partner.",
     "PT. Dermawan Charisma Olahkarya (DECHO) adalah perusahaan jasa konstruksi yang berfokus pada pembangunan hunian, renovasi, dan pekerjaan struktural.":"PT. Dermawan Charisma Olahkarya provides steel materials and services for construction, manufacturing, infrastructure, and a wide range of industrial projects.",
-    "Didirikan secara resmi pada tahun 2026, DECHO dibangun di atas pengalaman praktis dalam pelaksanaan konstruksi yang dimulai pada tahun 2022. Berbekal pengalaman lapangan, pembelajaran berkelanjutan, dan kepercayaan dari berbagai proyek, kami terus berkembang sebagai perusahaan konstruksi yang profesional, adaptif, dan berorientasi pada kualitas.":"With a focus on material quality, process precision, and responsive service, we strive to be a reliable partner from material selection through to the finished product.",
+    "PT Dermawan Charisma Olahkarya (DECHO) resmi didirikan pada tahun 2026, berlandaskan perjalanan bisnis dan pengalaman praktis dalam pelaksanaan konstruksi yang telah dimulai sejak tahun 2019.":"PT Dermawan Charisma Olahkarya (DECHO) was officially established in 2026, building on a business journey and practical experience in construction that began in 2019.",
+    "Berbekal pengalaman lapangan, pembelajaran berkelanjutan, dan kepercayaan yang terbangun melalui berbagai proyek, DECHO terus berkembang dengan visi untuk beroperasi sebagai perusahaan konstruksi yang profesional, adaptif, dan berorientasi pada kualitas.":"With hands-on experience, continuous learning, and trust built through various projects, DECHO continues to grow with a vision to operate as a professional, adaptive, and quality-oriented construction company.",
+    "Pendirian resmi DECHO pada tahun 2026 menandai langkah strategis untuk memperkuat fondasi perusahaan, memperluas peluang kemitraan, serta meningkatkan kapasitas dalam memenuhi kebutuhan proyek yang semakin beragam.":"DECHO’s official establishment in 2026 marks a strategic step to strengthen the company’s foundation, expand partnership opportunities, and increase its capacity to meet increasingly diverse project needs.",
     "Mitra konstruksi tepercaya":"Steel solutions partner","Kualitas · Integritas · Kepercayaan":"Materials · Precision · Reliability",
     "Membangun bangunan yang aman, tahan lama, dan berkualitas":"Steel material options for a wide range of needs","Menjunjung kejujuran, transparansi, dan profesionalisme":"Processing and fabrication focused on precision","Menyediakan solusi konstruksi yang efektif dan efisien":"Reliable technical support and distribution","Kenali Perusahaan Kami ↗":"Get to Know Our Company ↗",
     "Mitra Baja untuk Kebutuhan Industri":"Steel Partner for Industrial Needs","Layanan Kami":"Our Services","Solusi material baja":"Construction solutions","Material Baja":"Steel Materials","Pemrosesan Material":"Material Processing","Fabrikasi":"Fabrication","Distribusi & Logistik":"Distribution & Logistics",
@@ -364,6 +366,35 @@
     "Pekerjaan konstruksi dengan perhatian pada mutu dan keselamatan.":"Construction work focused on quality and safety.",
     "Kualitas dan tanggung jawab":"Quality and Responsibility",
     "Solusi konstruksi sesuai kebutuhan":"Construction solutions tailored to your needs"
+  });
+  Object.assign(translations, {
+    "Langkah":"Step",
+    "Proyek":"Project",
+    "Pekerjaan":"Work",
+    "Data":"Details",
+    "Pilih jenis proyek":"Choose a project type",
+    "Bagian yang kami kerjakan":"Work scope",
+    "Hilangkan centang pada bagian yang tidak Anda perlukan.":"Uncheck any work items you do not need.",
+    "Hapus semua":"Clear all",
+    "Pilih semua":"Select all",
+    "Ringkasan permintaan":"Request summary",
+    "Belum ada bagian yang dipilih":"No work items selected yet",
+    "bagian":"parts",
+    "Data Anda":"Your details",
+    "Nama Anda":"Your name",
+    "Catatan tambahan":"Additional notes",
+    "(opsional)":"(optional)",
+    "Lokasi proyek, perkiraan jadwal, anggaran...":"Project location, estimated schedule, budget...",
+    "Siapkan Pesan Email":"Prepare Email",
+    "Pesan akan dibuka di aplikasi email Anda dan ditujukan ke tim DECHO.":"Your email app will open a message addressed to the DECHO team.",
+    "Sistem Moveable Bridge & Pra Sarana Pendukung Pelabuhan":"Moveable Bridge System & Supporting Port Infrastructure",
+    "Dari persiapan lahan hingga MEP.":"From site preparation through MEP.",
+    "Fabrikasi baja hingga commissioning test.":"From steel fabrication through commissioning.",
+    "Bangun baru atau renovasi hunian.":"New home construction or renovation.",
+    "Galvanis & Pengecatan":"Galvanizing & Painting",
+    "Test Beban":"Load Testing",
+    "Silakan pilih jenis proyek terlebih dahulu.":"Please select a project type first.",
+    "Pilih minimal satu bagian pekerjaan.":"Select at least one work item."
   });
   const reverse = new Map();
   Object.entries(translations).forEach(([id,en]) => { if (!reverse.has(en)) reverse.set(en,id); });

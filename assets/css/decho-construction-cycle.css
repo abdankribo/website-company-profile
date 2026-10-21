@@ -1,0 +1,331 @@
+﻿#decho-construction-cycle.decho-cycle-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 0;
+  color: #0b1038;
+  background: #fff;
+  --cycle-accent: #7b61ff;
+  --cycle-x: 60%;
+  --cycle-y: 40%;
+}
+
+#decho-construction-cycle .decho-cycle-aurora {
+  background: radial-gradient(520px circle at var(--cycle-x) var(--cycle-y), rgba(123,97,255,.12), transparent 70%);
+  background: radial-gradient(520px circle at var(--cycle-x) var(--cycle-y), color-mix(in srgb, var(--cycle-accent) 13%, transparent), transparent 70%);
+}
+
+#decho-construction-cycle .decho-cycle-dots {
+  opacity: .32;
+  background-image: radial-gradient(#0b1038 1px, transparent 1.6px);
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(320px circle at var(--cycle-x) var(--cycle-y), #000, transparent);
+  mask-image: radial-gradient(320px circle at var(--cycle-x) var(--cycle-y), #000, transparent);
+}
+
+#decho-construction-cycle .decho-cycle-intro,
+#decho-construction-cycle .decho-cycle-orbit {
+  position: relative;
+  z-index: 1;
+}
+
+#decho-construction-cycle .decho-cycle-intro {
+  min-width: 0;
+  font-family: "Plus Jakarta Sans", Manrope, sans-serif;
+}
+
+#decho-construction-cycle .decho-cycle-intro .section-kicker {
+  margin-bottom: 16px;
+  color: #6550b8 !important;
+}
+
+#decho-construction-cycle #decho-cycle-title {
+  color: #0b1038 !important;
+  font-family: "Plus Jakarta Sans", Manrope, sans-serif;
+  overflow-wrap: anywhere;
+}
+
+#decho-construction-cycle .decho-cycle-intro > div > p {
+  color: #566089 !important;
+}
+
+#decho-construction-cycle .decho-cycle-panel {
+  border-left: 4px solid var(--cycle-accent);
+  transition: border-color .4s;
+}
+
+#decho-construction-cycle .decho-cycle-stage-label {
+  color: #566089 !important;
+}
+
+#decho-construction-cycle #decho-cycle-current-number,
+#decho-construction-cycle #decho-cycle-current-title {
+  color: var(--cycle-accent) !important;
+}
+
+#decho-construction-cycle #decho-cycle-current-title {
+  font-family: "Plus Jakarta Sans", Manrope, sans-serif;
+}
+
+#decho-construction-cycle #decho-cycle-current-description {
+  color: #2c3562 !important;
+}
+
+#decho-construction-cycle .decho-cycle-segments button {
+  width: 3rem;
+  height: .375rem;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #e2e6f4;
+  transition: background-color .35s, transform .3s;
+  cursor: pointer;
+}
+
+#decho-construction-cycle .decho-cycle-segments button[aria-selected="true"] {
+  transform: scaleY(1.55);
+}
+
+#decho-construction-cycle .decho-cycle-segments button:focus-visible,
+#decho-construction-cycle .decho-cycle-hub:focus-visible,
+#decho-construction-cycle .decho-cycle-disc:focus-visible {
+  outline: 3px solid #0b1038;
+  outline-offset: 5px;
+}
+
+#decho-construction-cycle .decho-cycle-orbit {
+  width: min(100%, 600px);
+  margin-inline: auto;
+  aspect-ratio: 1;
+  transform: perspective(1300px) rotateX(var(--cycle-rx,0deg)) rotateY(var(--cycle-ry,0deg));
+  transition: transform .25s ease-out;
+}
+
+#decho-construction-cycle .decho-cycle-orbit > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+#decho-construction-cycle .decho-cycle-ellipse {
+  fill: none;
+  stroke-width: 2;
+  transition: opacity .5s, stroke-width .5s;
+}
+
+#decho-construction-cycle .decho-cycle-inner-orbit {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dechoCycleSpin 70s linear infinite;
+}
+
+#decho-construction-cycle .decho-cycle-orbit-dots {
+  transform-box: view-box;
+  transform-origin: 300px 300px;
+  animation: dechoCycleSpin 40s linear infinite;
+}
+
+#decho-construction-cycle .decho-cycle-orbit-dots circle {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+#decho-construction-cycle #decho-cycle-progress-arc {
+  stroke: var(--cycle-accent);
+  transition: stroke-dasharray .9s cubic-bezier(.65,0,.35,1), stroke .4s;
+}
+
+#decho-construction-cycle .decho-cycle-node {
+  position: absolute;
+  left: calc(var(--cycle-x) * 1%);
+  top: calc(var(--cycle-y) * 1%);
+  width: 15%;
+  aspect-ratio: 1;
+  transform: translate(-50%,-50%);
+  animation: dechoCyclePop .8s cubic-bezier(.22,1,.36,1) backwards;
+  animation-delay: calc(var(--cycle-index) * 130ms + 200ms);
+}
+
+#decho-construction-cycle .decho-cycle-disc {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  outline: 0;
+  color: #08103a;
+  background: var(--cycle-color);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--cycle-color) 22%, #fff), 0 14px 28px -10px color-mix(in srgb, var(--cycle-color) 70%, transparent);
+  transition: box-shadow .4s, scale .3s cubic-bezier(.22,1,.36,1), transform .2s ease-out;
+  cursor: pointer;
+}
+
+#decho-construction-cycle .decho-cycle-disc svg {
+  width: 44%;
+  height: 44%;
+}
+
+#decho-construction-cycle .decho-cycle-node.is-active .decho-cycle-disc {
+  scale: 1.14;
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--cycle-color) 28%, #fff), 0 0 0 16px color-mix(in srgb, var(--cycle-color) 12%, transparent), 0 18px 36px -8px color-mix(in srgb, var(--cycle-color) 80%, transparent);
+}
+
+#decho-construction-cycle .decho-cycle-badge {
+  position: absolute;
+  top: -4%;
+  right: -4%;
+  display: grid;
+  place-items: center;
+  width: 34%;
+  height: 34%;
+  border: 2px solid var(--cycle-color);
+  border-radius: 50%;
+  color: #0b1038;
+  background: #fff;
+  font-size: clamp(.6rem,1.5vw,.8rem);
+  font-style: normal;
+  font-weight: 800;
+}
+
+#decho-construction-cycle .decho-cycle-node.is-pinned .decho-cycle-badge {
+  color: #fff;
+  background: var(--cycle-color);
+}
+
+#decho-construction-cycle .decho-cycle-label {
+  display: none;
+  position: absolute;
+  left: 50%;
+  width: 210px;
+  margin-left: -105px;
+  color: #0b1038;
+  font-size: .95rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  pointer-events: none;
+  transition: color .3s;
+}
+
+#decho-construction-cycle .decho-cycle-node-top .decho-cycle-label {
+  bottom: calc(100% + 16px);
+}
+
+#decho-construction-cycle .decho-cycle-node-bottom .decho-cycle-label {
+  top: calc(100% + 16px);
+}
+
+#decho-construction-cycle .decho-cycle-node.is-active .decho-cycle-label {
+  color: var(--cycle-color);
+}
+
+#decho-construction-cycle .decho-cycle-hub {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-content: center;
+  gap: 2px;
+  width: 33%;
+  aspect-ratio: 1;
+  padding: 12px;
+  border: 0;
+  border-radius: 50%;
+  color: #0b1038;
+  background: #fff;
+  box-shadow: 0 0 0 1px #e6e9f5, 0 20px 50px -20px rgba(11,16,56,.35);
+  text-align: center;
+  translate: -50% -50%;
+  transition: box-shadow .3s;
+  cursor: pointer;
+}
+
+#decho-construction-cycle .decho-cycle-hub:hover {
+  box-shadow: 0 0 0 2px var(--cycle-accent), 0 24px 60px -18px color-mix(in srgb, var(--cycle-accent) 60%, transparent);
+}
+
+#decho-construction-cycle .decho-cycle-hub b {
+  color: var(--cycle-accent);
+  font-size: clamp(2rem,6.5vw,3.6rem);
+  font-weight: 800;
+  line-height: 1;
+  transition: color .4s;
+}
+
+#decho-construction-cycle .decho-cycle-hub span {
+  color: #566089;
+  font-size: clamp(.62rem,1.5vw,.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#decho-construction-cycle .decho-cycle-swap {
+  animation: dechoCycleSwap .55s cubic-bezier(.22,1,.36,1);
+}
+
+@keyframes dechoCycleSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dechoCyclePop {
+  from { opacity: 0; scale: .4; }
+  to { opacity: 1; scale: 1; }
+}
+
+@keyframes dechoCycleSwap {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (min-width: 640px) {
+  #decho-construction-cycle .decho-cycle-label {
+    display: block;
+  }
+}
+
+@media (max-width: 639px) {
+  #decho-construction-cycle .decho-cycle-intro {
+    gap: 2rem;
+  }
+
+  #decho-construction-cycle .decho-cycle-orbit {
+    width: min(100%, 440px);
+  }
+
+  #decho-construction-cycle .decho-cycle-node {
+    width: 16%;
+  }
+
+  #decho-construction-cycle .decho-cycle-hub {
+    width: 36%;
+  }
+
+  #decho-construction-cycle .decho-cycle-hub b {
+    font-size: clamp(1.8rem,9vw,2.8rem);
+  }
+
+  #decho-construction-cycle #decho-cycle-title {
+    font-size: clamp(2.4rem,12vw,3.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #decho-construction-cycle .decho-cycle-node,
+  #decho-construction-cycle .decho-cycle-inner-orbit,
+  #decho-construction-cycle .decho-cycle-orbit-dots,
+  #decho-construction-cycle .decho-cycle-swap {
+    animation: none;
+  }
+
+  #decho-construction-cycle #decho-cycle-progress-arc,
+  #decho-construction-cycle .decho-cycle-disc,
+  #decho-construction-cycle .decho-cycle-orbit {
+    transition: none;
+  }
+}

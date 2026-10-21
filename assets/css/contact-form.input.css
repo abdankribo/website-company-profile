@@ -1,0 +1,15 @@
+@tailwind utilities;
+
+:where(#contactForm) *,
+:where(#contactForm) *::before,
+:where(#contactForm) *::after {
+  box-sizing: border-box;
+  border: 0 solid #e5e8f4;
+}
+
+:where(#contactForm) input,
+:where(#contactForm) textarea,
+:where(#contactForm) button {
+  font: inherit;
+  color: inherit;
+}
