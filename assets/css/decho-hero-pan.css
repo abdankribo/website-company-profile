@@ -1,0 +1,18 @@
+/* DECHO - Hero panorama berjalan otomatis (kanan ke kiri). Semua selector diawali .decho-pan */
+:where(.decho-pan){min-height:clamp(260px,38vw,520px)}
+.decho-pan{position:relative;overflow:hidden}
+.decho-pan .decho-pan-track{position:absolute;left:0;top:0;bottom:0;display:flex;width:max-content;height:100%;
+  animation:decho-pan-loop var(--pan-dur,60s) linear infinite;will-change:transform}
+.decho-pan .decho-pan-track img{position:static;inset:auto;display:block;flex:none;height:100%;width:auto;min-width:100vw;max-width:none;object-fit:cover;translate:none!important}
+
+@keyframes decho-pan-loop{to{transform:translate3d(-50%,0,0)}}
+
+.decho-pan[data-mode="bounce"] .decho-pan-track{animation-name:decho-pan-bounce;animation-timing-function:ease-in-out;animation-direction:alternate}
+.decho-pan[data-mode="bounce"] .decho-pan-track img:nth-child(2){display:none}
+@keyframes decho-pan-bounce{to{transform:translate3d(calc(var(--pan-dist,0px) * -1),0,0)}}
+
+.decho-pan.is-paused .decho-pan-track{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.decho-pan .decho-pan-track{animation:none}}
+
+html body main.page-main > section.page-hero.service-hero-image.decho-pan .decho-pan-track img{
+  position:static;display:block;flex:none;width:auto;min-width:100vw;max-width:none;height:100%;object-fit:cover;object-position:center;translate:none!important}

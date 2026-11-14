@@ -1,0 +1,338 @@
+#decho-process.decho-process-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden !important;
+  padding: 0 !important;
+  color: #fff !important;
+  background: #070b2e !important;
+  --process-accent: #7b61ff;
+  --process-x: 70%;
+  --process-y: 30%;
+}
+
+#decho-process .decho-process-aurora,
+#decho-process .decho-process-dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#decho-process .decho-process-aurora {
+  background: radial-gradient(560px circle at var(--process-x) var(--process-y), rgba(123, 97, 255, .2), transparent 70%);
+  background: radial-gradient(560px circle at var(--process-x) var(--process-y), color-mix(in srgb, var(--process-accent) 24%, transparent), transparent 70%);
+}
+
+#decho-process .decho-process-dots {
+  background-image: radial-gradient(rgba(255,255,255,.45) 1px, transparent 1.6px);
+  background-size: 30px 30px;
+  opacity: .24;
+  -webkit-mask-image: radial-gradient(340px circle at var(--process-x) var(--process-y), #000, transparent);
+  mask-image: radial-gradient(340px circle at var(--process-x) var(--process-y), #000, transparent);
+}
+
+#decho-process .decho-process-intro,
+#decho-process .decho-process-flow {
+  z-index: 1;
+}
+
+#decho-process .decho-process-intro {
+  min-width: 0;
+}
+
+#decho-process .decho-process-intro .section-kicker {
+  margin: 0 0 18px;
+  color: #a99aff !important;
+}
+
+#decho-process #decho-process-title {
+  color: #fff !important;
+  font-family: "Plus Jakarta Sans", Manrope, sans-serif;
+  overflow-wrap: anywhere;
+}
+
+#decho-process .decho-process-stage-label,
+#decho-process .decho-process-description {
+  color: #aab0cf !important;
+}
+
+#decho-process #decho-process-current-title {
+  color: var(--process-accent) !important;
+}
+
+#decho-process .decho-process-segments button {
+  width: 3rem;
+  height: .375rem;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,.16);
+  transition: background-color .3s ease, transform .3s ease;
+  cursor: pointer;
+}
+
+#decho-process .decho-process-segments button[aria-pressed="true"] {
+  transform: scaleY(1.6);
+}
+
+#decho-process .decho-process-segments button:focus-visible,
+#decho-process .decho-process-step:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 5px;
+}
+
+#decho-process .decho-process-flow {
+  min-height: 100%;
+}
+
+#decho-process .decho-process-wire {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0;
+  animation: dechoProcessFade .8s ease 1s forwards;
+}
+
+#decho-process .decho-process-wire-bg {
+  fill: none;
+  stroke: #2a3070;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 1 9;
+}
+
+#decho-process .decho-process-wire-progress {
+  fill: none;
+  stroke: url(#decho-process-gradient);
+  stroke-width: 3.5;
+  transition: stroke-dasharray .8s cubic-bezier(.65,0,.35,1);
+}
+
+#decho-process #decho-process-steps {
+  z-index: 1;
+  row-gap: 1rem;
+}
+
+#decho-process .decho-process-step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+  padding-right: 1.4rem;
+  outline: 0;
+  animation: dechoProcessEnter .9s cubic-bezier(.22,1,.36,1) backwards;
+  animation-delay: calc(var(--step-index) * 120ms + 120ms);
+  cursor: pointer;
+}
+
+#decho-process .decho-process-step:nth-child(even) {
+  padding-left: 4.5rem;
+}
+
+#decho-process .decho-process-icon {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  flex: 0 0 64px;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: #080c30;
+  background: var(--process-accent);
+  box-shadow: 0 0 0 5px rgba(123,97,255,.22);
+  transition: box-shadow .4s, transform .25s ease-out;
+}
+
+#decho-process .decho-process-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+#decho-process .decho-process-step[aria-pressed="true"] .decho-process-icon {
+  box-shadow: 0 0 0 7px rgba(123,97,255,.3), 0 0 38px rgba(123,97,255,.55);
+}
+
+#decho-process .decho-process-card {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 1.1rem;
+  min-width: 0;
+  min-height: 132px;
+  overflow: hidden;
+  padding: 1.1rem 15% 1.1rem 1.4rem;
+  border: 1.5px solid transparent;
+  border-radius: 96px 46% 46% 96px / 96px 50% 50% 96px;
+  background: #1b1f45;
+  transform: perspective(900px) rotateX(var(--process-rx,0deg)) rotateY(var(--process-ry,0deg));
+  transition: background .35s, border-color .35s, transform .25s ease-out;
+}
+
+#decho-process .decho-process-card::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0;
+  background: radial-gradient(260px circle at var(--process-cx,50%) var(--process-cy,50%), rgba(123,97,255,.25), transparent 70%);
+  transition: opacity .3s;
+}
+
+#decho-process .decho-process-step:hover .decho-process-card::before,
+#decho-process .decho-process-step[aria-pressed="true"] .decho-process-card::before {
+  opacity: 1;
+}
+
+#decho-process .decho-process-step[aria-pressed="true"] .decho-process-card {
+  border-color: var(--process-accent);
+  background: #232859;
+}
+
+#decho-process .decho-process-number {
+  position: relative;
+  display: grid;
+  z-index: 1;
+  flex: 0 0 56px;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: #080c30;
+  background: var(--process-accent);
+  box-shadow: 0 0 0 7px #121638;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+#decho-process .decho-process-step[aria-pressed="true"] .decho-process-number {
+  animation: dechoProcessPulse 1.6s ease-out infinite;
+}
+
+#decho-process .decho-process-card h3,
+#decho-process .decho-process-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
+#decho-process .decho-process-card h3 {
+  margin-bottom: .4rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+#decho-process .decho-process-card p {
+  color: #b4bad6 !important;
+  font-size: .92rem;
+  line-height: 1.45;
+}
+
+#decho-process .decho-process-tip {
+  position: absolute;
+  top: 50%;
+  right: .2rem;
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  border-radius: 50%;
+  background: var(--process-accent);
+  transition: transform .35s, box-shadow .35s;
+}
+
+#decho-process .decho-process-step[aria-pressed="true"] .decho-process-tip {
+  transform: scale(1.5);
+  box-shadow: 0 0 0 6px rgba(123,97,255,.28);
+}
+
+@keyframes dechoProcessEnter {
+  from { opacity: 0; transform: translateX(70px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes dechoProcessPulse {
+  0% { box-shadow: 0 0 0 7px #121638, 0 0 0 7px rgba(123,97,255,.6); }
+  100% { box-shadow: 0 0 0 7px #121638, 0 0 0 24px transparent; }
+}
+
+@keyframes dechoProcessFade {
+  to { opacity: 1; }
+}
+
+@media (min-width: 640px) {
+  #decho-process .decho-process-icon {
+    flex-basis: 84px;
+    width: 84px;
+    height: 84px;
+  }
+}
+
+@media (max-width: 639px) {
+  #decho-process .decho-process-step {
+    gap: .75rem;
+    padding-right: .25rem;
+  }
+
+  #decho-process .decho-process-step:nth-child(even) {
+    padding-left: 1.25rem;
+  }
+
+  #decho-process .decho-process-icon {
+    flex-basis: 52px;
+    width: 52px;
+    height: 52px;
+  }
+
+  #decho-process .decho-process-icon svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  #decho-process .decho-process-card {
+    min-height: 118px;
+    gap: .75rem;
+    padding: .9rem 1.05rem .9rem .85rem;
+    border-radius: 42px 28% 28% 42px / 64px 50% 50% 64px;
+  }
+
+  #decho-process .decho-process-number {
+    flex-basis: 42px;
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+
+  #decho-process .decho-process-card h3 {
+    font-size: .94rem;
+  }
+
+  #decho-process .decho-process-card p {
+    font-size: .8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #decho-process .decho-process-step,
+  #decho-process .decho-process-wire {
+    animation: none;
+    opacity: 1;
+  }
+
+  #decho-process .decho-process-number {
+    animation: none !important;
+  }
+
+  #decho-process .decho-process-wire-progress {
+    transition: none;
+  }
+}
