@@ -1,0 +1,136 @@
+/* DECHO — lapisan responsif terpusat. Dimuat PALING AKHIR di <head> semua halaman.
+   Dikerjakan bertahap; tiap tahap punya blok sendiri:
+   T1 smartphone (<720px)  |  T2 tablet  |  T3 laptop  |  T4 layar besar
+   Aturan: tambah di sini, jangan menggandakan di CSS halaman. */
+
+/* ===== T1 — SMARTPHONE =================================================== */
+
+/* Area sentuh minimal 44px (navigasi, bahasa, tautan footer, titik carousel) */
+@media (max-width: 719px) {
+  html body .menu-toggle { min-width: 44px; min-height: 44px; display: inline-grid; place-items: center; }
+  html body .lang-toggle { min-width: 48px; min-height: 44px; }
+  html body .footer-links { gap: 0; }
+  html body .footer-links a { display: flex; align-items: center; min-height: 44px; }
+  html body .text-link { padding-block: 13px; margin-top: 0; }
+  html body .contact-info a { display: inline-block; padding-block: 8px; }
+  #decho-process .decho-process-segments button,
+  #decho-construction-cycle .decho-cycle-segments button { position: relative; }
+  #decho-process .decho-process-segments button::after,
+  #decho-construction-cycle .decho-cycle-segments button::after { content: ""; position: absolute; inset: -19px -4px; }
+}
+
+/* Kontak: kolom grid tidak boleh melebar mengikuti stepper/kartu (overflow 320px) */
+.contact-lower > *, #contactForm, #contactForm > * { min-width: 0; }
+#contactForm ol { width: 100%; }
+#contactForm ol li { min-width: 0; }
+@media (max-width: 380px) {
+  #contactForm ol li { gap: 6px; }
+  #contactForm ol li > span:last-child { font-size: .68rem; }
+  #contactForm ol > span { margin-inline: 4px; min-width: 6px; }
+}
+
+/* Tentang: judul besar sejajar dengan teks isi */
+@media (max-width: 650px) {
+  html body main.page-main > section#tentang > .about-page-title { margin-left: 22px !important; }
+}
+
+/* Proyek: rail lebih ramping agar kartu lebih lega pada layar sempit */
+@media (max-width: 420px) {
+  .hx-wrap { --hx-logo: 68px; }
+  .hx-cat.is-open .hx-tile { width: 52px; max-width: 52px; }
+}
+
+/* Hero Beranda: komposisi ponsel. Panggung 1920x1080 diskalakan --dh-s,
+   jadi ukuran layar (px) dibagi --dh-s agar teks tidak terpotong. */
+@media (max-width: 699px) {
+  .dh-hero { --m-fs: clamp(28px, 9vw, 44px); --m-x: 24px; --m-top: 92px; --m-end: calc(var(--m-top) + 5.8 * var(--m-fs)); }
+  .dh-hero .dh-menubtn {
+    left: calc(var(--m-x) / var(--dh-s)); top: calc(20px / var(--dh-s));
+    gap: calc(12px / var(--dh-s)); min-height: calc(48px / var(--dh-s)); padding-right: calc(12px / var(--dh-s));
+  }
+  .dh-hero .dh-bars { gap: calc(5px / var(--dh-s)); }
+  .dh-hero .dh-bars i { width: calc(30px / var(--dh-s)); height: calc(4.5px / var(--dh-s)); }
+  .dh-hero .dh-menubtn:hover .dh-bars i:nth-child(odd),
+  .dh-hero .dh-menubtn:focus-visible .dh-bars i:nth-child(odd) { width: calc(22px / var(--dh-s)); }
+  .dh-hero .dh-menulabel { font-size: calc(18px / var(--dh-s)); }
+  .dh-hero .dh-menubtn:focus-visible { outline-width: calc(2px / var(--dh-s)); outline-offset: calc(4px / var(--dh-s)); }
+  .dh-hero .dh-motto {
+    left: calc(var(--m-x) / var(--dh-s)); top: calc(var(--m-top) / var(--dh-s));
+    font-size: calc(var(--m-fs) / var(--dh-s)); line-height: 1.45; white-space: nowrap;
+  }
+  .dh-hero .dh-mline { left: calc(var(--m-x) / var(--dh-s)); top: calc((var(--m-end) + 6px) / var(--dh-s)); width: calc(min(240px, 62vw) / var(--dh-s)); height: calc(3px / var(--dh-s)); }
+  .dh-hero .dh-logo { left: calc(var(--m-x) / var(--dh-s)); top: calc((var(--m-end) + 34px) / var(--dh-s)); width: calc(min(150px, 36vw) / var(--dh-s)); }
+  .dh-hero .dh-scroll { font-size: .68rem; letter-spacing: .14em; }
+}
+
+/* ===== T2 — TABLET (720–1199px; portrait & landscape) ==================== */
+
+/* Gutter konsisten: 36px per sisi (sebelumnya 22px, lebih rapat dari Beranda) */
+@media (min-width: 720px) and (max-width: 1199px) {
+  html body .container { width: min(1180px, calc(100% - 72px)); }
+  html body .lk-container { width: min(1400px, calc(100% - 64px)); }
+}
+
+/* Interaksi sentuh pada tablet: navigasi, bahasa, footer, tombol MENU hero */
+@media (min-width: 720px) and (pointer: coarse) {
+  html body .navlinks a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 4px; }
+  html body .lang-toggle { min-width: 48px; min-height: 44px; }
+  html body .footer-links { gap: 0; }
+  html body .footer-links a { display: flex; align-items: center; min-height: 44px; }
+  html body .text-link { padding-block: 13px; margin-top: 0; }
+  .dh-hero .dh-menubtn { min-height: calc(48px / var(--dh-s)); padding-right: calc(12px / var(--dh-s)); }
+  #decho-process .decho-process-segments button,
+  #decho-construction-cycle .decho-cycle-segments button { position: relative; }
+  #decho-process .decho-process-segments button::after,
+  #decho-construction-cycle .decho-cycle-segments button::after { content: ""; position: absolute; inset: -19px -4px; }
+}
+@media (min-width: 720px) and (max-width: 1099px) {
+  html body .navlinks a { font-size: .8rem; }
+}
+
+/* Perangkat sentuh (semua lebar): perluas area ketuk tanpa mengubah tampilan */
+@media (pointer: coarse) {
+  .lk-main__btn::before { content: ""; position: absolute; inset: -14px -46px -14px -18px; }
+  #decho-motto-replay { min-height: 44px; }
+  html body .contact-info a { display: inline-block; padding-block: 10px; }
+}
+
+/* ===== T3 — LAPTOP / MACBOOK (1200–1599px) =============================== */
+
+/* Layanan: sejajar dengan navbar dan halaman lain (sebelumnya 1400px / gutter 16px) */
+@media (min-width: 1200px) {
+  html body .lk-container { width: min(1180px, calc(100% - 86px)); }
+}
+
+/* Proyek: pada laptop pendek, hemat ruang vertikal agar baris folder muncul di layar pertama */
+@media (min-width: 1100px) and (max-height: 900px) {
+  html body .ar-head { padding-top: clamp(52px, 7vh, 80px); padding-bottom: 36px; }
+  html body .ar-headgrid { margin-top: 28px; }
+}
+
+/* ===== T4 — DESKTOP & LAYAR BESAR (≥1920px) ============================== */
+
+/* Hero Beranda tumbuh proporsional (JS: skala = lebar/1920). Konten lain ikut
+   diskalakan bertahap supaya rasio hero:konten tetap seimbang dan container
+   tidak tampak "tenggelam" di 2560/4K. Hero dikecualikan (sudah diskalakan JS). */
+@media (min-width: 2200px) {
+  html body > header.navbar, html body > footer.footer,
+  html body main.page-main > section:not(.dh-hero) { zoom: 1.25; }
+}
+@media (min-width: 2800px) {
+  html body > header.navbar, html body > footer.footer,
+  html body main.page-main > section:not(.dh-hero) { zoom: 1.5; }
+}
+@media (min-width: 3400px) {
+  html body > header.navbar, html body > footer.footer,
+  html body main.page-main > section:not(.dh-hero) { zoom: 1.9; }
+}
+
+/* ===== HALAMAN DETAIL PROYEK (proyek/*.html) — area sentuh ================ */
+@media (pointer: coarse) {
+  html body .project-brand { min-height: 44px; }
+  html body .contact-link, html body .project-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+@media (max-width: 420px) {
+  html body .contact-link { white-space: nowrap; padding-inline: 14px; font-size: .82rem; }
+}

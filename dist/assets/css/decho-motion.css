@@ -1,0 +1,163 @@
+/* ==========================================================================
+   DECHO MOTION SYSTEM — satu sumber kebenaran untuk seluruh animasi & interaksi.
+   Dimuat paling akhir di <head> pada semua halaman, ditemani assets/js/decho-motion.js.
+   Prinsip: elegan, terkoordinasi, satu arah gerak (naik), tanpa pantulan/zoom berlebih.
+   ========================================================================== */
+
+/* ---------- 1. Token (ubah di sini untuk menyetel seluruh situs) ---------- */
+:root {
+  --dm-ease: cubic-bezier(.22, 1, .36, 1);        /* keluar halus, tanpa pantulan */
+  --dm-ease-soft: cubic-bezier(.4, 0, .2, 1);     /* untuk fade halaman */
+
+  --dm-dur: .8s;            /* reveal konten */
+  --dm-dur-hover: .35s;     /* hover tombol, link, kartu */
+  --dm-dur-media: .8s;      /* zoom gambar */
+  --dm-dur-page: .22s;      /* fade keluar saat pindah halaman */
+
+  --dm-dist: 28px;          /* jarak naik saat reveal */
+  --dm-stagger: 90;         /* jeda antar elemen dalam satu kelompok (ms, tanpa satuan) */
+  --dm-steps: 7;            /* batas langkah stagger agar daftar panjang tidak lambat */
+
+  --dm-lift: -6px;          /* angkat kartu saat hover */
+  --dm-zoom: 1.04;          /* zoom gambar saat hover (ringan) */
+
+  --dm-accent: #3158e8;     /* biru identitas DECHO (kursor) */
+  --dm-accent-soft: rgba(49, 88, 232, .12);
+}
+
+@media (max-width: 720px) {
+  :root { --dm-dist: 18px; --dm-dur: .65s; --dm-stagger: 70; }
+}
+
+/* ---------- 2. Reveal berkelompok (kelas dipasang/dilepas oleh decho-motion.js) ----------
+   - Memakai properti `translate` (bukan `transform`): tidak pernah bentrok dengan hover, tilt galeri,
+     atau transform bawaan elemen mana pun.
+   - Elemen baru disembunyikan SETELAH JS menandainya; tanpa JS konten tetap tampil.
+   - Setelah selesai kelas dilepas, elemen kembali ke gaya aslinya.
+   !important di sini disengaja: keadaan transien ini harus menang atas gaya halaman lama. */
+.dm-item { opacity: 0 !important; }
+.dm-item:not(.dm-fade) { translate: 0 var(--dm-dist) !important; }
+.dm-item.dm-in {
+  opacity: 1 !important;
+  transition:
+    opacity var(--dm-dur) var(--dm-ease) var(--dm-delay, 0ms),
+    translate var(--dm-dur) var(--dm-ease) var(--dm-delay, 0ms) !important;
+}
+.dm-item.dm-in:not(.dm-fade) { translate: 0 0 !important; }
+
+/* ---------- 3. Transisi halaman (fade halus, hanya opacity) ---------- */
+@keyframes dm-page-in { from { opacity: 0; } to { opacity: 1; } }
+body { animation: dm-page-in .4s var(--dm-ease-soft) backwards; }
+html.dm-leaving { pointer-events: none; }
+html.dm-leaving body {
+  opacity: 0;
+  transition: opacity var(--dm-dur-page) var(--dm-ease-soft);
+}
+
+/* ---------- 4. Navigasi: hover, active, dan state saat scroll ---------- */
+html body .navlinks a { transition: color var(--dm-dur-hover) var(--dm-ease); }
+html body .navlinks a::after { transition: right var(--dm-dur-hover) var(--dm-ease); }
+
+/* ---------- 5. Hover standar: tombol, link, kartu, gambar ---------- */
+html body :is(.btn, .navcta) {
+  transition:
+    color var(--dm-dur-hover) var(--dm-ease),
+    background-color var(--dm-dur-hover) var(--dm-ease),
+    border-color var(--dm-dur-hover) var(--dm-ease),
+    box-shadow var(--dm-dur-hover) var(--dm-ease),
+    transform var(--dm-dur-hover) var(--dm-ease),
+    translate var(--dm-dur-hover) var(--dm-ease);
+  translate: var(--dm-mx, 0) var(--dm-my, 0);       /* dorongan magnetis halus dari JS */
+}
+html body :is(.text-link, .footer-links a, .lang-toggle, .menu-toggle, .project-filter) {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: var(--dm-dur-hover);
+  transition-timing-function: var(--dm-ease);
+}
+
+/* Kartu: .service-card + kelas .dm-card untuk kartu baru. Satu pemilik transisi & hover. */
+html body :is(.service-card, .dm-card) {
+  transition:
+    transform var(--dm-dur-hover) var(--dm-ease),
+    box-shadow var(--dm-dur-hover) var(--dm-ease),
+    border-color var(--dm-dur-hover) var(--dm-ease),
+    background-color var(--dm-dur-hover) var(--dm-ease);
+}
+html body :is(.service-card, .dm-card) img {
+  transition: transform var(--dm-dur-media) var(--dm-ease), filter var(--dm-dur-media) var(--dm-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html body :is(.btn, .navcta):hover { transform: translate3d(0, -2px, 0); }   /* satu standar: naik 2px, tanpa scale */
+  html body :is(.btn, .navcta):active {
+    transform: translate3d(0, 0, 0) scale(.98);
+    transition-duration: .12s;
+  }
+  html body :is(.service-card, .dm-card):hover { transform: translate3d(0, var(--dm-lift), 0); }  /* satu standar: naik 6px */
+  html body :is(.service-card, .dm-card):hover img { transform: scale(var(--dm-zoom)); }
+}
+
+/* ---------- 6. Gerakan ambient ----------
+   Satu-satunya lapisan ambient situs adalah kanvas gelombang (decho-wave-background.js).
+   Aura, sheen, progress-bar berputar, dan orbit dekoratif sudah dihapus dari sumbernya. */
+
+/* ---------- 7. Kursor kustom global (aktif hanya untuk mouse/pen; JS mengatur kelas) ---------- */
+#dm-cursor-ring,
+#dm-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483000;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  will-change: translate, scale;
+}
+#dm-cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: var(--dm-accent);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .75);   /* tetap terlihat di section gelap */
+  transition: opacity .25s var(--dm-ease), scale .3s var(--dm-ease);
+}
+#dm-cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1.5px solid var(--dm-accent);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .5), inset 0 0 0 1px rgba(255, 255, 255, .25);
+  transition:
+    opacity .25s var(--dm-ease),
+    scale .3s var(--dm-ease),
+    background-color .3s var(--dm-ease);
+}
+html.dm-cursor-on.dm-cursor-visible:not(.dm-cursor-native) #dm-cursor-ring,
+html.dm-cursor-on.dm-cursor-visible:not(.dm-cursor-native) #dm-cursor-dot { opacity: 1; }
+
+#dm-cursor-ring.is-hover { scale: 1.5; background-color: var(--dm-accent-soft); }
+#dm-cursor-dot.is-hover  { scale: .5; }
+#dm-cursor-ring.is-down  { scale: .8; background-color: rgba(49, 88, 232, .2); }
+#dm-cursor-ring.is-hover.is-down { scale: 1.15; }
+
+/* Pointer asli disembunyikan hanya saat kursor kustom aktif, dan tidak di kolom isian teks. */
+@media (hover: hover) and (pointer: fine) {
+  html.dm-cursor-on:not(.dm-cursor-native),
+  html.dm-cursor-on:not(.dm-cursor-native) * { cursor: none !important; }
+}
+@media (hover: none), (pointer: coarse) {
+  #dm-cursor-ring, #dm-cursor-dot { display: none !important; }
+}
+
+/* ---------- 8. Aksesibilitas: prefers-reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
+  html.dm-leaving body { transition: none; }
+  .dm-item, .dm-item.dm-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  html body :is(.btn, .navcta) { translate: none; }
+  #dm-cursor-ring, #dm-cursor-dot { transition: none; }
+}

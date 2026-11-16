@@ -1,0 +1,218 @@
+#decho-motto-stage {
+  --decho-motto-ink: #4a4f57;
+  --decho-motto-script: #1c1aa8;
+  --decho-motto-navy: #111747;
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  isolation: isolate;
+  min-height: 620px;
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+  padding-top: clamp(72px, 10vw, 120px);
+  padding-bottom: clamp(88px, 12vw, 144px);
+  perspective: 1400px;
+  background:
+    linear-gradient(180deg, #f0ebff 0, rgba(240, 235, 255, 0) 180px),
+    linear-gradient(180deg, transparent calc(100% - 200px), #101638 100%),
+    linear-gradient(115deg, #b9c6d4 0%, #d5dde6 38%, #eeeeec 100%);
+  color: var(--decho-motto-ink);
+}
+
+#decho-motto-stage::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  content: "";
+  opacity: .22;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .3 0 0 0 0 .35 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+#decho-motto-blueprint,
+#decho-motto-glow {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+}
+
+#decho-motto-blueprint {
+  background-image:
+    linear-gradient(rgba(28, 26, 168, .28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 26, 168, .28) 1px, transparent 1px),
+    linear-gradient(rgba(28, 26, 168, .12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 26, 168, .12) 1px, transparent 1px);
+  background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+  -webkit-mask-image: radial-gradient(280px circle at var(--mx) var(--my), #000 0, transparent 100%);
+  mask-image: radial-gradient(280px circle at var(--mx) var(--my), #000 0, transparent 100%);
+}
+
+#decho-motto-glow {
+  background: radial-gradient(360px circle at var(--mx) var(--my), rgba(255, 255, 255, .55), transparent 70%);
+}
+
+#decho-motto-card {
+  position: relative;
+  width: min(100%, 1024px);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+#decho-motto-card::before,
+#decho-motto-card::after {
+  position: absolute;
+  border: 2px dotted rgba(74, 79, 87, .55);
+  border-radius: clamp(36px, 7vw, 88px);
+  content: "";
+  pointer-events: none;
+}
+
+#decho-motto-card::before {
+  inset: -12px;
+}
+
+#decho-motto-card::after {
+  inset: 12px;
+  border-color: rgba(74, 79, 87, .35);
+  border-radius: clamp(28px, 5vw, 64px);
+}
+
+#decho-motto-card-inner {
+  position: relative;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+#decho-motto-title {
+  margin: 0;
+  color: var(--decho-motto-ink);
+  font-size: clamp(5rem, 19vw, 13rem);
+  font-weight: 800;
+  line-height: .9;
+  letter-spacing: -.06em;
+  user-select: none;
+}
+
+#decho-motto-title .decho-motto-letter {
+  display: inline-block;
+  transition: color .3s;
+  will-change: transform;
+}
+
+#decho-motto-title .decho-motto-letter:hover {
+  color: var(--decho-motto-navy);
+}
+
+#decho-motto-quote {
+  margin: 16px 0 0;
+  color: var(--decho-motto-script);
+  font-family: Caveat, cursive;
+  font-size: clamp(2rem, 6vw, 4.6rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+#decho-motto-quote .decho-motto-word {
+  display: inline-block;
+  white-space: pre;
+  clip-path: inset(-20% 100% -30% -5%);
+  transition: transform .35s cubic-bezier(.22, 1, .36, 1), color .3s, text-shadow .3s;
+}
+
+#decho-motto-card.is-written #decho-motto-quote .decho-motto-word {
+  clip-path: inset(-20% -10% -30% -5%);
+  transition: clip-path .8s cubic-bezier(.65, 0, .35, 1) var(--word-delay), transform .35s cubic-bezier(.22, 1, .36, 1), color .3s, text-shadow .3s;
+}
+
+#decho-motto-card.is-written #decho-motto-quote .decho-motto-word:hover {
+  transform: translateY(-8px) rotate(-2deg);
+  color: #0a0a78;
+  text-shadow: 0 10px 24px rgba(28, 26, 168, .28);
+}
+
+#decho-motto-underline {
+  display: block;
+  width: min(520px, 80%);
+  height: 24px;
+  margin: 8px 0 0 auto;
+  color: var(--decho-motto-script);
+}
+
+#decho-motto-underline path {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+}
+
+#decho-motto-card.is-written #decho-motto-underline path {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.3s cubic-bezier(.65, 0, .35, 1) 1.6s;
+}
+
+#decho-motto-replay {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding: 10px 20px;
+  border: 1px solid rgba(74, 79, 87, .4);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .4);
+  color: #2d3140;
+  font: 600 .875rem/1.4 'DM Sans', sans-serif;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: background .25s, color .25s, border-color .25s;
+}
+
+#decho-motto-replay:hover {
+  border-color: var(--decho-motto-navy);
+  background: var(--decho-motto-navy);
+  color: #fff;
+}
+
+#decho-motto-replay:focus-visible {
+  outline: 2px solid var(--decho-motto-script);
+  outline-offset: 4px;
+}
+
+@media (min-width: 768px) {
+  #decho-motto-card-inner {
+    padding: 96px 56px 112px;
+    text-align: right;
+  }
+}
+
+@media (max-width: 650px) {
+  #decho-motto-stage {
+    min-height: 500px;
+  }
+
+  #decho-motto-card::before {
+    inset: -8px;
+  }
+
+  #decho-motto-card::after {
+    inset: 8px;
+  }
+
+  #decho-motto-card-inner {
+    padding: 64px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #decho-motto-quote .decho-motto-word,
+  #decho-motto-card.is-written #decho-motto-quote .decho-motto-word {
+    clip-path: none;
+    transition: none;
+  }
+
+  #decho-motto-underline path {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+
+}
